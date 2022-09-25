@@ -7,8 +7,8 @@ src = "content"
 
 [output.html]
 mathjax-support = true
-git-repository-url = "https://github.com/cccu-uk/ELEE1146-COMP1836_Labs/"
-edit-url-template = "https://github.com/cccu-uk/ELEE1146-COMP1836/edit/master/{path}"
+git-repository-url = "https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises"
+edit-url-template = "https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/{path}"
 
 [output.html.print]
 enable = false 
@@ -21,4 +21,3 @@ boost-hierarchy = 2
 boost-paragraph = 1
 expand = true
 heading-split-level = 2
-additional-js = ["./additional_scripts/on_download.js"]
