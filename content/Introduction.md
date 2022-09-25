@@ -7,7 +7,7 @@ This mdBook will grow over the duration of this module with new labs/workshops a
 
 You have the ability to change the theme of the mdBook by clicking the `Change Theme` icon on the top left mdBook. Additionally, there is a toggle for the table of content, and a search tool. 
 
-The mdBook accessed outside of blackboard here; [https://cccu-uk.github.io/U10793_FCC_Labs](https://cccu-uk.github.io/U10793_FCC_Labs), and is mobile and tablet friendly.
+The mdBook accessed outside of Moodle here; [https://compeng0001.github.io/ELEE1149-COMP1836_Exercises/](https://compeng0001.github.io/ELEE1149-COMP1836_Exercises/), and is mobile and tablet friendly.
 
 ## Issues
 
