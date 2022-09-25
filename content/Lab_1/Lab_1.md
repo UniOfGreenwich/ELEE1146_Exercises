@@ -26,9 +26,9 @@ __________
 |Algorithm: | The opening window displays the famous technology quote of the day. Find a quote online|
 ___________________
 
-**5. Android Dessert Names App**
+**5. Android OS Names and Version App**
 
-|Application Title: |Dessert Names|
+|Application Title: |OS Names and versions|
 |---|---|
 |Purpose:|In this app, the Android mobile operating system version names are displayed (you can google android version history to find out what all of them are).|
 |Algorithm:|Find out which are the latest versions of Android OS since 2016 and when were they released.  The opening window displays the names of the Android mobile operating system versions.  Replace the strings.xml text.|
