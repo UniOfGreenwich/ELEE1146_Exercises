@@ -142,3 +142,152 @@ Do the example from the lecture following the guidelines below.
 
 • Click Paste on the shortcut menu.
 
+![](./figures/resourcesMenu.png)
+
+**Step 2:**
+
+• From the window that appears choose the first option for drawable and click the OK button.
+
+![](./figures/destinationFolder.png)
+
+• Click the OK button and then another dialog box appears in the Copy dialog box. Click the OK button again. 
+
+![](./figures/saveFile.png)
+
+The bruschetta.png file will appear in the drawable folder as shown below:
+
+![](./figures/saveFileAppear.png)
+
+## Adding an ImageView Control
+
+**Step 1:**
+
+• Click ImageView in the Common category in the Palette on the Design tab and drag it to the centre of the emulator until a dashed vertical line appears, indicating the control is centred.  
+
+• A Resources pane will appear, choose the bruschetta image.
+
+• Press the Ok button.
+
+![](./figures/selectingImage.png)
+
+**Step 2:**
+
+• In the Attributes pane find the contentDescription property.
+
+• Click the vertical bar next to it. 
+
+• In the Pick a Resource Pane choose description and then press Enter.
+
+![](./figures/imageDescription.png)
+
+## Adding a Button Control
+
+**Step 1:**
+
+• From the Common category in the Palette, drag the Button control to the emulator below the ImageView control until a dashed vertical line appears, indicating the control is centred.  Release the mouse button.
+
+• Click the button and in the Attributes pane, click on the vertical line next to the text attribute.
+
+• In the Pick a Resource Pane which appears, btnRecipe and then press Enter.
+
+• In the Attributes pane, choose the  and type in text. Find the textSize property from the list of text properties that appears.
+
+• Click to the right of the textSize property, type 36sp, and the press Enter.
+
+• Now press the Infer Constraints button as shown below in order to automatically create constraints.  If constraints are not present, all the controls will appear at the top of the emulator. 
+
+Now run the emulator to see how the layout will look like.  In order to do that click the Run ‘app’ green arrow below the main menu or press Shift +F10.  
+
+![](./figures/launchApp.png)
+
+The result is shown below:
+
+![](./figures/launchedApp.png)
+
+## Adding a New Class File
+
+**Step 1:**
+
+• Close the activity_main.xml tab.
+
+• In the Android project view, expand the java folder and the first package to view the MainActivity Java class.
+
+• To create a second class, press and hold or right click the first folder, click New and the shortcut menu , and then click Activity,
+
+![](./figures/newActivityClass.png)
+
+**Step 2:**
+
+• Click Empty Activity to create a second Activity class.
+
+• In the Activity Name text box, type Recipe to create a second class.
+
+![](./figures/newActivityChoice.png)
+
+**Step 3:**
+
+• Click the Finish button to finish creating the Recipe class and XML layout for the second screen.
+
+• Delete the default Hello world! Text object from the activity_recipe.xml emulator.
+
+• Using the techniques described earlier, create the second user interface, `activity_recipe.xml`, as shown below with multiple TextView controls.
+
+![](./figures/overviewOfLayout.png)
+
+• Do not forget after you have finished developing the user interface, to Infer Constraints using the button on the top of the emulator screen.   Otherwise, all the text will appear at the top of the emulator, and it will overlap!
+
+• The result is shown below:
+
+![](./figures/updatedLaunch.png)
+
+## Coding a Button Event Handler
+
+The `MainActivity.java` class was created automatically by Android Studio.
+
+**Step 1:**
+
+• Click the `MainActivity.java` tab to open its code window.
+
+• Click to the right of `setContentView(R.layout.activity_main);` in Line 14, and the press Enter.
+
+• To initialize and reference the Button control, type: `Button button = findViewbyId(R.id.button)`;
+
+**Step 2:**
+    
+• Click at the end of the line and press Enter.
+
+• To code the button listener that awaits user interaction, type `button.setOn` to display an auto-complete listing with all the possible entries that are valid at that point in the code. 
+
+• Double click the first `setOnClickListener` to select it from the auto-complete listing.
+
+• In the parentheses, type `new On` to view possible auto-complete options.
+
+![](./figures/mainActivityCode1.png)
+
+**Step 3:**
+• Double click the first choice, which lists an `OnClickListener(...)`.  Auto-generated code adds an `onClick()` method.
+
+• If necessary, click View if the text is red and then press Alt + Enter to import View.
+
+• Click to place the insertion point on line 21 inside the `public void onClick (View v)` braces.
+
+![](./figures/onClick.png)
+
+**Step 4:**
+• Type `startA` and select `startActivity(Intent intent)` from the auto-complete listing.
+
+• In the parentheses, change the intent text by typing new Int and then double `click Intent (android.content)` in the auto-complete listing.
+
+• In the next set of parenthesis, type `MainActivity.this, Recipe.class`.
+
+• Click the Save All button on the toolbar. 
+
+![](./figures/onClickComplete.png)
+
+Now click the Run ‘app’  (or press Shift + F10) button on the toolbar to test the application in the emulator.  
+
+> **Reference:**
+Hoisington, C. (2016) Android Boot Camp for Developers Using Java: A Guide to Creating Your First Android Apps, Cengage Learning, Chapter 2
+>
+> Material reproduced from Radostinka Dontcheva 2021-22
+
