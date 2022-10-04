@@ -8,10 +8,10 @@
 
 ------
 ## Comp1836 Assignments
-[Assignment 1](./)
+[Assignment 1](COMP1836_Assignment_1/COMP1836_Assignment_1.md)
 
-[Assignment 2](./)
+[Assignment 2]()
 
 ------
 ## ELEE1146 Assignment
-[Assignment](./)
+[Assignment]()
