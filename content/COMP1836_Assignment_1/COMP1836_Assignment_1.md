@@ -44,10 +44,12 @@ The main body of the report should have the following sections: introduction, tw
 This first part of the assignment contributes 30% of the total coursework mark. 
 The marks are distributed as follows:
 
-- Task 1 is								30%
->>
-- Task 2 is 60%							
-  - Explanation of the design process	 = 20%			
-  -  The app design 				= 40%
->>
--  Report structure and presentation = 10%
+1. Task 1 is 30%
+
+2. Task 2 is 60%							
+  
+    2.1 Explanation of the design process = 20%			
+    
+    2.2 The app design = 40%
+
+3.  Report structure and presentation = 10%
