@@ -1,4 +1,4 @@
-# Summary
+**Contents**
 
 [Lab 1](Lab_1/Lab_1.md)
 
@@ -7,11 +7,13 @@
 [Lab 3](Lab_3/Lab_3.md)
 
 ------
-## Comp1836 Assignments
+
+**Comp1836 Assignments**
 [Assignment 1](COMP1836_Assignment_1/COMP1836_Assignment_1.md)
 
 [Assignment 2]()
 
 ------
-## ELEE1146 Assignment
+
+**ELEE1146 Assignment**
 [Assignment]()
