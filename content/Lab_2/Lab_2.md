@@ -63,7 +63,7 @@ Download images for the lab from here [pictures_lab_2.zip](./pictures_lab_2.zip)
 
 • Click the OK button.
 
-• Click the Add key (~) button in the Translations Editor.
+• Click the Add key (+) button in the Translations Editor.
 
 • In the Key text box, type btnRecipe to name the string for the Button control.
 
