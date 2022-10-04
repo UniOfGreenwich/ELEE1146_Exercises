@@ -1,4 +1,4 @@
-# Lab 2 Android User Interface. Part 2
+# Lab 3 Android User Interface. Part 2
 
 For the exercises below, follow the steps in the Bruschetta example from [Lab 2](../Lab_2/Lab_2.md)).
 
