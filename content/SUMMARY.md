@@ -6,6 +6,8 @@
 
 [Lab 3](Lab_3/Lab_3.md)
 
+[Lab 4](Lab_4/Lab_4.md)
+
 ------
 
 
