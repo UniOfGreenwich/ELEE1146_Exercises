@@ -403,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
 </ul>
 <pre><code class="language-java">numberOfTickets = Integer.parseInt(tickets.getText().toString());
 totalCost = costPerTicket * numberOfTickets;
-groupChice = group.getSelectedItem( ).toString( );
+groupChoice = group.getSelectedItem( ).toString( );
 result.setText(&quot;Cost for &quot; + groupChoice + &quot; is £&quot; + currency.format(totalCost));
 </code></pre>
 <ul>
@@ -435,8 +435,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 numberOfTickets = Integer.parseInt(tickets.getText().toString());
                 totalCost = costPerTicket * numberOfTickets;
-                groupChice = group.getSelectedItem( ).toString( );
-                result.setText(&quot;Cost for &quot; + groupChoice + &quot; is £&quot; + format.format(totalCost));
+                groupChoice = group.getSelectedItem( ).toString( );
+                result.setText(&quot;Cost for &quot; + groupChoice + &quot; is &quot; + format.format(totalCost));
             }
         });
     }
