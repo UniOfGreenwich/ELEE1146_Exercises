@@ -302,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText tickets = findViewById(R.id.editTextNumber);
         final Spinner group = findViewById(R.id.spinner);
         final Button cost = findViewById(R.id.button);
+        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
     }
 }
 </code></pre>
@@ -348,6 +349,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText tickets = findViewById(R.id.editTextNumber);
         final Spinner group = findViewById(R.id.spinner);
         final Button cost = findViewById(R.id.button);
+        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
     }
 }
 </code></pre>
@@ -426,7 +428,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText tickets = findViewById(R.id.editTextNumber);
         final Spinner group = findViewById(R.id.spinner);
         final Button cost = findViewById(R.id.button);
-        
+        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
         cost.setOnClickListener(new View.OnClickListener() {
             final TextView result = findViewById(R.id.txtResult);
             @Override
@@ -434,7 +436,7 @@ public class MainActivity extends AppCompatActivity {
                 numberOfTickets = Integer.parseInt(tickets.getText().toString());
                 totalCost = costPerTicket * numberOfTickets;
                 groupChice = group.getSelectedItem( ).toString( );
-                result.setText(&quot;Cost for &quot; + groupChoice + &quot; is £&quot; + currency.format(totalCost));
+                result.setText(&quot;Cost for &quot; + groupChoice + &quot; is £&quot; + format.format(totalCost));
             }
         });
     }
