@@ -50,6 +50,7 @@ Now you need to add a string array, modify the `string.xml` with the following c
     <item>Linkin Park</item>
     <item>Hollywood Undead</item>
     <item>Man with a Mission</item>
+</string-array>
 ```
 
 ### Adding Controls to the Emulator
