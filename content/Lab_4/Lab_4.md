@@ -276,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
 ```java
 numberOfTickets = Integer.parseInt(tickets.getText().toString());
 totalCost = costPerTicket * numberOfTickets;
-groupChice = group.getSelectedItem( ).toString( );
+groupChoice = group.getSelectedItem( ).toString( );
 result.setText("Cost for " + groupChoice + " is £" + currency.format(totalCost));
 ```
 
@@ -309,8 +309,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 numberOfTickets = Integer.parseInt(tickets.getText().toString());
                 totalCost = costPerTicket * numberOfTickets;
-                groupChice = group.getSelectedItem( ).toString( );
-                result.setText("Cost for " + groupChoice + " is £" + format.format(totalCost));
+                groupChoice = group.getSelectedItem( ).toString( );
+                result.setText("Cost for " + groupChoice + " is " + format.format(totalCost));
             }
         });
     }
