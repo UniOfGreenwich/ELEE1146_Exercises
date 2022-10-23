@@ -3,12 +3,26 @@
 This mdBook will grow over the duration of this module with new labs/workshops and general content needed to test and increase your knowledge of computing systems. 
 
 
+<table>
+<tr>
+<td>
+
+The mdBook accessed outside of blackboard and is mobile and tablet friendly. :
+- [https://teachingmaterial.github.io/ELEE1146-COMP1836_Exercises/](https://teachingmaterial.github.io/ELEE1146-COMP1836_Exercises/Introduction.html)
+- Or scan the QR code on the right:
+</td>
+<td>
+
+
+<a rel='nofollow' href='https://www.qr-code-generator.com' border='0' style='cursor:default'><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fteachingmaterial.github.io%2FELEE1146-COMP1836_Exercises%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''></a>
+
+</td>
+</tr>
+</table>
+
 ## Accessibility
 
 You have the ability to change the theme of the mdBook by clicking the `Change Theme` icon on the top left mdBook. Additionally, there is a toggle for the table of content, and a search tool. 
-
-The mdBook accessed outside of Moodle here; [https://compeng0001.github.io/ELEE1149-COMP1836_Exercises/](https://compeng0001.github.io/ELEE1149-COMP1836_Exercises/), and is mobile and tablet friendly.
-
 ## Issues
 
 If you notice a mistake you can notify the module team who can make the correction. You may be instructed to raise an actual github issue. 
