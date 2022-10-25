@@ -42,9 +42,14 @@ The app should have an opening screen with the following elements:
 - You must choose an API level that captures at least 70% of devices. 
 
 ## Deliverables
-You should submit a formal report comprising a main body and an appendix. The main body of the report should be up to 5 pages long, the appendix - up to 5 pages as well.  The text needs to be formatted in Calibri font, 10pt and the titles in bold, Calibri font, 12pt.  The length of each line of text on the page should be 17pts by the ruler.  
+You should submit a formal report comprising a main body and an appendix. The main body of the report should be up to 5 pages long, the appendix - up to 5 pages as well.
 
-The main body of the report should have the following sections: introduction, two sections with appropriate titles for task 1 and task 2, a conclusion and a list of references. The list of references should be formatted following the Harvard referencing system [http://www.citethisforme.com/harvard-referencing](http://www.citethisforme.com/harvard-referencing)). The appendix should include the code for all XML files, clearly marked with their names.
+The main body of the report should have the following sections: 
+- introduction, 
+- two sections with appropriate titles for task 1 and task 2,
+-  a conclusion 
+-  and a list of references. 
+   -  The list of references should be formatted following the Harvard referencing system [http://www.citethisforme.com/harvard-referencing](http://www.citethisforme.com/harvard-referencing)). The appendix should include the code for all XML files, clearly marked with their names.
 
 ## Marking Scheme
 This first part of the assignment contributes 30% of the total coursework mark. 
