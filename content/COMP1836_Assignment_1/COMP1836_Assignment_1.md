@@ -42,7 +42,7 @@ The app should have an opening screen with the following elements:
 - You must choose an API level that captures at least 70% of devices. 
 
 ## Deliverables
-You should submit a formal report comprising a main body and an appendix. The main body of the report should be up to 5 pages long, the appendix - up to 5 pages as well.
+You should submit a formal report comprising a main body and an appendix. The main body of the report should be up to 5 pages long, the appendix - up to 5 pages as well and **must be submitted as a PDF**.
 
 The main body of the report should have the following sections: 
 - introduction, 
