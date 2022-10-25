@@ -1,11 +1,15 @@
 # Assignment Part 1
 
-**Submission Date: 8th December 2022 @ 1400**
+**Submission Date: 6th December 2022 @ 1400**
 
 ## Brief
 The main aim of this assignment is to develop and test student’s understanding and practical skills in mobile apps design. 
 
-## Learning Outcomes
+## Coursework Submission Link
+
+- [Moodle submission link](https://moodlecurrent.gre.ac.uk/mod/assign/view.php?id=2103906)
+
+## Learning OutcomesFord
 
 On completion of the assignment, the student will develop:
 1. understanding of the basic principles of mobile apps design
