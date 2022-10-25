@@ -15,7 +15,7 @@
 ------
 
 
-[Comp1836 Assignment 1]()
+[Comp1836 Assignment 1](COMP1836_Assignment_1/COMP1836_Assignment_1.md)
 
 [Comp1836 Assignment 2]()
 

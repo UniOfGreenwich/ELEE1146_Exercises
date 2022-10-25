@@ -17,7 +17,7 @@ This assignment consists of two tasks:
 
 1. **Task 1**. Investigating the main principles of mobile app design using a variety of literature sources (e.g., books, journal articles, online resources). Find 5 to 10 relevant literature sources related to the main principles of mobile app design, analyse them, and write up a list of the main design principles and features a good mobile app should have to appeal to customers. Explain how you are going to incorporate these features in the app you will be developing. 
 
-2. **Task 2**. Design a mobile app for Ford cars lease deals. Explain how you have created the design specifying the theme you have chosen, the type of layout used, and the steps taken in developing the app design.  Include a picture of the running version of the app using the emulator. 
+2. **Task 2**. Design a mobile app for an automotive cars lease deals. Explain how you have created the design specifying the theme you have chosen, the type of layout used, and the steps taken in developing the app design.  Include a picture of the running version of the app using the emulator. 
 
 The app should have an opening screen with the following elements: 
 
@@ -28,6 +28,8 @@ The app should have an opening screen with the following elements:
 - An ImageView
 
 - A TextVew and a button for displaying the car image and the lease price for the car chosen by the customer. 
+
+- Specifications for the vehicle
 
 - Use a theme that displays an **action bar** with an icon of your choice in the finished layout.  
   
