@@ -10,7 +10,7 @@
 
 [Lab 4](Lab_4/Lab_4.md)
 
-[Lab 5](Lab_/Lab_5.md)
+[Lab 5](Lab_5/Lab_5.md)
 
 ------
 
