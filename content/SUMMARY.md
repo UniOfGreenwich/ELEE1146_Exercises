@@ -10,12 +10,12 @@
 
 [Lab 4](Lab_4/Lab_4.md)
 
-[Lab 5]()
+[Lab 5](Lab_5/Lab_5.md)
 
 ------
 
 
-[Comp1836 Assignment 1]()
+[Comp1836 Assignment 1](COMP1836_Assignment_1/COMP1836_Assignment_1.md)
 
 [Comp1836 Assignment 2]()
 
