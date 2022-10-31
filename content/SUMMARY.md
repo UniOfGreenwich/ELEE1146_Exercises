@@ -12,6 +12,8 @@
 
 [Lab 5](Lab_5/Lab_5.md)
 
+[Lab 6](Lab_6/Lab_6.md)
+
 ------
 
 
@@ -20,6 +22,5 @@
 [Comp1836 Assignment 2]()
 
 ------
-
 
 [ELEE1146 Assignment]()
