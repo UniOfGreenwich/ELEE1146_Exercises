@@ -50,7 +50,7 @@ For the exercises below, follow the steps in the Ticket Vault example (from last
 ------
 
 
-## 3. Split the Bill App
+## 4. Split the Bill App
 
 |Application Title|Split the Bill App|
 |---|---|

@@ -14,6 +14,8 @@
 
 [Lab 6](Lab_6/Lab_6.md)
 
+[Lab 7](Lab_7/Lab_7.md)
+
 ------
 
 
