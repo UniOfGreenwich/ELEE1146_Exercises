@@ -16,6 +16,10 @@
 
 [Lab 7](Lab_7/Lab_7.md)
 
+[Lab 8.1](Lab_8/Lab_8-1.md)
+
+[Lab 8.2](Lab_8/Lab_8-2.md)
+
 ------
 
 
