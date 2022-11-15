@@ -1,0 +1,626 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lab 8.2 - Mobile Applications for Engineers and Technologists</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../Lab_1/Lab_1.html">Lab 1</a></li><li class="chapter-item expanded affix "><a href="../Lab_2/Lab_2.html">Lab 2</a></li><li class="chapter-item expanded affix "><a href="../Lab_3/Lab_3.html">Lab 3</a></li><li class="chapter-item expanded affix "><a href="../Lab_4/Lab_4.html">Lab 4</a></li><li class="chapter-item expanded affix "><a href="../Lab_5/Lab_5.html">Lab 5</a></li><li class="chapter-item expanded affix "><a href="../Lab_6/Lab_6.html">Lab 6</a></li><li class="chapter-item expanded affix "><a href="../Lab_7/Lab_7.html">Lab 7</a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-1.html">Lab 8.1</a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-2.html" class="active">Lab 8.2</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html">Comp1836 Assignment 1</a></li><li class="chapter-item expanded affix "><div>Comp1836 Assignment 2</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>ELEE1146 Assignment</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers and Technologists</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/content/Lab_8/Lab_8-2.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="lab-8-android-lists-arrays-and-web-browsers"><a class="header" href="#lab-8-android-lists-arrays-and-web-browsers">Lab 8 Android Lists, Arrays and Web Browsers</a></h2>
+<p>You will be developing travel guide for Chicago app that highlights the best attractions the city has to offer.  The City Guide app opening screen is shown below:</p>
+<blockquote>
+<p>You will need to download the following picture folder -&gt; <a href="Lab_8_Pictures.zip">Lab_8_Picture.zip</a></p>
+</blockquote>
+<div align=center>
+<p><img src="./figures/android_step_1.png" alt="" /></p>
+</div>
+<p>The City Guide app displays 5 Chicago attractions. When the user taps one of the attractions, a second window opens displaying either an image or a web site providing more information about the site or activity.  The first two items on the list link to websites, as shown on the two figures below. A browser opens to display a web site for the Art Institute of Chicago or the Magnificent Mile.</p>
+<div align=center>
+<p><img src="./figures/android_step_2.png" alt="" /></p>
+</div>
+<p>If the user selects Willis Tower, Navy Pier, or Water Tower, an image appears on a second screen as shown on the figures below.  By pressing the left hardware button on the emulator, you can return to the list of the attractions. </p>
+<div align=center>
+<p><img src="./figures/android_step_3.png" alt="" /></p>
+</div>
+<p>Complete the following steps to develop the app.
+Creating a List by Extending a <code>ListActivity</code></p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>Create a New Project with the name <strong>City Guide</strong> in the Application name text box. </li>
+<li>Open <code>activity_main.xml</code>.</li>
+<li>Copy the <code>ic_launcher_chicago.png</code> file from the Pictures above.</li>
+<li>Click <code>File</code> on the menu bar and then click New to open the New menu.</li>
+<li>Click Image Asset on the New menu.  In the Asset Studio dialog window that appears, in Asset Type, click on the Image radio button.</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_4.png" alt="" /></p>
+</div>
+<p><strong>Step 2:</strong></p>
+<ul>
+<li>In the Path: field click on the folder icon to the very end of the field and navigate to the location of <code>ic_launcher_chicago.png</code> file, and then select the file. </li>
+<li>Click the Next button to add the custom launcher icon. </li>
+<li>On the next dialog window, click the Finish button. The custom icons will be displayed in <code>res/mipmap</code> folder.</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_5.png" alt="" /></p>
+</div>
+<p><strong>Step 3:</strong></p>
+<ul>
+<li>
+<p>Click MainActivity.java tab and inside the Java file, click to the left of Activity in the <code>public class MainActivity extends AppCompatActivity {</code> and then change <code>AppCompatActivity</code> to <code>ListActivity</code>. (ListActivity is deprecated in API 30 so if you have this version, it will appear as <code>ListActivity</code>. Alternatively, depending on the API your Android Studio is running, <code>ListActivity</code> will appear in red. Press Alt + Enter to include the <code>ListActivity</code> class).</p>
+</li>
+<li>
+<p>Delete the line <code>setContentView(R.layout.activity_main);</code> because the layout will be custom coded later in the XML code window.</p>
+</li>
+</ul>
+<h2 id="creating-an-array-of-attractions"><a class="header" href="#creating-an-array-of-attractions">Creating an Array of Attractions</a></h2>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>After the <code>super.onCreate(savedInstanceState);</code> statement in <code>MainActivity.java</code>, insert a new line.
+<ul>
+<li>Type <code>String[ ] attraction = {“Art Institute of Chicago”, “Magnificent Mile”, “Willis Tower”, “Navy Pier”, “Water Tower”};</code></li>
+<li>Save your work.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Using a <code>setListAdapter</code> and <code>Array Adapter</code></strong></p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>After the line of coding initialising the <code>String array</code>, press Enter. 
+<ul>
+<li>Type <code>setListAdapter(new ArrayAdapter&lt;String&gt;(this,	android.R.layout.simple_list_item_1, attraction));</code> and press Enter.</li>
+<li>Notice that <code>setListAdapter</code> is deprecated as well hence it is strikethrough. The <code>simple_list_item_1</code> is a reference to a built-in XML layout document that is part of the Android OS, rather than one of your own layouts.</li>
+<li>Click the red <code>ArrayAdapter</code> text and <code>import ArrayAdapter</code> by pressing Alt+Enter. 7</li>
+</ul>
+</li>
+</ul>
+<p><strong>Step 2:</strong></p>
+<ul>
+<li>To display the attraction list in the generic <code>ListView</code> layout, click Run ‘app’ on the toolbar, and then select the emulator.  Click the OK button.</li>
+<li>When the app starts, it displays the <code>ListView</code> menu in the emulator. See the code below...</li>
+</ul>
+<p><strong>Step 3:</strong></p>
+<ul>
+<li>To change the theme to a dark background, expand the <code>res\value</code> folder in the Android project view, and the double click <code>thymes.xml</code> (the first themes.xml file in themes (2) folder).</li>
+<li>Click to the right of <code>parent=”</code> and change the parent theme to <code>“Theme.AppCompat”</code> as shown in the figure below: </li>
+</ul>
+<pre><code class="language-java">&lt;resources xlms:tools=&quot;http://schemas.android.com/tools&quot;&gt;
+    &lt;!-- Base application theme. --&gt;
+    &lt;style name=&quot;Theme.CityLights&quot; parent=&quot;Theme.AppCompat&quot;&gt;
+    ...
+</code></pre>
+<div align=center>
+<p><img src="./figures/android_step_6.png" alt="" /></p>
+</div>
+<ul>
+<li>Close themes.xml and click the Save All button</li>
+<li>Run the app again, now the background has changed to black as the Theme have been changed, like shown below:</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_8.png" alt="" /></p>
+</div>
+<p><strong>Adding Images to the drawable Folder</strong></p>
+<p>There are three images that appear when the user selects the Willis Tower, Navy Pier and the Water Tower.  All the images are available in the Pictures folder downloaded in the zip.  Copy the files to the computer.  Copy also the <code>ic_launcher_chicago.png</code> icon. </p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>To add the three images to the drawable resource folder, select the four files form wherever you copied them on your computer: <code>ic_launcher_chicago.png</code>, <code>s</code>, <code>water.png</code> and <code>willis.png</code>. </li>
+<li>To paste the image files to the drawable folder, right click the drawable folder in the Android project view pane. And then click Paste.</li>
+<li>Click Save All to save your work.</li>
+</ul>
+<p><strong>Adding the String Table</strong></p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>In the r<code>es\values folder</code>, double click the <code>strings.xml</code> file.</li>
+<li>Click the Open editor link in <code>strings.xml</code>.</li>
+<li>Click the Add key button (plus sign), type willis in the Key text box, and then type Willis Tower Image in the Default Value text box.  Click the Ok button.</li>
+<li>Click the Add key button again, type pier in the Key text box, and then type Navy Pier Image in the Default Value text box.  Click the Ok button.</li>
+<li>Click the Add key button again, type water in the Key text box, and then type Water Tower Image in the Default Value text box.  Click the Ok button.</li>
+<li>Save your work and close the Translations Editor and <code>strings.xml</code> tabs.</li>
+</ul>
+<p><strong>Creating a Custom XML Layout for a ListView</strong></p>
+<p>You can design a layout by using the emulator window on the design tab and then drag and drop controls from the Palette (this is what we have been doing with all the examples o far), or you can code the activity_main.xml file using the Text tab and manipulating the XML code directly. </p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>Click the activity_main.xml tab.</li>
+<li>Click the Text tab at the bottom of the window to display the XML code. </li>
+<li>Change the existing Constraint Layout to Relative Layout by highlighting the existing constraint layout as shown below:</li>
+</ul>
+<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;https://schemas.android.com/apk/res/android&quot;
+</code></pre>
+<p>Start typing <code>R</code>, Relative Layout will appear as an option, make sure you choose it.  Now delete the <code>/</code> in the closing <code>/&gt;</code> after <code>“.MainActivity”/&gt;</code> and type below the closing tag <code>&lt;/RelativeLayout&gt;</code>. The result is shown below:</p>
+<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelavtiveLayout xmlns:android=&quot;https://schemas.android.com/apk/res/android&quot;
+...
+&lt;/RelativeLayout&gt;
+</code></pre>
+<ul>
+<li>Click the line just above the closing statement <code>&lt;/RelativeLayout&gt;</code>, and then press Enter.</li>
+<li>Type <code>&lt;TextView</code> and press Enter.</li>
+</ul>
+<p><strong>Step 2:</strong></p>
+<ul>
+<li>Type the following code using auto-completion as much as possible:</li>
+<li></li>
+</ul>
+<pre><code class="language-java">android:layout_width=”fill_parent”
+android:layout_height=”wrap_content”
+android:id=”@+id/travel”
+android:textSize=”20sp”
+android:text=”@+id/travel”
+android:drawableLeft=”@drawable/ic_launcher_chicago” /&gt;
+
+</code></pre>
+<ul>
+<li>The result is shown below,</li>
+</ul>
+<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelavtiveLayout xmlns:android=&quot;https://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;https://schemas.android.com/apk/res/res-auto&quot;
+    xmlns:tools=&quot;https://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match parent&quot;
+    android:layout_height=&quot;match parent&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+
+    &lt;TextView
+        android:layout_width=”fill_parent”
+        android:layout_height=”wrap_content”
+        android:id=”@+id/travel”
+        android:textSize=”20sp”
+        android:text=”@+id/travel”
+        android:drawableLeft=”@drawable/ic_launcher_chicago” /&gt;
+
+&lt;/RelativeLayout&gt;
+</code></pre>
+<p><strong>Coding a setListAdapter with a Custom XML Layout</strong></p>
+<p>When the <code>setListAdapter</code> was coded earlier and executed as shown in the figure above, the attractions list was displayed within a build-in layout called <code>simple_list_item_1</code> in the following statement:</p>
+<ul>
+<li><code>setListAdapter(new ArrayAdapter&lt;String&gt;(this, android.R.layout.simple_list_item_1, attraction));</code> </li>
+</ul>
+<p>Instead of using a standard layout in the <code>setListAdapter</code>, the custom XML layout you designed in <code>activity_main.xml</code> in the figure above adds the Chicago City Guide icon and updates the <code>TextView</code> properties.  The syntax changes from the default in two significant ways:</p>
+<ol>
+<li>
+<p>The second parameter in the default statement <code>(android.R.layout.simple_list_item_1)</code> is changed to <code>R.layout.activity_main</code>. The android reference is removed because the Android library default layout is not being used. Instead <code>R.layout.activity_main</code> references the <code>activity_main</code> custom layout design for the <code>TextView</code> control.</p>
+</li>
+<li>
+<p>A third parameter is added before the attraction array to reference the variable travel, which identifies the <code>TextView</code> control created in the <code>activity_main.xml</code> file.  The variable name is substituted for the actual attraction names initialized in the attraction array. 
+The following code syntax shows the code for a custom XML layout:</p>
+</li>
+</ol>
+<ul>
+<li><code>setListAdapter(new ArrayAdapter&lt;String&gt;(this, R.layout.activity_main, R.id.travel, attraction);</code></li>
+</ul>
+<p>To edit the <code>setListAdapter</code> to use the custom XML layout, follow these steps:</p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>Close the <code>activity_main.xml</code> window.</li>
+<li>In the <code>setListAdapter</code> statement of the <code>MainActivity.java</code>, click after the comma following the this command.</li>
+<li>Change the <code>android.R.layout.simple_list_item_1</code> text to <code>R.layout.activity_main</code>, <code>R.id.travel</code> to add the custom layout named <code>activity_main.xml</code> before the comma and the attraction.  The result is shown below:</li>
+</ul>
+<pre><code class="language-java">public class MainActivity extends ListActivity {
+
+    @override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        String[5] attraction={&quot;Art Institute of Chicago&quot;,&quot;Magnificent Mile&quot;,&quot;Willis Tower&quot;,&quot;Navy Pier&quot;,&quot;Water Tower&quot;};
+        setListAdapter(new ArrayAdapter&lt;string&gt;(this,R.layout.activity_main,R.id.travel, attraction));
+    }
+}
+
+</code></pre>
+<p>Step 2:</p>
+<ul>
+<li>Save and run the app to view the custom layout of the <code>ListView</code> as shown below:</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_1.png" alt="" /></p>
+</div>
+<p><strong>Using the <code>onListItemClick</code> method</strong>
+In the City Guide opening screen each attraction displayed on the screen in the list in the figure above can be selected by tapping the attraction name on the mobile device.  The method <code>onListItemClick()</code> is called when an item in the list is selected.  When an attraction in the list is selected, the position of the item is passed from <code>onListItemClick</code>.  If the user selects the first attraction (Art Institute of Chicago), the position parameter is assigned an integer value of 0 (the array’s indexes in Java start from 0). The second item is assigned the position of 1, and so forth.</p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>In MainActivity.java, click after the closing brace <code>}</code> of the onCreate method to add a new line.</li>
+<li>To respond to the user selection, type:
+<ul>
+<li><code>protected void onListItemClick(ListView l, View v, int position, long id)</code> to create an onListItemClick method to await the user selection from the <code>ListView</code> items. (Be sure to type the lower-case letter l after <code>ListView</code>, not the number 1!).</li>
+<li>Type on opening <code>{</code> brace after the statement and then press Enter. A closing brace is automatically placed in the code. If <code>ListView</code> and View are red, then click on <code>ListView</code> and press Alt + Enter, do the same with <code>View</code>. </li>
+<li>The result is shown below:</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">public class MainActivity extends ListActivity {
+
+    @override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        String[5] attraction={&quot;Art Institute of Chicago&quot;,&quot;Magnificent Mile&quot;,&quot;Willis Tower&quot;,&quot;Navy Pier&quot;,&quot;Water Tower&quot;};
+        setListAdapter(new ArrayAdapter&lt;string&gt;(this,R.layout.activity_main,R.id.travel, attraction));
+    }
+
+    protected void onListItemClick(ListView l, View v, int position, long id){
+    
+    }
+}
+</code></pre>
+<p><strong>Decision Structure – Switch Statement</strong></p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>On line 23, within the braces of the <code>onListItemClick</code> method, type <code>switch (position) {</code> and press Enter for the closing brace to appear.</li>
+<li>Within the braces of the switch statement, add the <code>case</code> integer options. Type the following code, inserting a blank line after each case statement:</li>
+</ul>
+<pre><code class="language-java">case 0:
+	break;
+case 1:
+	break;
+case 2:
+	break;
+case 3:
+	break;
+case 4:
+	break;
+</code></pre>
+<p>The result looks like this:</p>
+<pre><code class="language-java">public class MainActivity extends ListActivity {
+
+    @override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        String[5] attraction={&quot;Art Institute of Chicago&quot;,&quot;Magnificent Mile&quot;,&quot;Willis Tower&quot;,&quot;Navy Pier&quot;,&quot;Water Tower&quot;};
+        setListAdapter(new ArrayAdapter&lt;string&gt;(this,R.layout.activity_main,R.id.travel, attraction));
+    }
+
+    protected void onListItemClick(ListView l, View v, int position, long id){
+       switch(position){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+       }
+    }
+}
+</code></pre>
+<p><strong>Launching the Browser from an Android Device</strong></p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>In <code>MainActivity.java</code>, click the blank line after the line containing case 0: inside the switch decision structure.</li>
+<li>Type <code>startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(“http://artic.edu”)));</code></li>
+<li>and case 1: type <code>startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(“http://themagnificentmile.com”)));</code></li>
+<li></li>
+<li>Click Intent and press Alt+Enter, is necessary. Do the same with Uri.
+The result is shown below:</li>
+</ul>
+<pre><code class="language-java">    protected void onListItemClick(ListView l, View v, int position, long id){
+       switch(position){
+            case 0:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(“http://artic.edu”)));
+                break;
+            case 1:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(“http://themagnificentmile.com”)));
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+       }
+    }
+}
+</code></pre>
+<p><strong>Step 2</strong></p>
+<ul>
+<li>To display the Art Institute of Chicago website in the browser run the app.</li>
+<li>Select the Art Institute of Chicago list item.</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_9.png" alt="" /></p>
+</div>
+<ul>
+<li>Now go back to the starting app screen by pressing the back button and select the Magnificent Mile from the list.
+<ul>
+<li>The result is shown below:<code>startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(“http://artic.edu”)));</code></li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_10.png" alt="" /></p>
+</div>
+<p><strong>Adding Multiple Class Files</strong></p>
+<p>Multiple classes are needed to display images on the screen when the user selects Willis Tower, Navy Pier, or Water Tower on the opening <code>ListView</code> control.  Remember, each time you add a class to an application, the class must begin with a capital letter and a corresponding XML layout file with the same name with a lowercase letter is automatically created.  To create three class files and the coordinating XML layout files, follow these steps:</p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>In the Android project view, to create a second class, expand the java folder and press and hold or right-click the first java folder, point to <code>New</code> on the shortcut menu, and then click Activity. Next, click Empty Activity.</li>
+<li>Type Willis in the Activity Name text box to create a second class that will define the Willis Activity and a layout associated with the class named <code>activity_willis</code>.</li>
+<li>Close the <code>Willis.java</code> file tab.</li>
+</ul>
+<p><strong>Step 2:</strong></p>
+<ul>
+<li>To create a third class, press and hold or right-click the first java folder, point to New on the shortcut menu, and then click Activity. Next, click Empty Activity.</li>
+<li>Type Pier in the Activity Name text box to create a third class that will define the Pier Activity.</li>
+<li>Close the <code>Pier.java</code> file tab,</li>
+<li>To create the fourth class, right-click the first java folder, point to New on the shortcut menu, and click Activity.  Next, click Empty Activity.</li>
+<li>Type Water in the Activity Name text box to create a fourth class that will define the Water Activity.</li>
+<li>Click the Finish button and save your work.</li>
+<li>Close the <code>Water.java</code> tab.</li>
+</ul>
+<p>Three new Activity java files are created with three XML layout files in Android project view as shown below:</p>
+<div align=center>
+<p><img src="./figures/android_step_11.png" alt="" /></p>
+</div>
+<p><strong>Designing XML Layout Files</strong></p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>Open the <code>activity_willis.xml</code> tab and click the Design tab at the bottom.</li>
+<li>In the Common category in the Palette, drag the <code>ImageView</code> control to the middle of the emulator (both horizontal and vertical dashed lines will appear).</li>
+<li>From the Pick a Resource dialog window that appears, choose willis image.</li>
+<li>Click the OK button to close the Pick a Resource dialog tab.</li>
+<li>Click the vertical bar to the right of the <code>contentDescription</code> property in the Properties pane.</li>
+<li>Select willis in the Pick a Resource dialog box and then click the OK button.</li>
+<li>The result is shown below:</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_12.png" alt="" /></p>
+</div>
+<p><strong>Step 2:</strong></p>
+<ul>
+<li>Close the <code>activity_willis.xml</code> tab and save your work.</li>
+<li>Click the <code>activity_pier.xml</code> tab and click the Design tab to open the emulator window.</li>
+<li>In the Common category in the Palette, drag the ImageView control to the middle of the emulator (both horizontal and vertical dashed lines will appear).</li>
+<li>In the Pick a Resource dialog window, locate the pier image and then click pier.</li>
+<li>Click the OK button to close the Pick a Resource dialog box.</li>
+<li>Click the vertical bar to the right of the <code>contentDescription</code> property in the Properties pane.</li>
+<li>Select pier within the Pick a Resource dialog box and then click the OK button.</li>
+<li>The result is shown below:</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_13.png" alt="" /></p>
+</div>
+<p><strong>Step 3:</strong></p>
+<ul>
+<li>Close the <code>activity_pier.xml</code> tab and save your work.</li>
+<li>Click the <code>activity_water.xml</code> tab and click the Design tab to open the emulator window.</li>
+<li>In the Images category in the Palette, drag the ImageView control to the middle of the emulator (both horizontal and vertical dashed lines will appear).</li>
+<li>In the Pick a Resource dialog window, locate the pier image and then click water.</li>
+<li>Click the OK button to close the Pick a Resource dialog box.</li>
+<li>Click the vertical bar to the right of the <code>contentDescription</code> property in the Properties pane.</li>
+<li>Select water within the Pick a Resource dialog box and then click the OK button.</li>
+<li>The result is shown below:</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_14.png" alt="" /></p>
+</div>
+<p><strong>Opening the Class Files</strong></p>
+<p>The last step in the development of the Chicago City Guide app is to launch the class files when the user selects Willis Tower (case 2), Navy Pier (case 3), or Water Tower (case 4) from the <code>ListView</code> control. </p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>Close the activity_water.xml tab.</li>
+<li>In MainActivity.java, click the blank line below the statement case 2: and type:
+<ul>
+<li><code>startActivity(new Intent(MainActivity.this, Willis.class));</code></li>
+</ul>
+</li>
+<li>Click the blank line below the statement case 3: and type:
+<ul>
+<li><code>startActivity(new Intent(MainActivity.this, Pier.class));</code></li>
+</ul>
+</li>
+<li>Click the blank line below the statement case 4: and type:
+<ul>
+<li><code>startActivity(new Intent(MainActivity.this, Water.class));</code></li>
+</ul>
+</li>
+</ul>
+<p>The result is shown below:</p>
+<pre><code class="language-java">public class MainActivity extends ListActivity {
+
+    @override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        String[5] attraction={&quot;Art Institute of Chicago&quot;,&quot;Magnificent Mile&quot;,&quot;Willis Tower&quot;,&quot;Navy Pier&quot;,&quot;Water Tower&quot;};
+        setListAdapter(new ArrayAdapter&lt;string&gt;(this,R.layout.activity_main,R.id.travel, attraction));
+    }
+
+    protected void onListItemClick(ListView l, View v, int position, long id){
+       switch(position){
+            case 0:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(“http://artic.edu”)));
+                break;
+            case 1:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(“http://themagnificentmile.com”)));
+                break;
+            case 2:
+                startActivity(new Intent(MainActivity.this, Willis.class));
+                break;
+            case 3:
+                startActivity(new Intent(MainActivity.this, Pier.class));
+                break;
+            case 4:
+                startActivity(new Intent(MainActivity.this, Water.class));
+                break;
+       }
+    }
+}
+</code></pre>
+<p><strong>Step 2:</strong></p>
+<ul>
+<li>Compare your code to the figure above, make changes as necessary to match the code in the figure and then save your work.</li>
+<li>Run the app and test every single option.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Lab_8/Lab_8-1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Lab_8/Lab_8-1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
