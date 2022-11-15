@@ -71,11 +71,11 @@ Creating a List by Extending a `ListActivity`
 - After the line of coding initialising the `String array`, press Enter. 
   - Type `setListAdapter(new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, attraction));` and press Enter.  
   - Notice that `setListAdapter` is deprecated as well hence it is strikethrough. The `simple_list_item_1` is a reference to a built-in XML layout document that is part of the Android OS, rather than one of your own layouts.
-  - Click the red `ArrayAdapter` text and `import ArrayAdapter` by pressing Alt+Enter. 7
+  - Click the red `ArrayAdapter` text and `import ArrayAdapter` by pressing Alt+Enter.
 
 **Step 2:**
 - To display the attraction list in the generic `ListView` layout, click Run ‘app’ on the toolbar, and then select the emulator.  Click the OK button.
-- When the app starts, it displays the `ListView` menu in the emulator. See the code below...
+- When the app starts, it displays the `ListView` menu in the emulator.
 
 
 

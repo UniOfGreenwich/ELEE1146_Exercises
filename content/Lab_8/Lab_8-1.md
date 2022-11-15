@@ -72,7 +72,7 @@ Finally, this translates as...
 Reproduce the following code,
 
 ```java 
-int[] fibonacciArray = new int[50];
+int[] fibonacciArray = new int[10];
 
 fibonacciArray[0] = 1; // assign element 0, with the value 1
 fibonacciArray[1] = 1; //  assign element 1, with the value 1
