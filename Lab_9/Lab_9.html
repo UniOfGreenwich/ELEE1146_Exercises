@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Lab 7 - Mobile Applications for Engineers and Technologists</title>
+        <title>Lab 9 - Mobile Applications for Engineers and Technologists</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../Lab_1/Lab_1.html">Lab 1</a></li><li class="chapter-item expanded affix "><a href="../Lab_2/Lab_2.html">Lab 2</a></li><li class="chapter-item expanded affix "><a href="../Lab_3/Lab_3.html">Lab 3</a></li><li class="chapter-item expanded affix "><a href="../Lab_4/Lab_4.html">Lab 4</a></li><li class="chapter-item expanded affix "><a href="../Lab_5/Lab_5.html">Lab 5</a></li><li class="chapter-item expanded affix "><a href="../Lab_6/Lab_6.html">Lab 6</a></li><li class="chapter-item expanded affix "><a href="../Lab_7/Lab_7.html" class="active">Lab 7</a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-1.html">Lab 8.1</a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-2.html">Lab 8.2</a></li><li class="chapter-item expanded affix "><a href="../Lab_9/Lab_9.html">Lab 9</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html">Comp1836 Assignment 1</a></li><li class="chapter-item expanded affix "><div>Comp1836 Assignment 2</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>ELEE1146 Assignment</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../Lab_1/Lab_1.html">Lab 1</a></li><li class="chapter-item expanded affix "><a href="../Lab_2/Lab_2.html">Lab 2</a></li><li class="chapter-item expanded affix "><a href="../Lab_3/Lab_3.html">Lab 3</a></li><li class="chapter-item expanded affix "><a href="../Lab_4/Lab_4.html">Lab 4</a></li><li class="chapter-item expanded affix "><a href="../Lab_5/Lab_5.html">Lab 5</a></li><li class="chapter-item expanded affix "><a href="../Lab_6/Lab_6.html">Lab 6</a></li><li class="chapter-item expanded affix "><a href="../Lab_7/Lab_7.html">Lab 7</a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-1.html">Lab 8.1</a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-2.html">Lab 8.2</a></li><li class="chapter-item expanded affix "><a href="../Lab_9/Lab_9.html" class="active">Lab 9</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html">Comp1836 Assignment 1</a></li><li class="chapter-item expanded affix "><div>Comp1836 Assignment 2</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>ELEE1146 Assignment</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -111,7 +111,7 @@
                         <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/content/Lab_7/Lab_7.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/content/Lab_9/Lab_9.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                     </div>
@@ -138,63 +138,52 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="lab-7-android-app-using-icons-and-decision-making-controls-pt-2"><a class="header" href="#lab-7-android-app-using-icons-and-decision-making-controls-pt-2">Lab 7 Android App using Icons and Decision Making Controls Pt 2</a></h1>
+                        <h1 id="lab-9--lab-8-android-lists-arrays-and-web-browsers-pt2"><a class="header" href="#lab-9--lab-8-android-lists-arrays-and-web-browsers-pt2">Lab 9 ## Lab 8 Android Lists, Arrays and Web Browsers Pt2</a></h1>
 <blockquote>
-<p>You will need to download the following picture folder -&gt; <a href="Lab_7_Pictures.zip">Lab_7_Picture.zip</a></p>
+<p>You will need to download the following picture folder -&gt; <a href="Lab_9_Pictures.zip">Lab_9_Picture.zip</a></p>
 </blockquote>
 <p>For the exercises below, follow the steps in the Ticket Vault example (from last week lab).</p>
-<h2 id="1-phone-photo-prints-app"><a class="header" href="#1-phone-photo-prints-app">1. Phone Photo Prints App</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Phone Photo Prints App</th></tr></thead><tbody>
-<tr><td>Purpose</td><td>The app determines the cost of printing photos from your phone. The pictures are delivered directly to your home</td></tr>
-<tr><td>Algorithm 1:</td><td>The opening screen requests the number of photos to print form a user’s phone</td></tr>
-<tr><td>Algorithm 2:</td><td>The user selects a <code>radio button</code> labelled 4 x 6 prints (19 pence each), 5 x 7 prints (49 cent each) and 8 x 10 prints (79 cents each) then selects ORDER PRINTS button.</td></tr>
-<tr><td>Alogrithm 3:</td><td>The cost is displayed for the number of prints and the result is rounded to the nearest cent. Do not enter more than 50 prints.</td></tr>
-<tr><td>Alogrithm 4:</td><td>Use a theme that displays an Action bar with the custom Action bar icon in the finished layout.  Use a custom launcher icon named ic_aluncher_photo.png from the downloaded zip folder.</td></tr>
+<h2 id="1-beach-and-mountain-bike-rental-app"><a class="header" href="#1-beach-and-mountain-bike-rental-app">1. Beach and Mountain Bike Rental App</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Beach and Mountain Bike Rental App</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>A bike rental shop would like an app that displays information about their beach and mountain bike rental services. As each bike is selected, a rental bike is displayed.</td></tr>
+<tr><td>Algorithm 1:</td><td>he opening screen displays a list of bikes for rent: beach bikes, mountain bikes, and full bike rental shop website.</td></tr>
+<tr><td>Algorithm 2:</td><td>When the user selects an item from the list, a full screen image of the item is displayed for the first two bike rentals. The third option opens the website <a href="http://www.campusbikeshop.com">http://www.campusbikeshop.com</a>.</td></tr>
+<tr><td>Alogrithm 3:</td><td>The pictures of the two types of bikes are available on the course web page in moodle in the folder Pictures (beach.png and mountain.png).  Use build-in layout <code>simple_list_item_1</code>. Use the switch decision structure. Use a String table for image descriptions.</td></tr>
 </tbody></table>
 </div><div align=center>
 <p><img src="figures/step1.png" alt="h:500" /></p>
 </div>
 <hr />
-<h2 id="2-car-wash-app"><a class="header" href="#2-car-wash-app">2. Car Wash App</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Car Wash App</th></tr></thead><tbody>
-<tr><td>Purpose</td><td>Large cities provide car wash apps where you can purchase packages for your vehicle.</td></tr>
-<tr><td>Alogrithm 1:</td><td>The opening screen requests the type of car wash package you would like to purchase.</td></tr>
-<tr><td>Algorithm 2:</td><td>The user selects which type of car wash – exterior only or exterior with interior vacuum services. The Car Wash App charges $8.99 for an exterior wash and $12.99 for an exterior wash with an interior vacuum for a package of 12 or more car washes. If you select less than 12 washes, the charge is $10.99 for an exterior wash and $15.99 for an exterior with interior vacuum.</td></tr>
-<tr><td>Algorithm 3:</td><td>After the user clicks the <code>Button</code> control, the selected location and the total team coast are displayed in the <code>TextView</code> control.</td></tr>
-<tr><td>Algorithm 4:</td><td>Use a customized launcher icon ic_launcher_carwash.png (from the zip folder) and display the same icon in the Action Bar using Theme.<code>AppCompat.Light theme</code>. Display an <code>ImageView</code> control (carwash.png, from the zip folder).  Only one <code>RadioButton</code> control can be selected. A toast message should pop up when the user enters less than 12 washes that they must buy 12 washes to receive a discount.</td></tr>
+<h2 id="2-chocolate-cafe-app"><a class="header" href="#2-chocolate-cafe-app">2. Chocolate Cafe App</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Chocolate Cafe App</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>A café specializing in chocolate desserts is named Chocolate and would like an app that lists the specials of the day. As each desert special is selected, an image is displayed.</td></tr>
+<tr><td>Alogrithm 1:</td><td>The opening screen lists the three desserts specials of the day and displays the restaurant’s full web site with a custom icon.</td></tr>
+<tr><td>Algorithm 2:</td><td>When the user selects one of the three specials (chocolate mousse, chocolate cake, or chocolate macarons), an image of the special is displayed. If the full website is requested, <a href="http://www.chocolatharlem.com">http://www.chocolatharlem.com</a> opens.</td></tr>
+<tr><td>Algorithm 3:</td><td>AThe dessert icon is available on the course web page in moodle in folder Pictures and it is named ic_launcher_dessert.png. The three images for the specials are named mousse.png, cake.png, and macaron.png (available in the folder Pictures as well). Design a custom layout similar to the figure below.  Use the switch decision structure. Use a String table.</td></tr>
 </tbody></table>
 </div><div align=center>
 <p><img src="./figures/step2.png" alt="" /></p>
 </div>
 <hr />
-<h2 id="3-power-tool-rental-app"><a class="header" href="#3-power-tool-rental-app">3. Power Tool Rental App</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Power Tool Rental App</th></tr></thead><tbody>
-<tr><td>Purpose</td><td>The app determines the cost of power washer or tiller</td></tr>
-<tr><td>Algorithm 1:</td><td>The opening screen requests the number of days that the power tool will be rented.</td></tr>
-<tr><td>Algorithm 2:</td><td>The user selects a radio button labelled Power Washer or Tiller and then selects the <code>COMPUTE COST</code> button.</td></tr>
-<tr><td>Algorithm 3:</td><td>The final cost is displayed for the number of days rented and the result is rounded to the nearest penny.</td></tr>
-<tr><td>Alogrithm 4:</td><td>The power washer costs £55.99 a day and the tiller - £68.99 a day.  Do not enter more than 7 days.</td></tr>
-<tr><td>Alogrithm 5:</td><td>Locate an image online and resize it for use as a custom launcher icon and Action bar icon.</td></tr>
+<h2 id="3-rent-a-car-app"><a class="header" href="#3-rent-a-car-app">3. Rent a Car App</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Rent a Car App</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>A rental car app provides a listing of six nationally known car rental companies.  By selecting a car company, a car rental site opens.</td></tr>
+<tr><td>Algorithm 1:</td><td>An opening screen displays an image of a car and a button.</td></tr>
+<tr><td>Algorithm 2:</td><td>The second screen displays a listing of six car rental companies. This screen also contains a custom icon and layout.</td></tr>
+<tr><td>Alogrithm 3:</td><td>Each car rental agency can be selected to view a website of the corresponding company.</td></tr>
+<tr><td>Alogrithm 4:</td><td>Select the six companies using online search. Select your own images. Create a custom layout for the list.</td></tr>
 </tbody></table>
 </div>
 <hr />
-<h2 id="4-floor-tiling-app"><a class="header" href="#4-floor-tiling-app">4. Floor Tiling App</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Floor Tiling App</th></tr></thead><tbody>
-<tr><td>Purpose</td><td>The tiling app allows you to calculate how many tiles you need to cover a rectangular area.</td></tr>
-<tr><td>Algorithm 1:</td><td>The opening screen requests the length and the width of a room in whole feet.</td></tr>
-<tr><td>Algorithm 2:</td><td>The user selects whether the tiles are 12 inches by 12 inches or 18 inches by 18 inches.</td></tr>
-<tr><td>Algorithm 3:</td><td>The number of tiles to cover the area in square feet is displayed</td></tr>
-<tr><td>Algorithm 4:</td><td>Ensure that the user can have other units of measurement, centimeters\(^{2}\), meters\(^{2}\) etc.</td></tr>
-</tbody></table>
-</div>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../Lab_6/Lab_6.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../Lab_8/Lab_8-2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../Lab_8/Lab_8-1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -203,10 +192,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../Lab_6/Lab_6.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../Lab_8/Lab_8-2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../Lab_8/Lab_8-1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
