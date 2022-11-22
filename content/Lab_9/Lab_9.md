@@ -1,4 +1,4 @@
-# Lab 9 ## Lab 8 Android Lists, Arrays and Web Browsers Pt2
+# Lab 9 Android Lists, Arrays and Web Browsers Pt2
 
 > You will need to download the following picture folder -> [Lab_9_Picture.zip](Lab_9_Pictures.zip)
 
