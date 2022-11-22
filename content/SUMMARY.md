@@ -20,6 +20,8 @@
 
 [Lab 8.2](Lab_8/Lab_8-2.md)
 
+[Lab 9](Lab_9/Lab_9.md)
+
 ------
 
 
