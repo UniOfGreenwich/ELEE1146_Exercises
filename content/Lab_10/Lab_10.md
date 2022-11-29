@@ -1,6 +1,6 @@
 # Lab 10: Java Object Orientated Programming
 
-Using IntelliJ you are going to do some one dimensional array coding and exploration. 
+Using IntelliJ you are going to do some Object Orientated Programming. 
 
  - Open IntelliJ 
  - Create a new project
