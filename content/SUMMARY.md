@@ -23,6 +23,9 @@
 [Lab 9](Lab_9/Lab_9.md)
 
 [Lab 10](Lab_10/Lab_10.md)
+
+[Lab 11](Lab_11/Lab_11.md)
+
 ------
 
 
