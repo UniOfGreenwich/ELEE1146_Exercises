@@ -1,0 +1,424 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lab 11 - Mobile Applications for Engineers and Technologists</title>
+        <!-- Custom HTML head -->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../Lab_1/Lab_1.html">Lab 1</a></li><li class="chapter-item expanded affix "><a href="../Lab_2/Lab_2.html">Lab 2</a></li><li class="chapter-item expanded affix "><a href="../Lab_3/Lab_3.html">Lab 3</a></li><li class="chapter-item expanded affix "><a href="../Lab_4/Lab_4.html">Lab 4</a></li><li class="chapter-item expanded affix "><a href="../Lab_5/Lab_5.html">Lab 5</a></li><li class="chapter-item expanded affix "><a href="../Lab_6/Lab_6.html">Lab 6</a></li><li class="chapter-item expanded affix "><a href="../Lab_7/Lab_7.html">Lab 7</a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-1.html">Lab 8.1</a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-2.html">Lab 8.2</a></li><li class="chapter-item expanded affix "><a href="../Lab_9/Lab_9.html">Lab 9</a></li><li class="chapter-item expanded affix "><a href="../Lab_10/Lab_10.html">Lab 10</a></li><li class="chapter-item expanded affix "><a href="../Lab_11/Lab_11.html" class="active">Lab 11</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html">Comp1836 Assignment 1</a></li><li class="chapter-item expanded affix "><div>Comp1836 Assignment 2</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>ELEE1146 Assignment</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers and Technologists</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/content/Lab_11/Lab_11.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="lab-11-exception-handling"><a class="header" href="#lab-11-exception-handling">Lab 11: Exception Handling</a></h2>
+<p>Using IntelliJ you are going to do some error handling exploration. </p>
+<ul>
+<li>Open IntelliJ </li>
+<li>Create a new project
+<ul>
+<li>Call it <code>Shapes</code> like the screen shot below.</li>
+<li>Note you can use any JDK for this exercise, I am using JDK 11.0.13</li>
+</ul>
+</li>
+</ul>
+<h2 id="step-1"><a class="header" href="#step-1">Step 1</a></h2>
+<p>Reproduce the following to set up the project</p>
+<div align=center>
+<p><img src="./figures/step1.png" alt="" /></p>
+</div>
+<p>Now you can edit <code>main()</code> with the following code, then compile and run.</p>
+<pre><code class="language-java">{
+    System.out.println(3/0);
+}
+</code></pre>
+<p>You should see the following output in the Run terminal... </p>
+<div align=center>
+<p><img src="./figures/step2.png" alt="" /></p>
+</div>
+<p>Modify the Main.java as shown below. The change is to catch an exception through try-catch block.</p>
+<pre><code class="language-java">    try{
+        System.out.println(3/0);
+    } 
+    catch(Exception e){
+        System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+    }
+</code></pre>
+<p>If you run the program again you should get the following output:</p>
+<div align=center>
+<p><img src="./figures/step3.png" alt="" /></p>
+</div>
+<p>Modify the Main.java as shown below. The change is to use more specific Exception class, <code>ArithmeticException</code> in this case.</p>
+<pre><code class="language-java">    try{
+        System.out.println(3/0);
+    } 
+    catch(ArithmeticException e){
+        System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+    }
+</code></pre>
+<p>If you run the program again you should get the following output:</p>
+<div align=center>
+<p><img src="./figures/step4.png" alt="" /></p>
+</div>
+<p>Let's try changing the Exception Class, to <code>NumberFormatExpression</code>.</p>
+<pre><code class="language-java">    try{
+            System.out.println(3/0);
+        } 
+        catch(NumberFormatException e){
+            System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+        }
+</code></pre>
+<details>
+<summary>What happens when you run it?</summary>
+<div align=center>
+<p><img src="./figures/step5.png" alt="" /></p>
+</div>
+<p>Because the expected Exception Class is wrong.</p>
+</details>
+<p>For fun, do the following, what happens and why?</p>
+<pre><code class="language-java">    try{
+            System.out.println(3/0);
+        } catch(ArithmeticException e){
+            System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+            System.out.println(3/0);
+        }
+</code></pre>
+<h2 id="step-2-catch-multiple-exceptions"><a class="header" href="#step-2-catch-multiple-exceptions">Step 2: Catch multiple exceptions</a></h2>
+<p>Reproduce the following code:</p>
+<pre><code class="language-java">package com.example.ExeceptionHandling;
+import javax.swing.JOptionPane;
+
+public class Main {
+    public static void main(String[] args) {
+        // Enter the following values and see what exception is caught.
+        //    0, 4, character, &lt;no value&gt;
+        try {
+            String value = JOptionPane.showInputDialog(null, &quot;Enter value:&quot;);
+            // Non-numeric value will result an NumberFormatException
+            int divisor = Integer.parseInt(value);
+            // If the divisor is 0, it will result in ArithmetricException
+            System.out.println(3/divisor);
+        } catch (NumberFormatException nfe){
+            System.out.println(&quot;Exception caught by this program: Enter numeric value.&quot;);
+        } catch (ArithmeticException exc) {
+            System.out.println(&quot;Exception caught by this program: Divisor was 0.&quot;);
+        }
+        System.out.println(&quot;After exception.&quot;);
+    }
+}
+</code></pre>
+<p>You'll notice that we are now importing a library on line 2 <code>import javax.swing.JOptionPane;</code> we now will be able to have a GUI.</p>
+<ul>
+<li>Build and run the program
+<ul>
+<li>Observe Input dialog box appears.</li>
+<li>Enter 0 in the field.</li>
+<li>Click OK.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step6.png" alt="" /></p>
+</div>
+<p>Notice that the exception was caught.</p>
+<div align=center>
+<p><img src="./figures/step7.png" alt="" /></p>
+</div>
+<ul>
+<li>Build and run the program
+<ul>
+<li>Observe Input dialog box appears.</li>
+<li>Enter 4 in the field.</li>
+<li>Click OK.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step8.png" alt="" /></p>
+</div>
+<p>Notice that the No exception was caught as it was not needed</p>
+<div align=center>
+<p><img src="./figures/step9.png" alt="" /></p>
+</div>
+<p>What happens when you enter a character or nothing instead? </p>
+<h1 id="step-3"><a class="header" href="#step-3">Step 3</a></h1>
+<p>Modify the program to look like the following code:</p>
+<blockquote>
+<p>This is a larger program 89 lines.</p>
+</blockquote>
+<pre><code class="language-java">package com.example.ExeceptionHandling;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+public class Main extends JFrame implements ActionListener {
+    private double[] a;
+    private JRadioButton divideByZeroButton,badCastButton,arrayBoundsButton, nullPointerButton,
+            negSqrtButton, overflowButton,noSuchFileButton, throwUnknownButton;
+
+    public Main() {
+        // Create a JPanel and GridLayout
+        JPanel p = new JPanel();
+        p.setLayout(new GridLayout(8, 1));
+
+        // Create buttons and add them to the panel
+        ButtonGroup g = new ButtonGroup();
+        divideByZeroButton = addRadioButton(&quot;Divide by zero&quot;, g, p);
+        badCastButton = addRadioButton(&quot;Bad cast&quot;, g, p);
+        arrayBoundsButton = addRadioButton(&quot;Array bounds&quot;, g, p);
+        nullPointerButton = addRadioButton(&quot;Null pointer&quot;, g, p);
+        negSqrtButton = addRadioButton(&quot;sqrt(-1)&quot;, g, p);
+        overflowButton = addRadioButton(&quot;Overflow&quot;, g, p);
+        noSuchFileButton = addRadioButton(&quot;No such file&quot;, g, p);
+        throwUnknownButton = addRadioButton(&quot;Throw unknown&quot;, g, p);
+        getContentPane().add(p);
+    }
+
+    private JRadioButton addRadioButton(String s, ButtonGroup g, JPanel p) {
+        JRadioButton button = new JRadioButton(s, false);
+        button.addActionListener(this);
+        g.add(button);
+        p.add(button);
+        return button;
+    }
+
+    // Trigger and catch various exceptions
+    public void actionPerformed(ActionEvent evt) {
+        try {
+            Object source = evt.getSource();
+            if (source == divideByZeroButton) {
+                a[1] = a[1] / a[1] - a[1];
+            } else if (source == badCastButton) {
+                Frame f = (Frame) evt.getSource();
+            } else if (source == arrayBoundsButton) {
+                a[1] = a[10];
+            } else if (source == nullPointerButton) {
+                Frame f = null;
+                f.setSize(200, 200);
+            } else if (source == negSqrtButton) {
+                a[1] = Math.sqrt(-1);
+            } else if (source == overflowButton) {
+                a[1] = 1000 * 1000 * 1000 * 1000;
+                int n = (int) a[1];
+            } else if (source == noSuchFileButton) {
+                FileInputStream is = new FileInputStream(&quot;Java Source and Support&quot;);
+            } else if (source == throwUnknownButton) {
+                throw new UnknownError();
+            }
+        } catch (RuntimeException e) {
+            System.out.println(&quot;Caught RuntimeException: &quot; + e);
+        } catch (Exception e) {
+            System.out.println(&quot;Caught Exception: &quot; + e);
+        }
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new Main();
+        frame.setType(Type.POPUP);
+        frame.setSize(200, 300);
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        frame.setVisible(true);
+    }
+}
+</code></pre>
+<ul>
+<li>Build and run the program.
+<ul>
+<li>Observe dialog box appears.
+<ul>
+<li>Click any of the radio buttons. </li>
+<li>Clicking a button will execute code fragement that generates an exception.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step10.png" alt="" /> 
+<img src="./figures/step12.png" alt="" />
+<img src="./figures/step11.png" alt="" /></p>
+</div>
+<ul>
+<li>For your own exercise, please do the following tasks</li>
+<li>Try other buttons and observe the exceptions that are caught</li>
+<li>Try to catch exceptions using more specific exception classes (over RuntimeException and Exception classes).</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Lab_10/Lab_10.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Lab_10/Lab_10.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
