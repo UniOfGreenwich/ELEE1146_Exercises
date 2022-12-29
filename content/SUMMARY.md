@@ -28,11 +28,10 @@
 
 ------
 
-
 [Comp1836 Assignment 1](COMP1836_Assignment_1/COMP1836_Assignment_1.md)
 
-[Comp1836 Assignment 2]()
+[Comp1836 Assignment 2](COMP1836_Assignment_2/COMP1836_Assignment_2.md)
 
 ------
 
-[ELEE1146 Assignment]()
+[ELEE1146 Assignment 1](ELEE1146_Assignment_1/ELEE146_Assignment_1.md)
