@@ -143,7 +143,7 @@ Again notice that `tools:context="com.example.runtimepermissions.MainActivity"` 
 You need to add the following dependency to `build.gradle`:
 
 ```xml
-dependicies{
+dependencies{
 ...
 implementation 'androidx.coordinatorLayout:androidx.coordinatorLayout:1.2.0'
 ...
