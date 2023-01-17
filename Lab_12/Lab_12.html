@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../Lab_1/Lab_1.html">Lab 1: Hello World and More!</a></li><li class="chapter-item expanded affix "><a href="../Lab_2/Lab_2.html">Lab 2: User Interface. Part 1</a></li><li class="chapter-item expanded affix "><a href="../Lab_3/Lab_3.html">Lab 3: User Interface. Part 2</a></li><li class="chapter-item expanded affix "><a href="../Lab_4/Lab_4.html">Lab 4: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item expanded affix "><a href="../Lab_5/Lab_5.html">Lab 5: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item expanded affix "><a href="../Lab_6/Lab_6.html">Lab 6: Icons and Decision Making Controls Pt1 </a></li><li class="chapter-item expanded affix "><a href="../Lab_7/Lab_7.html">Lab 7: Icons and Decision Making Controls Pt 2 </a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-1.html">Lab 8.1: One Dimensional Arrays (Intellij)</a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-2.html">Lab 8.2: Lists, Arrays and Web Browsers Pt1</a></li><li class="chapter-item expanded affix "><a href="../Lab_9/Lab_9.html">Lab 9: Lists, Arrays and Web Browsers Pt2 </a></li><li class="chapter-item expanded affix "><a href="../Lab_10/Lab_10.html">Lab 10: Java Object Orientated Programming</a></li><li class="chapter-item expanded affix "><a href="../Lab_11/Lab_11.html">Lab 11: Exception Handling</a></li><li class="chapter-item expanded affix "><a href="../Lab_12/Lab_12.html" class="active">Lab 12: Permissions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html">Comp1836 Assignment 1</a></li><li class="chapter-item expanded affix "><a href="../#/COMP1836_Assignment_2/COMP1836_Assignment_2.html">Comp1836 Assignment 2</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../#/ELEE1146_Assignment_1/ELEE146_Assignment_1.html">ELEE1146 Assignment 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="../Lab_1/Lab_1.html">Lab 1: Hello World and More!</a></li><li class="chapter-item expanded affix "><a href="../Lab_2/Lab_2.html">Lab 2: User Interface. Part 1</a></li><li class="chapter-item expanded affix "><a href="../Lab_3/Lab_3.html">Lab 3: User Interface. Part 2</a></li><li class="chapter-item expanded affix "><a href="../Lab_4/Lab_4.html">Lab 4: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item expanded affix "><a href="../Lab_5/Lab_5.html">Lab 5: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item expanded affix "><a href="../Lab_6/Lab_6.html">Lab 6: Icons and Decision Making Controls Pt1 </a></li><li class="chapter-item expanded affix "><a href="../Lab_7/Lab_7.html">Lab 7: Icons and Decision Making Controls Pt 2 </a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-1.html">Lab 8.1: One Dimensional Arrays (Intellij)</a></li><li class="chapter-item expanded affix "><a href="../Lab_8/Lab_8-2.html">Lab 8.2: Lists, Arrays and Web Browsers Pt1</a></li><li class="chapter-item expanded affix "><a href="../Lab_9/Lab_9.html">Lab 9: Lists, Arrays and Web Browsers Pt2 </a></li><li class="chapter-item expanded affix "><a href="../Lab_10/Lab_10.html">Lab 10: Java Object Orientated Programming</a></li><li class="chapter-item expanded affix "><a href="../Lab_11/Lab_11.html">Lab 11: Exception Handling</a></li><li class="chapter-item expanded affix "><a href="../Lab_12/Lab_12.html" class="active">Lab 12: Permissions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html">Comp1836 Assignment 1</a></li><li class="chapter-item expanded affix "><a href="../COMP1836_Assignment_2/COMP1836_Assignment_2.html">Comp1836 Assignment 2</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../ELEE1146_Assignment_1/ELEE146_Assignment_1.html">ELEE1146 Assignment 1</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -225,7 +225,7 @@ public void onRequestPermissionsResult(int permsRequestCode, String[] permission
 </ol>
 <h3 id="xml-files"><a class="header" href="#xml-files">XML FILES</a></h3>
 <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+&lt;androidx.coordinatorLayout.widget.coordinatorLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
     xmlns:tools=&quot;http://schemas.android.com/tools&quot;
     android:layout_width=&quot;match_parent&quot;
@@ -233,23 +233,9 @@ public void onRequestPermissionsResult(int permsRequestCode, String[] permission
     android:fitsSystemWindows=&quot;true&quot;
     tools:context=&quot;com.uog.runtimepermissions.MainActivity&quot;&gt;
 
-    &lt;android.support.design.widget.AppBarLayout
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:theme=&quot;@style/AppTheme.AppBarOverlay&quot;&gt;
-
-        &lt;android.support.v7.widget.Toolbar
-            android:id=&quot;@+id/toolbar&quot;
-            android:layout_width=&quot;match_parent&quot;
-            android:layout_height=&quot;?attr/actionBarSize&quot;
-            android:background=&quot;?attr/colorPrimary&quot;
-            app:popupTheme=&quot;@style/AppTheme.PopupOverlay&quot; /&gt;
-
-    &lt;/android.support.design.widget.AppBarLayout&gt;
-
     &lt;include layout=&quot;@layout/content_main&quot; /&gt;
 
-&lt;/android.support.design.widget.CoordinatorLayout&gt;
+&lt;/androidx.coordinatorLayout.widget.coordinatorLayout&gt;
 </code></pre>
 <p>Did you see the <code>&lt;include layout=&quot;@layout/content_main&quot;/&gt;</code> line? You can include other XML files to increase readibilty of the main XML file.</p>
 <ol start="3">
@@ -282,7 +268,15 @@ public void onRequestPermissionsResult(int permsRequestCode, String[] permission
         android:text=&quot;@string/request&quot;/&gt;
 &lt;/RelativeLayout&gt;
 </code></pre>
-<p>Again notice that <code>tools:context=&quot;com.uog.runtimepermissions.MainActivity&quot;</code> and  <code>tools:showIn=&quot;@layout/activity_main&quot;</code> to complete the reference.</p>
+<p>Again notice that <code>tools:context=&quot;com.example.runtimepermissions.MainActivity&quot;</code> and  <code>tools:showIn=&quot;@layout/activity_main&quot;</code> to complete the reference.</p>
+<p>You need to add the following dependency to <code>build.gradle</code>:</p>
+<pre><code class="language-xml">dependicies{
+...
+implementation 'androidx.coordinatorLayout:androidx.coordinatorLayout:1.2.0'
+...
+}
+
+</code></pre>
 <p>Now open the <code>strings.xml</code> file and add entries for <code>@string/request</code> as &quot;Request Permission&quot;  and <code>@string/check</code> as &quot;Check Permission&quot;.</p>
 <h3 id="mainactivityjava"><a class="header" href="#mainactivityjava"><code>MainActivity.java</code></a></h3>
 <p>Reproduce the following code in the <code>MainActivity.java</code> file:</p>
