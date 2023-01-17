@@ -93,7 +93,7 @@ Now you are going to develop an application which checks if the permission is al
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorLayout.widget.coordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -101,23 +101,9 @@ Now you are going to develop an application which checks if the permission is al
     android:fitsSystemWindows="true"
     tools:context="com.uog.runtimepermissions.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
     <include layout="@layout/content_main" />
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorLayout.widget.coordinatorLayout>
 ```
 
 Did you see the `<include layout="@layout/content_main"/>` line? You can include other XML files to increase readibilty of the main XML file.
@@ -152,7 +138,18 @@ Did you see the `<include layout="@layout/content_main"/>` line? You can include
         android:text="@string/request"/>
 </RelativeLayout>
 ```
-Again notice that `tools:context="com.uog.runtimepermissions.MainActivity"` and  `tools:showIn="@layout/activity_main"` to complete the reference.
+Again notice that `tools:context="com.example.runtimepermissions.MainActivity"` and  `tools:showIn="@layout/activity_main"` to complete the reference.
+
+You need to add the following dependency to `build.gradle`:
+
+```xml
+dependicies{
+...
+implementation 'androidx.coordinatorLayout:androidx.coordinatorLayout:1.2.0'
+...
+}
+
+```
 
 Now open the `strings.xml` file and add entries for `@string/request` as "Request Permission"  and `@string/check` as "Check Permission".
 

@@ -31,8 +31,6 @@ The app must give the user the option of changing the sampling rates of various 
 
 A simple guide/instructions should be placed with in the app to help the user navigate and use the device. 
 
-**Note: A minimal of 2 sensor readings can be programmed in each sensor group, in order pass, with specified funcitionality**
-
 ### Submission
 1. Submit applications .apk file, 
 2. A PDF with screens shots of each activity with captions (must match what is shown in viva)
@@ -48,20 +46,20 @@ A simple guide/instructions should be placed with in the app to help the user na
    4. Last for 3.35 seconds
 2. Hub activity
    1. Option to list all available sensors
-   2. Phone information
+   2. Phone information (at least two of the below)
       1. Make & model 
       2. Battery level
       3. Storage available
       4. Signal strength of Wifi (if connected) and/or GSM.
-   3. Option to select grouping of sensor types to view information (at least 2 groups)
+   3. Option to select grouping of sensor types to view information (at least 2 groups and one sensor value per chosen group)
       1. Motion
       2. Position
       3. Environmental
       4. Internal
-3. Sensor grouping activity
+3. Sensor grouping activity (minimum must choose either point 3.2 or 3.3)
    1. Upon selecting a grouping in 2.3 sensor information should be relayed to the user
    2. Option to change sampling rate should be included if applicable to the sensor
-   4. Option to change units of measurement 
+   3. Option to change units of measurement 
    4. Option to record data
 4. Manual/Inforation activity
    1. Simple guide on how to use the app should be included.
