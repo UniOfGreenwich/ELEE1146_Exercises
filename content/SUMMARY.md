@@ -28,6 +28,8 @@
 
 [Lab 12: Permissions](Lab_12/Lab_12.md)
 
+[Lab 13: Sensors 1](Lab_13/Lab_13.md)
+
 ------
 
 [Comp1836 Assignment 1](COMP1836_Assignment_1/COMP1836_Assignment_1.md)
