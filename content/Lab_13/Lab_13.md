@@ -123,9 +123,9 @@ spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 A lot to break down here:
 
 1. `for(Sensor s: mgr.getSensorList(Sensor.TYPE_ALL))` this is fimilar as was executed earlier when the `spinner` was populated. Now it will be used to select information about the chosen sensor. 
-2. `String selectedSensor = spinner.getSelectedItem().toString();` the spinner as a method called `getSelectedItem()` and does exactly what it says and this is saved to the String variable. 
-3. `if(s.getName() == selectedSensor)` the object `s`'s, of class `Sensor`, name is compated to the `selectedSensor` and if it matches then we can get information abou that sensor. 
-4. `StringBuilder stringBuilder = new StringBuilder();`, remember from the lecture that the `StringBuilder` is used to create an easily mutable (modifiable) `String`.
+2. `String selectedSensor = spinner.getSelectedItem().toString();` the spinner has a method called `getSelectedItem()` and does exactly what it says and this is saved to the String variable. 
+3. `if(s.getName() == selectedSensor)` the object `s`'s, of class `Sensor`, name is compated to the `selectedSensor` and if it matches then we can get information about that sensor. 
+4. `StringBuilder stringBuilder = new StringBuilder();`, remember from the lecture that the `StringBuilder` is used to create an easily mutable (modifiable) `String`, (see point 9 & 10).
 5. `for (Field field : s.getClass().getDeclaredFields())`, a few bits to understand here. 
    - `Field` is a class that enables the access of another class/object's variable fields ie. `private int android.hardware.Sensor.mFifoMaxEventCount` of `Sensor` class.
    - Returning the `s` object's class declared variables is achieved by using the method `getDeclaredFields()`.
