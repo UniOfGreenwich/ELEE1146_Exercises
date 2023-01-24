@@ -28,7 +28,7 @@
 
 [Lab 12: Permissions](Lab_12/Lab_12.md)
 
-[Lab 13: Sensors 1]()
+[Lab 13: Sensors 1](Lab_13/Lab_13.md)
 
 ------
 
