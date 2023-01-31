@@ -24,7 +24,7 @@ public class MainActivity extends Activity implements SensorEventListener
 {
   private SensorManager mSensorManager;
   private Sensor mProximitySensor;
-  private LinearLayout mLinearLayout;
+  private ConstraintLayout mConstraintLayout;
   private TextView mTextView; // dont forget to create a textbox in xml
 
   @Override
@@ -32,7 +32,7 @@ public class MainActivity extends Activity implements SensorEventListener
      super.onCreate(savedInstanceState);
 
     setContentView(R.layout.proximitysensor);
-    mLinearLayout = (LinearLayout)findViewById(R.id.layout);
+    mConstraintLayout = (ConstraintLayout)findViewById(R.id.layout);
     mTextView = (TextView)findViewById(R.id.tvsensors); // don't forget to give the widget an id that matches...
 
     mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -52,11 +52,11 @@ public class MainActivity extends Activity implements SensorEventListener
    @Override
    public final void onSensorChanged(SensorEvent event) {
       if (event.values[0] < mProximitySensor.getMaximumRange()) {
-         mLinearLayout.setBackgroundColor(Color.YELLOW);
+         mConstraintLayout.setBackgroundColor(Color.YELLOW);
          mTextView.setText("Proximity Sensor:nnNear (distance
             <= " + mProximitySensor.getMaximumRange() + " cm)");
       } else {
-         mLinearLayout.setBackgroundColor(Color.GREEN);
+         mConstraintLayout.setBackgroundColor(Color.GREEN);
          mTextView.setText("Proximity Sensor:nnFar (distance >
             " + mProximitySensor.getMaximumRange() + " cm)");
       }
@@ -93,7 +93,7 @@ So there is a fair amount going on here so:
    ``` 
 4. The next line accesses the layouts background colour and changes it.
   ```java
-     mLinearLayout.setBackgroundColor(Color.YELLOW);
+     mConstraintLayout.setBackgroundColor(Color.YELLOW);
   ```
 5. Lastly, in this block of code the textView text is set to display the reading is less than or = too the maximum range.
   ```java
@@ -236,4 +236,4 @@ public class OrientationSensorView  extends View {
 }
 ```
 
-Try running the code, and explain to me what the code above is doing, maybe refer to the lecture.
+If you go to the `activity_main.xml` you can add this Java view from the paletter under the Project tab.
