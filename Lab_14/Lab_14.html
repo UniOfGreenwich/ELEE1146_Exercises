@@ -162,7 +162,7 @@
 {
   private SensorManager mSensorManager;
   private Sensor mProximitySensor;
-  private LinearLayout mLinearLayout;
+  private ConstraintLayout mConstraintLayout;
   private TextView mTextView; // dont forget to create a textbox in xml
 
   @Override
@@ -170,7 +170,7 @@
      super.onCreate(savedInstanceState);
 
     setContentView(R.layout.proximitysensor);
-    mLinearLayout = (LinearLayout)findViewById(R.id.layout);
+    mConstraintLayout = (ConstraintLayout)findViewById(R.id.layout);
     mTextView = (TextView)findViewById(R.id.tvsensors); // don't forget to give the widget an id that matches...
 
     mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -190,11 +190,11 @@
    @Override
    public final void onSensorChanged(SensorEvent event) {
       if (event.values[0] &lt; mProximitySensor.getMaximumRange()) {
-         mLinearLayout.setBackgroundColor(Color.YELLOW);
+         mConstraintLayout.setBackgroundColor(Color.YELLOW);
          mTextView.setText(&quot;Proximity Sensor:nnNear (distance
             &lt;= &quot; + mProximitySensor.getMaximumRange() + &quot; cm)&quot;);
       } else {
-         mLinearLayout.setBackgroundColor(Color.GREEN);
+         mConstraintLayout.setBackgroundColor(Color.GREEN);
          mTextView.setText(&quot;Proximity Sensor:nnFar (distance &gt;
             &quot; + mProximitySensor.getMaximumRange() + &quot; cm)&quot;);
       }
@@ -234,7 +234,7 @@
 </li>
 <li>The next line accesses the layouts background colour and changes it.</li>
 </ol>
-<pre><code class="language-java">   mLinearLayout.setBackgroundColor(Color.YELLOW);
+<pre><code class="language-java">   mConstraintLayout.setBackgroundColor(Color.YELLOW);
 </code></pre>
 <ol start="5">
 <li>Lastly, in this block of code the textView text is set to display the reading is less than or = too the maximum range.</li>
@@ -380,7 +380,7 @@ private SensorManager mSensorManager;
    }
 }
 </code></pre>
-<p>Try running the code, and explain to me what the code above is doing, maybe refer to the lecture.</p>
+<p>If you go to the <code>activity_main.xml</code> you can add this Java view from the paletter under the Project tab.</p>
 
                     </main>
 
