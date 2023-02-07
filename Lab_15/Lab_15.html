@@ -280,18 +280,19 @@ public class SplashActivity extends AppCompatActivity {
 &lt;layer-list xmlns:android=&quot;https://schemas.android.com/apk/res/android&quot;&gt;
 
     &lt;item android:drawable=&quot;@android:color/black&quot; /&gt;
-    &lt;item&gt;
-        &lt;bitmap
-            android:gravity=&quot;center&quot;
-            android:src=&quot;@mipmap/ic_launcher&quot; /&gt;
-    &lt;/item&gt;
+    &lt;item
+        android:gravity=&quot;center&quot;
+        android:src=&quot;@mipmap/ic_launcher&quot; /&gt;
 &lt;/layer-list&gt;
 
 </code></pre>
 <p>Set the following style as the theme of the activity in <code>res/values/styles.xml</code></p>
-<pre><code class="language-xml">&lt;style name=&quot;SplashTheme&quot; parent=&quot;Theme.AppCompat.NoActionBar&quot;&gt;
+<pre><code class="language-xml">...
+&lt;resources&gt;
+&lt;style name=&quot;SplashTheme&quot; parent=&quot;Theme.AppCompat.NoActionBar&quot;&gt;
         &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/splash_background&lt;/item&gt;
     &lt;/style&gt;
+&lt;/resources&gt;
 </code></pre>
 <p>Modify the splash screen to look like this: </p>
 <pre><code class="language-java">package com.example.splashscreen;
