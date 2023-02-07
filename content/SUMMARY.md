@@ -32,6 +32,8 @@
 
 [Lab 14: Sensors 2](Lab_14/Lab_14.md)
 
+[Lab 15: Splash Screens](Lab_15/Lab_15.md)
+
 ------
 
 [Comp1836 Assignment 1](COMP1836_Assignment_1/COMP1836_Assignment_1.md)
