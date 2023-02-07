@@ -163,11 +163,9 @@ Application theme is instantiated before the layout is created. We’ll set a dr
 <layer-list xmlns:android="https://schemas.android.com/apk/res/android">
 
     <item android:drawable="@android:color/black" />
-    <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@mipmap/ic_launcher" />
-    </item>
+    <item
+        android:gravity="center"
+        android:src="@mipmap/ic_launcher" />
 </layer-list>
 
 ```
@@ -175,9 +173,12 @@ Application theme is instantiated before the layout is created. We’ll set a dr
 Set the following style as the theme of the activity in `res/values/styles.xml`
 
 ```xml
+...
+<resources>
 <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
+</resources>
 ```
 
 Modify the splash screen to look like this: 
