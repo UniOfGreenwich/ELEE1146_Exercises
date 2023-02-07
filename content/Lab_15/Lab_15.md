@@ -37,7 +37,7 @@ There are few ways to create the initial screen i.e. Splash Screen of the applic
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.journaldev.splashscreen">
+    package="com.example.splashscreen">
 
     <application
         android:allowBackup="true"
