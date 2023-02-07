@@ -183,7 +183,7 @@ Set the following style as the theme of the activity in `res/values/styles.xml`
 Modify the splash screen to look like this: 
 
 ```java
-package com.journaldev.splashscreen;
+package com.example.splashscreen;
 
 import android.content.Intent;
 import android.os.Handler;
