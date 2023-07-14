@@ -4,7 +4,7 @@
 
 **Viva: 04th April 2023 @ 1000-1100**
 
-**Weighting: 70%**
+**Weighting: 30%**
 
 ## Brief
 The main aim of this assignment is to develop and test student’s understanding and practical skills in mobile apps design. 
