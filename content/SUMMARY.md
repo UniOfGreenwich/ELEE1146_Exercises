@@ -40,6 +40,10 @@
 
 [Comp1836 Assignment 2](COMP1836_Assignment_2/COMP1836_Assignment_2.md)
 
+[Comp1836 Assignment 1 Resit](COMP1836_Assignment_1_Resit/COMP1836_Assignment_1_Resit.md)
+
+[Comp1836 Assignment 2 Resit](COMP1836_Assignment_2_Resit/COMP1836_Assignment_2_Resit.md)
+
 ------
 
 [ELEE1146 Assignment 1](ELEE1146_Assignment_1/ELEE146_Assignment_1.md)
