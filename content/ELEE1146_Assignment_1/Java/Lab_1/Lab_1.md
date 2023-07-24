@@ -46,5 +46,3 @@ ___________________
 >> **Note:** We will be using the latest Android Studio version, released in May 2020 – Android Studio v.4.2.2. You can download it and install it on your computer from https://developer.android.com/studio/archive. Make sure you have enough space on the disk, it takes 2.6GB and you would also need extra space to run it.
 
 >> **Warning:** If you decide to download a different version on your personal PC/laptop it might not be compatible with the version running at the University, therefore make sure you do download v4.2.2 and not any other!
-
-*Reference: Hoisington, C. (2016) Android Boot Camp for Developers Using Java: A Guide to Creating Your First Android Apps, Cengage Learning, Chapter 1*
