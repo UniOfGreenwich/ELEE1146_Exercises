@@ -85,4 +85,330 @@
         println("Hello World! " + name)
     
       }  
-      ``` 
+      ```
+8. Run and you should see the following output
+   <div style="width:60%; margin: 0px auto;">
+   
+   ![center](./figures/helloworld_output_2.png)
+
+   </div>
+9. Notice the green underwave underneath the `println("Hello World! " + name)`
+   <div style="width:60%; margin: 0px auto;">
+   
+   ![center](./figures/literalError.png)
+
+   </div>
+
+  > **Note: Code Inspections**
+  >> 
+  >> - Green = typo, literals, weak warnings
+  >> - Red = Error (will not compile)
+  >>
+  >> You can find more if you go to File>Settings>Editor>Color Scheme > General > Errors and Warnings
+
+10. This underwave can be corrected two ways, either hover over and follow the quick key short cut 'Alt+Shift+Enter'. Or Manually fix it by reproducing the output below.
+     
+   <div style="width:100%; margin: 0px auto;">
+   
+   ![center](./figures/suggestions.png)
+
+   </div>
+
+11. You will see the that `println("Hello World! " + name)` has been refactored to:
+
+<div style="width:45%; margin: 0px auto;">
+
+![center](./figures/stringTemplate.png)
+
+</div>
+
+>**Notes**
+>> - String literals may contain **template expressions** – pieces of code that are evaluated and whose results are concatenated into the string. 
+>> - A template expression starts with a dollar sign `$` and consists of either a name
+>> - or an expression in curly braces:
+```kt
+val s = "Hello World"
+println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
+```
+12. Run the program again, do you get the same ouput? 
+
+
+13. Modify further with `print()` function
+
+<div style="width:45%; margin: 0px auto;">
+
+![center](./figures/print_and_println.png)
+
+</div>
+
+>**Note:**
+>> - `print()` by default does not terminate with a  new line (`\n`) line character, unlike `println()`
+>> - however, you can tell it to, by adding a `\n` to the end of the message inbetweent the two brackets.
+
+13. Run it and see for yourself, then remove the `\n` from the end of `print("Hello me\n)`, is it the same?
+
+-------------
+
+## 2 Mutable and immutable
+
+1. `var` is like general variable and it's known as a **mutable** variable in kotlin and can be assigned multiple times.
+
+
+2. `val` is like final variable and it's known as **immutable** in kotlin and can be initialised only a single time.
+
+>>**Note**
+>> - The term mutable comes from mutation, as is to mutate, to change. In computing this means **Read** & **Write** 
+>> - Therefore immutable is something that can not mutate nor change. In comupting this means **Read only**
+
+3. Since you started we have been using `var` to define the variable `name`, this is technically incorrect, because we never change the value after declaration.
+4. Let's change this to `val` to make our code more **clean**.
+5. Reproduce the following:
+```kt
+fun main(args: Array<String>) {
+
+    val a: Int = 4
+    val b: Int = 4
+    var c: Int = 0
+
+    print("$c = $a + $b")
+
+}
+```
+ 1. Before running to code, predict what the outcome will be? Now run it, does it match your prediction?
+      
+      <details>
+      <summary>Answer</summary>
+
+      `0 = 4 + 4`
+      
+      - This is because no mathemcatical operation is performed inside a String concatenation
+      </details>
+   
+ 2. Modify the above code so that it looks like this:
+   ```kt
+   fun main(args: Array<String>) {
+
+      val a: Int = 4
+      val b: Int = 4
+      var c: Int = 0
+
+      c = a + b
+
+      print("$c = $a + $b")i
+   }
+   ```
+
+
+ 3. Before running to code, predict what the outcome will be? Now run it, does it match your prediction?
+
+      <details>
+      <summary>Answer</summary>
+
+      `8 = 4 + 4`
+      
+      - This is because the mathemcatical operation is performed outside a String concatenation, and the result of `a + b` is saved to `c`
+      </details>
+
+4. Now let's change the how `c` is declared, modify `c` so that `var` is now `val`:
+   ```kt
+   val c: Int = 0
+   ```
+5. Before running to code, predict what the outcome will be? Now run it, does it match your prediction?
+
+      <details>
+      <summary>Answer</summary>
+
+      - You can't, notice the red underwave, this is an error, because `c` is **immutable** now. 
+      - it is important to read the **Problems** tab at the bottom of the IDE.
+      ![](./figures/problesm_tab.png)
+      - Change it back to `var`.
+      - We are not going to worry about the warnings for now, will come back to that later.
+
+      </details>
+
+## 3. Data types
+
+1. Remember from the lecture that data types are as follows: 
+
+- **Numbers** (six built-in types)
+  - Byte [ \\(-127\\) to \\(128\\) ]
+  - Short [ \\(-32768\\) to \\(32767\\) ]
+  - Int [ \\(-2^{31}\\) to \\(2^{31}-1\\) ]
+  - Long [ \\(-2^{63}\\) to \\(2^{63}-1\\) ]
+  - Float [ \\(2^{32}\\) ]
+  - Double [ \\(2^{64}\\) ] 
+- **Characters**
+  - Chars [ \\(2^{16}\\) ]
+    - because unicode instead of just ASCII
+    - `\u0000`,`\uFFFF`
+- **Booleans**
+  - true
+  - false
+  - All though 1 bit (1,0), it is technically a Byte due.
+- **Arrays**
+  - get
+  - set
+  - size
+  - etc...
+- **Strings**
+  - A class, not techincally a data type
+
+2. Lets check the maximum and miniumum values avaialable to you on your machine or VM
+   1. Start your program off as follows and run: 
+
+   ```kt
+   fun main(args: Array<String>) {
+
+      val b1: Byte = Byte.MIN_VALUE
+      val b2: Byte = Byte.MAX_VALUE
+      println("Smallest signed byte value: " +b1)
+      println("Largest signed byte value: " +b2)
+
+      val ub1: UByte = UByte.MIN_VALUE
+      val ub2: UByte = UByte.MAX_VALUE
+      println("Smallest unsigned byte value: " +ub1)
+      println("Largest unsigned byte value: " +ub2)
+
+      println("--------------------------------------------------")
+   }
+
+   ```
+   <details>
+   <summary>Output</summary>
+
+   <div style="width:60%; margin: 0px auto;">
+
+   <img src="./figures/byte_size.png" width="500" height="180">
+
+   </div>
+
+   </details> 
+
+      2. Now repeat for each data type, remembering to inculde signed and unsigned variants:
+       - `Short`
+       - `Char`
+       - `Int`
+       - `Long`
+       - `Float`
+       - `Double`
+      > **Notes**
+      >> - `Char` will need to be cast as an `Int` 
+      >> - `Float` and `Double` can only be signed
+      
+      <details>
+      <summary>Whole code, do it yourself first</summary>
+      
+      ```kt
+         fun main(args: Array<String>) {
+
+         val b1: Byte = Byte.MIN_VALUE
+         val b2: Byte = Byte.MAX_VALUE
+         println("Smallest signed byte value: " +b1)
+         println("Largest signed byte value: " +b2)
+
+         val ub1: UByte = UByte.MIN_VALUE
+         val ub2: UByte = UByte.MAX_VALUE
+         println("Smallest unsigned byte value: " +ub1)
+         println("Largest unsigned byte value: " +ub2)
+
+         println("--------------------------------------------------")
+
+         val s1: Short = Short.MIN_VALUE
+         val s2: Short = Short.MAX_VALUE
+         println("Smallest signed short value: " +s1)
+         println("Largest signed short value: " +s2)
+
+         val us1: UShort = UShort.MIN_VALUE
+         val us2: UShort = UShort.MAX_VALUE
+         println("Smallest unsigned short value: " +us1)
+         println("Largest unsigned short value: " +us2)
+
+         println("--------------------------------------------------")
+
+         val c1: Int = Char.MIN_VALUE.code
+         val c2: Int = Char.MAX_VALUE.code
+         println("Smallest Char value: " + c1)
+         println("Largest Char value: " + c2)
+
+         println("--------------------------------------------------")
+
+         val i1: Int = Int.MIN_VALUE
+         val i2: Int = Int.MAX_VALUE
+         println("Smallest signed integer value: " +i1)
+         println("Largest signed integer value: " +i2)
+
+         val ui1: UInt = UInt.MIN_VALUE
+         val ui2: UInt = UInt.MAX_VALUE
+         println("Smallest unsigned integer value: " +ui1)
+         println("Largest unsigned integer value: " +ui2)
+
+         println("--------------------------------------------------")
+
+         val l1: Long = Long.MIN_VALUE
+         val l2: Long = Long.MAX_VALUE
+         println("Smallest signed long integer value: " +l1)
+         println("Largest signed long integer value: " +l2)
+
+         val ul1: ULong = ULong.MIN_VALUE
+         val ul2: ULong = ULong.MAX_VALUE
+         println("Smallest unsigned long integer value: " +ul1)
+         println("Largest unsigned long integer value: " +ul2)
+
+         println("--------------------------------------------------")
+
+         val F1: Float = Float.MIN_VALUE
+         val F2: Float = Float.MAX_VALUE
+         println("Smallest Float value: " +F1)
+         println("Largest Float value: " + F2)
+
+         val D1: Double = Double.MIN_VALUE
+         val D2: Double = Double.MAX_VALUE
+         println("Smallest Double value: " + D1)
+         println("Largest Double value: " + D2)
+      }
+      
+      ```
+     </details>
+
+      3. When done, you should get the same output as below:
+      
+         <details>
+         <summary>Output</summary>
+
+            ```
+            Smallest signed byte value: -128
+            Largest signed byte value: 127
+            Smallest unsigned byte value: 0
+            Largest unsigned byte value: 255
+            --------------------------------------------------
+            Smallest signed short value: -32768
+            Largest signed short value: 32767
+            Smallest unsigned short value: 0
+            Largest unsigned short value: 65535
+            --------------------------------------------------
+            Smallest Char value: 0
+            Largest Char value: 65535
+            --------------------------------------------------
+            Smallest signed integer value: -2147483648
+            Largest signed integer value: 2147483647
+            Smallest unsigned integer value: 0
+            Largest unsigned integer value: 4294967295
+            --------------------------------------------------
+            Smallest signed long integer value: -9223372036854775808
+            Largest signed long integer value: 9223372036854775807
+            Smallest unsigned long integer value: 0
+            Largest unsigned long integer value: 18446744073709551615
+            --------------------------------------------------
+            Smallest Float value: 1.4E-45
+            Largest Float value: 3.4028235E38
+            Smallest Double value: 4.9E-324
+            Largest Double value: 1.7976931348623157E308
+
+            Process finished with exit code 0
+
+            ```
+
+         </details>
+
+3. Arrays
+ 
