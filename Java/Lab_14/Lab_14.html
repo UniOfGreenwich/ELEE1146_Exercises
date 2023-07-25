@@ -171,6 +171,241 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="lab-14-sensors-2"><a class="header" href="#lab-14-sensors-2">Lab 14: Sensors 2</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>You have probably been enjoying convenient functionalities provided by the sensors on your mobile devices without even noticing their existence. There are many sensor examples, such as a device screen automatically switching between portrait and landscape modes, screen brightness auto-adjusted according to current lighting condition, showing your position on maps, and so on.</p>
+<h2 id="sensor-framework-and-programming-template"><a class="header" href="#sensor-framework-and-programming-template">Sensor Framework and Programming Template</a></h2>
+<p>The Android API for sensor support is <code>android.hardware.Sensor</code>, which provides the classes and interfaces to serve two main purposes. First, they can be used to detect what sensors exist and what capabilities they can support. Secondly, for the sensors that exist, you can monitor their events and retrieve data from them. The key programming objects we will pay most attention to regrading sensors are: <code>Sensor</code>, <code>SensorManager</code>, <code>SensorEvent</code>, and <code>SensorEventListener</code>.</p>
+<h2 id="part-1-proximity-senors"><a class="header" href="#part-1-proximity-senors">Part 1: Proximity Senors</a></h2>
+<p>You are going to outline the generic sensor programming template by using one of the listed types. Developing software with most other sensor types is extremely similar except for the returned values. We select the sensor type <code>TYPE_PROXIMITY</code> in the template and check its existence at runtime. Then, we implement a SensorEventListener with the activity. We must make sure it is registered and unregistered at the appropriate time, as in <code>onResume()</code> and <code>OnPause()</code>. <code>onSensorChanged()</code> is where the raw sensor data is retrieved. In this specific case, we also print out the range value defined by your proximity sensors. For demonstration purpose, the software responds with a background color change seen below:</p>
+<p><img src="./figures/step_1.png" alt="" /><img src="./figures/step_1-2.png" alt="" /></p>
+<h3 id="and-go"><a class="header" href="#and-go">And go...</a></h3>
+<ol>
+<li>Create a new empty project called ProximtySensors</li>
+<li>Reproduce the following code:</li>
+</ol>
+<pre><code class="language-java">public class MainActivity extends Activity implements SensorEventListener
+{
+  private SensorManager mSensorManager;
+  private Sensor mProximitySensor;
+  private ConstraintLayout mConstraintLayout;
+  private TextView mTextView; // dont forget to create a textbox in xml
+
+  @Override
+  public final void onCreate(Bundle savedInstanceState) {
+     super.onCreate(savedInstanceState);
+
+    setContentView(R.layout.proximitysensor);
+    mConstraintLayout = (ConstraintLayout)findViewById(R.id.layout);
+    mTextView = (TextView)findViewById(R.id.tvsensors); // don't forget to give the widget an id that matches...
+
+    mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+    mProximitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+    if (mProximitySensor == null) {
+         Toast.makeText(getApplicationContext(), &quot;Proximity sensor is not available.&quot;, Toast.LENGTH_LONG).show();
+         finish();
+      }
+   }
+
+   @Override
+   public final void onAccuracyChanged(Sensor sensor, int accuracy) {
+      // Do something here if sensor accuracy changes.
+   }
+
+   @Override
+   public final void onSensorChanged(SensorEvent event) {
+      if (event.values[0] &lt; mProximitySensor.getMaximumRange()) {
+         mConstraintLayout.setBackgroundColor(Color.YELLOW);
+         mTextView.setText(&quot;Proximity Sensor:nnNear (distance
+            &lt;= &quot; + mProximitySensor.getMaximumRange() + &quot; cm)&quot;);
+      } else {
+         mConstraintLayout.setBackgroundColor(Color.GREEN);
+         mTextView.setText(&quot;Proximity Sensor:nnFar (distance &gt;
+            &quot; + mProximitySensor.getMaximumRange() + &quot; cm)&quot;);
+      }
+   }
+
+   @Override
+   protected void onResume() {
+      super.onResume();
+      mSensorManager.registerListener(this, mProximitySensor,
+         SensorManager.SENSOR_DELAY_NORMAL);
+   }
+
+   @Override
+   protected void onPause() {
+      super.onPause();
+      mSensorManager.unregisterListener(this);
+   }
+}
+</code></pre>
+<p>So there is a fair amount going on here so:</p>
+<ol>
+<li>Starting from the line <code> mProximitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);</code> 
+<ul>
+<li>This line creates an instance of the sensor type proximity, this is how we access the sensor. Last week we got all of the sensors.</li>
+</ul>
+</li>
+<li>The next code block is to determine whether the sensor we are looking for actually exists, if doesn't, ie the object returned is <code>null</code> then <code>finish()</code> aka close the program. Obviously before it does this the program gives you a toast notification explaining this. 
+<pre><code class="language-java">if (mProximitySensor == null) {
+      Toast.makeText(getApplicationContext(), &quot;Proximity sensor is not available.&quot;, Toast.LENGTH_LONG).show();
+      finish();
+   }
+</code></pre>
+</li>
+<li>The public method <code>onSensorChanged()</code>, catches when a sensor's values/readings have changed through <code>events</code>. You'll notice that one of the arguments is the <code>SensorEvent</code> class. The object <code>event</code> has several public methods and <code>field</code>s/variables that can be reached, one of those is the <code>values</code> array. The code below shows is a conditional check to see if index 0 of the array <code>event</code> is less than the maximum possible value of this sensor type. 
+<pre><code class="language-java">if (event.values[0] &lt; mProximitySensor.getMaximumRange())
+</code></pre>
+</li>
+<li>The next line accesses the layouts background colour and changes it.</li>
+</ol>
+<pre><code class="language-java">   mConstraintLayout.setBackgroundColor(Color.YELLOW);
+</code></pre>
+<ol start="5">
+<li>Lastly, in this block of code the textView text is set to display the reading is less than or = too the maximum range.</li>
+</ol>
+<pre><code class="language-java">mTextView.setText(&quot;Proximity Sensor:nnNear (distance
+          &lt;= &quot; + mProximitySensor.getMaximumRange() + &quot; cm)&quot;);
+</code></pre>
+<ol start="6">
+<li>The else block is the inverse and therefore gets if the value is greater than the range and changes the outputs retrospecivley.</li>
+<li>Two new functions we have not looked at before are the <code>onResume()</code> and <code>onPause()</code></li>
+</ol>
+<ul>
+<li><code>onResume()</code> re-registers the event listener to the sensor, and provides a sample rate by which it listens <code>SENSOR_DELAY_NORMAL</code>. This is used for when the application has entered the foreground after being pushed to the background, i.e. not in focus.</li>
+<li><code>onPause()</code> is the inverse of <code>onResume()</code> and pauses the event listener and service so that it is not doing readings while the app is in the background.</li>
+</ul>
+<p>Try running the program, and see if you can work out which sensor on the phone is being used. You should use the virtual menu on the phone to access the virutal sensors.</p>
+<p><img src="./figures/step_1-3.png" alt="" /></p>
+<blockquote>
+<p><strong>TODO</strong></p>
+<blockquote>
+<p>Try and return the current sensor reading to the textView widget using the event.values[0].</p>
+</blockquote>
+</blockquote>
+<hr />
+<h2 id="part-2-orientation-sensors"><a class="header" href="#part-2-orientation-sensors">Part 2: Orientation Sensors</a></h2>
+<ol>
+<li>Create a new project called OrientationSensors and it will eventually look something like this: </li>
+</ol>
+<p><img src="./figures/step_2.png" alt="" /></p>
+<ol start="2">
+<li>Reproduce the following:</li>
+</ol>
+<pre><code class="language-java">public class MainActivity extends Activity implements SensorEventListener
+{
+private SensorManager mSensorManager;
+   private Sensor mOrientationSensor;
+   private OrientationSensorView mOrientationSensorView;
+
+   @Override
+   public final void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+
+      setContentView(R.layout.orientationsensor);
+      mOrientationSensorView = (OrientationSensorView)findViewById
+         (R.id.osv);
+
+      mSensorManager = (SensorManager)getSystemService
+         (Context.SENSOR_SERVICE);
+
+      mOrientationSensor = mSensorManager.getDefaultSensor
+         (Sensor.TYPE_ORIENTATION);
+      if (mOrientationSensor == null) {
+         Toast.makeText(getApplicationContext(), &quot;Orientation
+            sensor is not available.&quot;, Toast.LENGTH_LONG).show();
+         finish();
+      }
+   }
+
+   @Override
+   public final void onAccuracyChanged(Sensor sensor,
+         int accuracy) {
+      // Do something here if sensor accuracy changes.
+   }
+
+   @Override
+   public final void onSensorChanged(SensorEvent event) {
+      // Azimuth (angle around the z-axis) in degrees.
+      float azimuth = event.values[0];
+      mOrientationSensorView.applyOrientationSensorData(azimuth);
+   }
+
+   @Override
+   protected void onResume() {
+      super.onResume();
+      mSensorManager.registerListener(this, mOrientationSensor,
+         SensorManager.SENSOR_DELAY_NORMAL);
+   }
+
+   @Override
+   protected void onPause() {
+      super.onPause();
+      mSensorManager.unregisterListener(this);
+   }
+}
+
+</code></pre>
+<ul>
+<li>Most of the code functionality should be familiar here as it appears in the previous part. However, there is an addtion:
+<ul>
+<li><code>private OrientationSensorView mOrientationSensorView;</code> should show as an error alongside, <code>mOrientationSensorView.applyOrientationSensorData(azimuth);</code> inside the <code>onSensorChanged()</code> method. </li>
+<li>The reaseons is this is class you are going to make that will draw the angle inside a circle on the screen of the phone. </li>
+</ul>
+</li>
+<li>Note that the <code>event.values[]</code> is of type <code>float</code>.</li>
+</ul>
+<p>Next create a new class called <code>OrientationSensorView</code> and populate with the following code:</p>
+<pre><code class="language-java">public class OrientationSensorView  extends View {
+   private Paint mPaint;
+   private int mAngle = 0;
+
+   public OrientationSensorView(Context context) {
+      super(context);
+      init();
+   }
+
+   public OrientationSensorView(Context c, AttributeSet attrs) {
+      super(c, attrs);
+      init();
+   }
+
+   private void init() {
+      mPaint= new Paint();
+      mPaint.setColor(Color.BLUE);
+      mPaint.setAntiAlias(true);
+      mPaint.setStrokeWidth(3);
+      mPaint.setStyle(Paint.Style.STROKE);
+      mPaint.setTextSize(80);
+   }
+
+   @Override
+   protected void onDraw(Canvas canvas) {
+      super.onDraw(canvas);
+
+      int cx = getMeasuredWidth() / 2;
+      int cy = getMeasuredHeight() / 2;
+      int r = getMeasuredWidth() / 3;
+      double ang = - mAngle / 180.0 * Math.PI;
+
+      mPaint.setColor(Color.BLUE);
+      canvas.drawCircle(cx, cy, r, mPaint);
+
+      mPaint.setColor(Color.RED);
+      canvas.drawLine(cx, cy, (float)(cx + r * Math.sin(0)),
+         (float)(cy - r * Math.cos(0)), mPaint);
+      canvas.drawLine(cx, cy, (float)(cx + r * Math.sin(ang)),
+         (float)(cy - r * Math.cos(ang)), mPaint);
+      canvas.drawText(&quot;Azimuth: &quot; + mAngle, cx, cy, mPaint);
+   }
+
+   public void applyOrientationSensorData(float angle) {
+      mAngle = (int)angle;
+      invalidate();
+   }
+}
+</code></pre>
+<p>If you go to the <code>activity_main.xml</code> you can add this Java view from the paletter under the Project tab.</p>
 
                     </main>
 

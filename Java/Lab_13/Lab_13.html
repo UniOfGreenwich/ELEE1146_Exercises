@@ -171,6 +171,260 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="lab-13-sensors-1"><a class="header" href="#lab-13-sensors-1">Lab 13: Sensors 1</a></h1>
+<p>You are going to see how to use the <code>Sensor</code> and <code>SensorManager</code> classes to see which sensors are available and some of their fields. You will also learn of the classes <code>Field</code>, <code>StringBuilder</code> and <code>Pattern</code>. </p>
+<p>Open Android Studio and create a new project and call it <code>allofthesensors</code>.</p>
+<h2 id="1-activity_mainxml"><a class="header" href="#1-activity_mainxml">1. <code>activity_main.xml</code></a></h2>
+<p>First off in the <code>activity_main.xml</code> design view add: </p>
+<ol>
+<li>a <code>Spinner</code> widget offset from the top of the screen, remember to constrain the to edges of the screen.</li>
+<li>Set the width as <code>408dp</code> and height as <code>61dp</code> </li>
+<li>change id to <code>sensorsSP</code></li>
+<li>Likewise grab a <code>TextView</code> and add it to the the middle of the screen, again anchoring it in place.</li>
+<li>Set the width as <code>234dp</code> and height as <code>284dp</code> </li>
+<li>change id to <code>sensorInfoTV</code></li>
+</ol>
+<h2 id="2-mainactivityjava"><a class="header" href="#2-mainactivityjava">2. <code>MainActivity.java</code></a></h2>
+<p>Start off by adding these variables to the class.</p>
+<pre><code class="language-java">private SensorManager mgr;
+private TextView sensorInfoTV;
+private Spinner sensorSP;
+private String sensorFields[] = {&quot;mMaxDelay&quot;, &quot;mMaxRange&quot;,&quot;mMinDelay&quot;,&quot;mName&quot;,&quot;mPower&quot;,&quot;mRequiredPermission&quot;,&quot;mResolution&quot;};
+</code></pre>
+<ul>
+<li><code>SensorManager</code> lets you access the device's <code>sensors</code>.</li>
+<li><code>String sensorFields[]...</code> will be used as to indentify the senors fields wanted to be returned to the user.</li>
+</ul>
+<p>Next in side the <code>main()</code> function underneath <code>setContent...</code> add the following lines.</p>
+<pre><code class="language-java">ArrayList&lt;String&gt; sensorList = new ArrayList&lt;&gt;();
+mgr = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+sensorInfoTV = findViewById(R.id.sensorInfoTV);
+
+sensorSP =findViewById(R.id.sensorSP);
+
+for (Sensor s: mgr.getSensorList(Sensor.TYPE_ALL))
+{
+    sensorList.add(s.getName());
+}
+</code></pre>
+<ul>
+<li>The <code>ArrayList</code> class is a resizable array, which can be found in the j<code>ava.util</code> package.</li>
+<li>The difference between a <em>built-in</em> <code>array</code> and an <code>ArrayList</code> in Java, is that the size of an array cannot be modified (if you want to add or remove elements to/from an array, you have to create a new one). While elements can be added and removed from an <code>ArrayList</code> whenever you want.</li>
+<li><code>getSystemService(Context.SENSOR_SERVICE)</code> to retrieve a <code>android.hardware.SensorManager</code> for accessing sensors.</li>
+<li>The snippet below iterates over all sensors on the device and gets their types an object of the class <code>Sensor</code> and adds them to the <code>ArrayList&lt;&gt;String...</code>. </li>
+</ul>
+<pre><code class="language-java">for (Sensor s: mgr.getSensorList(Sensor.TYPE_ALL))
+{
+    sensorList.add(s.getName());
+}
+</code></pre>
+<p>Now you need to add an <code>ArrayAdapter</code></p>
+<pre><code class="language-java">ArrayAdapter&lt;String&gt; arrayAdapter = new ArrayAdapter&lt;String&gt;(this, android.R.layout.simple_spinner_item,sensorList);
+arrayAdapter.setDropDownViewResource(com.google.android.material.R.layout.support_simple_spinner_dropdown_item);
+spinner.setAdapter(arrayAdapter);
+</code></pre>
+<ul>
+<li><code>ArrayAdapter</code>'s returns a view for each object in a collection of data objects you provide, and can be used with list-based user interface widgets such as <code>ListView</code> or <code>Spinner</code></li>
+<li>The <code>ArrayAdapter</code>s <code>&lt;&gt;</code> needs a type (<code>T</code>) so we supplied <code>String</code>. In fact <code>T</code> is means any generic <code>Type</code> that is <code>String</code>, <code>Integer</code> or <code>Object</code>.</li>
+</ul>
+<p>Now you need to create an <code>OnItemSelectedListener</code> for this <code>spinner</code> with <code>AdapterView</code> class. The code below is extensive, and may seem overwhelming at first but will be explained afterwards.</p>
+<pre><code class="language-java">spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+    @Override
+    public void onItemSelected(AdapterView&lt;?&gt; adapterView, View view, int i, long l) {
+
+        for(Sensor s: mgr.getSensorList(Sensor.TYPE_ALL))
+        {
+            String selectedSensor = sensorSP.getSelectedItem().toString();
+
+            if(s.getName()== selectedSensor)
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                for (Field field : s.getClass().getDeclaredFields())
+                {
+                    Pattern p = Pattern.compile(field.getName());
+                    
+                    for(int k = 0;k &lt; sensorFields.length; k++)
+                    {
+                        if(p.matcher(sensorFields[k]).matches())
+                        {
+                            field.setAccessible(true);
+                            stringBuilder.append(field.getName().toString() + &quot;: &quot;);
+                            try {
+                                Object value = field.get(s);
+                                String valueStr = (value.toString().isEmpty()) ? &quot;N/A \n\n&quot;:  value + &quot;\n\n&quot; ;
+                                stringBuilder.append(valueStr);
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+                sensorInfoTV.setText(stringBuilder);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView&lt;?&gt; adapterView) {
+
+    }
+});
+
+</code></pre>
+<p>A lot to break down here:</p>
+<ol>
+<li><code>for(Sensor s: mgr.getSensorList(Sensor.TYPE_ALL))</code> this is fimilar as was executed earlier when the <code>spinner</code> was populated. Now it will be used to select information about the chosen sensor. </li>
+<li><code>String selectedSensor = spinner.getSelectedItem().toString();</code> the spinner has a method called <code>getSelectedItem()</code> and does exactly what it says and this is saved to the String variable. </li>
+<li><code>if(s.getName() == selectedSensor)</code> the object <code>s</code>'s, of class <code>Sensor</code>, name is compated to the <code>selectedSensor</code> and if it matches then we can get information about that sensor. </li>
+<li><code>StringBuilder stringBuilder = new StringBuilder();</code>, remember from the lecture that the <code>StringBuilder</code> is used to create an easily mutable (modifiable) <code>String</code>, (see point 9 &amp; 10).</li>
+<li><code>for (Field field : s.getClass().getDeclaredFields())</code>, a few bits to understand here. 
+<ul>
+<li><code>Field</code> is a class that enables the access of another class/object's variable fields ie. <code>private int android.hardware.Sensor.mFifoMaxEventCount</code> of <code>Sensor</code> class.</li>
+<li>Returning the <code>s</code> object's class declared variables is achieved by using the method <code>getDeclaredFields()</code>.</li>
+</ul>
+</li>
+<li><code>Pattern p = Pattern.compile(field.getName());</code>, creates a way to use regular expression(regex). Here <code>filed.getName()</code> is supplied as the pattern we want to search with or for.</li>
+<li><code>if(p.matcher(sensorFields[k]).matches())</code>, using the <code>Pattern</code> object p that stores the current <code>field</code> <code>name</code>  a comparsion can now be made with the array of <code>sensorFields</code> declared earlier. The <code>matches()</code> returns <code>true</code> of <code>false</code>.</li>
+<li><code>field.setAccessible(true);</code>, makes the field accessible, meaning that while variable could be <code>private</code> it is still retreivable. for instance..
+<ul>
+<li><code>private int android.hardware.Sensor.mFifoMaxEventCount</code> </li>
+</ul>
+</li>
+<li><code>stringBuilder.append(field.getName().toString() + &quot;: &quot;);</code>, begins building the string with the field name and a colon.</li>
+<li>In the <code>try</code> block <code>String valueStr = (value.toString().isEmpty()) ? &quot;N/A \n\n&quot;:  value + &quot;\n\n&quot; ;</code> is an inline if statement that the <code>(value.toString().isEmpty())</code> returns <code>true</code> or <code>false</code>. On return the <code>?</code> acts as a tenary operator and acts as the <code>if</code>
+<ul>
+<li>format <code>x = (statement) ? thing_to_do_if_true : thing_to_do_if_false; </code> </li>
+</ul>
+</li>
+</ol>
+<p>You should be good to run the program now, create virtual device and test the app.</p>
+<p><img src="./figures/AllofSensorsList.png" alt="" /><img src="./figures/Sensor_Orientation.png" alt="" /></p>
+<p>Once, tried with one type of virtual device, try using a different one, see if you get different sensors.</p>
+<h2 id="3-full-code-below"><a class="header" href="#3-full-code-below">3. Full code below.</a></h2>
+<pre><code class="language-java">package com.example.allofthesensors;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+
+public class MainActivity extends AppCompatActivity{
+
+    private SensorManager mgr;
+    private TextView sensorInfoTV;
+    private Spinner SensorSP;
+    private String sensorFields[] = {&quot;mMaxDelay&quot;, &quot;mMaxRange&quot;,&quot;mMinDelay&quot;,&quot;mName&quot;,&quot;mPower&quot;,&quot;mRequiredPermission&quot;,&quot;mResolution&quot;};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ArrayList&lt;String&gt; sensorList = new ArrayList&lt;&gt;();
+        mgr = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        sensorInfoTV = findViewById(R.id.sensorInfoTV);
+
+        sensorSP =findViewById(R.id.sensorSP);
+
+        for (Sensor s: mgr.getSensorList(Sensor.TYPE_ALL))
+        {
+            sensorList.add(s.getName());
+        }
+
+        ArrayAdapter&lt;String&gt; arrayAdapter = new ArrayAdapter&lt;String&gt;(this, android.R.layout.simple_spinner_item,sensorList);
+        arrayAdapter.setDropDownViewResource(com.google.android.material.R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView&lt;?&gt; adapterView, View view, int i, long l) {
+
+                for(Sensor s: mgr.getSensorList(Sensor.TYPE_ALL))
+                {
+                    String selectedSensor = spinner.getSelectedItem().toString();
+
+                    if(s.getName()== selectedSensor)
+                    {
+                        StringBuilder stringBuilder = new StringBuilder();
+                        for (Field field : s.getClass().getDeclaredFields())
+                        {
+                            Pattern p = Pattern.compile(field.getName());
+                            
+                            for(int k = 0;k &lt; sensorFields.length; k++)
+                            {
+                                if(p.matcher(sensorFields[k]).matches())
+                                {
+                                    field.setAccessible(true);
+                                    stringBuilder.append(field.getName().toString() + &quot;: &quot;);
+                                    try {
+                                        Object value = field.get(s);
+                                        String valueStr = (value.toString().isEmpty()) ? &quot;N/A \n\n&quot;:  value + &quot;\n\n&quot; ;
+                                        stringBuilder.append(valueStr);
+                                    } catch (IllegalAccessException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                        sensorInfoTV.setText(stringBuilder);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView&lt;?&gt; adapterView) {
+
+            }
+        });
+
+    }
+}
+</code></pre>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+
+    &lt;Spinner
+        android:id=&quot;@+id/sensorsSP&quot;
+        android:layout_width=&quot;408dp&quot;
+        android:layout_height=&quot;61dp&quot;
+        android:spinnerMode=&quot;dialog&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.0&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.104&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/sensorInfoTV&quot;
+        android:layout_width=&quot;234dp&quot;
+        android:layout_height=&quot;284dp&quot;
+        android:text=&quot;TextView&quot;
+        android:textColor=&quot;@color/black&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
 
                     </main>
 

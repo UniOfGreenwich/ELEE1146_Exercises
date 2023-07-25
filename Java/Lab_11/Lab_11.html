@@ -171,6 +171,250 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="lab-11-exception-handling"><a class="header" href="#lab-11-exception-handling">Lab 11: Exception Handling</a></h1>
+<p>Using IntelliJ you are going to do some error handling exploration. </p>
+<ul>
+<li>Open IntelliJ </li>
+<li>Create a new project
+<ul>
+<li>Call it <code>Shapes</code> like the screen shot below.</li>
+<li>Note you can use any JDK for this exercise, I am using JDK 11.0.13</li>
+</ul>
+</li>
+</ul>
+<h2 id="step-1"><a class="header" href="#step-1">Step 1</a></h2>
+<p>Reproduce the following to set up the project</p>
+<div align=center>
+<p><img src="./figures/step1.png" alt="" /></p>
+</div>
+<p>Now you can edit <code>main()</code> with the following code, then compile and run.</p>
+<pre><code class="language-java">{
+    System.out.println(3/0);
+}
+</code></pre>
+<p>You should see the following output in the Run terminal... </p>
+<div align=center>
+<p><img src="./figures/step2.png" alt="" /></p>
+</div>
+<p>Modify the Main.java as shown below. The change is to catch an exception through try-catch block.</p>
+<pre><code class="language-java">    try{
+        System.out.println(3/0);
+    } 
+    catch(Exception e){
+        System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+    }
+</code></pre>
+<p>If you run the program again you should get the following output:</p>
+<div align=center>
+<p><img src="./figures/step3.png" alt="" /></p>
+</div>
+<p>Modify the Main.java as shown below. The change is to use more specific Exception class, <code>ArithmeticException</code> in this case.</p>
+<pre><code class="language-java">    try{
+        System.out.println(3/0);
+    } 
+    catch(ArithmeticException e){
+        System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+    }
+</code></pre>
+<p>If you run the program again you should get the following output:</p>
+<div align=center>
+<p><img src="./figures/step4.png" alt="" /></p>
+</div>
+<p>Let's try changing the Exception Class, to <code>NumberFormatExpression</code>.</p>
+<pre><code class="language-java">    try{
+            System.out.println(3/0);
+        } 
+        catch(NumberFormatException e){
+            System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+        }
+</code></pre>
+<details>
+<summary>What happens when you run it?</summary>
+<div align=center>
+<p><img src="./figures/step5.png" alt="" /></p>
+</div>
+<p>Because the expected Exception Class is wrong.</p>
+</details>
+<p>For fun, do the following, what happens and why?</p>
+<pre><code class="language-java">    try{
+            System.out.println(3/0);
+        } catch(ArithmeticException e){
+            System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+            System.out.println(3/0);
+        }
+</code></pre>
+<h2 id="step-2-catch-multiple-exceptions"><a class="header" href="#step-2-catch-multiple-exceptions">Step 2: Catch multiple exceptions</a></h2>
+<p>Reproduce the following code:</p>
+<pre><code class="language-java">package com.example.ExeceptionHandling;
+import javax.swing.JOptionPane;
+
+public class Main {
+    public static void main(String[] args) {
+        // Enter the following values and see what exception is caught.
+        //    0, 4, character, &lt;no value&gt;
+        try {
+            String value = JOptionPane.showInputDialog(null, &quot;Enter value:&quot;);
+            // Non-numeric value will result an NumberFormatException
+            int divisor = Integer.parseInt(value);
+            // If the divisor is 0, it will result in ArithmetricException
+            System.out.println(3/divisor);
+        } catch (NumberFormatException nfe){
+            System.out.println(&quot;Exception caught by this program: Enter numeric value.&quot;);
+        } catch (ArithmeticException exc) {
+            System.out.println(&quot;Exception caught by this program: Divisor was 0.&quot;);
+        }
+        System.out.println(&quot;After exception.&quot;);
+    }
+}
+</code></pre>
+<p>You'll notice that we are now importing a library on line 2 <code>import javax.swing.JOptionPane;</code> we now will be able to have a GUI.</p>
+<ul>
+<li>Build and run the program
+<ul>
+<li>Observe Input dialog box appears.</li>
+<li>Enter 0 in the field.</li>
+<li>Click OK.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step6.png" alt="" /></p>
+</div>
+<p>Notice that the exception was caught.</p>
+<div align=center>
+<p><img src="./figures/step7.png" alt="" /></p>
+</div>
+<ul>
+<li>Build and run the program
+<ul>
+<li>Observe Input dialog box appears.</li>
+<li>Enter 4 in the field.</li>
+<li>Click OK.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step8.png" alt="" /></p>
+</div>
+<p>Notice that the No exception was caught as it was not needed</p>
+<div align=center>
+<p><img src="./figures/step9.png" alt="" /></p>
+</div>
+<p>What happens when you enter a character or nothing instead? </p>
+<h1 id="step-3"><a class="header" href="#step-3">Step 3</a></h1>
+<p>Modify the program to look like the following code:</p>
+<blockquote>
+<p>This is a larger program 89 lines.</p>
+</blockquote>
+<pre><code class="language-java">package com.example.ExeceptionHandling;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+public class Main extends JFrame implements ActionListener {
+    private double[] a;
+    private JRadioButton divideByZeroButton,badCastButton,arrayBoundsButton, nullPointerButton,
+            negSqrtButton, overflowButton,noSuchFileButton, throwUnknownButton;
+
+    public Main() {
+        // Create a JPanel and GridLayout
+        JPanel p = new JPanel();
+        p.setLayout(new GridLayout(8, 1));
+
+        // Create buttons and add them to the panel
+        ButtonGroup g = new ButtonGroup();
+        divideByZeroButton = addRadioButton(&quot;Divide by zero&quot;, g, p);
+        badCastButton = addRadioButton(&quot;Bad cast&quot;, g, p);
+        arrayBoundsButton = addRadioButton(&quot;Array bounds&quot;, g, p);
+        nullPointerButton = addRadioButton(&quot;Null pointer&quot;, g, p);
+        negSqrtButton = addRadioButton(&quot;sqrt(-1)&quot;, g, p);
+        overflowButton = addRadioButton(&quot;Overflow&quot;, g, p);
+        noSuchFileButton = addRadioButton(&quot;No such file&quot;, g, p);
+        throwUnknownButton = addRadioButton(&quot;Throw unknown&quot;, g, p);
+        getContentPane().add(p);
+    }
+
+    private JRadioButton addRadioButton(String s, ButtonGroup g, JPanel p) {
+        JRadioButton button = new JRadioButton(s, false);
+        button.addActionListener(this);
+        g.add(button);
+        p.add(button);
+        return button;
+    }
+
+    // Trigger and catch various exceptions
+    public void actionPerformed(ActionEvent evt) {
+        try {
+            Object source = evt.getSource();
+            if (source == divideByZeroButton) {
+                a[1] = a[1] / a[1] - a[1];
+            } else if (source == badCastButton) {
+                Frame f = (Frame) evt.getSource();
+            } else if (source == arrayBoundsButton) {
+                a[1] = a[10];
+            } else if (source == nullPointerButton) {
+                Frame f = null;
+                f.setSize(200, 200);
+            } else if (source == negSqrtButton) {
+                a[1] = Math.sqrt(-1);
+            } else if (source == overflowButton) {
+                a[1] = 1000 * 1000 * 1000 * 1000;
+                int n = (int) a[1];
+            } else if (source == noSuchFileButton) {
+                FileInputStream is = new FileInputStream(&quot;Java Source and Support&quot;);
+            } else if (source == throwUnknownButton) {
+                throw new UnknownError();
+            }
+        } catch (RuntimeException e) {
+            System.out.println(&quot;Caught RuntimeException: &quot; + e);
+        } catch (Exception e) {
+            System.out.println(&quot;Caught Exception: &quot; + e);
+        }
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new Main();
+        frame.setType(Type.POPUP);
+        frame.setSize(200, 300);
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        frame.setVisible(true);
+    }
+}
+</code></pre>
+<ul>
+<li>Build and run the program.
+<ul>
+<li>Observe dialog box appears.
+<ul>
+<li>Click any of the radio buttons. </li>
+<li>Clicking a button will execute code fragement that generates an exception.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step10.png" alt="" /> 
+<img src="./figures/step12.png" alt="" />
+<img src="./figures/step11.png" alt="" /></p>
+</div>
+<ul>
+<li>For your own exercise, please do the following tasks</li>
+<li>Try other buttons and observe the exceptions that are caught</li>
+<li>Try to catch exceptions using more specific exception classes (over RuntimeException and Exception classes).</li>
+</ul>
 
                     </main>
 

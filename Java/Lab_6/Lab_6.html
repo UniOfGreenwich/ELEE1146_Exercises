@@ -170,7 +170,403 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="lab-6-icons-and-decision-making-controls-pt1"><a class="header" href="#lab-6-icons-and-decision-making-controls-pt1">Lab 6: Icons and Decision Making Controls Pt1</a></h1>
+                        <h1 id="lab-6-android-app-using-icons-and-decision-making-controls"><a class="header" href="#lab-6-android-app-using-icons-and-decision-making-controls">Lab 6 Android App using Icons and Decision Making Controls</a></h1>
+<h2 id="1-medical-calculator-app"><a class="header" href="#1-medical-calculator-app">1. Medical Calculator App</a></h2>
+<blockquote>
+<p>You will need to download the following picture folder -&gt; <a href="Lab_6_Pictures.zip">Lab_6_Picture.zip</a></p>
+</blockquote>
+<p>Start a new Android Studio Project and name it the Application Medical Calculator. Copy the file <code>ic_launcher_weight.png</code> from the Pictures folder you have downloaded above.</p>
+<p><strong>Customizing a Launcher Icon</strong></p>
+<ul>
+<li><strong>Step 1:</strong>
+<ul>
+<li>In the Android Project View, click the <code>activity_main.xml</code> file.</li>
+<li>Click File on the menu bar and then click New.  From the drop down list choose Image Asset. The Asset Studio dialog box opens to display the default launcher icons for the resolutions of various devices.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/iconResources.png" alt="" /></p>
+</div>
+<ul>
+<li><strong>Step 2:</strong>
+<ul>
+<li>In the Path: field (in the red square in the picture above) click on the folder icon to the very end of the field and navigate to the location of <code>ic_launcher_weight.png</code> file, and then select the file as shown on the picture below. Note that the path on your PC will be different from the path shown as this is where the file is saved on my laptop.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/iconSelectPath.png" alt="" /></p>
+</div>
+<ul>
+<li>Click the Ok button. The following dialog window will appear:</li>
+</ul>
+<div align=center>
+<p><img src="./figures/contentImageAsset.png" alt="" /></p>
+</div>
+<ul>
+<li>Click the Next button and on the following window that appears, click the Finish button to add the custom launcher icon. The custom icons will be displayed in <code>res/mipmap</code> folder. Expand the <code>res/mipmap</code> folder and check that the icon is there as expected. The result is shown below:</li>
+</ul>
+<div align=center>
+<p><img src="./figures/resultsMipMap.png" alt="" /></p>
+</div>
+<h2 id="displaying-the-action-bar-icon-using-code"><a class="header" href="#displaying-the-action-bar-icon-using-code">Displaying the Action Bar Icon Using Code</a></h2>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>In the Android project view, expand the java folder and the first sub-folder, and then double click on the <code>MainActivity</code> to open the code window.</li>
+<li>Click at the end of <code>setContentView</code> line, press Enter and type the following three statements to display the logo in the Action bar:</li>
+</ul>
+<pre><code class="language-java">getSupportActionBar().setDisplayShowHomeEnabled(true);
+getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
+getSupportActionBar().setDisplayShowTitleEnabled(true);
+getSupportActionBar().setDisplayUseLogoEnabled(true);
+</code></pre>
+<ul>
+<li>The result is shown below:</li>
+</ul>
+<pre><code class="language-java">
+package com.example.medicalcalculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    getSupportActionBar().setDisplayShowEnabled(true);
+    getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
+    getSupportActionBar().setDisplayShowTitleEnabled(true);
+    getSupportActionBar().setDisplayShowUseLogoEnabled(true);
+  }
+}
+</code></pre>
+<p>Run the app. The icon is displayed in the running emulator acting bar as shown below:</p>
+<div align=center>
+<p><img src="./figures/baseBuildOfMedicalApp.png" alt="" /></p>
+</div>
+<h2 id="string-table"><a class="header" href="#string-table">String Table</a></h2>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>In the Android project view, open the stirngs.xml file in the res\values folder.</li>
+<li>Click the Open editor link and then the Add Key (+ sign) button in the Translations Editor.</li>
+<li>Enter the following values shown in the table below:</li>
+</ul>
+<div align=center>
+<div class="table-wrapper"><table><thead><tr><th>String Name</th><th>String Value</th></tr></thead><tbody>
+<tr><td>txtTitle</td><td>Convert Patient Weight</td></tr>
+<tr><td>txtWeight</td><td>Weight of Patient</td></tr>
+<tr><td>radLbToKilo</td><td>Convert Pounds to</td></tr>
+<tr><td>radKiloToLb</td><td>Convert Kilograms to</td></tr>
+<tr><td>btnConvert</td><td>Convert Weight</td></tr>
+</tbody></table>
+</div></div>
+<ul>
+<li>Click the Save All button on the toolbar and then close the Translators Editor tab and the <code>strings.xml</code> tab. </li>
+</ul>
+<h2 id="creating-the-gui-in-the-emulator"><a class="header" href="#creating-the-gui-in-the-emulator">Creating the GUI in the Emulator</a></h2>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>With the <code>activity_main.xml</code> open and displaying the emulator screen, from the Widgets category of the Palette, drag and drop the <code>TextView</code> control onto the top part of the emulator.  Centre it (drag it till a dashed vertical line appears).</li>
+<li>Click the vertical bar next to the text attribute of the <code>TextView</code> control in the Attribute Pane and in the Pick a Resource dialog choose the <code>txtTitle</code> box. Press OK. </li>
+<li>Change the <code>textSize</code> property to <code>30sp</code>.</li>
+<li>Click the vertical bar next to the <code>textColor</code> property.  In the Pick a Resource dialog box that appears in the Color section scroll down in android and choose <code>holo_red_dark</code> colour to change the text colour to red to match the launcher icon.  Click the OK button.</li>
+<li>Right click on the <code>TextView</code> control, choose Center/ Horizontally to centre the control.</li>
+</ul>
+<p><strong>Step 2:</strong></p>
+<ul>
+<li>From the Text category in the Palette, drag and drop the <code>Number</code> control onto the emulator below the <code>TextView</code> control in the centre.</li>
+<li>Click on the vertical bar next to the <code>hint</code> property in the Property pane.</li>
+<li>Choose <code>txtWeight</code> from the Resources dialog and then click the OK button.</li>
+<li>Change the <code>textSize</code> property to <code>24sp</code>.</li>
+</ul>
+<p><strong>Step 3:</strong></p>
+<ul>
+<li>In the Buttons category of the Palette, select <code>RadioGroup</code>, and then drag and drop the <code>RadioGroup</code> control onto the user interface below the <code>Number</code> control. Expand the size of the <code>RadioGroup</code> to place radio buttons inside. </li>
+<li>Click the <code>RadioButton</code> control, drag and drop two radio buttons inside the <code>RadioGroup</code> control, and centre them using the dashed line. </li>
+<li>Click the vertical bar next to the <code>text</code> attribute of the first <code>RadioButton</code> control in the Attribute Pane and in the Pick a Resource dialog choose the <code>radKiloToLbbox</code>. Press OK. </li>
+<li>In the Attributes list for the first <code>RadioButton</code>, click on the checked property indicating that the first radio button is the default selection.</li>
+<li>Change the <code>textSize</code> property to <code>18sp</code> from the drop down list. </li>
+<li>Click the vertical bar next to the <code>text</code> attribute of the second <code>RadioButton</code> control in the Attribute Pane and in the Pick a Resource dialog choose the <code>radLbToKilo</code> box. Press OK. </li>
+<li>Change the <code>textSize</code> property to <code>18sp</code> from the drop-down list. </li>
+</ul>
+<p><strong>Step 4:</strong></p>
+<ul>
+<li>Drag the <code>Button</code> control from the Palette to the emulator below the <code>RadioGroup</code>. </li>
+<li>Click the vertical bar next to the <code>text</code> attribute of the <code>Button</code> control in the Attribute Pane and in the Pick a Resource dialog choose the <code>btnConvert</code> box. Press OK.</li>
+<li>Change the <code>textSize</code> property to <code>24sp</code> form the drop-down list.</li>
+<li>Click the vertical bar next to the <code>textColor</code> property.  In the Pick a Resource dialog box that appears in the <code>Color</code> section scroll down in android and choose <code>holo_red_dark</code> colour to change the text colour to red to match the launcher icon.  Click the OK button.</li>
+</ul>
+<p><strong>Step 5:</strong></p>
+<ul>
+<li>From the Common category in the Palette, drag another <code>TextView</code> control to the emulator below the <code>Button</code>.</li>
+<li>In the <code>text</code> attribute box delete <code>TextView</code>. The <code>text</code> attribute is now empty and the <code>TextView</code> component you just dragged to the emulator has no label.</li>
+<li>Change the <code>textSize</code> property to <code>24sp</code>.</li>
+<li>Click the vertical bar next to the <code>textColor</code> property.  In the Pick a Resource dialog box that appears in the <code>Color</code> section scroll down in android and choose <code>holo_red_dark</code> colour to change the text colour to red to match the launcher icon.  Click the OK button.</li>
+<li>Click Save All button on the Standard toolbar.</li>
+</ul>
+<p>Now Apply Constraints to the layout using the Infer Constraints button above the emulator and run the app in the emulator to see if you have correctly placed all the controls.  The result should look similar to this:</p>
+<div align=center>
+<p><img src="./figures/step5.png" alt="" /></p>
+</div>
+<h2 id="coding-a-radio-button-control"><a class="header" href="#coding-a-radio-button-control">Coding a Radio Button Control</a></h2>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>Click on the <code>MainActivity.java</code> tab.</li>
+<li>Click at the end of line (just after <code>{</code>)</li>
+</ul>
+<pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+</code></pre>
+<p>and then press Tab to indent the line.</p>
+<ul>
+<li>To initialize the conversion rate value of 2.2., type:</li>
+</ul>
+<pre><code class="language-java">double conversionRate = 2.2;
+</code></pre>
+<p>and press Enter.</p>
+<ul>
+<li>To initialize the weightEntered variable and the convertedWeight, type:</li>
+</ul>
+<pre><code class="language-java">double weightEntered;
+double coinvertedWeight;
+</code></pre>
+<p>and press Enter.</p>
+<p><strong>Step 2:</strong></p>
+<ul>
+<li>Click at the end of the line</li>
+</ul>
+<pre><code class="language-java">getSupportActionBar().setDisplayUseLogoEnabled(true);
+</code></pre>
+<p>and press Enter.</p>
+<ul>
+<li>to instantiate and reference the <code>EditText</code> class:</li>
+</ul>
+<pre><code class="language-java">final EditText weight = findViewById(R.id.editTextNumber); 
+</code></pre>
+<p>Press Enter.</p>
+<ul>
+<li>To instantiate and reference the two radio buttons, type:</li>
+</ul>
+<pre><code class="language-java">final RadioButton kiloToLb = findViewById(R.id.radioButton);
+final RadioButton lbToKilo = findViewById(R.id.radioButton2);
+</code></pre>
+<ul>
+<li>Save your work.</li>
+</ul>
+<h2 id="coding-the-button-control"><a class="header" href="#coding-the-button-control">Coding the Button Control</a></h2>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>After the two lines of code referring to the radio buttons, type:</li>
+</ul>
+<pre><code class="language-java">final TextView result = findViewById(R.id.textView2);
+</code></pre>
+<p>and press Enter.</p>
+<ul>
+<li>To code the button, type:</li>
+</ul>
+<pre><code class="language-java">Button convert = findViewById(R.id.button); 
+</code></pre>
+<p>and press Enter.</p>
+<ul>
+<li>Your <code>MainActivity.java</code> class should look like this:</li>
+</ul>
+<pre><code class="language-java">public classs MainActivity extends AppCompatActivity {
+
+  double conversionRate = 2.2;
+  double weightEntered;
+  double convertedWeight;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    getSupportActionBar().setDisplayShowEnabled(true);
+    getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
+    getSupportActionBar().setDisplayShowTitleEnabled(true);
+    getSupportActionBar().setDisplayShowUseLogoEnabled(true);
+    final EditText weight = findViewById(R.id.editTextNumer);
+    final RadioButton kiloToLb = findViewById(R.id.radiobutton);
+    final RadioButton lbToKil = findViewById(R.id.radiobutton2);
+    final TextView result = findViewById(R.id.textView2);
+    final Button convert = findViewById(R.id.button);
+  }
+}
+
+</code></pre>
+<ul>
+<li>To code the <code>Button</code> listener, type <code>convert.setOnClickListener()</code>.</li>
+<li>Inside the brackets, type <code>new On</code> and double click the first choice, which is <code>View</code>.<code>OnClickListener{ … }</code>. </li>
+</ul>
+<h2 id="coding-the-button-event"><a class="header" href="#coding-the-button-event">Coding the Button Event</a></h2>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>Inside the OnClick method stub of the MainActivity.java code, type to convert the weight entered to a Double data type and press Enter.</li>
+</ul>
+<pre><code class="language-java">weightEntered = Double.parseDouble(weight.getText().toString());
+</code></pre>
+<ul>
+<li>To create a decimal layout that changes the weight to a decimal rounded to the nearest tenth for use in the result later in the code, type: </li>
+</ul>
+<pre><code class="language-java">DecimalFormat tenth = new DecimalFormat(“#.#”);
+</code></pre>
+<blockquote>
+<p>There are two Decimal formats to choose from in the autocomplete drop down list.  Make sure if you do choose from the drop-down list to select <code>DecimalFormat (java.text)</code> and <strong>NOT</strong> <code>DecimalFormat(android.icu.text)</code></p>
+</blockquote>
+<h2 id="coding-the-nested-if-statements"><a class="header" href="#coding-the-nested-if-statements">Coding the Nested <code>If</code> Statements</a></h2>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>After the <code>DecimalFormat</code> line of code, to determine if the first <code>RadioButton</code> control is selected, insert a new line and type:</li>
+</ul>
+<pre><code class="language-java">if (kiloToLb.isChecked()) {
+</code></pre>
+<p>And then press Enter.  Java automatically adds the closing brace as shown below:</p>
+<pre><code class="language-java">  convert.setOnClickListener(new View.OnClickListener()){
+    @Override
+    public void onClick(View v){
+      weightEntered=Double.parseDouble(weight.getText().toString());
+      DecimalFormat tenth = new DecimalFormat(&quot;#.#&quot;);
+
+      if (kiloToLb.isChecked()){
+
+      }
+    }
+  });
+}
+
+</code></pre>
+<p><strong>Step 2:</strong></p>
+<ul>
+<li>Within the first if statement, braces create a nested <code>if/else</code> statement that determines if the weight entered for kilograms is less than or equal to 255.  Type:</li>
+</ul>
+<pre><code class="language-java">if (weightEntered &lt;= 255) { 
+</code></pre>
+<p>And press Enter.  Java automatically adds the closing brace.</p>
+<p>On line 41, after the closing brace, type else <code>{</code> and press Enter.  Java automatically adds the closing brace.  See the code below:</p>
+<pre><code class="language-java">  convert.setOnClickListener(new View.OnClickListener()){
+    @Override
+    public void onClick(View v){
+      weightEntered=Double.parseDouble(weight.getText().toString());
+      DecimalFormat tenth = new DecimalFormat(&quot;#.#&quot;);
+
+      if (kiloToLb.isChecked()){
+        if (weightEntered &lt;=  255){
+
+        }else{
+
+        }
+      }
+    }
+  });
+}
+</code></pre>
+<p><strong>Step 3:</strong></p>
+<ul>
+<li>After the pounds variable is validated, the weight must be converted. To divide the weight by the conversion rate of 2.2, inside the nested if statement (line 41) after the weightEntered <code>&lt;= 255 {</code> line, type:</li>
+</ul>
+<pre><code class="language-java">convertedWeight = weightEntered  * conversionRate;
+</code></pre>
+<p>and press Enter.</p>
+<ul>
+<li>To display the result of the equation rounded to one place past the decimal point, type:</li>
+</ul>
+<pre><code class="language-java">result.setText(tenth.foramt(convertedWeight) + “ pounds”);
+</code></pre>
+<ul>
+<li>If the weight is not in valid range, a toast message requesting that the user enter a valid weight is displayed briefly. Click the line after the else statement and type:</li>
+</ul>
+<pre><code class="language-java">Toast.makeText(MainActivity.this, “Kilos must be less than 255”, Toast.LENGHT_LONG).show();
+</code></pre>
+<p>The result is shown in the code below: </p>
+<pre><code class="language-java">  convert.setOnClickListener(new View.OnClickListener()){
+    @Override
+    public void onClick(View v){
+      weightEntered=Double.parseDouble(weight.getText().toString());
+      DecimalFormat tenth = new DecimalFormat(&quot;#.#&quot;);
+
+      if (kiloToLb.isChecked()){
+        if (weightEntered &lt;=  255){
+            result.setText(tenth.foramt(convertedWeight) + “ pounds”);
+        }else{
+            Toast.makeText(MainActivity.this, “Kilos must be less than 255”, Toast.LENGHT_LONG).show();
+        }
+      }
+    }
+  });
+}
+</code></pre>
+<p><strong>Step 4:</strong></p>
+<ul>
+<li>For when the user selects the <code>Convert Pounds to Kilograms RadioButton</code> control, type the following lines of code starting after the closing brace in line 47 (the second closing <code>}</code> after <code>else</code>) and press Enter after each line, as shown on the figure below:</li>
+</ul>
+<pre><code class="language-java">if(lbToKilo.isChecked()) {
+    if (weightEntered &lt;= 500) {
+        convertedWeight = weightEntered / conversionRate;
+        result.setText(tenth.format(convertedWeight) + &quot; kilograms&quot;);
+    } else {
+        Toast.makeText(MainActivity.this, &quot;pounds must be less then 500&quot;, Toast.LENGTH_LONG).show();
+    }
+}
+
+</code></pre>
+<p>The result is shown below:</p>
+<pre><code class="language-java">package com.example.medicalcalculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+
+  @Override
+    double conversionRate = 2.2;
+  double weightEntered;
+  double convertedWeight;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    getSupportActionBar().setDisplayShowEnabled(true);
+    getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
+    getSupportActionBar().setDisplayShowTitleEnabled(true);
+    getSupportActionBar().setDisplayShowUseLogoEnabled(true);
+    final EditText weight = findViewById(R.id.editTextNumer);
+    final RadioButton kiloToLb = findViewById(R.id.radiobutton);
+    final RadioButton lbToKil = findViewById(R.id.radiobutton2);
+    final TextView result = findViewById(R.id.textView2);
+    final Button convert = findViewById(R.id.button);
+
+    convert.setOnClickListener(new View.OnClickListener()){
+        @Override
+        public void onClick(View v){
+            weightEntered=Double.parseDouble(weight.getText().toString());
+            DecimalFormat tenth = new DecimalFormat(&quot;#.#&quot;);
+
+            if (kiloToLb.isChecked()){
+                if (weightEntered &lt;=  255){
+                    result.setText(tenth.foramt(convertedWeight) + “ pounds”);
+                }else{
+                    Toast.makeText(MainActivity.this, “Kilos must be less than 255”, Toast.LENGHT_LONG).show();
+                }i
+            }
+            else if (lbToKilo.isChecked()){
+                if (weightEntered &lt;=  500){
+                    result.setText(tenth.foramt(convertedWeight) + “ Kilograms”);
+                }else{
+                    Toast.makeText(MainActivity.this, “Kilos must be less than 500”, Toast.LENGHT_LONG).show();
+                }
+            }
+    });
+  }
+}
+</code></pre>
+<p>Now use Run ‘app’ button (or SHIFT + F10) to run the app.  When you run the program, make sure you test it with correct data and then with more than 500 pounds and more than 225 kilos in order to see the toast message appear. Two cases of the app running with correct data are shown below. In the first case - the first radio button was clicked and in the second case – the second radio button is clicked by the user.</p>
+<div align=center>
+<p><img src="./figures/finishedMedicalApp.png" alt="" /></p>
+</div>
 
                     </main>
 

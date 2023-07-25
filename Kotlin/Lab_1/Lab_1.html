@@ -278,6 +278,374 @@
 </li>
 </ol>
 </li>
+<li>
+<p>Run and you should see the following output</p>
+<div style="width:60%; margin: 0px auto;">
+<p><img src="./figures/helloworld_output_2.png" alt="center" /></p>
+</div>
+</li>
+<li>
+<p>Notice the green underwave underneath the <code>println(&quot;Hello World! &quot; + name)</code></p>
+<div style="width:60%; margin: 0px auto;">
+<p><img src="./figures/literalError.png" alt="center" /></p>
+</div>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note: Code Inspections</strong></p>
+<blockquote>
+<ul>
+<li>Green = typo, literals, weak warnings</li>
+<li>Red = Error (will not compile)</li>
+</ul>
+<p>You can find more if you go to File&gt;Settings&gt;Editor&gt;Color Scheme &gt; General &gt; Errors and Warnings</p>
+</blockquote>
+</blockquote>
+<ol start="10">
+<li>This underwave can be corrected two ways, either hover over and follow the quick key short cut 'Alt+Shift+Enter'. Or Manually fix it by reproducing the output below.</li>
+</ol>
+<div style="width:100%; margin: 0px auto;">
+<p><img src="./figures/suggestions.png" alt="center" /></p>
+</div>
+<ol start="11">
+<li>You will see the that <code>println(&quot;Hello World! &quot; + name)</code> has been refactored to:</li>
+</ol>
+<div style="width:45%; margin: 0px auto;">
+<p><img src="./figures/stringTemplate.png" alt="center" /></p>
+</div>
+<blockquote>
+<p><strong>Notes</strong></p>
+<blockquote>
+<ul>
+<li>String literals may contain <strong>template expressions</strong> – pieces of code that are evaluated and whose results are concatenated into the string. </li>
+<li>A template expression starts with a dollar sign <code>$</code> and consists of either a name</li>
+<li>or an expression in curly braces:</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code class="language-kt">val s = &quot;Hello World&quot;
+println(&quot;$s.length is ${s.length}&quot;) // Prints &quot;Hello World.length is 11&quot;
+</code></pre>
+<ol start="12">
+<li>
+<p>Run the program again, do you get the same ouput? </p>
+</li>
+<li>
+<p>Modify further with <code>print()</code> function</p>
+</li>
+</ol>
+<div style="width:45%; margin: 0px auto;">
+<p><img src="./figures/print_and_println.png" alt="center" /></p>
+</div>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<ul>
+<li><code>print()</code> by default does not terminate with a  new line (<code>\n</code>) line character, unlike <code>println()</code></li>
+<li>however, you can tell it to, by adding a <code>\n</code> to the end of the message inbetweent the two brackets.</li>
+</ul>
+</blockquote>
+</blockquote>
+<ol start="13">
+<li>Run it and see for yourself, then remove the <code>\n</code> from the end of <code>print(&quot;Hello me\n)</code>, is it the same?</li>
+</ol>
+<hr />
+<h2 id="2-mutable-and-immutable"><a class="header" href="#2-mutable-and-immutable">2 Mutable and immutable</a></h2>
+<ol>
+<li>
+<p><code>var</code> is like general variable and it's known as a <strong>mutable</strong> variable in kotlin and can be assigned multiple times.</p>
+</li>
+<li>
+<p><code>val</code> is like final variable and it's known as <strong>immutable</strong> in kotlin and can be initialised only a single time.</p>
+</li>
+</ol>
+<blockquote>
+<blockquote>
+<p><strong>Note</strong></p>
+<ul>
+<li>The term mutable comes from mutation, as is to mutate, to change. In computing this means <strong>Read</strong> &amp; <strong>Write</strong> </li>
+<li>Therefore immutable is something that can not mutate nor change. In comupting this means <strong>Read only</strong></li>
+</ul>
+</blockquote>
+</blockquote>
+<ol start="3">
+<li>Since you started we have been using <code>var</code> to define the variable <code>name</code>, this is technically incorrect, because we never change the value after declaration.</li>
+<li>Let's change this to <code>val</code> to make our code more <strong>clean</strong>.</li>
+<li>Reproduce the following:</li>
+</ol>
+<pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
+
+    val a: Int = 4
+    val b: Int = 4
+    var c: Int = 0
+
+    print(&quot;$c = $a + $b&quot;)
+
+}
+</code></pre>
+<ol>
+<li>
+<p>Before running to code, predict what the outcome will be? Now run it, does it match your prediction?</p>
+<details>
+  <summary>Answer</summary>
+<p><code>0 = 4 + 4</code></p>
+<ul>
+<li>This is because no mathemcatical operation is performed inside a String concatenation</li>
+</ul>
+</details>
+</li>
+<li>
+<p>Modify the above code so that it looks like this:</p>
+</li>
+</ol>
+<pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
+
+   val a: Int = 4
+   val b: Int = 4
+   var c: Int = 0
+
+   c = a + b
+
+   print(&quot;$c = $a + $b&quot;)i
+}
+</code></pre>
+<ol start="3">
+<li>
+<p>Before running to code, predict what the outcome will be? Now run it, does it match your prediction?</p>
+<details>
+  <summary>Answer</summary>
+<p><code>8 = 4 + 4</code></p>
+<ul>
+<li>This is because the mathemcatical operation is performed outside a String concatenation, and the result of <code>a + b</code> is saved to <code>c</code></li>
+</ul>
+</details>
+</li>
+<li>
+<p>Now let's change the how <code>c</code> is declared, modify <code>c</code> so that <code>var</code> is now <code>val</code>:</p>
+<pre><code class="language-kt">val c: Int = 0
+</code></pre>
+</li>
+<li>
+<p>Before running to code, predict what the outcome will be? Now run it, does it match your prediction?</p>
+<details>
+   <summary>Answer</summary>
+<ul>
+<li>You can't, notice the red underwave, this is an error, because <code>c</code> is <strong>immutable</strong> now. </li>
+<li>it is important to read the <strong>Problems</strong> tab at the bottom of the IDE.
+<img src="./figures/problesm_tab.png" alt="" /></li>
+<li>Change it back to <code>var</code>.</li>
+<li>We are not going to worry about the warnings for now, will come back to that later.</li>
+</ul>
+</details>
+</li>
+</ol>
+<h2 id="3-data-types"><a class="header" href="#3-data-types">3. Data types</a></h2>
+<ol>
+<li>Remember from the lecture that data types are as follows: </li>
+</ol>
+<ul>
+<li><strong>Numbers</strong> (six built-in types)
+<ul>
+<li>Byte [ \(-127\) to \(128\) ]</li>
+<li>Short [ \(-32768\) to \(32767\) ]</li>
+<li>Int [ \(-2^{31}\) to \(2^{31}-1\) ]</li>
+<li>Long [ \(-2^{63}\) to \(2^{63}-1\) ]</li>
+<li>Float [ \(2^{32}\) ]</li>
+<li>Double [ \(2^{64}\) ] </li>
+</ul>
+</li>
+<li><strong>Characters</strong>
+<ul>
+<li>Chars [ \(2^{16}\) ]
+<ul>
+<li>because unicode instead of just ASCII</li>
+<li><code>\u0000</code>,<code>\uFFFF</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Booleans</strong>
+<ul>
+<li>true</li>
+<li>false</li>
+<li>All though 1 bit (1,0), it is technically a Byte due.</li>
+</ul>
+</li>
+<li><strong>Arrays</strong>
+<ul>
+<li>get</li>
+<li>set</li>
+<li>size</li>
+<li>etc...</li>
+</ul>
+</li>
+<li><strong>Strings</strong>
+<ul>
+<li>A class, not techincally a data type</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p>Lets check the maximum and miniumum values avaialable to you on your machine or VM</p>
+<ol>
+<li>Start your program off as follows and run: </li>
+</ol>
+<pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
+
+   val b1: Byte = Byte.MIN_VALUE
+   val b2: Byte = Byte.MAX_VALUE
+   println(&quot;Smallest signed byte value: &quot; +b1)
+   println(&quot;Largest signed byte value: &quot; +b2)
+
+   val ub1: UByte = UByte.MIN_VALUE
+   val ub2: UByte = UByte.MAX_VALUE
+   println(&quot;Smallest unsigned byte value: &quot; +ub1)
+   println(&quot;Largest unsigned byte value: &quot; +ub2)
+
+   println(&quot;--------------------------------------------------&quot;)
+}
+
+</code></pre>
+<details>
+<summary>Output</summary>
+<div style="width:60%; margin: 0px auto;">
+<img src="./figures/byte_size.png" width="500" height="180">
+</div>
+</details> 
+<ol start="2">
+<li>Now repeat for each data type, remembering to inculde signed and unsigned variants:
+- <code>Short</code>
+- <code>Char</code>
+- <code>Int</code>
+- <code>Long</code>
+- <code>Float</code>
+- <code>Double</code></li>
+</ol>
+<blockquote>
+<p><strong>Notes</strong></p>
+<blockquote>
+<ul>
+<li><code>Char</code> will need to be cast as an <code>Int</code> </li>
+<li><code>Float</code> and <code>Double</code> can only be signed</li>
+</ul>
+</blockquote>
+</blockquote>
+<details>
+   <summary>Whole code, do it yourself first</summary>
+<pre><code class="language-kt">   fun main(args: Array&lt;String&gt;) {
+
+   val b1: Byte = Byte.MIN_VALUE
+   val b2: Byte = Byte.MAX_VALUE
+   println(&quot;Smallest signed byte value: &quot; +b1)
+   println(&quot;Largest signed byte value: &quot; +b2)
+
+   val ub1: UByte = UByte.MIN_VALUE
+   val ub2: UByte = UByte.MAX_VALUE
+   println(&quot;Smallest unsigned byte value: &quot; +ub1)
+   println(&quot;Largest unsigned byte value: &quot; +ub2)
+
+   println(&quot;--------------------------------------------------&quot;)
+
+   val s1: Short = Short.MIN_VALUE
+   val s2: Short = Short.MAX_VALUE
+   println(&quot;Smallest signed short value: &quot; +s1)
+   println(&quot;Largest signed short value: &quot; +s2)
+
+   val us1: UShort = UShort.MIN_VALUE
+   val us2: UShort = UShort.MAX_VALUE
+   println(&quot;Smallest unsigned short value: &quot; +us1)
+   println(&quot;Largest unsigned short value: &quot; +us2)
+
+   println(&quot;--------------------------------------------------&quot;)
+
+   val c1: Int = Char.MIN_VALUE.code
+   val c2: Int = Char.MAX_VALUE.code
+   println(&quot;Smallest Char value: &quot; + c1)
+   println(&quot;Largest Char value: &quot; + c2)
+
+   println(&quot;--------------------------------------------------&quot;)
+
+   val i1: Int = Int.MIN_VALUE
+   val i2: Int = Int.MAX_VALUE
+   println(&quot;Smallest signed integer value: &quot; +i1)
+   println(&quot;Largest signed integer value: &quot; +i2)
+
+   val ui1: UInt = UInt.MIN_VALUE
+   val ui2: UInt = UInt.MAX_VALUE
+   println(&quot;Smallest unsigned integer value: &quot; +ui1)
+   println(&quot;Largest unsigned integer value: &quot; +ui2)
+
+   println(&quot;--------------------------------------------------&quot;)
+
+   val l1: Long = Long.MIN_VALUE
+   val l2: Long = Long.MAX_VALUE
+   println(&quot;Smallest signed long integer value: &quot; +l1)
+   println(&quot;Largest signed long integer value: &quot; +l2)
+
+   val ul1: ULong = ULong.MIN_VALUE
+   val ul2: ULong = ULong.MAX_VALUE
+   println(&quot;Smallest unsigned long integer value: &quot; +ul1)
+   println(&quot;Largest unsigned long integer value: &quot; +ul2)
+
+   println(&quot;--------------------------------------------------&quot;)
+
+   val F1: Float = Float.MIN_VALUE
+   val F2: Float = Float.MAX_VALUE
+   println(&quot;Smallest Float value: &quot; +F1)
+   println(&quot;Largest Float value: &quot; + F2)
+
+   val D1: Double = Double.MIN_VALUE
+   val D2: Double = Double.MAX_VALUE
+   println(&quot;Smallest Double value: &quot; + D1)
+   println(&quot;Largest Double value: &quot; + D2)
+}
+
+</code></pre>
+</details>
+<ol start="3">
+<li>
+<p>When done, you should get the same output as below:</p>
+<details>
+<summary>Output</summary>
+<pre><code>Smallest signed byte value: -128
+Largest signed byte value: 127
+Smallest unsigned byte value: 0
+Largest unsigned byte value: 255
+--------------------------------------------------
+Smallest signed short value: -32768
+Largest signed short value: 32767
+Smallest unsigned short value: 0
+Largest unsigned short value: 65535
+--------------------------------------------------
+Smallest Char value: 0
+Largest Char value: 65535
+--------------------------------------------------
+Smallest signed integer value: -2147483648
+Largest signed integer value: 2147483647
+Smallest unsigned integer value: 0
+Largest unsigned integer value: 4294967295
+--------------------------------------------------
+Smallest signed long integer value: -9223372036854775808
+Largest signed long integer value: 9223372036854775807
+Smallest unsigned long integer value: 0
+Largest unsigned long integer value: 18446744073709551615
+--------------------------------------------------
+Smallest Float value: 1.4E-45
+Largest Float value: 3.4028235E38
+Smallest Double value: 4.9E-324
+Largest Double value: 1.7976931348623157E308
+
+Process finished with exit code 0
+
+</code></pre>
+</details>
+</li>
+</ol>
+</li>
+<li>
+<p>Arrays</p>
+</li>
 </ol>
 
                     </main>
