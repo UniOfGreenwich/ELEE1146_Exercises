@@ -1,8 +1,8 @@
-# Assignment Part 2
+# Assignment 
 
-**Submission Date: 28th March 2023 @ 1100**
+**Submission Date: 18th March 2024 @ 2000**
 
-**Viva: 04th April 2023 @ 0900-1000**
+**Viva:  25th March 2024 @ 1000-1100, 1st April 2024 @ 1000-1100**
 
 **Weighting: 70%**
 
@@ -11,7 +11,7 @@ The main aim of this assignment is to develop and test student’s understanding
 
 ## Coursework Submission Link
 
-- [Moodle submission link](https://moodlecurrent.gre.ac.uk/mod/assign/view.php?id=2139847)
+- [Moodle submission link](https://moodlecurrent.gre.ac.uk/mod/turnitintooltwo/view.php?id=2518743)
 
 ## Learning Outcomes
 
@@ -22,22 +22,23 @@ On completion of the assignment, the student will develop:
 
 ## The task
 
-Mobile devices such as phones and tablets can be used for much more than just gaming, social media and communication.
-These devices come with a variety of sensors that can be used to sense the environment they are placed in and also the devices current condition.
+Mobile devices such as phones and tablets can be used for much more than just gaming, social media and communication. These devices come with a variety of sensors that can be used to sense the environment they are placed in and also the device's current condition. 
 
-Using the phones/tablets in built-in sensors you are to create an app to measure the environment the phone is placed in, these sensor reading will be logged in an appropriate data/file storage that can be downloaded and cleared. 
+Using the phones/tablets in built-in sensors you are to create an app to measure the environment the phone is placed in, these sensors reading will be logged in an appropriate data/file storage that can be downloaded and cleared. 
 
-The app must give the user the option of changing the sampling rates of various sensors with in the limit of the SDK provided by the chosen API and device model. Aditionally, the user should be able to change units of measurement. 
+The app must give the user the option of changing the sampling rates of various sensors within the limit of the SDK provided by the chosen API and device model. Additionally, the user should be able to change units of measurement. 
 
-A simple guide/instructions should be placed with in the app to help the user navigate and use the device. 
+A simple guide/instruction should be placed within the app to help the user navigate and use the device. 
+
 
 **Note: A minimal of 2 sensor readings can be programmed in each sensor group, in order pass, with specified funcitionality**
 
 ### Submission
-1. Submit applications .apk file, 
-2. A PDF with screens shots of each activity with captions (must match what is shown in viva)
-3. Simple, presentable.
-4. Ensure a logical flow. 
+1. Submit the project as a zip 
+2. Applications .apk file, 
+3. A PDF with screens shots of each activity with captions and descriptive information highlighting important concepts (must match what is shown in viva)
+   1. Professional and presentable.
+   2. Ensure a logical flow. 
 
 ### Deliverables for App
 
@@ -78,13 +79,27 @@ A simple guide/instructions should be placed with in the app to help the user na
 This phase of the assignment contributes **70%** of the total coursework mark. 
 
 The marks are distributed as follows:
+
 - Interface Design							10%
+
 - User guide					 		10%
+
 - Implementation							65%
-  - Splash screen
-  - Hub activity
-  - Sensor grouping Activities
-  - Choice of sampling rates
-  - Option to record sensor data				
+  
+  - Splash screen [5%]
+  
+  - Hub activity [20%]
+  
+  - Sensor grouping Activities[20%]
+  
+  - Choice of sampling rates [20%]
+  
+  - Option to record sensor data [5%]
+  	
+  - Permissions [5%]
+  
+  - Standard of Code [5%]	
+  
 - Viva								10%
+
 - Report structure and presentation 5% 
