@@ -476,6 +476,7 @@ println(&quot;$s.length is ${s.length}&quot;) // Prints &quot;Hello World.length
 <li>get</li>
 <li>set</li>
 <li>size</li>
+<li>length</li>
 <li>etc...</li>
 </ul>
 </li>
@@ -515,12 +516,10 @@ println(&quot;$s.length is ${s.length}&quot;) // Prints &quot;Hello World.length
 </details> 
 <ol start="2">
 <li>Now repeat for each data type, remembering to inculde signed and unsigned variants:
-- <code>Short</code>
-- <code>Char</code>
-- <code>Int</code>
-- <code>Long</code>
-- <code>Float</code>
-- <code>Double</code></li>
+<ul>
+<li><code>Short</code>,<code>Char</code>,<code>Int</code>,<code>Long</code>,<code>Float</code> and <code>Double</code></li>
+</ul>
+</li>
 </ol>
 <blockquote>
 <p><strong>Notes</strong></p>
@@ -528,6 +527,8 @@ println(&quot;$s.length is ${s.length}&quot;) // Prints &quot;Hello World.length
 <ul>
 <li><code>Char</code> will need to be cast as an <code>Int</code> </li>
 <li><code>Float</code> and <code>Double</code> can only be signed</li>
+<li>eg.
+<code>val someVal: dataTypeYouWant = originalDataType</code></li>
 </ul>
 </blockquote>
 </blockquote>
@@ -647,6 +648,23 @@ Process finished with exit code 0
 <p>Arrays</p>
 </li>
 </ol>
+<ul>
+<li>You can have an array of any data type </li>
+<li>They are stored in contiguous memory locations.</li>
+<li>They can be accessed programmatically through their indexes (array[1], array[0], etc.)</li>
+<li>They are mutable (<code>val</code>).</li>
+<li>Their size is fixed.</li>
+</ul>
+<blockquote>
+<p><strong>Notes:</strong></p>
+<blockquote>
+<p><code>val num = arrayOf(1, 2, 3, 4)   //implicit type declaration</code>
+<code>val num = arrayOf&lt;Int&gt;(1, 2, 3) //explicit type declaration</code>
+<code>val sentence = String: &quot;This is a sentence.&quot; // Strings are an array of characters</code></p>
+</blockquote>
+</blockquote>
+<p>Reproduce the following:
+1. </p>
 
                     </main>
 
