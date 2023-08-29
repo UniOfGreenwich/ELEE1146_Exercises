@@ -249,6 +249,7 @@ fun main(args: Array<String>) {
   - get
   - set
   - size
+  - length
   - etc...
 - **Strings**
   - A class, not techincally a data type
@@ -285,15 +286,13 @@ fun main(args: Array<String>) {
    </details> 
 
       2. Now repeat for each data type, remembering to inculde signed and unsigned variants:
-       - `Short`
-       - `Char`
-       - `Int`
-       - `Long`
-       - `Float`
-       - `Double`
+         - `Short`,`Char`,`Int`,`Long`,`Float` and `Double`
+  
       > **Notes**
       >> - `Char` will need to be cast as an `Int` 
       >> - `Float` and `Double` can only be signed
+      >> - eg.
+      >> `val someVal: dataTypeYouWant = originalDataType`
       
       <details>
       <summary>Whole code, do it yourself first</summary>
@@ -411,4 +410,21 @@ fun main(args: Array<String>) {
          </details>
 
 3. Arrays
- 
+- You can have an array of any data type 
+- They are stored in contiguous memory locations.
+- They can be accessed programmatically through their indexes (array[1], array[0], etc.)
+- They are mutable (`val`).
+- Their size is fixed.
+
+>**Notes:**
+>> 
+>>`val num = arrayOf(1, 2, 3, 4)   //implicit type declaration`
+>>`val num = arrayOf<Int>(1, 2, 3) //explicit type declaration`
+>>`val sentence = String: "This is a sentence." // Strings are an array of characters`
+
+
+Reproduce the following:
+   1. 
+
+
+
