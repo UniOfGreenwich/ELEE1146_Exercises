@@ -1,6 +1,6 @@
 # Assignment Part 1
 
-**Submission Date: 6th December 2022 @ 1400**
+**Submission Date: 11th December 2023 @ 2000**
 
 ## Brief
 The main aim of this assignment is to develop and test student’s understanding and practical skills in mobile apps design. 
@@ -49,7 +49,7 @@ The main body of the report should have the following sections:
 - two sections with appropriate titles for task 1 and task 2,
 -  a conclusion 
 -  and a list of references. 
-   -  The list of references should be formatted following the Harvard referencing system [http://www.citethisforme.com/harvard-referencing](http://www.citethisforme.com/harvard-referencing)). The appendix should include the code for all XML files, clearly marked with their names.
+   -  The list of references should be formatted following the Harvard referencing system [http://www.citethisforme.com/harvard-referencing](http://www.citethisforme.com/harvard-referencing). The appendix should include the code for all XML files, clearly marked with their names.
 
 ## Marking Scheme
 This first part of the assignment contributes 30% of the total coursework mark. 
