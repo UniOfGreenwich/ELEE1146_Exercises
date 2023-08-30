@@ -285,12 +285,12 @@ fun main(args: Array<String>) {
    </details> 
 
       2. Now repeat for each data type, remembering to inculde signed and unsigned variants:
-       - `Short`
-       - `Char`
-       - `Int`
-       - `Long`
-       - `Float`
-       - `Double`
+          - `Short`
+          - `Char`
+          - `Int`
+          - `Long`
+          - `Float`
+          - `Double`
       > **Notes**
       >> - `Char` will need to be cast as an `Int` 
       >> - `Float` and `Double` can only be signed
