@@ -41,7 +41,7 @@
    > **NOTE** `.kt` is the extension for Kotlin files
    1. Write the following: 
    
-    ```kt=
+    ```kt
     fun main(args: Array<String>) {
         
         println("Hello World!")
@@ -106,7 +106,7 @@
   >>
   >> You can find more if you go to File>Settings>Editor>Color Scheme > General > Errors and Warnings
 
-10. This underwave can be corrected two ways, either hover over and follow the quick key short cut 'Alt+Shift+Enter'. Or Manually fix it by reproducing the output below.
+1.  This underwave can be corrected two ways, either hover over and follow the quick key short cut 'Alt+Shift+Enter'. Or Manually fix it by reproducing the output below.
      
    <div style="width:100%; margin: 0px auto;">
    
@@ -114,7 +114,7 @@
 
    </div>
 
-11. You will see the that `println("Hello World! " + name)` has been refactored to:
+2.  You will see the that `println("Hello World! " + name)` has been refactored to:
 
 <div style="width:45%; margin: 0px auto;">
 
@@ -422,13 +422,95 @@ fun main(args: Array<String>) {
 
 >**Notes:**
 >> 
->>`val num = arrayOf(1, 2, 3, 4)   //implicit type declaration`
->>`val num = arrayOf<Int>(1, 2, 3) //explicit type declaration`
->>`val sentence = String: "This is a sentence." // Strings are an array of characters`
+>> -  `val num = arrayOf(1, 2, 3, 4)   //implicit type declaration`
+>>
+>> - `val num = arrayOf<Int>(1, 2, 3) //explicit type declaration`
+>>
+>> -  `val sentence = String: "This is a sentence." // Strings are an array of characters`
 
 
-Reproduce the following:
-   1. 
+Reproduce the following to experiment with the various iterations of array manipulation:
+
+```kt
+1 var sentence :String = "This is a sentence"
+2 
+3 for (i in 0 ..< sentence.length)
+4 {
+5   print(" "+sentence[i])
+6 }
+```
+
+The `for` is a keyword that enables the iteration through anything that provides an iterator. Here the iterator is the `i` a variable that iterates through a supplied list, collection, enumerable or objects.
+
+>**Note**
+>> -  A reminder that a `String` is a sequence or an array of characters.
+
+After the opening bracket `( i` the next keyword is `in` and is consider an *operator*, here `in` is to used to iterate over the the length of `sentence` excuting the `print(..)` method, until `i` is less than, `<`, the length.
+
+The output should look something like:
+
+```kt
+T h i s  a  s e n t e n e c e
+```
+
+Notice the white spacing between each letter and the extra white space between the words.
+
+Another way to write the for loop:
+
+```kt
+1 var sentence :String = "This is a sentence"
+2 
+3 for (element in sentence)
+4 {
+5   print(" "+ element)
+6 }
+```
+
+A slight difference here is that instead of iterating using an iterator with an integer to the a specified length we iterate over all elements of the object or list. The use of the the word `element` is not reserved, and you could replace this with anything that makes sense, as long as it is not another keyword:
+
+```kt
+1 var sentence :String = "This is a sentence"
+2 
+3 for (characters in sentence)
+4 {
+5   print(" "+ characters)
+6 }
+```
 
 
+Run this code either way and you should still recieve the same output as before: 
 
+```kt
+T h i s  a  s e n t e n e c e
+```
+
+An array can be defined, explicitly or implictly by doing the following:
+
+```kt
+// declaring an array using arrayOf<Int> this is explicit
+val explicitArray = arrayOf<Int>(10, 20, 30, 40, 50)
+val implicitArray = arrayOf(10, 20, 30, 40, 50)
+```
+
+Another way to iterate over the array is to do the following: 
+
+```kt
+for (i in 0.rangeTo(explicitArray.size-1))
+{
+   print(" "+explicitArray[i])
+}
+```
+<details>
+<summary>Notice anything different to before? </summary>
+
+- `0.rangeTo(...)`
+- This is technically an operator function, where the preceeding number `0`  can be any number less than the range provided in the arguments to the function.
+- `explicitArray.size`, where `size` is a attribute of the array, much like `length` was to `sentence` earlier. We minus 1 from the size because arrays are 0 indexed. Meaning that while there are 5 indices in the `explicitArray` it starts at at index 0 and goes to 4, which is a total of 5. 
+- modifiy the code and run it again to see why we need to subtract 1.
+- ```kt
+   for (i in 0.rangeTo(explicitArray.size))
+   {
+      print(" "+explicitArray[i])
+   }
+  ```
+</details>
