@@ -5,7 +5,8 @@
 # Kotlin
 
 - [Kotlin Labs]()
-  - [Lab 1: Introduction to Kotlin](Kotlin/Lab_1/Lab_1.md)
+  - [Lab 1: Introduction to Kotlin](Kotlin/Lab_1/1_Kotlin_Intro.md)
+  - [Lab 1: Introduction to Android Lab](Kotlin/Lab_1/Android_Lab.md)
 
 
 -----------
