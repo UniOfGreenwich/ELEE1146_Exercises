@@ -6,7 +6,7 @@
 
 - [Kotlin Labs]()
   - [Lab 1: Introduction to Kotlin](Kotlin/Lab_1/1_Kotlin_Intro.md)
-  - [Lab 2: Introduction to Android Lab](Kotlin/Lab_2/1_Android_Introducion.md)
+  - [Lab 2: Introduction to Android Lab](Kotlin/Lab_2/1_Android_Introduction.md)
   - [Lab 3: Android Lab](Kotlin/Lab_2/Android_Lab_2.md)
 
 
