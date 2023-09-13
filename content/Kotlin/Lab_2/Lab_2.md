@@ -97,6 +97,7 @@ Download images for the lab from here [pictures_lab_2.zip](./pictures_lab_2.zip)
 |txtItem3| 3 garlic cloves, chopped|
 |txtItem4| 3 TB olive oil |
 |txtDirections| Directions|
+|txtIngredients| Ingredients|
 |txtMix| Combine the ingredients and add salt to taste. Top French bread slices with mixture.|
 
 ![](./figures/completedStringsXML.png)
@@ -151,23 +152,13 @@ Download images for the lab from here [pictures_lab_2.zip](./pictures_lab_2.zip)
 
 • To paste the image file into the drawable folder, right click the drawable folder in the Android project view.
 
-• Click Paste on the shortcut menu.
+• Click the "Show In Resources Manager"
 
-![](./figures/resourcesMenu.png)
+• Click the plus `+` in the top left hand corner of the new window
 
-**Step 2:**
+• Select the picture you want using the file explorer that popped up.
 
-• From the window that appears choose the first option for drawable and click the OK button.
-
-![](./figures/destinationFolder.png)
-
-• Click the OK button and then another dialog box appears in the Copy dialog box. Click the OK button again. 
-
-![](./figures/saveFile.png)
-
-The bruschetta.png file will appear in the drawable folder as shown below:
-
-![](./figures/saveFileAppear.png)
+![](./figures/addPictureToResoruces.gif)
 
 ## Adding an ImageView Control
 
@@ -225,15 +216,13 @@ The result is shown below:
 
 • To create a second class, press and hold or right click the first folder, click New and the shortcut menu , and then click Activity,
 
-![](./figures/newActivityClass.png)
-
 **Step 2:**
 
-• Click Empty Activity to create a second Activity class.
+• Click Empty  Views Activity to create a second Activity class.
 
 • In the Activity Name text box, type Recipe to create a second class.
 
-![](./figures/newActivityChoice.png)
+![](./figures/createRecipeActivity.gif)
 
 **Step 3:**
 
@@ -244,6 +233,10 @@ The result is shown below:
 • Using the techniques described earlier, create the second user interface, `activity_recipe.xml`, as shown below with multiple TextView controls.
 
 ![](./figures/overviewOfLayout.png)
+
+• Ingredients and Direction headings have a textSize of 30sp.
+
+• Ingredients and Direction content have a textSize of 25sp.
 
 • Do not forget after you have finished developing the user interface, to Infer Constraints using the button on the top of the emulator screen.   Otherwise, all the text will appear at the top of the emulator, and it will overlap!
 
@@ -259,46 +252,44 @@ The `MainActivity.java` class was created automatically by Android Studio.
 
 • Click the `MainActivity.java` tab to open its code window.
 
-• Click to the right of `setContentView(R.layout.activity_main);` in Line 14, and the press Enter.
+• To initialize and reference the Button control, type: ` val button Button = findViewbyId(R.id.button)` as seen under the `setContentView(R.layout.activity_main)` in the code block below.
 
-• To initialize and reference the Button control, type: `Button button = findViewbyId(R.id.button)`;
+• To initialize and reference the Button control, type: ` val button Button = findViewbyId(R.id.button)` as seen under the `setContentView(R.layout.activity_main)` in the code snippet below.
+
+
+```kt
+1 package com.example.healthyrecipes
+2
+3 import android.content.Intent
+4 import androidx.appcompat.app.AppCompatActivity
+5 import android.os.Bundle
+6 import android.widget.Button
+7
+8 class MainActivity : AppCompatActivity() {
+9    override fun onCreate(savedInstanceState: Bundle?) {
+10      super.onCreate(savedInstanceState)
+11      setContentView(R.layout.activity_main)
+12
+13      val button : Button = findViewById(R.id.button)
+14
+```
 
 **Step 2:**
     
-• Click at the end of the line and press Enter.
-
 • To code the button listener that awaits user interaction, type `button.setOn` to display an auto-complete listing with all the possible entries that are valid at that point in the code. 
 
-• Double click the first `setOnClickListener` to select it from the auto-complete listing.
+• Double click the first `setOnClickListener{}` to select it from the auto-complete listing.
 
-• In the parentheses, type `new On` to view possible auto-complete options.
+• Inside the method add the functionality to launch the Recipe activity by inialising an `Intent`. An `Intent` is like a promise. Add the following line `val intent = Intent(this, Recipe::class.java)`
 
-![](./figures/mainActivityCode1.png)
+• Lastly, add the function `startActivity(Intent)`, this will load the Recipe activity once teh button has been clicked.
 
-**Step 3:**
-• Double click the first choice, which lists an `OnClickListener(...)`.  Auto-generated code adds an `onClick()` method.
-
-• If necessary, click View if the text is red and then press Alt + Enter to import View.
-
-• Click to place the insertion point on line 21 inside the `public void onClick (View v)` braces.
-
-![](./figures/onClick.png)
-
-**Step 4:**
-• Type `startA` and select `startActivity(Intent intent)` from the auto-complete listing.
-
-• In the parentheses, change the intent text by typing new Int and then double `click Intent (android.content)` in the auto-complete listing.
-
-• In the next set of parenthesis, type `MainActivity.this, Recipe.class`.
-
-• Click the Save All button on the toolbar. 
-
-![](./figures/onClickComplete.png)
-
-Now click the Run ‘app’  (or press Shift + F10) button on the toolbar to test the application in the emulator.  
-
-> **Reference:**
-Hoisington, C. (2016) Android Boot Camp for Developers Using Java: A Guide to Creating Your First Android Apps, Cengage Learning, Chapter 2
->
-> Material reproduced from Radostinka Dontcheva 2021-22
-
+```kt
+15      button.setOnClickListener {
+16         val intent = Intent(this, Recipe::class.java)
+17         // start your next activity
+18         startActivity(intent)
+19      }
+20   }
+21 }
+```
