@@ -7,7 +7,7 @@ The main aim of this assignment is to develop and test student’s understanding
 
 ## Coursework Submission Link
 
-- [Moodle submission link](https://moodlecurrent.gre.ac.uk/mod/assign/view.php?id=2103906)
+- [Moodle submission link](https://moodlecurrent.gre.ac.uk/mod/turnitintooltwo/view.php?id=2528001)
 
 ## Learning Outcomes
 
