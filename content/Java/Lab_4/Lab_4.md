@@ -150,32 +150,47 @@ Now you need to add a string array, modify the `string.xml` with the following c
 **Step 1:**
 - In the Android project view, expand the java folder and the first folder under it and then double click to open the `MainActivity.java` file.
 - Click to the right of the line `setContentView(R.layout.activity_main);`
+
 - Press **Enter** to insert a blank line.
-- To initialize and reference the `EditText` class with the Id name of **editText** type: 
-  - `final EditText tickets = findViewById(R.id.editTextNumber);`
-- After the ``EditText`` line, press Enter to create a new line.
-- To initialize and reference the `Spinner` control with the Id name of spinner, type:
-  - `final Spinner group = findViewById(R.id.spinner);`
+- To initialise and reference the `Spinner` control with the Id name of spinner, type:
+  - `val group = findViewById<Spinner>(R.id.spinner)`
+
 - After you have entered the line above, press Enter. 
-- To initialize the `Button` control with the id of button type:
-  - `Button cost = findViewById(R.id.button);`
+- To initialise the `Button` control with the id of button type:
+  - `val costBtn = findViewById<Button>(R.id.button)`
+
+- Press **Enter** to insert a blank line.
+- To initialise and reference the `EditText` class with the Id name of **editText** type: 
+  - `val tickets = findViewById<EditText>(R.id.editTextNumber)`
+
+- After you have entered the line above, press Enter. 
+- To initialise the `TextView` for the resulting calculations with the id of TextView type:
+  - `val result = findViewById<TextView>(R.id.textView)`
+
+- Finally, after you have entered the line above, press 
+**Enter**
+- To initialise and reference the `NumberFormat` class: 
+  - `val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale.ENGLISH)`
 - The result is shown below:
 
-```java
+```kt
 
-package com.example.concerttickets;
+package com.example.concerttickets
 
 import ...
 
-public class MainActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final EditText tickets = findViewById(R.id.editTextNumber);
-        final Spinner group = findViewById(R.id.spinner);
-        final Button cost = findViewById(R.id.button);
-        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val group = findViewById<Spinner>(R.id.spinner)
+        val costBtn = findViewById<Button>(R.id.button)
+        val tickets = findViewById<EditText>(R.id.editTextText)
+        val result = findViewById<TextView>(R.id.textView)
+        val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale.ENGLISH)
+
     }
 }
 ```
@@ -184,47 +199,49 @@ public class MainActivity extends AppCompatActivity {
 **Step 1:**
 -  In `MainActivity.java` on the line declaring the class, after the `{`, press Enter:
 
-```java 
-public class MainActivity extends AppCompatActivity {
+```kt 
+class MainActivity : AppCompatActivity() {
 
 
 
 
-@Override
+override fun onCreate(savedInstanceState: Bundle?) {
 ...
 ```
 
 - Press the Tab key to indent the text, and then insert the following four lines of code to initialize the variables in this activity:
-```java
-double costPerTicket = 79.99;
-int numberOfTickets;
-double totalCost;
-String groupChoice;
+  
+```kt
+val costPerTicket : Double = 79.99
+var numberOfTickets : Int = 0
+var totalCost : Double = 0.0
+var groupChoice: String? = null
 ```
 
 - The result is shown below:
 
-```java
+```kt
 
 package com.example.concerttickets;
 
 import ...
 
-public class MainActivity extends AppCompatActivity {
-    
-    double costPerTicket = 79.99;
-    int numberOfTickets;
-    double totalCost;
-    String groupChoice;
+class MainActivity : AppCompatActivity() {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final EditText tickets = findViewById(R.id.editTextNumber);
-        final Spinner group = findViewById(R.id.spinner);
-        final Button cost = findViewById(R.id.button);
-        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
+    val costPerTicket : Double = 79.99
+    var numberOfTickets : Int = 0
+    var totalCost : Double = 0.0
+    var groupChoice: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val group = findViewById<Spinner>(R.id.spinner)
+        val costBtn = findViewById<Button>(R.id.button)
+        val tickets = findViewById<EditText>(R.id.editTextText)
+        val result = findViewById<TextView>(R.id.textView)
+        val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale.ENGLISH)
     }
 }
 ```
@@ -240,38 +257,37 @@ public class MainActivity extends AppCompatActivity {
   - `final TextView result = findViewById(R.id.txtResult);`
 - The result is shown below:
 
-```java
+```kt
 
 package com.example.concerttickets;
 
 import ...
 
-public class MainActivity extends AppCompatActivity {
-    
-    double costPerTicket = 79.99;
-    int numberOfTickets;
-    double totalCost;
-    String groupChoice;
+class MainActivity : AppCompatActivity() {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final EditText tickets = findViewById(R.id.editTextNumber);
-        final Spinner group = findViewById(R.id.spinner);
-        final Button cost = findViewById(R.id.button);
-        
-        cost.setOnClickListener(new View.OnClickListener() {
-            final TextView result = findViewById(R.id.txtResult);
-            @Override
-            public void onClick(View v){
-            }
-        });
+    val costPerTicket : Double = 79.99
+    var numberOfTickets : Int = 0
+    var totalCost : Double = 0.0
+    var groupChoice: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val group = findViewById<Spinner>(R.id.spinner)
+        val costBtn = findViewById<Button>(R.id.button)
+        val tickets = findViewById<EditText>(R.id.editTextText)
+        val result = findViewById<TextView>(R.id.textView)
+        val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale.ENGLISH)
+
+        costBtn.setOnClickListener{
+            
+        }
     }
 }
 ```
 
-- Now inside the `OnClickListener` `onClick` method stub in line 30, press the tab key, and then type:
+- Now inside the `setOnClickListener` method stub in line 30, press the tab key, and then type:
 
 ```java
 numberOfTickets = Integer.parseInt(tickets.getText().toString());
@@ -281,40 +297,5 @@ result.setText("Cost for " + groupChoice + " is £" + currency.format(totalCost)
 ```
 
 - The completed version of the MainActivity.java class should look like shown below:
-
-```java
-
-package com.example.concerttickets;
-
-import ...
-
-public class MainActivity extends AppCompatActivity {
-    
-    double costPerTicket = 79.99;
-    int numberOfTickets;
-    double totalCost;
-    String groupChoice;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final EditText tickets = findViewById(R.id.editTextNumber);
-        final Spinner group = findViewById(R.id.spinner);
-        final Button cost = findViewById(R.id.button);
-        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
-        cost.setOnClickListener(new View.OnClickListener() {
-            final TextView result = findViewById(R.id.txtResult);
-            @Override
-            public void onClick(View v){
-                numberOfTickets = Integer.parseInt(tickets.getText().toString());
-                totalCost = costPerTicket * numberOfTickets;
-                groupChoice = group.getSelectedItem( ).toString( );
-                result.setText("Cost for " + groupChoice + " is " + format.format(totalCost));
-            }
-        });
-    }
-}
-```
 
 - Now run the emulator again and check that the app is working correctly. 

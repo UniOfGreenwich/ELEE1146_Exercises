@@ -1,8 +1,8 @@
-# Lab 3: Hello World and More!
+# Lab 2: Hello World and More!
     
 **1.**
 
-Start a new Android Studio project – the Hello World app will appear. Run the app following the steps described in the lecture. 
+Start a new Android Studio project, `empty view acitvity` – the Hello World app will appear. Run the app following the steps described in the lecture. 
 
 ______
 

@@ -6,8 +6,9 @@
 
 - [Kotlin Labs]()
   - [Lab 1: Introduction to Kotlin](Kotlin/Lab_1/1_Kotlin_Intro.md)
-  - [Lab 2: Introduction to Android Lab](Kotlin/Lab_2/1_Android_Introduction.md)
-  - [Lab 3: Android Lab](Kotlin/Lab_2/Android_Lab_2.md)
+  - [Lab 2: Hello World and more!](Kotlin/Lab_2/Lab_2.md)
+  - [Lab 3: Android User Interface Part 1](Kotlin/Lab_3/Lab_3.md)- [Lab 4: Android User Interface Part 2](Kotlin/Lab_4/Lab_4.md)
+  
 
 
 -----------
