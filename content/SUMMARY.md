@@ -7,8 +7,10 @@
 - [Kotlin Labs]()
   - [Lab 1: Introduction to Kotlin](Kotlin/Lab_1/1_Kotlin_Intro.md)
   - [Lab 2: Hello World and more!](Kotlin/Lab_2/Lab_2.md)
-  - [Lab 3: Android User Interface Part 1](Kotlin/Lab_3/Lab_3.md)- [Lab 4: Android User Interface Part 2](Kotlin/Lab_4/Lab_4.md)
-  
+  - [Lab 3: Android User Interface Part 1](Kotlin/Lab_3/Lab_3.md)
+  - [Lab 4: Android User Interface Part 2](Kotlin/Lab_4/Lab_4.md)
+  - [Lab 5: User Input, Variables and Operations. Part 1](Kotlin/Lab_5/Lab_5.md)
+  - [Lab 6: User Input, Variables and Operations. Part 2](Kotlin/Lab_6/Lab_6.md)
 
 
 -----------
