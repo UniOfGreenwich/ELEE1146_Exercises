@@ -415,7 +415,7 @@ public class MainActivity extends AppCompatActivity {
                     result.setText(tenth.foramt(convertedWeight) + “ pounds”);
                 }else{
                     Toast.makeText(MainActivity.this, “Kilos must be less than 255”, Toast.LENGHT_LONG).show();
-                }i
+                }
             }
             else if (lbToKilo.isChecked()){
                 if (weightEntered <=  500){
