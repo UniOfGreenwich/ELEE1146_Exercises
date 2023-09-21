@@ -11,6 +11,7 @@
   - [Lab 4: Android User Interface Part 2](Kotlin/Lab_4/Lab_4.md)
   - [Lab 5: User Input, Variables and Operations. Part 1](Kotlin/Lab_5/Lab_5.md)
   - [Lab 6: User Input, Variables and Operations. Part 2](Kotlin/Lab_6/Lab_6.md)
+  - [Lab 7: Android App using Icons and Decision Making Controls](Kotlin/Lab_7/Lab_7.md)
 
 
 -----------
