@@ -1,6 +1,6 @@
 # Introduction 
 
-This mdBook will grow over the duration of this module with new labs/workshops and general content needed to test and increase your knowledge of computing systems. 
+This mdBook will grow over the duration of this module with new labs/workshops and general content needed to test and increase your knowledge of mobile app developmenet. 
 
 
 <table>
