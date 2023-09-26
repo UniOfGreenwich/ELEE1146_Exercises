@@ -1,4 +1,4 @@
-# Lab 1: Introduction to Kotlin
+# Lab 2: Introduction to Kotlin
 
 > **Important**
 >> - You will be using IntelliJ IDE

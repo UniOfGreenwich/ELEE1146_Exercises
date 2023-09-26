@@ -1,4 +1,4 @@
-# Lab 2: Hello World and More!
+# Lab 1: Hello World and More!
     
 **1.**
 
