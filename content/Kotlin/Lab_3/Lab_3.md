@@ -293,3 +293,10 @@ The `MainActivity.java` class was created automatically by Android Studio.
 20   }
 21 }
 ```
+
+- Run the app and test it.
+
+
+**Step 3:**
+
+- If this works as intended, can you add a button to the recipe page to take you back to the main activity? 
