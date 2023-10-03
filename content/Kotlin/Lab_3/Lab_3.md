@@ -4,7 +4,7 @@ Do the example from the lecture following the guidelines below.
 
 ## Using the Android User Interface
 
-Download images for the lab from here [pictures_lab_3.zip](./pictures_lab_2.zip)
+Download images for the lab from here [pictures_lab_3.zip](./pictures_lab_3.zip)
 ### Step 1
 
 • Start a new project.  Open Android Studio.  Select File/New/New Project... from the main menu. Make sure the language selected is `Kotlin`.
