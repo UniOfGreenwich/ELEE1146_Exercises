@@ -31,7 +31,7 @@
 - [Java Labs]() 
   - [Lab 1: Hello World and More!](Java/Lab_1/Lab_1.md)
 
-  - [Lab 2: User Interface. Part 1]()
+  - [Lab 2: User Interface. Part 1](Java/Lab_2/Lab_2.md)
 
   - [Lab 3: User Interface. Part 2]()
 
