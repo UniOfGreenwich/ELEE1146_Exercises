@@ -16,9 +16,9 @@ Download images for the lab from here [pictures_lab_3.zip](./pictures_lab_3.zip)
 ### Step 2:
 • After clicking the next button, the Create New Project dialog appears.
 
-• In the Name: text box, type in Healthy Recipes. 7
+• In the Name: text box, type in Healthy Recipes.
 
-• Choose the location where you want to save your projects or just use the default suggested location if =you are happy with it.
+• Choose the location where you want to save your projects or just use the default suggested location if you are happy with it.
 
 • Make sure the language chosen is Kotlin and NOT Java!
 
