@@ -2,7 +2,7 @@
 
 For the exercises below, follow the steps in the Bruschetta example from [Lab 3](../Lab_3/Lab_3.md)).
 
-Download images for Task 1 and 2 from here -> [Pictures Lab 4](./Pictures_Lab_3.zip)
+Download images for Task 1 and 2 from here -> [Pictures Lab 4](./Pictures_Lab_4.zip)
 
 ## 1. Youth Hostel App
 

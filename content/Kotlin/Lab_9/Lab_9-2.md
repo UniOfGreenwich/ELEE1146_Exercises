@@ -1,8 +1,8 @@
-## Lab 9 Android Lists, Arrays and Web Browsers
+## Lab 8 Android Lists, Arrays and Web Browsers
 
 You will be developing travel guide for Chicago app that highlights the best attractions the city has to offer.  The City Guide app opening screen is shown below:
 
-> You will need to download the following picture folder -> [Lab_9_Picture.zip](Lab_9_Pictures.zip)
+> You will need to download the following picture folder -> [Lab_8_Picture.zip](Lab_8_Pictures.zip)
 
 <div align=center>
 

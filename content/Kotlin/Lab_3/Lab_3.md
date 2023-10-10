@@ -4,7 +4,7 @@ Do the example from the lecture following the guidelines below.
 
 ## Using the Android User Interface
 
-Download images for the lab from here [pictures_lab_3.zip](./pictures_lab_2.zip)
+Download images for the lab from here [pictures_lab_3.zip](./pictures_lab_3.zip)
 ### Step 1
 
 • Start a new project.  Open Android Studio.  Select File/New/New Project... from the main menu. Make sure the language selected is `Kotlin`.
@@ -16,11 +16,11 @@ Download images for the lab from here [pictures_lab_3.zip](./pictures_lab_2.zip)
 ### Step 2:
 • After clicking the next button, the Create New Project dialog appears.
 
-• In the Name: text box, type in Healthy Recipes. 7
+• In the Name: text box, type in Healthy Recipes.
 
-• Choose the location where you want to save your projects or just use the default suggested location if =you are happy with it.
+• Choose the location where you want to save your projects or just use the default suggested location if you are happy with it.
 
-• Make sure the language chosen is Java and NOT Kotlin!
+• Make sure the language chosen is Kotlin and NOT Java!
 
 • If necessary, select API16: Android 4.1 (Jelly Bean) for the Minimum SDK as shown below:
 
@@ -29,7 +29,7 @@ Download images for the lab from here [pictures_lab_3.zip](./pictures_lab_2.zip)
 ### Step 3:
 • Click the Finish button. 
 
-• The Android project is now created and the `activity_main.xml` file and `MainActivity.java` file are visible as tabs. 
+• The Android project is now created and the `activity_main.xml` file and `MainActivity.kt` file are visible as tabs. 
 
 ### Step 4:
 
@@ -246,11 +246,11 @@ The result is shown below:
 
 ## Coding a Button Event Handler
 
-The `MainActivity.java` class was created automatically by Android Studio.
+The `MainActivity.kt` class was created automatically by Android Studio.
 
 **Step 1:**
 
-• Click the `MainActivity.java` tab to open its code window.
+• Click the `MainActivity.kt` tab to open its code window.
 
 • To initialize and reference the Button control, type: ` val button Button = findViewbyId(R.id.button)` as seen under the `setContentView(R.layout.activity_main)` in the code block below.
 
@@ -293,3 +293,10 @@ The `MainActivity.java` class was created automatically by Android Studio.
 20   }
 21 }
 ```
+
+- Run the app and test it.
+
+
+**Step 3:**
+
+- If this works as intended, can you add a button to the recipe page to take you back to the main activity? 
