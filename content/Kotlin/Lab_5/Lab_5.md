@@ -53,7 +53,7 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
         <item>Linkin Park</item>
         <item>Hollywood Undead</item>
         <item>Man with a Mission</item>
-        <item>Life Revealed</item>
+        <item>Written by Wolves</item>
     </string-array>
     ```
 
@@ -519,5 +519,7 @@ class MainActivity : AppCompatActivity() {
 >> If you are finished with this guided part of the lab try to do the following, based off of what you know now:
 >> - Add more bands of your choice with more images
 >> - Have a range of prices for different bands
->>    - Consider using more `if/else if/else` statements additional `ticketCost<SomeBandName>` variables for different bands, remeber to make them a `Double`
+>>    - Consider using more `if ,else if and else` statements 
+>>    - add different currencies, remember there are 230 pf them.
+>>    - additional `ticketCost<SomeBandName>` variables for different bands, remeber to make them a `Double`
 >> -  Add another `TextView` that shows the cost of one ticket for any band selected, and when the cost botton is pressed the total appears in the `result` like normal
