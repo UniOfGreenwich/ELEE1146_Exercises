@@ -221,7 +221,7 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
 
             val group = findViewById<Spinner>(R.id.spinner)
             val costBtn = findViewById<Button>(R.id.costButton)
-            val tickets = findViewById<EditText>(R.id.editTextNumberSigned)
+            val tickets = findViewById<EditText>(R.id.editTextNumber)
             val result = findViewById<TextView>(R.id.resultsTextView)
             val groupImage = findViewById<ImageView>(R.id.imageView)
             val format: NumberFormat = NumberFormat.getCurrencyInstance()
