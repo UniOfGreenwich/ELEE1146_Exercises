@@ -26,13 +26,7 @@ Start a new Android Studio Project and name it the Application Medical Calculato
 
 </div>
 
-  - Click the Ok button. The following dialog window will appear:
-
-<div align=center>
-
-![](./figures/contentImageAsset.png)
-
-</div>
+- Click the Ok button. 
 
 - Click the Next button and on the following window that appears, click the Finish button to add the custom launcher icon. The custom icons will be displayed in `res/mipmap` folder. Expand the `res/mipmap` folder and check that the icon is there as expected. The result is shown below:
 
@@ -53,12 +47,13 @@ supportActionBar?.setDisplayShowCustomEnabled(true)
 supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
 supportActionBar?.setDisplayShowTitleEnabled(true)
 supportActionBar?.setDisplayUseLogoEnabled(true)
+supportActionBar?.setDisplayShowHomeEnabled(true)
+supportActionBar?.show()
 ```
 
 - The result is shown below:
 
 ```kt
--
 package com.example.medicalcalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,13 +63,42 @@ import android.os.Bundle;
 override fun onCreate(savedInstanceState: Bundle?) {
   super.onCreate(savedInstanceState)
   setContentView(R.layout.activity_main)
+
   supportActionBar?.setDisplayShowCustomEnabled(true)
   supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
   supportActionBar?.setDisplayShowTitleEnabled(true)
-  supportActionBar?.setDisplayUseLogoEnabled(true)ayShowUseLogoEnabled(true)
+  supportActionBar?.setDisplayUseLogoEnabled(true)
+  supportActionBar?.setDisplayShowHomeEnabled(true)
+  supportActionBar?.show()
+
   }
 }
 ```
+
+- Next we will play with the `themes.xml` in the `res/vaules/themes` folder, reproduce the following: 
+
+```xml
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MedicalCalculator" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/design_default_color_primary</item>
+        <item name="colorPrimaryDark">@color/design_default_color_primary</item>
+        <item name="colorAccent">@color/design_default_color_on_secondary</item>
+    </style>
+
+    <style name="Theme.MedicalCalculator" parent="Base.Theme.MedicalCalculator" />
+    
+</resources>
+```
+
+<div align=center>
+
+![](./figures/themes.png)
+
+</div>
+
 
 Run the app. The icon is displayed in the running emulator acting bar as shown below:
 
@@ -96,8 +120,8 @@ Run the app. The icon is displayed in the running emulator acting bar as shown b
 |---|---|
 |txtTitle | Convert Patient Weight|
 |txtWeight| Weight of Patient|
-|radLbToKilo| Convert Pounds to|
-|radKiloToLb| Convert Kilograms to |
+|radLbToKilo| Convert LBS to Kgs|
+|radKiloToLb| Convert Kgs to LBS |
 |btnConvert| Convert Weight |
 
 </div>
@@ -164,7 +188,7 @@ and then press Tab to indent the line.
 
 - To initialize the conversion rate value of 2.2., type:
 ```kt
-val conversionRate : Double = 2.2
+val conversionRate : Double = 2.20462262
 ```
 and press Enter.
 
@@ -219,7 +243,7 @@ and press Enter.
 ```kt
 class MainActivity : AppCompatActivity() {
 
-  val conversionRate : Double = 2.2
+  val conversionRate : Double = 2.20462262
   var weightEntered :  Double = 0.0
   var convertedWeight : Double = 0.0
 
@@ -233,7 +257,7 @@ class MainActivity : AppCompatActivity() {
 
     val kiloToLb = findViewById<RadioButton>(R.id.radiobutton)
     val lbToKilo = findViewById<RadioButton>(R.id.radiobutton2)
-    val weight = findViewById<EditText>(R.id.editTextNumer)
+    val weight = findViewById<EditText>(R.id.editTextNumberDecimal)
     val result = findViewById<TextView>(R.id.textView2)
     val convert = findViewById<Button>(R.id.button)
   }
@@ -285,7 +309,7 @@ convert.setOnClickListener {
 **Step 2:**
 - Within the first if statement, braces create a nested `if/else` statement that determines if the weight entered for kilograms is less than or equal to 255.  Type:
 
-```java
+```kt
 if (weightEntered <= 255) { 
 ```
 
@@ -384,48 +408,52 @@ import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
-    val conversionRate : Double = 2.2
-    var weightEntered : Double = 0.0
-    var convertedWeight : Double = 0.0
-
+    private val conversion : Double = 2.20462262
+    private var weightEntered : Double = 0.0
+    private var convertedWeight : Double = 0.0
+   
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayShowCustomEnabled(true)
-        supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
+        supportActionBar?.setLogo(R.drawable.ic_launcher_foreground)
         supportActionBar?.setDisplayShowTitleEnabled(true)
         supportActionBar?.setDisplayUseLogoEnabled(true)
 
-        val kiloToLb = findViewById<RadioButton>(R.id.radiobutton)
-        val lbToKilo = findViewById<RadioButton>(R.id.radiobutton2)
-        val weight = findViewById<EditText>(R.id.editTextNumer)
+        val kiloToLb = findViewById<RadioButton>(R.id.radioButton)
+        val lbToKilo = findViewById<RadioButton>(R.id.radioButton2)
+        val weight = findViewById<EditText>(R.id.editTextNumberDecimal)
         val result = findViewById<TextView>(R.id.textView2)
         val convert = findViewById<Button>(R.id.button)
-
-
+      
+        kiloToLb.setOnClickListener{
+            lbToKilo.setChecked(false)
+        }
+        lbToKilo.setOnClickListener{
+            kiloToLb.setChecked(false)
+        }
         convert.setOnClickListener {
-            weightEntered = weight.getText().toString().toDouble()
-            val tenth : DecimalFormat = DecimalFormat("#.#")
+            weightEntered = weight.getText().toString().toDoubleOrNull() ?: 0.0
+
+            val tenth : DecimalFormat("#.#")
 
             if (lbToKilo.isChecked()) {
-                if (weightEntered <= 500) {
-                    convertedWeight = weightEntered / conversionRate
+                kiloToLb.setChecked(false)
+                if (weightEntered > 0) {
+                    convertedWeight = weightEntered / conversion
                     result.setText(tenth.format(convertedWeight) + " kilograms")
                 } else {
-                    Toast.makeText(
-                        this,
-                        "Pounds must be less than 500",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(this,  "Pounds must be greater than 0",Toast.LENGTH_LONG).show()
                 }
-                lbToKilo.setChecked(false)
             }
             else if (kiloToLb.isChecked()){
-                if (weightEntered <=  500){
+                if (weightEntered > 0){
+                    convertedWeight = weightEntered * conversion
                     result.setText(tenth.format(convertedWeight) + " Kilograms")
                 }else{
-                    Toast.makeText(this, "Kilos must be less than 500", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Did you enter anything?", Toast.LENGTH_SHORT).show()
                 }
+
             }
         }
     }
@@ -439,3 +467,28 @@ Now use Run ‘app’ button (or SHIFT + F10) to run the app.  When you run the 
 ![](./figures/finishedMedicalApp.png)
 
 </div>
+
+
+> **More**
+>> - 
+>> - Add options (`Spinner` widget for example ) to change the effect of gravity on someones weight. Use the table below for reference:
+>><div align=center>
+>>
+>> |Planet|	Gravity (m/s²)|
+>> |---|---|
+>> |Mercury|3.7 | 
+>> |Venus|	8.87|
+>> |Earth | 1.0|
+>> |Mars|	3.71|
+>> |Jupiter|	24.79|
+>> |Saturn|	10.44|
+>> |Uranus|	8.69|
+>> |Neptune|	11.15|
+>> |Pluto|	0.62|
+>> |Moon|	1.62|
+>>
+>> </div>
+>>
+>> Formula:
+>> 
+>> \\(mercuryWeight = convertedWeight \cdot planet\ gravity\\)
