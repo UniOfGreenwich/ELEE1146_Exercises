@@ -1,4 +1,4 @@
-## Lab 8 Android Lists, Arrays and Web Browsers
+## Lab 9-2 Android Lists, Arrays and Web Browsers
 
 You will be developing travel guide for Chicago app that highlights the best attractions the city has to offer.  The City Guide app opening screen is shown below:
 
@@ -18,7 +18,7 @@ The City Guide app displays 5 Chicago attractions. When the user taps one of the
 
 </div>
 
-If the user selects Willis Tower, Navy Pier, or Water Tower, an image appears on a second screen as shown on the figures below.  By pressing the left hardware button on the emulator, you can return to the list of the attractions. 
+If the user selects Willis Tower, Navy Pier, or Water Tower, an image appears on a second screen as shown on the figures below.  By pressing the a button on the selected activity, you can return to the list of the attractions.
 
 <div align=center>
 
@@ -28,9 +28,8 @@ If the user selects Willis Tower, Navy Pier, or Water Tower, an image appears on
 
 Complete the following steps to develop the app.
 
-
 **Step 1:**
-- Create a New Project with the name **City Guide** in the Application name text box. 
+- Create a New Project with the name **CityGuide** in the Application name text box. 
 - Open `activity_main.xml`.
 - Copy the `ic_launcher_chicago.png` file from the Pictures above.
 - Click `File` on the menu bar and then click New to open the New menu.
@@ -360,7 +359,16 @@ There are three images that appear when the user selects the Willis Tower, Navy 
 
 </div>
 
-- Close the activity_water.xml tab.
+**Step 17:** 
+
+- Ensure you program the button functionality in each of these new activities so that you can navigate back to the `MainActivity.kt` class: 
+- ```kt
+  bntBack.setOnClickListener {
+     val intent = Intent(this, <MainActivity>::class.java)
+     // start your next activity
+     startActivity(intent)
+  }
+  ```
 
 The result is shown below:
 
