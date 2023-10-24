@@ -470,25 +470,24 @@ Now use Run ‘app’ button (or SHIFT + F10) to run the app.  When you run the 
 
 
 > **More**
->> - 
 >> - Add options (`Spinner` widget for example ) to change the effect of gravity on someones weight. Use the table below for reference:
 >><div align=center>
 >>
->> |Planet|	Gravity (m/s²)|
->> |---|---|
->> |Mercury|3.7 | 
->> |Venus|	8.87|
->> |Earth | 1.0|
->> |Mars|	3.71|
->> |Jupiter|	24.79|
->> |Saturn|	10.44|
->> |Uranus|	8.69|
->> |Neptune|	11.15|
->> |Pluto|	0.62|
->> |Moon|	1.62|
+>> |Planet|	Gravity (m/s²)|Conversion (%)|
+>> |---|---|---|
+>> |Mercury|3.78 | \\( 0.378 = \frac{3.78}{10}\\) 
+>> |Venus|	9.07| \\( 0.907 = \frac{9.07}{10}\\) |
+>> |Earth | 10.0|\\( 1.0 = \frac{10}{10}\\) |
+>> |Mars|	3.77|\\( 0.377 = \frac{3.77}{10}\\) |
+>> |Jupiter|	25.28|\\( 2.528 = \frac{25.28}{10}\\) |
+>> |Saturn|	10.64|\\( 1.064 = \frac{10.64}{10}\\) |
+>> |Uranus|	8.889|\\( 0.8889 = \frac{8.889}{10}\\) |
+>> |Neptune| 11.15|\\( 1.115 = \frac{11.15}{10}\\) |
+>> |Pluto|	0.67|\\( 0.067 = \frac{0.67}{10}\\) |
+>> |Moon|	1.62|\\( 0.162 = \frac{1.62}{10}\\) |
 >>
 >> </div>
 >>
 >> Formula:
 >> 
->> \\(mercuryWeight = convertedWeight \cdot planet\ gravity\\)
+>> \\(yourWeightOnSolObject = convertedWeight \cdot \frac{Sol\ Object}{10}\\)
