@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lab 6: User Input, Variables and Operations. Part 2 - Mobile Applications for Engineers and Technologists</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Introduction.html">Introduction</a></li><li class="chapter-item affix "><li class="part-title">Kotlin</li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Kotlin Labs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Kotlin/Lab_1/Lab_1.html"><strong aria-hidden="true">1.1.</strong> Lab 1: Hello World and more!</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_2/2_Kotlin_Intro.html"><strong aria-hidden="true">1.2.</strong> Lab 2: Introduction to Kotlin</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_3/Lab_3.html"><strong aria-hidden="true">1.3.</strong> Lab 3: Android User Interface Part 1</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_4/Lab_4.html"><strong aria-hidden="true">1.4.</strong> Lab 4: Android User Interface Part 2</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_5/Lab_5.html"><strong aria-hidden="true">1.5.</strong> Lab 5: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item expanded "><a href="../../Kotlin/Lab_6/Lab_6.html" class="active"><strong aria-hidden="true">1.6.</strong> Lab 6: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.7.</strong> Lab 7: Android App using Icons and Decision Making Controls. Part 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.8.</strong> Lab 8: Android App using Icons and Decision Making Controls. Part 2</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.9.</strong> Lab 9.1: One Dimensional Arrays (Intellij)</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.10.</strong> Lab 9.2: Lists, Arrays and Web Browsers Pt1</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.11.</strong> Lab 10: Lists, Arrays and Web Browsers Pt2 </div></li><li class="chapter-item "><div><strong aria-hidden="true">1.12.</strong> Lab 11: Kotlin Object Orientated Programming</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.13.</strong> Lab 12: Exception Handling</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.14.</strong> Lab 13: Permissions</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.15.</strong> Lab 14: Sensors 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.16.</strong> Lab 15: Sensors 2</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.17.</strong> Lab 16: Splash Screens</div></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item "><div><strong aria-hidden="true">2.</strong> Java Labs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Java/Lab_1/Lab_1.html"><strong aria-hidden="true">2.1.</strong> Lab 1: Hello World and More!</a></li><li class="chapter-item "><a href="../../Java/Lab_2/Lab_2.html"><strong aria-hidden="true">2.2.</strong> Lab 2: User Interface. Part 1</a></li><li class="chapter-item "><a href="../../Java/Lab_3/Lab_3.html"><strong aria-hidden="true">2.3.</strong> Lab 3: User Interface. Part 2</a></li><li class="chapter-item "><a href="../../Java/Lab_4/Lab_4.html"><strong aria-hidden="true">2.4.</strong> Lab 4: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item "><a href="../../Java/Lab_5/Lab_5.html"><strong aria-hidden="true">2.5.</strong> Lab 5: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.6.</strong> Lab 6: Icons and Decision Making Controls Pt1 </div></li><li class="chapter-item "><div><strong aria-hidden="true">2.7.</strong> Lab 7: Icons and Decision Making Controls Pt 2 </div></li><li class="chapter-item "><div><strong aria-hidden="true">2.8.</strong> Lab 8.1: One Dimensional Arrays (Intellij)</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.9.</strong> Lab 8.2: Lists, Arrays and Web Browsers Pt1</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.10.</strong> Lab 9: Lists, Arrays and Web Browsers Pt2 </div></li><li class="chapter-item "><div><strong aria-hidden="true">2.11.</strong> Lab 10: Java Object Orientated Programming</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.12.</strong> Lab 11: Exception Handling</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.13.</strong> Lab 12: Permissions</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.14.</strong> Lab 13: Sensors 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.15.</strong> Lab 14: Sensors 2</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.16.</strong> Lab 15: Splash Screens</div></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title">Assignments</li><li class="chapter-item "><div><strong aria-hidden="true">3.</strong> Comp1836 Assignment 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> Comp1836 Assignment 2</div></li><li class="spacer"></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> ELEE1146 Assignment 1</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers and Technologists</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/content/Kotlin/Lab_6/Lab_6.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lab-6-android-user-input-variables-and-operations-part-2"><a class="header" href="#lab-6-android-user-input-variables-and-operations-part-2">Lab 6 Android User Input, Variables and Operations. Part 2</a></h1>
+<blockquote>
+<p>You will need to download the following picture folder -&gt; <a href="Lab_6_Pictures.zip">Lab_6_Picture.zip</a></p>
+</blockquote>
+<p>For the exercises below, follow the steps in the Ticket Vault example (from last week lab).</p>
+<h2 id="1-catalina-island-boat-express-app"><a class="header" href="#1-catalina-island-boat-express-app">1. Catalina Island Boat Express App</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Catalina Island Boat Express App</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>Catalina Express has 30 daily departures between Long Beach and Catalina Island. Create a simple app that determines how many boat tickets the user needs and whether the ticket is for going to Catalina Island or heading back to Long Beach. The app displays the total price for the fare in one direction</td></tr>
+<tr><td>Algorithm 1:</td><td>The app displays a title; an image (provided in the Pictures folder at top of workbook), and a Text Field, Spinner, and Button control. The two options in the Spinner control include To Catalina Island and To Long Beach. Each single passenger ticket is $34 for one way.</td></tr>
+<tr><td>Algorithm 2:</td><td>When the user taps or clicks the Button control, the number of tickets and the total cost of the fare is displayed</td></tr>
+<tr><td>Alogrithm 3:</td><td>Use a black theme, Spinner prompt, string array, and a hint property.</td></tr>
+</tbody></table>
+</div><div align=center>
+<p><img src="figures/catalina.png" alt="h:500" /></p>
+</div>
+<hr />
+<h2 id="2-triathlon-registration-app"><a class="header" href="#2-triathlon-registration-app">2. Triathlon Registration App</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Triathlon Registration App</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>A triathlon registration app allows an athlete to register for one of three national triathlons to qualify for the Ironman World Championship</td></tr>
+<tr><td>Algorithm 1:</td><td>The triathlon registration app has two Text Fields: one requests the number of athletes on the user’s team and the other requests the location. A Spinner control allows the athlete to select one of three possible locations: Lake Placid, Big Island Hawaii, and Miami. The app also displays a title, an image (called triathlon.png in the Pictures folder you downloaded) and a Button control.</td></tr>
+<tr><td>Algorithm 2:</td><td>After the user clicks the Button control, the selected location and the total team coast are displayed in the TextView control.</td></tr>
+<tr><td>Algorithm 3:</td><td>Use a theme, a title, an image, a Spinner prompt, a string array, and a hint property</td></tr>
+</tbody></table>
+</div><div align=center>
+<p><img src="./figures/triathlon.png" alt="" /></p>
+</div>
+<hr />
+<h2 id="3-medway-cab-fare-app"><a class="header" href="#3-medway-cab-fare-app">3. Medway Cab Fare App</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Medway Cab Fare App</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>Create an app that estimates the cost for cab fare in Medway. The app calculates the cost of the trip and request a reservation for a smart car, traditional sedan or a minivan</td></tr>
+<tr><td>Algorithm 1:</td><td>The app requests the distance in miles for the cab ride and your preference for the requested cab: a smart car, traditional sedan or a minivan.  The cab fare has an initial fee of £3.00. The mileage rate of £3.50 is also charged.</td></tr>
+<tr><td>Algorithm 2:</td><td>The app displays the name of a cab company (do your own research what kind of cab companies are available in Medway and choose one), a picture of a logo, and the results of the requested type of cab with the cost of the fare. Create your own layout.</td></tr>
+<tr><td>Algorithm 3:</td><td>Use a theme, Spinner prompt, string array, and hint property.  Decimal mileage is possible.</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="4-split-the-bill-app"><a class="header" href="#4-split-the-bill-app">4. Split the Bill App</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Split the Bill App</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>You are out with friends at a nice restaurant.  This app splits the bill, including the tip, among the members of your party.</td></tr>
+<tr><td>Algorithm 1:</td><td>A welcome screen displays the title, image, and button that displays a second screen when clicked. The input/output screen requests the restaurant bill and the number of people in your group. The Spinner control asks about the quality of service: Excellent, Average or Poor.</td></tr>
+<tr><td>Algorithm 2:</td><td>Calculate a 15% tip and divide the restaurant bill with the tip included among the members of your party. Display the tip amount and the individual share of the bill.</td></tr>
+<tr><td>Algorithm 3:</td><td>Use a theme, Spinner prompt, string array, and hint property.</td></tr>
+</tbody></table>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../Kotlin/Lab_5/Lab_5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../Java/Lab_1/Lab_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../Kotlin/Lab_5/Lab_5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../Java/Lab_1/Lab_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
