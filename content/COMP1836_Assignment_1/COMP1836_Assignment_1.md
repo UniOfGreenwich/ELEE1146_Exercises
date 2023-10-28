@@ -7,6 +7,14 @@ Module Code: COMP1836
 
 **Submission Date: 11th December 2023 @ 2000**
 
+--------------
+
+> **WARNING:**
+>
+>> All submitted work will be electronically scanned for plagiarism and the use of Artificial Intelligence (AI) software. The work that you submit must be your own; any material from other sources must be correctly cited and referenced. If unreferenced material is detected a student will be reported for plagiarism. If AI is used in the production of this work, university regulations require that this fact is clearly stated on the report. Use of AI which has not been acknowledged is an academic misconduct offence and again will lead to a report of plagiarism. 
+
+--------------
+
 ## Brief
 The main aim of this assignment is to develop and test student’s understanding and practical skills in mobile app design. 
 
@@ -83,12 +91,6 @@ Full rubric below:
 
 </div>
 
-*Continues overleaf...*
-
-\newpage
-
-*... continued* 
-
 <div align=center>
 
 **Rubric Task 2: Designing a Mobile App (60%)**
@@ -102,11 +104,6 @@ Full rubric below:
 
 </div>
 
-*Continues overleaf...*
-
-\newpage
-
-*... continued* 
 
 <div align=center>
 
