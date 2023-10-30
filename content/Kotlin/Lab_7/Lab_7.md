@@ -468,26 +468,142 @@ Now use Run ‘app’ button (or SHIFT + F10) to run the app.  When you run the 
 
 </div>
 
+-------------------------------------
 
-> **More**
->> - Add options (`Spinner` widget for example ) to change the effect of gravity on someones weight. Use the table below for reference:
->><div align=center>
->>
->> |Planet|	Gravity (m/s²)|Conversion (%)|
->> |---|---|---|
->> |Mercury|3.78 | \\( 0.378 = \frac{3.78}{10}\\) 
->> |Venus|	9.07| \\( 0.907 = \frac{9.07}{10}\\) |
->> |Earth | 10.0|\\( 1.0 = \frac{10}{10}\\) |
->> |Mars|	3.77|\\( 0.377 = \frac{3.77}{10}\\) |
->> |Jupiter|	25.28|\\( 2.528 = \frac{25.28}{10}\\) |
->> |Saturn|	10.64|\\( 1.064 = \frac{10.64}{10}\\) |
->> |Uranus|	8.889|\\( 0.8889 = \frac{8.889}{10}\\) |
->> |Neptune| 11.15|\\( 1.115 = \frac{11.15}{10}\\) |
->> |Pluto|	0.67|\\( 0.067 = \frac{0.67}{10}\\) |
->> |Moon|	1.62|\\( 0.162 = \frac{1.62}{10}\\) |
->>
->> </div>
->>
->> Formula:
->> 
->> \\(yourWeightOnSolObject = convertedWeight \cdot \frac{Sol\ Object}{10}\\)
+
+## Converted weight on different Solar objects
+
+- Add options (`Spinner` widget for example ) to change the effect of gravity on someones weight. Use the table below for reference:
+
+<div align=center>
+
+|Planet|	Gravity (m/s²)|Conversion (%)|
+|---|---|---|
+|Mercury|3.78 | \\( 0.378 = \frac{3.78}{10}\\) 
+|Venus|	9.07| \\( 0.907 = \frac{9.07}{10}\\) |
+|Earth | 10.0|\\( 1.0 = \frac{10}{10}\\) |
+|Mars|	3.77|\\( 0.377 = \frac{3.77}{10}\\) |
+|Jupiter|	25.28|\\( 2.528 = \frac{25.28}{10}\\) |
+|Saturn|	10.64|\\( 1.064 = \frac{10.64}{10}\\) |
+|Uranus|	8.889|\\( 0.8889 = \frac{8.889}{10}\\) |
+|Neptune| 11.15|\\( 1.115 = \frac{11.15}{10}\\) |
+|Pluto|	0.67|\\( 0.067 = \frac{0.67}{10}\\) |
+|Moon|	1.62|\\( 0.162 = \frac{1.62}{10}\\) |
+
+Formula:
+
+\\(yourWeightOnSolObject = convertedWeight \cdot \frac{Sol\ Object}{10}\\)
+
+</div>
+<p>
+
+</p>
+
+1. Add a `Spinner` and `TextView` for list of Sol objects and the resulting conversion.
+    
+    <div align=center>
+    
+    ![](figures/designView.png)
+
+    </div>
+
+2. Consider using `map` for each sol object and their convesion value, recall the slides from earlier, or...
+
+    <details>
+    <summary>Suggested Code</summary>
+
+    After the line ending `private var convertedWeight: Double = 0.0`
+
+    ```kt
+    // Map that holds relative gravitational accelerations on celestial bodies
+    private val solObjectModifiers = mapOf(
+        "Moon" to 0.1622, "Mercury" to 0.378, "Venus" to 0.907,
+        "Mars" to 0.377, "Jupiter" to 2.528, "Saturn" to 1.064,
+        "Uranus" to 0.889, "Neptune" to 1.125, "Pluto" to 0.067
+    )
+
+    // Initialise the selected celestial body's conversion factor
+    private var solConversion: Double = solObjectModifiers.entries.elementAt(0).value
+
+    ```
+
+    </details>
+
+<p>
+
+</p>
+
+3. Remeber to populate the `Spinner` using the `Adapter` class. 
+
+    <details>
+    <summary>Suggested Code</summary>
+
+    After line ending ` val solSpinner = findViewById<Spinner>(R.id.spinner)`
+
+    ```kt
+    // Initialize the Spinner with data from the map
+    val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, solObjectModifiers.keys.toTypedArray())
+    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+    solSpinner.adapter = adapter
+    ```
+
+    </details>
+
+<p>
+
+</p>
+
+4. Inside the `convert.onClick` method after `weightEntered = weight.getText().toString().toDoubleOrNull() ?: 0.0` get correct value from the map of sol objects by referencing the `spinner.selectedItem.toString()`
+  
+    <details>
+        <summary>Suggested Code</summary>
+
+        ```kt
+        // Get the selected celestial body's conversion factor
+        solConversion = solObjectModifiers.getValue(solSpinner.selectedItem.toString())
+        ```
+    </details>
+
+<p>
+
+</p>
+
+5. Modify return the result of the `solConversion` to the Sol `TextView`, do this after `result.setText(tenth.format(convertedWeight) + " kilograms")` inside the `lbToKilo` radio button:
+
+    <details>
+    <summary>Suggested Code</summary>
+
+    ```kt  
+    solConversionResult.setText(tenth.format(convertedWeight * solConversion) + " kilograms")
+    ```
+
+    </details>
+
+<p>
+
+</p>
+
+6. Repeat the last two steps for KiloToLb radio button
+  
+    <details>
+    <summary>Suggested Code</summary>
+
+    ```kt 
+    convertedWeight = (weightEntered * conversion)
+    ... 
+    solConversionResult.setText(tenth.format(convertedWeight * solConversion) + " lbs")
+    ```
+
+    </details>
+
+<p>
+
+</p>
+
+7.  Should look something like this...
+
+    <div align=center>
+
+    ![](./figures/solobjects.png) 
+
+    </div>
