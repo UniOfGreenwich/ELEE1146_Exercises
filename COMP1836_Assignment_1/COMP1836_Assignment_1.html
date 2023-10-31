@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Comp1836 Assignment 1 - Mobile Applications for Engineers and Technologists</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item affix "><li class="part-title">Kotlin</li><li class="chapter-item "><div><strong aria-hidden="true">1.</strong> Kotlin Labs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Kotlin/Lab_1/Lab_1.html"><strong aria-hidden="true">1.1.</strong> Lab 1: Hello World and more!</a></li><li class="chapter-item "><a href="../Kotlin/Lab_2/2_Kotlin_Intro.html"><strong aria-hidden="true">1.2.</strong> Lab 2: Introduction to Kotlin</a></li><li class="chapter-item "><a href="../Kotlin/Lab_3/Lab_3.html"><strong aria-hidden="true">1.3.</strong> Lab 3: Android User Interface Part 1</a></li><li class="chapter-item "><a href="../Kotlin/Lab_4/Lab_4.html"><strong aria-hidden="true">1.4.</strong> Lab 4: Android User Interface Part 2</a></li><li class="chapter-item "><a href="../Kotlin/Lab_5/Lab_5.html"><strong aria-hidden="true">1.5.</strong> Lab 5: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item "><a href="../Kotlin/Lab_6/Lab_6.html"><strong aria-hidden="true">1.6.</strong> Lab 6: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item "><a href="../Kotlin/Lab_7/Lab_7.html"><strong aria-hidden="true">1.7.</strong> Lab 7: Android App using Icons and Decision Making Controls. Part 1</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.8.</strong> Lab 8: Android App using Icons and Decision Making Controls. Part 2</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.9.</strong> Lab 9.1: One Dimensional Arrays (Intellij)</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.10.</strong> Lab 9.2: Lists, Arrays and Web Browsers Pt1</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.11.</strong> Lab 10: Lists, Arrays and Web Browsers Pt2 </div></li><li class="chapter-item "><div><strong aria-hidden="true">1.12.</strong> Lab 11: Kotlin Object Orientated Programming</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.13.</strong> Lab 12: Exception Handling</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.14.</strong> Lab 13: Permissions</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.15.</strong> Lab 14: Sensors 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.16.</strong> Lab 15: Sensors 2</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.17.</strong> Lab 16: Splash Screens</div></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item "><div><strong aria-hidden="true">2.</strong> Java Labs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Java/Lab_1/Lab_1.html"><strong aria-hidden="true">2.1.</strong> Lab 1: Hello World and More!</a></li><li class="chapter-item "><a href="../Java/Lab_2/Lab_2.html"><strong aria-hidden="true">2.2.</strong> Lab 2: User Interface. Part 1</a></li><li class="chapter-item "><a href="../Java/Lab_3/Lab_3.html"><strong aria-hidden="true">2.3.</strong> Lab 3: User Interface. Part 2</a></li><li class="chapter-item "><a href="../Java/Lab_4/Lab_4.html"><strong aria-hidden="true">2.4.</strong> Lab 4: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item "><a href="../Java/Lab_5/Lab_5.html"><strong aria-hidden="true">2.5.</strong> Lab 5: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.6.</strong> Lab 6: Icons and Decision Making Controls Pt1 </div></li><li class="chapter-item "><div><strong aria-hidden="true">2.7.</strong> Lab 7: Icons and Decision Making Controls Pt 2 </div></li><li class="chapter-item "><div><strong aria-hidden="true">2.8.</strong> Lab 8.1: One Dimensional Arrays (Intellij)</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.9.</strong> Lab 8.2: Lists, Arrays and Web Browsers Pt1</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.10.</strong> Lab 9: Lists, Arrays and Web Browsers Pt2 </div></li><li class="chapter-item "><div><strong aria-hidden="true">2.11.</strong> Lab 10: Java Object Orientated Programming</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.12.</strong> Lab 11: Exception Handling</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.13.</strong> Lab 12: Permissions</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.14.</strong> Lab 13: Sensors 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.15.</strong> Lab 14: Sensors 2</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.16.</strong> Lab 15: Splash Screens</div></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title">Assignments</li><li class="chapter-item expanded "><a href="../COMP1836_Assignment_1/COMP1836_Assignment_1.html" class="active"><strong aria-hidden="true">3.</strong> Comp1836 Assignment 1</a></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> Comp1836 Assignment 2</div></li><li class="spacer"></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> ELEE1146 Assignment 1</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers and Technologists</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/content/COMP1836_Assignment_1/COMP1836_Assignment_1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <pre><code>Module Nmae: Mobile Applications for Technologists
+Module Code: COMP1836 
+</code></pre>
+<h1 id="assignment-part-1"><a class="header" href="#assignment-part-1">Assignment Part 1</a></h1>
+<p><strong>Submission Date: 11th December 2023 @ 2000</strong></p>
+<hr />
+<blockquote>
+<p><strong>WARNING:</strong></p>
+<blockquote>
+<p>All submitted work will be electronically scanned for plagiarism and the use of Artificial Intelligence (AI) software. The work that you submit must be your own; any material from other sources must be correctly cited and referenced. If unreferenced material is detected a student will be reported for plagiarism. If AI is used in the production of this work, university regulations require that this fact is clearly stated on the report. Use of AI which has not been acknowledged is an academic misconduct offence and again will lead to a report of plagiarism. </p>
+</blockquote>
+</blockquote>
+<hr />
+<h2 id="brief"><a class="header" href="#brief">Brief</a></h2>
+<p>The main aim of this assignment is to develop and test student’s understanding and practical skills in mobile app design. </p>
+<h2 id="coursework-submission-link"><a class="header" href="#coursework-submission-link">Coursework Submission Link</a></h2>
+<ul>
+<li><a href="https://moodlecurrent.gre.ac.uk/mod/turnitintooltwo/view.php?id=2528001">Moodle submission link</a></li>
+</ul>
+<h2 id="learning-outcomes"><a class="header" href="#learning-outcomes">Learning Outcomes</a></h2>
+<p>On completion of the assignment, the student will develop:</p>
+<ol>
+<li>Understanding of the basic principles of mobile app design.</li>
+<li>Skills in designing a mobile app.</li>
+</ol>
+<h2 id="the-task"><a class="header" href="#the-task">The task</a></h2>
+<p>This assignment consists of two tasks:</p>
+<ol>
+<li>
+<p><strong>Task 1</strong>. Investigating the main principles of mobile app design using a variety of literature sources (e.g., books, journal articles, online resources). Find 5 to 10 relevant literature sources related to the main principles of mobile app design, analyse them, and write up a list of the main design principles and features that a good mobile app should have to appeal to customers. Explain how you are going to incorporate these features in the app you will be developing. </p>
+</li>
+<li>
+<p><strong>Task 2</strong>. Design a mobile app for rental deals of your choice. Explain how you have created the design specifying the theme you have chosen, the type of layout used, and the steps taken in developing the app design.  Include a picture of the running version of the app using the emulator. </p>
+</li>
+</ol>
+<p>The app should have an opening screen with the following elements: </p>
+<ul>
+<li>
+<p>A title.</p>
+</li>
+<li>
+<p>Either a drop-down list or radio buttons to choose the type of rental item.</p>
+</li>
+<li>
+<p>A dynamic ImageView.</p>
+</li>
+<li>
+<p>A TextVew and stylized button for displaying the rental item image and the lease price for the rental item chosen by the customer. </p>
+</li>
+<li>
+<p>Specifications or details for the rental item.</p>
+</li>
+<li>
+<p>Use a theme that displays an <strong>action bar</strong> with an icon of your choice in the finished layout.</p>
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>The icon can be chosen from Android studio free icons’ library at e.g., <a href="https://icon-library.com/png/544636.html">https://icon-library.com/png/544636.html</a>. (Hint: You can find more icons’ libraries available when you type in google “android studio free icons library”).</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>You must choose an API level that captures at least 70% of devices. </li>
+</ul>
+<h2 id="deliverables"><a class="header" href="#deliverables">Deliverables</a></h2>
+<p>You should submit a formal report using the following template <a href="https://moodlecurrent.gre.ac.uk/mod/resource/view.php?id=2620342">https://moodlecurrent.gre.ac.uk/mod/resource/view.php?id=2620342</a>. The main body of the report should be up to 5 pages long, the appendix - up to 5 additional pages and <strong>must be submitted as a PDF</strong>.</p>
+<p>The main body of the report should have the following sections;</p>
+<ul>
+<li>abstract, </li>
+<li>introduction, </li>
+<li>two sections with appropriate titles for task 1 and task 2, including subsections where applicable,</li>
+<li>a conclusion, </li>
+<li>and a list of references. 
+<ul>
+<li>The list of references should be formatted following the Harvard referencing system <a href="http://www.citethisforme.com/harvard-referencing">http://www.citethisforme.com/harvard-referencing</a>. The appendix should include the code for all XML files, clearly marked with their names.</li>
+</ul>
+</li>
+</ul>
+<h2 id="marking-scheme"><a class="header" href="#marking-scheme">Marking Scheme</a></h2>
+<p>This first part of the assignment contributes 30% of the total coursework mark. 
+The marks are distributed as follows:</p>
+<ol>
+<li>
+<p>Task 1 = 30%</p>
+</li>
+<li>
+<p>Task 2 = 60%</p>
+</li>
+<li>
+<p>Report structure and presentation = 10%</p>
+</li>
+</ol>
+<hr />
+<p>Full rubric below:</p>
+<div align=center>
+<p><strong>Rubric Task 1: Investigating Mobile App Design Principles (30%)</strong></p>
+<div class="table-wrapper"><table><thead><tr><th><strong>Criteria</strong></th><th><strong>Excellent (25-30)</strong></th><th><strong>Proficient (15-24)</strong></th><th><strong>Basic (5-14)</strong></th><th><strong>Limited (0-4)</strong></th></tr></thead><tbody>
+<tr><td><strong>Research &amp; Analysis</strong></td><td>Thorough research and analysis of 10 or more relevant literature sources.</td><td>Research and analysis of 5-9 relevant literature sources.</td><td>Research and analysis of fewer than 5 relevant literature sources.</td><td>Limited or no research evident.</td></tr>
+<tr><td><strong>Design Principles \newline &amp; Features</strong></td><td>Comprehensive list of main design principles and features for mobile apps.</td><td>Clear list of main design principles and features for mobile apps.</td><td>Some design principles and features listed.</td><td>Lacks a list of design principles and features.</td></tr>
+<tr><td><strong>Explanation of \newline  Incorporation</strong></td><td>Clear explanation of how these principles will be incorporated into the app's development.</td><td>Adequate explanation of how these principles will be incorporated into the app's development.</td><td>Vague or incomplete explanation of how these principles will be incorporated into the app's development.</td><td>Fails to explain how these principles will be incorporated into the app's development.</td></tr>
+</tbody></table>
+</div></div>
+<div align=center>
+<p><strong>Rubric Task 2: Designing a Mobile App (60%)</strong></p>
+<div class="table-wrapper"><table><thead><tr><th><strong>Criteria</strong></th><th><strong>Excellent (50-60 points)</strong></th><th><strong>Proficient (30-49 points)</strong></th><th><strong>Basic (10-29 points)</strong></th><th><strong>Limited (0-9 points)</strong></th></tr></thead><tbody>
+<tr><td><strong>Design Explanation</strong></td><td>Detailed explanation of the design process, including theme, layout, and development steps.</td><td>Explanation of the design process with minor gaps.</td><td>Limited explanation of the design process.</td><td>Fails to explain the design process.</td></tr>
+<tr><td><strong>App Design Quality</strong></td><td>Creative, well-thought-out app design that incorporates all required elements.</td><td>App design meets the minimum requirements but lacks some creativity or polish.</td><td>App design meets the minimum requirements but lacks creativity and polish.</td><td>App design is incomplete or significantly deviates from the requirements.</td></tr>
+<tr><td><strong>Presentation</strong></td><td>Presentation of a running version of the app using an emulator, demonstrating functionality.</td><td>Presentation of a running version of the app with minor issues.</td><td>Attempt to present a running version of the app with significant issues.</td><td>Fails to present a running version of the app.</td></tr>
+<tr><td><strong>API Level Choice</strong></td><td>Appropriate choice of API level capturing at least 70% of devices.</td><td>Choice of API level captures some of the target devices.</td><td>Choice of an inappropriate API level.</td><td>Choice of an API level that is incompatible with the project's goals.</td></tr>
+</tbody></table>
+</div></div>
+<div align=center>
+<p><strong>Rubric: Report Structure and Presentation (10%)</strong> </p>
+<div class="table-wrapper"><table><thead><tr><th><strong>Criteria</strong></th><th><strong>Excellent (8-10 points)</strong></th><th><strong>Proficient (5-7 points)</strong></th><th><strong>Basic (2-4 points)</strong></th><th><strong>Limited (0-1 points)</strong></th></tr></thead><tbody>
+<tr><td><strong>Report Structure</strong></td><td>Well-structured and organised report, easy to follow.</td><td>Reasonably well-structured and organised report.</td><td>Report structure and organisation could be significantly improved.</td><td>Report structure and organisation are severely lacking.</td></tr>
+<tr><td><strong>Grammar &amp; Formatting</strong></td><td>None or very few grammatical and formatting errors.</td><td>Some minor grammatical or formatting errors.</td><td>Noticeable grammatical and formatting errors.</td><td>Numerous grammatical and formatting errors.</td></tr>
+<tr><td><strong>Citation &amp; Referencing</strong></td><td>Adherence to citation and referencing guidelines.</td><td>Adherence to citation and referencing guidelines with a few issues.</td><td>Inconsistent adherence to citation and referencing guidelines.</td><td>Fails to adhere to citation and referencing guidelines.</td></tr>
+</tbody></table>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Java/Lab_5/Lab_5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Java/Lab_5/Lab_5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
