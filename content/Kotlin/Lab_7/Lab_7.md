@@ -39,7 +39,7 @@ Start a new Android Studio Project and name it the Application Medical Calculato
 ## Displaying the Action Bar Icon Using Code
 
 **Step 1:**
-- In the Android project view, expand the java folder and the first sub-folder, and then double click on the `MainActivity` to open the code window.
+- In the Android project view, expand the java folder and the first sub-folder, and then double click on the `MainActivity.kt` to open the code window.
 - Click at the end of `setContentView` line, press Enter and type the following three statements to display the logo in the Action bar:
 
 ```kt
@@ -144,8 +144,7 @@ Run the app. The icon is displayed in the running emulator acting bar as shown b
 - Change the `textSize` property to `24sp`.
 
 **Step 3:**
-- In the Buttons category of the Palette, select `RadioGroup`, and then drag and drop the `RadioGroup` control onto the user interface below the `Number` control. Expand the size of the `RadioGroup` to place radio buttons inside. 
-- Click the `RadioButton` control, drag and drop two radio buttons inside the `RadioGroup` control, and centre them using the dashed line. 
+- In the Buttons category of the Palette, select `RadioButton`, and then drag and drop the `RadioButton` control onto the user interface below the `Number` control. Expand the size of the `RadioButton`, do this repeat for a second `RadioButton` and place underneath the last. 
 - Click the vertical bar next to the `text` attribute of the first `RadioButton` control in the Attribute Pane and in the Pick a Resource dialog choose the `radKiloToLbbox`. Press OK. 
 - In the Attributes list for the first `RadioButton`, click on the checked property indicating that the first radio button is the default selection.
 - Change the `textSize` property to `18sp` from the drop down list. 
@@ -153,7 +152,7 @@ Run the app. The icon is displayed in the running emulator acting bar as shown b
 - Change the `textSize` property to `18sp` from the drop-down list. 
 
 **Step 4:**
-- Drag the `Button` control from the Palette to the emulator below the `RadioGroup`. 
+- Drag the `Button` control from the Palette to the emulator below the `RadioButton`s. 
 - Click the vertical bar next to the `text` attribute of the `Button` control in the Attribute Pane and in the Pick a Resource dialog choose the `btnConvert` box. Press OK.
 - Change the `textSize` property to `24sp` form the drop-down list.
 - Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the `Color` section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
@@ -202,8 +201,8 @@ and press Enter.
 
 **Step 2:**
 - Click at the end of the line
-```java
-getSupportActionBar().setDisplayUseLogoEnabled(true);
+```kt
+supportActionBar?.show()
 ``` 
 and press Enter.
 
@@ -269,7 +268,7 @@ class MainActivity : AppCompatActivity() {
 ## Coding the Button Event
 
 **Step 1:**
-- Inside the OnClick method stub of the MainActivity.java code, type to convert the weight entered to a Double data type and press Enter.
+- Inside the `setOnClickListener{}` method stub of the MainActivity.java code, type the code to convert the weight entered to a Double data type and press Enter.
 
 ```kt
 weightEntered = weight.getText().toString().toDouble()
@@ -278,32 +277,37 @@ weightEntered = weight.getText().toString().toDouble()
 - To create a decimal layout that changes the weight to a decimal rounded to the nearest tenth for use in the result later in the code, type: 
 
 ```kt
-val tenth : DecimalFormat = DecimalFormat("#.#")
+// Configure number formatting
+val tenth: NumberFormat = NumberFormat.getInstance()
+tenth.maximumFractionDigits = 2
+tenth.minimumFractionDigits = 2
 ```
-
-> There are two Decimal formats to choose from in the autocomplete drop down list.  Make sure if you do choose from the drop-down list to select `DecimalFormat (java.text)` and **NOT** `DecimalFormat(android.icu.text)`
 
 ## Coding the Nested `If` Statements
 
 **Step 1:**
-- After the `DecimalFormat` line of code, to determine if the first `RadioButton` control is selected, insert a new line and type:
+- After the `NumberFormat` line of code, to determine if the first `RadioButton` control is selected, insert a new line and type:
 
 ```kt
 if (lbToKilo.isChecked()) {
+
+}
 ```
 
-And then press Enter.  Java automatically adds the closing brace as shown below:
+And then press Enter and reproduce the following:
 
 ```kt
 convert.setOnClickListener {
   weightEntered = weight.getText().toString().toDouble()
-  val tenth : DecimalFormat = DecimalFormat("#.#")
+  // Configure number formatting
+  val tenth: NumberFormat = NumberFormat.getInstance()
+  tenth.maximumFractionDigits = 2
+  tenth.minimumFractionDigits = 2
 
   if (lbToKilo.isChecked()) {
    
   }
 }
-
 ```
 
 **Step 2:**
@@ -315,12 +319,15 @@ if (weightEntered <= 255) {
 
 And press Enter.  Java automatically adds the closing brace.
 
-On line 41, after the closing brace, type else `{` and press Enter.  Java automatically adds the closing brace.  See the code below:
+On line 41, after the closing brace, type `else { }` and press Enter in between the braces. See the code below:
 
 ```kt
   convert.setOnClickListener {
   weightEntered = weight.getText().toString().toDouble()
-  val tenth : DecimalFormat = DecimalFormat("#.#")
+  // Configure number formatting
+  val tenth: NumberFormat = NumberFormat.getInstance()
+  tenth.maximumFractionDigits = 2
+  tenth.minimumFractionDigits = 2
 
   if (lbToKilo.isChecked()) {
     if (weightEntered <=  255){
@@ -356,7 +363,10 @@ The result is shown in the code below:
 ```kt
 convert.setOnClickListener {
   weightEntered = weight.getText().toString().toDouble()
-  val tenth : DecimalFormat = DecimalFormat("#.#")
+  // Configure number formatting
+  val tenth: NumberFormat = NumberFormat.getInstance()
+  tenth.maximumFractionDigits = 2
+  tenth.minimumFractionDigits = 2
 
   if (lbToKilo.isChecked()) {
       if (weightEntered <= 500) {
@@ -435,7 +445,10 @@ class MainActivity : AppCompatActivity() {
         convert.setOnClickListener {
             weightEntered = weight.getText().toString().toDoubleOrNull() ?: 0.0
 
-            val tenth : DecimalFormat("#.#")
+            // Configure number formatting
+            val tenth: NumberFormat = NumberFormat.getInstance()
+            tenth.maximumFractionDigits = 2
+            tenth.minimumFractionDigits = 2
 
             if (lbToKilo.isChecked()) {
                 kiloToLb.setChecked(false)
