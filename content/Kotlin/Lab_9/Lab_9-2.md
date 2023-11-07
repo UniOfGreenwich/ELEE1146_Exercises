@@ -134,50 +134,91 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 
-// Define a custom adapter for a RecyclerView
+/**
+ * Custom adapter for a RecyclerView that displays a list of items.
+ *
+ * @property itemsList The data source for the adapter.
+ * @property itemClickListener The click listener interface for handling item clicks.
+ * @author Your Name
+ * @since dd/mm/yyyy
+ */
 internal class CustomAdapter(
-    private var itemsList: List<String>, // Data source for the adapter
-    private val itemClickListener: OnItemClickListener // Click listener interface
+    private var itemsList: List<String>,
+    private val itemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
 
-    // Inner class to hold the view items for each item in the RecyclerView
+    /**
+     * Inner class to hold the view items for each item in the RecyclerView.
+     *
+     * @param view The view for a single item in the RecyclerView.
+     */
     internal inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var itemTextView: TextView = view.findViewById(R.id.itemTextView) // TextView for displaying the item
+        var itemTextView: TextView = view.findViewById(R.id.itemTextView)
     }
 
-    // Create a new ViewHolder when needed
+    /**
+     * Called to create a new ViewHolder when needed.
+     *
+     * @param parent The parent view group.
+     * @param viewType The type of the view to be created.
+     * @return A new MyViewHolder for an item view.
+     * @author Your Name
+     * @since dd/mm/yyyy
+     */
     @NonNull
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item, parent, false) // Inflates the layout for an item
-        return MyViewHolder(itemView) // Return a new MyViewHolder
+            .inflate(R.layout.item, parent, false)
+        return MyViewHolder(itemView)
     }
 
-    // Bind data to the ViewHolder
+    /**
+     * Called to bind data to the ViewHolder.
+     *
+     * @param holder The ViewHolder to bind data to.
+     * @param position The position of the item in the list.
+     * @author Your Name
+     * @since dd/mm/yyyy
+     */
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = itemsList[position] // Get the data for this position
-        holder.itemTextView.text = item // Set the text of the itemTextView
+        val item = itemsList[position]
+        holder.itemTextView.text = item
 
         // Set a click listener for the item's view
         holder.itemView.setOnClickListener {
-            itemClickListener.onItemClick(position) // Notify the listener when an item is clicked
+            itemClickListener.onItemClick(position)
         }
     }
 
-    // Return the total number of items in the data source
+    /**
+     * Get the total number of items in the data source.
+     *
+     * @return The number of items in the data source.
+     * @author Your Name
+     * @since dd/mm/yyyy
+     */
     override fun getItemCount(): Int {
         return itemsList.size
     }
 
-    // Interface for item click events
+    /**
+     * Interface for handling item click events.
+     */
     interface OnItemClickListener {
+        /**
+         * Called when an item is clicked.
+         *
+         * @param position The position of the clicked item.
+         * @author Your Name
+         * @since dd/mm/yyyy
+         */
         fun onItemClick(position: Int)
     }
 }
 ```
 
 >**Note**
->> - You may have some errors to do with referencing a `TextView` widget.
+>> - You may have some errors to do with referencing a `TextView` widget. This will be resolved as you progress below.
 
 
 ## Programming the `item.xml`
@@ -230,7 +271,8 @@ customAdapter = CustomAdapter(itemsList,this)
 recyclerView.layoutManager = layoutManager
 recyclerView.adapter = customAdapter
 
-prepareItems() // function that populates the `itemList` array
+ // calls the prepare function to populate the recycler view using out adapter class.
+ prepareItems(attractions)
 }
 ```
 
@@ -239,41 +281,54 @@ prepareItems() // function that populates the `itemList` array
 - After the `onCreate` closing `}`, we need to create the `prepareItems()` function and program the `onItemClick()` block of code to respond to when an item is clicked and launch a new activity:
 
 ```kt 
-private fun prepareItems() {
-        for (attraction in attractions) {
-            itemsList.add(attraction)
-        }
-        customAdapter.notifyDataSetChanged()
-    }
+  /**
+      * Fill recycler view with list.
+      * @param Array<String>
+      * @sample prepareItems(arrayOfStrings)
+      * @author Your name`
+      * @since dd/mm/yyyy
+      *
+  */
+  private fun prepareItems(array : Array<String>) {
+      for (item in array) {
+          itemsList.add(item)
+      }
+      customAdapter.notifyDataSetChanged()
+  }
 
 override fun onItemClick(position: Int) {
-// Handle item click here
-Toast.makeText(this, "Item clicked at position $position", Toast.LENGTH_SHORT).show()
-
-// Use a when expression to handle different values of the 'position' parameter
-when (position) {
-    0 -> {
-        // Create an intent to view a webpage and set the URL to "https://www.gre.ac.uk/about-us/campus/medway"
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse("https://www.gre.ac.uk/about-us/campus/medway")
-        // Start an activity to view the webpage
-        startActivity(intent)
-    }
-    1 -> {
-        // Create an intent to view a webpage and set the URL to "https://en.wikipedia.org/wiki/Great_Lines_Heritage_Park"
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse("https://en.wikipedia.org/wiki/Great_Lines_Heritage_Park")
-        // Start an activity to view the webpage
-        startActivity(intent)
-    }
-        2, 3, 4 -> {
-            // Create an intent to start the 'Attraction' activity and pass the 'position' as an extra
-            val intent = Intent(this, Attraction::class.java)
-            intent.putExtra("index", position) // (key, value)
-            // Start the 'Attraction' activity with the specified 'position'
-            startActivity(intent)
-        }
-    }
+  // Handle item click here
+  Toast.makeText(this, "Item clicked at position $position", Toast.LENGTH_SHORT).show()
+  
+  // Use a when expression to handle different values of the 'position' parameter
+  when (position) {
+      0 -> {
+          // Create an intent to view a webpage and set the URL to "https://www.gre.ac.uk/about-us/campus/medway"
+          val intent = Intent(Intent.ACTION_VIEW)
+          intent.data = Uri.parse("https://www.gre.ac.uk/about-us/campus/medway")
+          // Start an activity to view the webpage
+          startActivity(intent)
+      }
+      1 -> {
+          // Create an intent to view a webpage and set the URL to "https://en.wikipedia.org/wiki/Great_Lines_Heritage_Park"
+          val intent = Intent(Intent.ACTION_VIEW)
+          intent.data = Uri.parse("https://en.wikipedia.org/wiki/Great_Lines_Heritage_Park")
+          // Start an activity to view the webpage
+          startActivity(intent)
+      }
+      2 -> {
+          val intent = Intent(this, HMSGanettActivity::class.java)
+          startActivity(intent)
+      }
+      3 -> {
+          val intent = Intent(this, RochesterCathedralActivity::class.java)
+          startActivity(intent)
+      }
+      4 -> {
+          val intent = Intent(this, FortAmherstActivity::class.java)
+          startActivity(intent)
+      }
+  }
 }
 ```
 
@@ -307,6 +362,57 @@ There are three images that appear when the user selects the HMS Gannet, Fort Am
 
 - Save the `strings.xml` and close the tab.
 
+## Creating the activities for each location
+
+**Step 14:**
+
+- Create three new empty view activities called:
+  - FortAmherstActivity.kt
+  - HMSGanettActivity.kt
+  - RochesterCathedralActivity.kt
+
+**Step 15:**
+
+- Modify each of the new `xml` layouts:
+  - `activity_fort_amherst.xml`
+  - `activity_hmsganett.xml`
+  - `activity_rochester_cathedral.xml`
+
+- By adding an `ImageView` widget placing the appropriate image in each from the mipmap folder.
+- ```xml
+  <?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FortAmherstActivity">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/fort_amherst" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  ```
+
+<div align=center>
+
+<img src="./figures/xmlThreeLayouts.png">
+
+</div>
+
+
+- You should now be able to launch this version of the app.
+- Try each item in the `RecyclerView`
+
+
+--------------------
+
 ## Creating the Location Activities
 
 **Step 14:**
@@ -322,7 +428,7 @@ There are three images that appear when the user selects the HMS Gannet, Fort Am
 
 **Designing XML Layout Files**
 
-**Step 14:**
+**Step 15:**
 - Open the `activity_attraction.xml` tab and click the Design tab at the bottom.
 - In the Common category in the Palette, drag the `ImageView` control to the middle of the emulator (both horizontal and vertical dashed lines will appear).
 - Do not place an image into this widget, this will be handled by the class file.
@@ -373,7 +479,7 @@ XML would look like this:
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-**Step 15:**
+**Step 16:**
 
 - Open the `Attraction.kt` and inside the class above the `onCreate()` method add the following: 
 
@@ -381,13 +487,14 @@ XML would look like this:
 class Attraction : AppCompatActivity() {
     // Arrays containing resource IDs for images and string titles
     val attractionResourceImages = arrayOf(R.mipmap.hms_gannet, R.mipmap.rochester_cathedral, R.mipmap.fort_amherst)
+    // instead of writing the strings out, we can use the string.xml elements
     val attractionStringTitles = arrayOf(R.string.dockyard, R.string.cathedral, R.string.amherst)
 
     override fun onCreate(...)
     ...
 ```
 
-- Continuing in side the `onCreate(...){...}` add code for an `ImageView`, `supportActionBar`, and getting our extra `Intent`.
+- Continuing in side the `onCreate(...){...}` add code for an `ImageView`, `supportActionBar`, and getting the *extra* `Intent`.
 
 ```kt
 // Find the ImageView with the ID "imageView" in the layout
