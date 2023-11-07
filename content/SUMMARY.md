@@ -12,7 +12,7 @@
   - [Lab 5: User Input, Variables and Operations. Part 1](Kotlin/Lab_5/Lab_5.md)
   - [Lab 6: User Input, Variables and Operations. Part 2](Kotlin/Lab_6/Lab_6.md)
   - [Lab 7: Android App using Icons and Decision Making Controls. Part 1](Kotlin/Lab_7/Lab_7.md)
-  - [Lab 8: Android App using Icons and Decision Making Controls. Part 2]()
+  - [Lab 8: Android App using Icons and Decision Making Controls. Part 2](Kotlin/Lab_8/Lab_8.md)
   - [Lab 9.1: One Dimensional Arrays (Intellij)]()
   - [Lab 9.2: Lists, Arrays and Web Browsers Pt1]()
   - [Lab 10: Lists, Arrays and Web Browsers Pt2 ]()
@@ -39,9 +39,9 @@
 
   - [Lab 5: User Input, Variables and Operations. Part 2](Java/Lab_5/Lab_5.md)
 
-  - [Lab 6: Icons and Decision Making Controls Pt1 ]()
+  - [Lab 6: Icons and Decision Making Controls Pt1](Java/Lab_6/Lab_6.md)
 
-  - [Lab 7: Icons and Decision Making Controls Pt 2 ]()
+  - [Lab 7: Icons and Decision Making Controls Pt 2 ](Java/Lab_7/Lab_7.md)
 
   - [Lab 8.1: One Dimensional Arrays (Intellij)]()
 
