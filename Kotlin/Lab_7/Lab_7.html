@@ -217,7 +217,7 @@
 <h2 id="displaying-the-action-bar-icon-using-code"><a class="header" href="#displaying-the-action-bar-icon-using-code">Displaying the Action Bar Icon Using Code</a></h2>
 <p><strong>Step 1:</strong></p>
 <ul>
-<li>In the Android project view, expand the java folder and the first sub-folder, and then double click on the <code>MainActivity</code> to open the code window.</li>
+<li>In the Android project view, expand the java folder and the first sub-folder, and then double click on the <code>MainActivity.kt</code> to open the code window.</li>
 <li>Click at the end of <code>setContentView</code> line, press Enter and type the following three statements to display the logo in the Action bar:</li>
 </ul>
 <pre><code class="language-kt">supportActionBar?.setDisplayShowCustomEnabled(true)
@@ -311,8 +311,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 </ul>
 <p><strong>Step 3:</strong></p>
 <ul>
-<li>In the Buttons category of the Palette, select <code>RadioGroup</code>, and then drag and drop the <code>RadioGroup</code> control onto the user interface below the <code>Number</code> control. Expand the size of the <code>RadioGroup</code> to place radio buttons inside. </li>
-<li>Click the <code>RadioButton</code> control, drag and drop two radio buttons inside the <code>RadioGroup</code> control, and centre them using the dashed line. </li>
+<li>In the Buttons category of the Palette, select <code>RadioButton</code>, and then drag and drop the <code>RadioButton</code> control onto the user interface below the <code>Number</code> control. Expand the size of the <code>RadioButton</code>, do this repeat for a second <code>RadioButton</code> and place underneath the last. </li>
 <li>Click the vertical bar next to the <code>text</code> attribute of the first <code>RadioButton</code> control in the Attribute Pane and in the Pick a Resource dialog choose the <code>radKiloToLbbox</code>. Press OK. </li>
 <li>In the Attributes list for the first <code>RadioButton</code>, click on the checked property indicating that the first radio button is the default selection.</li>
 <li>Change the <code>textSize</code> property to <code>18sp</code> from the drop down list. </li>
@@ -321,7 +320,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 </ul>
 <p><strong>Step 4:</strong></p>
 <ul>
-<li>Drag the <code>Button</code> control from the Palette to the emulator below the <code>RadioGroup</code>. </li>
+<li>Drag the <code>Button</code> control from the Palette to the emulator below the <code>RadioButton</code>s. </li>
 <li>Click the vertical bar next to the <code>text</code> attribute of the <code>Button</code> control in the Attribute Pane and in the Pick a Resource dialog choose the <code>btnConvert</code> box. Press OK.</li>
 <li>Change the <code>textSize</code> property to <code>24sp</code> form the drop-down list.</li>
 <li>Click the vertical bar next to the <code>textColor</code> property.  In the Pick a Resource dialog box that appears in the <code>Color</code> section scroll down in android and choose <code>holo_red_dark</code> colour to change the text colour to red to match the launcher icon.  Click the OK button.</li>
@@ -364,7 +363,7 @@ var convertedWeight : Double = 0.0
 <ul>
 <li>Click at the end of the line</li>
 </ul>
-<pre><code class="language-java">getSupportActionBar().setDisplayUseLogoEnabled(true);
+<pre><code class="language-kt">supportActionBar?.show()
 </code></pre>
 <p>and press Enter.</p>
 <ul>
@@ -427,35 +426,39 @@ val lbToKilo = findViewById&lt;RadioButton&gt;(R.id.radiobutton2)
 <h2 id="coding-the-button-event"><a class="header" href="#coding-the-button-event">Coding the Button Event</a></h2>
 <p><strong>Step 1:</strong></p>
 <ul>
-<li>Inside the OnClick method stub of the MainActivity.java code, type to convert the weight entered to a Double data type and press Enter.</li>
+<li>Inside the <code>setOnClickListener{}</code> method stub of the MainActivity.java code, type the code to convert the weight entered to a Double data type and press Enter.</li>
 </ul>
 <pre><code class="language-kt">weightEntered = weight.getText().toString().toDouble()
 </code></pre>
 <ul>
 <li>To create a decimal layout that changes the weight to a decimal rounded to the nearest tenth for use in the result later in the code, type: </li>
 </ul>
-<pre><code class="language-kt">val tenth : DecimalFormat = DecimalFormat(&quot;#.#&quot;)
+<pre><code class="language-kt">// Configure number formatting
+val tenth: NumberFormat = NumberFormat.getInstance()
+tenth.maximumFractionDigits = 2
+tenth.minimumFractionDigits = 2
 </code></pre>
-<blockquote>
-<p>There are two Decimal formats to choose from in the autocomplete drop down list.  Make sure if you do choose from the drop-down list to select <code>DecimalFormat (java.text)</code> and <strong>NOT</strong> <code>DecimalFormat(android.icu.text)</code></p>
-</blockquote>
 <h2 id="coding-the-nested-if-statements"><a class="header" href="#coding-the-nested-if-statements">Coding the Nested <code>If</code> Statements</a></h2>
 <p><strong>Step 1:</strong></p>
 <ul>
-<li>After the <code>DecimalFormat</code> line of code, to determine if the first <code>RadioButton</code> control is selected, insert a new line and type:</li>
+<li>After the <code>NumberFormat</code> line of code, to determine if the first <code>RadioButton</code> control is selected, insert a new line and type:</li>
 </ul>
 <pre><code class="language-kt">if (lbToKilo.isChecked()) {
+
+}
 </code></pre>
-<p>And then press Enter.  Java automatically adds the closing brace as shown below:</p>
+<p>And then press Enter and reproduce the following:</p>
 <pre><code class="language-kt">convert.setOnClickListener {
   weightEntered = weight.getText().toString().toDouble()
-  val tenth : DecimalFormat = DecimalFormat(&quot;#.#&quot;)
+  // Configure number formatting
+  val tenth: NumberFormat = NumberFormat.getInstance()
+  tenth.maximumFractionDigits = 2
+  tenth.minimumFractionDigits = 2
 
   if (lbToKilo.isChecked()) {
    
   }
 }
-
 </code></pre>
 <p><strong>Step 2:</strong></p>
 <ul>
@@ -464,10 +467,13 @@ val lbToKilo = findViewById&lt;RadioButton&gt;(R.id.radiobutton2)
 <pre><code class="language-kt">if (weightEntered &lt;= 255) { 
 </code></pre>
 <p>And press Enter.  Java automatically adds the closing brace.</p>
-<p>On line 41, after the closing brace, type else <code>{</code> and press Enter.  Java automatically adds the closing brace.  See the code below:</p>
+<p>On line 41, after the closing brace, type <code>else { }</code> and press Enter in between the braces. See the code below:</p>
 <pre><code class="language-kt">  convert.setOnClickListener {
   weightEntered = weight.getText().toString().toDouble()
-  val tenth : DecimalFormat = DecimalFormat(&quot;#.#&quot;)
+  // Configure number formatting
+  val tenth: NumberFormat = NumberFormat.getInstance()
+  tenth.maximumFractionDigits = 2
+  tenth.minimumFractionDigits = 2
 
   if (lbToKilo.isChecked()) {
     if (weightEntered &lt;=  255){
@@ -498,7 +504,10 @@ val lbToKilo = findViewById&lt;RadioButton&gt;(R.id.radiobutton2)
 <p>The result is shown in the code below: </p>
 <pre><code class="language-kt">convert.setOnClickListener {
   weightEntered = weight.getText().toString().toDouble()
-  val tenth : DecimalFormat = DecimalFormat(&quot;#.#&quot;)
+  // Configure number formatting
+  val tenth: NumberFormat = NumberFormat.getInstance()
+  tenth.maximumFractionDigits = 2
+  tenth.minimumFractionDigits = 2
 
   if (lbToKilo.isChecked()) {
       if (weightEntered &lt;= 500) {
@@ -574,7 +583,10 @@ class MainActivity : AppCompatActivity() {
         convert.setOnClickListener {
             weightEntered = weight.getText().toString().toDoubleOrNull() ?: 0.0
 
-            val tenth : DecimalFormat(&quot;#.#&quot;)
+            // Configure number formatting
+            val tenth: NumberFormat = NumberFormat.getInstance()
+            tenth.maximumFractionDigits = 2
+            tenth.minimumFractionDigits = 2
 
             if (lbToKilo.isChecked()) {
                 kiloToLb.setChecked(false)
