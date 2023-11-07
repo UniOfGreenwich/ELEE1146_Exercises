@@ -220,6 +220,53 @@ internal class CustomAdapter(
 >**Note**
 >> - You may have some errors to do with referencing a `TextView` widget. This will be resolved as you progress below.
 
+>**More**
+>> These are some of the most commonly used KDoc tags. You can use these tags to provide comprehensive documentation for your code, making it more understandable and usable for other developers. Additionally, you can define custom tags if you need to document domain-specific information or add metadata to your code documentation.
+>> <details>
+>> <summary>KDoc</summary>
+>>
+>> - `@param`: Describes a parameter of a function or constructor.
+>>
+>> - `@return`: Describes the return value of a function.
+>>
+>> - `@property`: Describes a property of a class.
+>>
+>> - `@constructor`: Describes the constructor of a class.
+>>  
+>> - `@throws` or `@exception`: Describes exceptions that a function may throw.
+>>
+>> - `@sample`: Provides a usage example for the documented code.
+>>
+>> - `@see`: Provides references to related functions, classes, or documentation.
+>>
+>> - `@since`: Indicates the version or release when the code was introduced.
+>>
+>> - `@author`: Identifies the author or contributor of the code.
+>>
+>> - `@version`: Specifies the version number of the code.
+>>
+>> - `@deprecated`: Marks the code as deprecated and provides information about alternatives.
+>>
+>> - `@suppress`: Suppresses specific warnings or errors related to the documented code.
+>>
+>> - `@apiNote`: Provides additional notes or explanations about the code. 
+>>
+>> - `@implSpec`: Describes implementation details for an interface or class.
+>>
+>> - `@link`: Creates hyperlinks to related documentation or resources.
+>>
+>> - `@code`: Renders text as code within the documentation.
+>>
+>> -  `@literal`: Represents text as literal text in the documentation.
+>>
+>> - `@paramTag`: Customizable tag used to document parameters.
+>>
+>> - `@returnTag`: Customizable tag used to document the return value.
+>>
+>> - `@propertyTag`: Customizable tag used to document properties.
+>>
+>> - `@constructorTag`: Customizable tag used to document constructors.
+>> </details>
 
 ## Programming the `item.xml`
 
