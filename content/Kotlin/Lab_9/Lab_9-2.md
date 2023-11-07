@@ -415,7 +415,7 @@ There are three images that appear when the user selects the HMS Gannet, Fort Am
 
 ## Creating the Location Activities
 
-**Step 14:**
+**Step 16:**
 
 -  Create a new Empty View activities:
     - Attraction
@@ -428,7 +428,7 @@ There are three images that appear when the user selects the HMS Gannet, Fort Am
 
 **Designing XML Layout Files**
 
-**Step 15:**
+**Step 17:**
 - Open the `activity_attraction.xml` tab and click the Design tab at the bottom.
 - In the Common category in the Palette, drag the `ImageView` control to the middle of the emulator (both horizontal and vertical dashed lines will appear).
 - Do not place an image into this widget, this will be handled by the class file.
@@ -479,7 +479,7 @@ XML would look like this:
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-**Step 16:**
+**Step 18:**
 
 - Open the `Attraction.kt` and inside the class above the `onCreate()` method add the following: 
 
@@ -517,7 +517,7 @@ supportActionBar?.setDisplayShowTitleEnabled(true)
 supportActionBar?.show()
 ```
 
-**Step 16:** 
+**Step 19:** 
 
 - Place the button functionality in this new activity so that you can navigate back to the `MainActivity.kt` class: 
 - ```kt
@@ -527,6 +527,34 @@ supportActionBar?.show()
      startActivity(intent)
   }
   ```
+
+**Step 20:**
+
+- Finally we need to go back to the `MainActivity.kt` and refactor some of the code in the `when` block of code. Modify the `when` block so that options 2, 3 and 4 are condensed to one block of code:
+
+    ```kt
+    ...
+    /*2 -> {
+        val intent = Intent(this, HMSGanettActivity::class.java)
+        startActivity(intent)
+    }
+    3 -> {
+        val intent = Intent(this, RochesterCathedralActivity::class.java)
+        startActivity(intent)
+    }
+    4 -> {
+        val intent = Intent(this, FortAmherstActivity::class.java)
+        startActivity(intent)
+    }*/
+    2, 3, 4 -> {
+        // Create an intent to start the 'Attraction' activity and pass the 'position' as an extra
+        val intent = Intent(this, Attraction::class.java)
+        intent.putExtra("index", position) // (key, value)
+        // Start the 'Attraction' activity with the specified 'position'
+        startActivity(intent)
+    }
+    ```
+
 Your App should look what was shown earlier:
 
 <div align=center>
@@ -536,6 +564,9 @@ Your App should look what was shown earlier:
 ![](./figures/android_step_3.png)
 
 </div>
+
+-----------------------------
+
 
 ## Full Code, `MainActivity.kt`:
 
