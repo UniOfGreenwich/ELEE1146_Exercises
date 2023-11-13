@@ -1,4 +1,4 @@
-# Lab 11: Exception Handling
+# Lab 12: Exception Handling
 
 Using IntelliJ you are going to do some error handling exploration. 
 
