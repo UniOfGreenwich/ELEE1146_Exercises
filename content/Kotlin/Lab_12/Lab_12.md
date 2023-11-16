@@ -28,7 +28,7 @@ Reproduce the following to set up the project
 Now you can edit `main()` with the following code, then compile and run.
 ```kt
 {
-    System.out.println(3/0);
+    println(3/0);
 }
 ```
 
@@ -49,10 +49,10 @@ Modify the `Main.kt` as shown below. The change is to catch an exception through
 
 ```kt
     try{
-        System.out.println(3/0);
+        println(3/0)
     } 
     catch(e : Exception){
-        System.out.printf("Caught runtime exception = %s\n", e);
+       println("Caught runtime exception = ${e}\n" )
     }
 ```
 
@@ -70,10 +70,10 @@ Modify the Main.java as shown below. The change is to use more specific Exceptio
 
 ```kt
     try{
-        System.out.println(3/0);
+       println(3/0);
     } 
     catch( e : ArithmeticException ){
-        System.out.printf("Caught runtime exception = %s\n", e);
+        println("Caught runtime exception = ${e}\n" )
     }
 ```
 
@@ -89,10 +89,10 @@ Let's try changing the Exception Class, to `NumberFormatExpression`.
 
 ```kt
     try{
-            System.out.println(3/0);
+            println(3/0)
         } 
         catch( e : NumberFormatException){
-            System.out.printf("Caught runtime exception = %s\n", e);
+            println("Caught runtime exception = ${e}\n" )
         }
 ```
 
@@ -113,10 +113,10 @@ For fun, do the following, what happens and why?
 
 ```kt
     try{
-            System.out.println(3/0);
+            println(3/0);
         } catch( e : ArithmeticException){
-            System.out.printf("Caught runtime exception = %s\n", e);
-            System.out.println(3/0);
+            println("Caught runtime exception = ${e}\n" )
+            println(3/0)
         }
 ```
 ## Step 2: Catch multiple exceptions
