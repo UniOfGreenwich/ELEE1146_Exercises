@@ -841,5 +841,7 @@ This step is a little more involved than the previous two storage options.
 
 ## Completed project
 
-You can download the completed project from here as a zip, if you have not completed the lab or just want to explore and play with as is:
+You can download the completed project from here as a zip, if you have not completed the lab or just want to explore and play with as is: 
+
+- [PresistentData.zip](PersistentData.zip)
 
