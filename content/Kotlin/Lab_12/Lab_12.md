@@ -26,19 +26,10 @@ In this lab you will write 414 lines of code.
    - `DataUtils.kt` File (Kotlin Class/File)
    - `MyMutuableExtensions` Object (Kotlin Class/File)
 
-<<<<<<< HEAD
 5. Make these files in `src`:
     - `customers.csv` File (File)
     - `customers.json` File (File)
     - `customers.xml` File (File)
-=======
-Now you can edit `main()` with the following code, then compile and run.
-```kt
-{
-    println(3/0);
-}
-```
->>>>>>> 8926f3dd502b049ddd5b48fd95a9b850291b888a
 
     <div align=center>
 
@@ -247,7 +238,6 @@ We are now going to create functionality to read and write to a CSV, our fist ty
             }
         }
 
-<<<<<<< HEAD
         /**
         * Creates a new file at the specified [filePath].
         *
@@ -267,14 +257,6 @@ We are now going to create functionality to read and write to a CSV, our fist ty
                 println("An error occurred while creating the file: ${e.message}")
             }
         }
-=======
-```kt
-    try{
-        println(3/0)
-    } 
-    catch(e : Exception){
-       println("Caught runtime exception = ${e}\n" )
->>>>>>> 8926f3dd502b049ddd5b48fd95a9b850291b888a
     }
     ```
 
@@ -314,7 +296,6 @@ We are going to create some extension methods for the `MutuableList` class. Some
                 }
             }
 
-<<<<<<< HEAD
             /**
             * Extension function to remove a [BankCustomer] from the [MutableList] based on the account number.
             *
@@ -330,16 +311,6 @@ We are going to create some extension methods for the `MutuableList` class. Some
                     println("No customer found with account number $accountNumber. No customer removed.")
                 }
             }
-=======
-```kt
-    try{
-       println(3/0);
-    } 
-    catch( e : ArithmeticException ){
-        println("Caught runtime exception = ${e}\n" )
-    }
-```
->>>>>>> 8926f3dd502b049ddd5b48fd95a9b850291b888a
 
             /**
             * Prints details of all [BankCustomer] objects in the [MutableList].
@@ -370,7 +341,6 @@ We are going to create some extension methods for the `MutuableList` class. Some
 
 
 ```kt
-<<<<<<< HEAD
 // MyMutableExtensions file
 import MyMutableExtensions.addIfNotDuplicate
 import MyMutableExtensions.printAll
@@ -384,14 +354,6 @@ import DataUtils.writeCustomersToCSV
 fun main(args: Array<String>){
     ...
 }
-=======
-    try{
-            println(3/0)
-        } 
-        catch( e : NumberFormatException){
-            println("Caught runtime exception = ${e}\n" )
-        }
->>>>>>> 8926f3dd502b049ddd5b48fd95a9b850291b888a
 ```
 
 16. Now lets use some of these functions and methods we have now imported to write and read unique values to/from the a `customers.csv`.
@@ -445,19 +407,7 @@ fun main(args: Array<String>){
 
     ![](./figures/step7.png)
 
-<<<<<<< HEAD
     </div>
-=======
-```kt
-    try{
-            println(3/0);
-        } catch( e : ArithmeticException){
-            println("Caught runtime exception = ${e}\n" )
-            println(3/0)
-        }
-```
-## Step 2: Catch multiple exceptions
->>>>>>> 8926f3dd502b049ddd5b48fd95a9b850291b888a
 
 19. Modify the first the line ` csvExistingCustomers.add(newCustomer)` in `Main.kt` to use our add method:
 
