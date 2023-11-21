@@ -272,11 +272,11 @@ internal class CustomAdapter(
 
 **Step 9:**
 
-- You need to right click the `res/layout` package in the Project view and select New>Kotlin Class/file
+- You need to right click the `res/layout` package in the Project view and select `New>Layout Resource file`
 
 <div align=center>
 
-![](./figures/android_step_8.png)
+![](./figures/itemxml.PNG)
 
 </div>
 
