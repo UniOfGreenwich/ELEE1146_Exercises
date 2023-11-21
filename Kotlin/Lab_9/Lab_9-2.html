@@ -1,0 +1,1014 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lab 9.2: Lists, Arrays and Web Browsers - Mobile Applications for Engineers and Technologists</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Introduction.html">Introduction</a></li><li class="chapter-item affix "><li class="part-title">Kotlin</li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Kotlin Labs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Kotlin/Lab_1/Lab_1.html"><strong aria-hidden="true">1.1.</strong> Lab 1: Hello World and more!</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_2/2_Kotlin_Intro.html"><strong aria-hidden="true">1.2.</strong> Lab 2: Introduction to Kotlin</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_3/Lab_3.html"><strong aria-hidden="true">1.3.</strong> Lab 3: Android User Interface Part 1</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_4/Lab_4.html"><strong aria-hidden="true">1.4.</strong> Lab 4: Android User Interface Part 2</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_5/Lab_5.html"><strong aria-hidden="true">1.5.</strong> Lab 5: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_6/Lab_6.html"><strong aria-hidden="true">1.6.</strong> Lab 6: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_7/Lab_7.html"><strong aria-hidden="true">1.7.</strong> Lab 7: Android App using Icons and Decision Making Controls. Part 1</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_8/Lab_8.html"><strong aria-hidden="true">1.8.</strong> Lab 8: Android App using Icons and Decision Making Controls. Part 2</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_9/Lab_9-1.html"><strong aria-hidden="true">1.9.</strong> Lab 9.1: One Dimensional Arrays (Intellij)</a></li><li class="chapter-item expanded "><a href="../../Kotlin/Lab_9/Lab_9-2.html" class="active"><strong aria-hidden="true">1.10.</strong> Lab 9.2: Lists, Arrays and Web Browsers</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.11.</strong> Lab 10: Kotlin Object Orientated Programming</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.12.</strong> Lab 11: Exception Handling</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.13.</strong> Lab 12: OOP with Data Storage</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.14.</strong> Lab 13: Permissions</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.15.</strong> Lab 14: Sensors 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.16.</strong> Lab 15: Sensors 2</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.17.</strong> Lab 16: Splash Screens</div></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item "><div><strong aria-hidden="true">2.</strong> Java Labs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Java/Lab_1/Lab_1.html"><strong aria-hidden="true">2.1.</strong> Lab 1: Hello World and More!</a></li><li class="chapter-item "><a href="../../Java/Lab_2/Lab_2.html"><strong aria-hidden="true">2.2.</strong> Lab 2: User Interface. Part 1</a></li><li class="chapter-item "><a href="../../Java/Lab_3/Lab_3.html"><strong aria-hidden="true">2.3.</strong> Lab 3: User Interface. Part 2</a></li><li class="chapter-item "><a href="../../Java/Lab_4/Lab_4.html"><strong aria-hidden="true">2.4.</strong> Lab 4: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item "><a href="../../Java/Lab_5/Lab_5.html"><strong aria-hidden="true">2.5.</strong> Lab 5: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item "><a href="../../Java/Lab_6/Lab_6.html"><strong aria-hidden="true">2.6.</strong> Lab 6: Icons and Decision Making Controls Pt1</a></li><li class="chapter-item "><a href="../../Java/Lab_7/Lab_7.html"><strong aria-hidden="true">2.7.</strong> Lab 7: Icons and Decision Making Controls Pt 2 </a></li><li class="chapter-item "><div><strong aria-hidden="true">2.8.</strong> Lab 8.1: One Dimensional Arrays (Intellij)</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.9.</strong> Lab 8.2: Lists, Arrays and Web Browsers Pt1</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.10.</strong> Lab 9: Lists, Arrays and Web Browsers Pt2 </div></li><li class="chapter-item "><div><strong aria-hidden="true">2.11.</strong> Lab 10: Java Object Orientated Programming</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.12.</strong> Lab 11: Exception Handling</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.13.</strong> Lab 12: Permissions</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.14.</strong> Lab 13: Sensors 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.15.</strong> Lab 14: Sensors 2</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.16.</strong> Lab 15: Splash Screens</div></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title">Assignments</li><li class="chapter-item "><a href="../../COMP1836_Assignment_1/COMP1836_Assignment_1.html"><strong aria-hidden="true">3.</strong> Comp1836 Assignment 1</a></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> Comp1836 Assignment 2</div></li><li class="spacer"></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> ELEE1146 Assignment 1</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers and Technologists</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/content/Kotlin/Lab_9/Lab_9-2.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="lab-9-2-android-lists-arrays-and-web-browsers"><a class="header" href="#lab-9-2-android-lists-arrays-and-web-browsers">Lab 9-2 Android Lists, Arrays and Web Browsers</a></h2>
+<p>You will be developing travel guide for Medway app that highlights the best attractions the city has to offer.  The City Guide app opening screen is shown below:</p>
+<blockquote>
+<ul>
+<li>You will need to download the following picture folder -&gt; <a href="Lab_9_Pictures.zip">Lab_9_Picture.zip</a></li>
+<li>The completed project can be found here at end of session -&gt; <a href="https://github.com/TeachingMaterial/MobileApps-CityGuide">https://github.com/TeachingMaterial/MobileApps-CityGuide</a></li>
+</ul>
+</blockquote>
+<div align=center>
+<p><img src="./figures/android_step_1.png" alt="" /></p>
+</div>
+<p>The City Guide app displays 5 Medway attractions. When the user taps one of the attractions, a second window opens displaying either an image or a web site providing more information about the site or activity.  The first two items on the list link to websites, as shown on the two figures below. A browser opens to display a web site for the University of Greenwich @ Medway or the The Great Lines.</p>
+<div align=center>
+<p><img src="./figures/android_step_2.png" alt="" /></p>
+</div>
+<p>If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image appears on a second screen as shown on the figures below.  By pressing the a button on the selected activity, you can return to the list of the attractions.</p>
+<div align=center>
+<p><img src="./figures/android_step_3.png" alt="" /></p>
+</div>
+<p>Complete the following steps to develop the app.</p>
+<p><strong>Step 1:</strong></p>
+<ul>
+<li>Create a New Project with the name <strong>CityGuide</strong> in the Application name text box. </li>
+<li>Open <code>activity_main.xml</code>.</li>
+<li>Copy the <code>ic_launcher_medway.png</code> file from the Pictures above.</li>
+<li>Click <code>File</code> on the menu bar and then click New to open the New menu.</li>
+<li>Click Image Asset on the New menu.  In the Asset Studio dialog window that appears, in Asset Type, click on the Image radio button.</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_4.png" alt="" /></p>
+</div>
+<p><strong>Step 2:</strong></p>
+<ul>
+<li>In the Path: field click on the folder icon to the very end of the field and navigate to the location of <code>ic_launcher_medway.png</code> file, and then select the file. </li>
+<li>Click the Next button to add the custom launcher icon. </li>
+<li>On the next dialog window, click the Finish button. The custom icons will be displayed in <code>res/mipmap</code> folder.</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_5.png" alt="" /></p>
+</div>
+<p><strong>Step 3:</strong></p>
+<ul>
+<li>Click <code>MainActivity.kt</code> tab, and modify the <code>Class MainActivity...</code> to include a reference to a Class we are going to build <code> CustomAdapter.OnItemClickListener</code>:</li>
+</ul>
+<pre><code class="language-kt">class MainActivity : AppCompatActivity(), CustomAdapter.OnItemClickListener {
+    ....
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<blockquote>
+<p>You will see an error indicated as this Class does not exist yet...</p>
+</blockquote>
+</blockquote>
+<p><strong>Step 4:</strong></p>
+<ul>
+<li>Next modify the MainActivity, to store a list of items an, instance of our Class (which is not yet made), and an array of strings:</li>
+</ul>
+<pre><code class="language-kt">class MainActivity : ....
+
+    private val itemsList = ArrayList&lt;String&gt;()
+    private lateinit var customAdapter: CustomAdapter
+    private val attractions = arrayOf(&quot;Greenwich - Medway&quot;,&quot;Great Lines&quot;,
+        &quot;HMS Gannet&quot;,&quot;Rochester Cathedral&quot;,&quot;Fort Amherst&quot;)
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<ul>
+<li><code>lateinit</code>: This is a modifier that is used to tell the Kotlin compiler that the property will be initialized at a later time, and it won't have an initial value when it's declared. It's often used for non-null properties that can't be assigned a value in the constructor or during object creation. It's your responsibility to ensure that you initialize the property before accessing it, or you'll get a <code>lateinit</code> exception at runtime if you try to access it before it's initialized.</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><strong>Step 5:</strong></p>
+<ul>
+<li>Continuing inside the <code>Oncreate(...)</code> function, add support for the action bar:</li>
+</ul>
+<pre><code class="language-kt">supportActionBar?.setDisplayShowCustomEnabled(true)
+supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
+supportActionBar?.setDisplayShowTitleEnabled(true)
+supportActionBar?.setDisplayUseLogoEnabled(true)
+supportActionBar?.setDisplayShowHomeEnabled(true)
+supportActionBar?.show()
+</code></pre>
+<p><strong>Step 6:</strong></p>
+<ul>
+<li>Modify the <code>activity_main.xml</code> so that you have included a RecycleView widget.</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_6.png" alt="" /></p>
+</div>
+<h2 id="creating-and-developing-the-customadapterkt"><a class="header" href="#creating-and-developing-the-customadapterkt">Creating and Developing the <code>CustomAdapter.kt</code></a></h2>
+<p><strong>Step 7:</strong></p>
+<ul>
+<li>
+<p>You need to right click the <code>com.example.cityguide</code> package in the Project view and select <strong>New</strong>&gt;<strong>Kotlin Class/file</strong></p>
+</li>
+<li>
+<p>Name the file <code>CustomAdapter</code></p>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_7.png" alt="" /></p>
+</div>
+<p><strong>Step 8:</strong></p>
+<ul>
+<li>Open the newly created <code>CustomAdapter.kt</code> file and reproduce the following: </li>
+</ul>
+<pre><code class="language-kt">package com.example.cityguide
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.annotation.NonNull
+import androidx.recyclerview.widget.RecyclerView
+
+/**
+ * Custom adapter for a RecyclerView that displays a list of items.
+ *
+ * @property itemsList The data source for the adapter.
+ * @property itemClickListener The click listener interface for handling item clicks.
+ * @author Your Name
+ * @since dd/mm/yyyy
+ */
+internal class CustomAdapter(
+    private var itemsList: List&lt;String&gt;,
+    private val itemClickListener: OnItemClickListener
+) : RecyclerView.Adapter&lt;CustomAdapter.MyViewHolder&gt;() {
+
+    /**
+     * Inner class to hold the view items for each item in the RecyclerView.
+     *
+     * @param view The view for a single item in the RecyclerView.
+     */
+    internal inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var itemTextView: TextView = view.findViewById(R.id.itemTextView)
+    }
+
+    /**
+     * Called to create a new ViewHolder when needed.
+     *
+     * @param parent The parent view group.
+     * @param viewType The type of the view to be created.
+     * @return A new MyViewHolder for an item view.
+     * @author Your Name
+     * @since dd/mm/yyyy
+     */
+    @NonNull
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item, parent, false)
+        return MyViewHolder(itemView)
+    }
+
+    /**
+     * Called to bind data to the ViewHolder.
+     *
+     * @param holder The ViewHolder to bind data to.
+     * @param position The position of the item in the list.
+     * @author Your Name
+     * @since dd/mm/yyyy
+     */
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val item = itemsList[position]
+        holder.itemTextView.text = item
+
+        // Set a click listener for the item's view
+        holder.itemView.setOnClickListener {
+            itemClickListener.onItemClick(position)
+        }
+    }
+
+    /**
+     * Get the total number of items in the data source.
+     *
+     * @return The number of items in the data source.
+     * @author Your Name
+     * @since dd/mm/yyyy
+     */
+    override fun getItemCount(): Int {
+        return itemsList.size
+    }
+
+    /**
+     * Interface for handling item click events.
+     */
+    interface OnItemClickListener {
+        /**
+         * Called when an item is clicked.
+         *
+         * @param position The position of the clicked item.
+         * @author Your Name
+         * @since dd/mm/yyyy
+         */
+        fun onItemClick(position: Int)
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<blockquote>
+<ul>
+<li>You may have some errors to do with referencing a <code>TextView</code> widget. This will be resolved as you progress below.</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>More</strong></p>
+<blockquote>
+<p>These are some of the most commonly used KDoc tags. You can use these tags to provide comprehensive documentation for your code, making it more understandable and usable for other developers. Additionally, you can define custom tags if you need to document domain-specific information or add metadata to your code documentation.</p>
+<details>
+<summary>KDoc</summary>
+<ul>
+<li>
+<p><code>@param</code>: Describes a parameter of a function or constructor.</p>
+</li>
+<li>
+<p><code>@return</code>: Describes the return value of a function.</p>
+</li>
+<li>
+<p><code>@property</code>: Describes a property of a class.</p>
+</li>
+<li>
+<p><code>@constructor</code>: Describes the constructor of a class.</p>
+</li>
+<li>
+<p><code>@throws</code> or <code>@exception</code>: Describes exceptions that a function may throw.</p>
+</li>
+<li>
+<p><code>@sample</code>: Provides a usage example for the documented code.</p>
+</li>
+<li>
+<p><code>@see</code>: Provides references to related functions, classes, or documentation.</p>
+</li>
+<li>
+<p><code>@since</code>: Indicates the version or release when the code was introduced.</p>
+</li>
+<li>
+<p><code>@author</code>: Identifies the author or contributor of the code.</p>
+</li>
+<li>
+<p><code>@version</code>: Specifies the version number of the code.</p>
+</li>
+<li>
+<p><code>@deprecated</code>: Marks the code as deprecated and provides information about alternatives.</p>
+</li>
+<li>
+<p><code>@suppress</code>: Suppresses specific warnings or errors related to the documented code.</p>
+</li>
+<li>
+<p><code>@apiNote</code>: Provides additional notes or explanations about the code. </p>
+</li>
+<li>
+<p><code>@implSpec</code>: Describes implementation details for an interface or class.</p>
+</li>
+<li>
+<p><code>@link</code>: Creates hyperlinks to related documentation or resources.</p>
+</li>
+<li>
+<p><code>@code</code>: Renders text as code within the documentation.</p>
+</li>
+<li>
+<p><code>@literal</code>: Represents text as literal text in the documentation.</p>
+</li>
+<li>
+<p><code>@paramTag</code>: Customizable tag used to document parameters.</p>
+</li>
+<li>
+<p><code>@returnTag</code>: Customizable tag used to document the return value.</p>
+</li>
+<li>
+<p><code>@propertyTag</code>: Customizable tag used to document properties.</p>
+</li>
+<li>
+<p><code>@constructorTag</code>: Customizable tag used to document constructors.</p>
+</li>
+</ul>
+</details>
+</blockquote>
+</blockquote>
+<h2 id="programming-the-itemxml"><a class="header" href="#programming-the-itemxml">Programming the <code>item.xml</code></a></h2>
+<p><strong>Step 9:</strong></p>
+<ul>
+<li>You need to right click the <code>res/layout</code> package in the Project view and select New&gt;Kotlin Class/file</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_8.png" alt="" /></p>
+</div>
+<ul>
+<li>Open the <code>item.xml</code> and change to <strong>Code</strong> view and reproduce the following:</li>
+</ul>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_margin=&quot;8dp&quot;
+    android:background=&quot;#272728&quot;&gt;
+    &lt;TextView
+        android:id=&quot;@+id/itemTextView&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_alignParentStart=&quot;true&quot;
+        android:textColor=&quot;#FFFFFF&quot;
+        android:gravity=&quot;center&quot;
+        android:textSize=&quot;20sp&quot;
+        android:drawableLeft=&quot;@mipmap/ic_launcher_foreground&quot;/&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+<ul>
+<li>Save the <code>item.xml</code> file and close the tab</li>
+</ul>
+<h2 id="finishing-mainactivitykt"><a class="header" href="#finishing-mainactivitykt">Finishing <code>MainActivity.kt</code></a></h2>
+<p><strong>Step 10</strong></p>
+<ul>
+<li>After the line <code>supportActionBar?.Show()</code> add the following: </li>
+</ul>
+<pre><code class="language-kt">...
+val layoutManager = LinearLayoutManager(applicationContext)
+val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+
+customAdapter = CustomAdapter(itemsList,this)
+recyclerView.layoutManager = layoutManager
+recyclerView.adapter = customAdapter
+
+ // calls the prepare function to populate the recycler view using out adapter class.
+ prepareItems(attractions)
+}
+</code></pre>
+<p><strong>Step 11</strong></p>
+<ul>
+<li>After the <code>onCreate</code> closing <code>}</code>, we need to create the <code>prepareItems()</code> function and program the <code>onItemClick()</code> block of code to respond to when an item is clicked and launch a new activity:</li>
+</ul>
+<pre><code class="language-kt">  /**
+      * Fill recycler view with list.
+      * @param Array&lt;String&gt;
+      * @sample prepareItems(arrayOfStrings)
+      * @author Your name`
+      * @since dd/mm/yyyy
+      *
+  */
+  private fun prepareItems(array : Array&lt;String&gt;) {
+      for (item in array) {
+          itemsList.add(item)
+      }
+      customAdapter.notifyDataSetChanged()
+  }
+
+override fun onItemClick(position: Int) {
+  // Handle item click here
+  Toast.makeText(this, &quot;Item clicked at position $position&quot;, Toast.LENGTH_SHORT).show()
+  
+  // Use a when expression to handle different values of the 'position' parameter
+  when (position) {
+      0 -&gt; {
+          // Create an intent to view a webpage and set the URL to &quot;https://www.gre.ac.uk/about-us/campus/medway&quot;
+          val intent = Intent(Intent.ACTION_VIEW)
+          intent.data = Uri.parse(&quot;https://www.gre.ac.uk/about-us/campus/medway&quot;)
+          // Start an activity to view the webpage
+          startActivity(intent)
+      }
+      1 -&gt; {
+          // Create an intent to view a webpage and set the URL to &quot;https://en.wikipedia.org/wiki/Great_Lines_Heritage_Park&quot;
+          val intent = Intent(Intent.ACTION_VIEW)
+          intent.data = Uri.parse(&quot;https://en.wikipedia.org/wiki/Great_Lines_Heritage_Park&quot;)
+          // Start an activity to view the webpage
+          startActivity(intent)
+      }
+      2 -&gt; {
+          val intent = Intent(this, HMSGanettActivity::class.java)
+          startActivity(intent)
+      }
+      3 -&gt; {
+          val intent = Intent(this, RochesterCathedralActivity::class.java)
+          startActivity(intent)
+      }
+      4 -&gt; {
+          val intent = Intent(this, FortAmherstActivity::class.java)
+          startActivity(intent)
+      }
+  }
+}
+</code></pre>
+<h2 id="adding-images-to-the-drawable-folder"><a class="header" href="#adding-images-to-the-drawable-folder">Adding Images to the drawable Folder</a></h2>
+<p>There are three images that appear when the user selects the HMS Gannet, Fort Amherst and Rochester Cathedral.  All the images are available in the Pictures folder downloaded in the zip.  Copy the files to the computer.  Copy also the <code>ic_launcher_medway.png</code> icon. </p>
+<p><strong>Step 12:</strong></p>
+<ul>
+<li>
+<p>To add the three images to the drawable resource folder, select the four files form wherever you copied them on your computer: <code>hms_Gannet.jpg</code>, <code>fort_amherst.jpg</code> and <code>rochester_cathedral.jpg</code>.</p>
+</li>
+<li>
+<p>To paste the image files to the drawable folder, right click the drawable folder in the Android project view pane. And then click Paste.</p>
+</li>
+<li>
+<p>Click Save All to save your work.</p>
+</li>
+</ul>
+<p><strong>Adding the String Table</strong></p>
+<p><strong>Step 13:</strong></p>
+<ul>
+<li>In the <code>res\values folder</code>, double click the <code>strings.xml</code> file.</li>
+<li>Click the Open editor link in <code>strings.xml</code>, and write in the following strings:</li>
+</ul>
+<div align=center>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Default Value</th></tr></thead><tbody>
+<tr><td>dockyard</td><td>HMS Gannet @ Historic Dockyard</td></tr>
+<tr><td>cathedral</td><td>Rochester Cathedral @ Rochester</td></tr>
+<tr><td>amherst</td><td>Fort Amherst @ Chatham</td></tr>
+<tr><td>back_button</td><td>Go back...</td></tr>
+</tbody></table>
+</div></div>
+<ul>
+<li>Save the <code>strings.xml</code> and close the tab.</li>
+</ul>
+<h2 id="creating-the-activities-for-each-location"><a class="header" href="#creating-the-activities-for-each-location">Creating the activities for each location</a></h2>
+<p><strong>Step 14:</strong></p>
+<ul>
+<li>Create three new empty view activities called:
+<ul>
+<li>FortAmherstActivity.kt</li>
+<li>HMSGanettActivity.kt</li>
+<li>RochesterCathedralActivity.kt</li>
+</ul>
+</li>
+</ul>
+<p><strong>Step 15:</strong></p>
+<ul>
+<li>
+<p>Modify each of the new <code>xml</code> layouts:</p>
+<ul>
+<li><code>activity_fort_amherst.xml</code></li>
+<li><code>activity_hmsganett.xml</code></li>
+<li><code>activity_rochester_cathedral.xml</code></li>
+</ul>
+</li>
+<li>
+<p>By adding an <code>ImageView</code> widget placing the appropriate image in each from the mipmap folder.</p>
+</li>
+<li>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+  &lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+  xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+  xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+  android:layout_width=&quot;match_parent&quot;
+  android:layout_height=&quot;match_parent&quot;
+  tools:context=&quot;.FortAmherstActivity&quot;&gt;
+
+      &lt;ImageView
+          android:id=&quot;@+id/imageView2&quot;
+          android:layout_width=&quot;wrap_content&quot;
+          android:layout_height=&quot;wrap_content&quot;
+          app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+          app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+          app:layout_constraintStart_toStartOf=&quot;parent&quot;
+          app:layout_constraintTop_toTopOf=&quot;parent&quot;
+          app:srcCompat=&quot;@mipmap/fort_amherst&quot; /&gt;
+  &lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+</li>
+</ul>
+<div align=center>
+<img src="./figures/xmlThreeLayouts.png">
+</div>
+<ul>
+<li>You should now be able to launch this version of the app.</li>
+<li>Try each item in the <code>RecyclerView</code></li>
+</ul>
+<hr />
+<h2 id="creating-the-location-activities"><a class="header" href="#creating-the-location-activities">Creating the Location Activities</a></h2>
+<p><strong>Step 16:</strong></p>
+<ul>
+<li>Create a new Empty View activities:
+<ul>
+<li>Attraction</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_11.png" alt="" /></p>
+</div>
+<p><strong>Designing XML Layout Files</strong></p>
+<p><strong>Step 17:</strong></p>
+<ul>
+<li>Open the <code>activity_attraction.xml</code> tab and click the Design tab at the bottom.</li>
+<li>In the Common category in the Palette, drag the <code>ImageView</code> control to the middle of the emulator (both horizontal and vertical dashed lines will appear).</li>
+<li>Do not place an image into this widget, this will be handled by the class file.</li>
+<li>Also add a button so that you can navigate back the <code>MainActivity</code></li>
+<li>The result is shown below:</li>
+</ul>
+<div align=center>
+<p><img src="./figures/android_step_12.png" alt="" /></p>
+</div>
+<p>XML would look like this:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.Attraction&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/imageView&quot;
+        android:layout_width=&quot;420dp&quot;
+        android:layout_height=&quot;735dp&quot;
+        android:contentDescription=&quot;&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;1.0&quot;
+         /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/button&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/back_button&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;@+id/imageView&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.498&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;1.0&quot; /&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+<p><strong>Step 18:</strong></p>
+<ul>
+<li>Open the <code>Attraction.kt</code> and inside the class above the <code>onCreate()</code> method add the following: </li>
+</ul>
+<pre><code class="language-kt">class Attraction : AppCompatActivity() {
+    // Arrays containing resource IDs for images and string titles
+    val attractionResourceImages = arrayOf(R.mipmap.hms_gannet, R.mipmap.rochester_cathedral, R.mipmap.fort_amherst)
+    // instead of writing the strings out, we can use the string.xml elements
+    val attractionStringTitles = arrayOf(R.string.dockyard, R.string.cathedral, R.string.amherst)
+
+    override fun onCreate(...)
+    ...
+</code></pre>
+<ul>
+<li>Continuing in side the <code>onCreate(...){...}</code> add code for an <code>ImageView</code>, <code>supportActionBar</code>, and getting the <em>extra</em> <code>Intent</code>.</li>
+</ul>
+<pre><code class="language-kt">// Find the ImageView with the ID &quot;imageView&quot; in the layout
+val attractionImageView: ImageView = findViewById(R.id.imageView)
+
+// Get the integer extra with the key &quot;index&quot; from the intent, subtract 2, and store it in passThroughIntent
+var passThroughIntent: Int = (intent.getIntExtra(&quot;index&quot;, 0)) - 2
+
+// Set the image resource for index of passthroughIntent
+attractionImageView.setImageResource(attractionResourceImages[passThroughIntent])
+
+// set the image content description for index of passthroughIntent
+attractionImageView.contentDescription = attractionStringTitles[passThroughIntent].toString()
+
+// Set the action bar title for index of passthroughIntent
+supportActionBar?.setTitle(attractionStringTitles[passThroughIntent])
+
+// Enable the title in the action bar and make it visible
+supportActionBar?.setDisplayShowTitleEnabled(true)
+supportActionBar?.show()
+</code></pre>
+<p><strong>Step 19:</strong> </p>
+<ul>
+<li>Place the button functionality in this new activity so that you can navigate back to the <code>MainActivity.kt</code> class: </li>
+<li>
+<pre><code class="language-kt">bntBack.setOnClickListener {
+   val intent = Intent(this, &lt;MainActivity&gt;::class.java)
+   // start your next activity
+   startActivity(intent)
+}
+</code></pre>
+</li>
+</ul>
+<p><strong>Step 20:</strong></p>
+<ul>
+<li>
+<p>Finally we need to go back to the <code>MainActivity.kt</code> and refactor some of the code in the <code>when</code> block of code. Modify the <code>when</code> block so that options 2, 3 and 4 are condensed to one block of code:</p>
+<pre><code class="language-kt">...
+/*2 -&gt; {
+    val intent = Intent(this, HMSGanettActivity::class.java)
+    startActivity(intent)
+}
+3 -&gt; {
+    val intent = Intent(this, RochesterCathedralActivity::class.java)
+    startActivity(intent)
+}
+4 -&gt; {
+    val intent = Intent(this, FortAmherstActivity::class.java)
+    startActivity(intent)
+}*/
+2, 3, 4 -&gt; {
+    // Create an intent to start the 'Attraction' activity and pass the 'position' as an extra
+    val intent = Intent(this, Attraction::class.java)
+    intent.putExtra(&quot;index&quot;, position) // (key, value)
+    // Start the 'Attraction' activity with the specified 'position'
+    startActivity(intent)
+}
+</code></pre>
+</li>
+</ul>
+<p>Your App should look what was shown earlier:</p>
+<div align=center>
+<p><img src="./figures/android_step_1.png" alt="" />
+<img src="./figures/android_step_2.png" alt="" />
+<img src="./figures/android_step_3.png" alt="" /></p>
+</div>
+<hr />
+<h2 id="full-code-mainactivitykt"><a class="header" href="#full-code-mainactivitykt">Full Code, <code>MainActivity.kt</code>:</a></h2>
+<pre><code class="language-kt">package com.example.cityguide
+
+import android.content.Intent
+import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
+class MainActivity : AppCompatActivity(), CustomAdapter.OnItemClickListener {
+    private val itemsList = ArrayList&lt;String&gt;()
+    private lateinit var customAdapter: CustomAdapter
+    private val attractions = arrayOf(&quot;Greenwich - Medway&quot;,&quot;Great Lines&quot;,
+        &quot;HMS Gannet&quot;,&quot;Rochester Cathedral&quot;,&quot;Fort Amherst&quot;)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.show()
+
+        val layoutManager = LinearLayoutManager(applicationContext)
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+
+        customAdapter = CustomAdapter(itemsList,this)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = customAdapter
+
+        prepareItems()
+    }
+
+    private fun prepareItems() {
+        for (attraction in attractions) {
+            itemsList.add(attraction)
+        }
+        customAdapter.notifyDataSetChanged()
+    }
+
+    override fun onItemClick(position: Int) {
+        // Handle item click here
+        Toast.makeText(this, &quot;Item clicked at position $position&quot;, Toast.LENGTH_SHORT).show()
+
+        // Use a when expression to handle different values of the 'position' parameter
+        when (position) {
+            0 -&gt; {
+                // Create an intent to view a webpage and set the URL to &quot;https://www.gre.ac.uk/about-us/campus/medway&quot;
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(&quot;https://www.gre.ac.uk/about-us/campus/medway&quot;)
+                // Start an activity to view the webpage
+                startActivity(intent)
+            }
+            1 -&gt; {
+                // Create an intent to view a webpage and set the URL to &quot;https://en.wikipedia.org/wiki/Great_Lines_Heritage_Park&quot;
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(&quot;https://en.wikipedia.org/wiki/Great_Lines_Heritage_Park&quot;)
+                // Start an activity to view the webpage
+                startActivity(intent)
+            }
+            2, 3, 4 -&gt; {
+                // Create an intent to start the 'Attraction' activity and pass the 'position' as an extra
+                val intent = Intent(this, Attraction::class.java)
+                intent.putExtra(&quot;index&quot;, position) // (key, value)
+                // Start the 'Attraction' activity with the specified 'position'
+                startActivity(intent)
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="full-code-customadapterkt"><a class="header" href="#full-code-customadapterkt">Full Code, <code>CustomAdapter.kt</code>:</a></h2>
+<pre><code class="language-kt">package com.example.cityguide
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.annotation.NonNull
+import androidx.recyclerview.widget.RecyclerView
+
+// Define a custom adapter for a RecyclerView
+internal class CustomAdapter(
+    private var itemsList: List&lt;String&gt;, // Data source for the adapter
+    private val itemClickListener: OnItemClickListener // Click listener interface
+) : RecyclerView.Adapter&lt;CustomAdapter.MyViewHolder&gt;() {
+
+    // Inner class to hold the view items for each item in the RecyclerView
+    internal inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var itemTextView: TextView = view.findViewById(R.id.itemTextView) // TextView for displaying the item
+    }
+
+    // Create a new ViewHolder when needed
+    @NonNull
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item, parent, false) // Inflates the layout for an item
+        return MyViewHolder(itemView) // Return a new MyViewHolder
+    }
+
+    // Bind data to the ViewHolder
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val item = itemsList[position] // Get the data for this position
+        holder.itemTextView.text = item // Set the text of the itemTextView
+
+        // Set a click listener for the item's view
+        holder.itemView.setOnClickListener {
+            itemClickListener.onItemClick(position) // Notify the listener when an item is clicked
+        }
+    }
+
+    // Return the total number of items in the data source
+    override fun getItemCount(): Int {
+        return itemsList.size
+    }
+
+    // Interface for item click events
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+}
+</code></pre>
+<h2 id="full-code-attractionkt"><a class="header" href="#full-code-attractionkt">Full Code, <code>Attraction.kt</code>:</a></h2>
+<pre><code class="language-kt">package com.example.cityguide
+
+import android.content.Intent
+import android.content.res.Resources
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
+
+class Attraction : AppCompatActivity() {
+
+    val attractionResourceImages = arrayOf(R.mipmap.hms_gannet, R.mipmap.rochester_cathedral, R.mipmap.fort_amherst)
+    val attractionStringTitles = arrayOf(R.string.dockyard, R.string.cathedral, R.string.amherst)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_attraction) // Set the content view to the attraction activity layout
+
+        // Find the ImageView with the ID &quot;imageView&quot; in the layout
+        val attractionImageView: ImageView = findViewById(R.id.imageView)
+
+        // Get the integer extra with the key &quot;index&quot; from the intent, subtract 2, and store it in passThroughIntent
+        var passThroughIntent: Int = (intent.getIntExtra(&quot;index&quot;, 0)) - 2
+
+        // Set the image resource for index of passthroughIntent
+        attractionImageView.setImageResource(attractionResourceImages[passThroughIntent])
+
+        // set the image content description for index of passthroughIntent
+        attractionImageView.contentDescription = attractionStringTitles[passThroughIntent].toString()
+
+        // Set the action bar title for index of passthroughIntent
+        supportActionBar?.setTitle(attractionStringTitles[passThroughIntent])
+
+        // Enable the title in the action bar and make it visible
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+        supportActionBar?.show()
+
+        // Find the Button with the ID &quot;button&quot; in the layout
+        val backBtn: Button = findViewById(R.id.button)
+
+        // Set a click listener for the back button
+        backBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            // Start the MainActivity when the button is clicked
+            startActivity(intent)
+        }
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../Kotlin/Lab_9/Lab_9-1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../Java/Lab_1/Lab_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../Kotlin/Lab_9/Lab_9-1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../Java/Lab_1/Lab_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
