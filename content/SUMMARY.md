@@ -15,7 +15,7 @@
   - [Lab 8: Android App using Icons and Decision Making Controls. Part 2](Kotlin/Lab_8/Lab_8.md)
   - [Lab 9.1: One Dimensional Arrays (Intellij)](Kotlin/Lab_9/Lab_9-1.md)
   - [Lab 9.2: Lists, Arrays and Web Browsers](Kotlin/Lab_9/Lab_9-2.md)
-  - [Lab 9.33: Lists, Arrays and Web Browsers](Kotlin/Lab_9-3/Lab_9-3.md)
+  - [Lab 9.3: Lists, Arrays and Web Browsers](Kotlin/Lab_9-3/Lab_9-3.md)
   - [Lab 10: Kotlin Object Orientated Programming]()
   - [Lab 11: Exception Handling]()
   - [Lab 12: OOP with Data Storage]()
