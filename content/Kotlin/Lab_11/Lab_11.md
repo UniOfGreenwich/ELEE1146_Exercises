@@ -1,4 +1,4 @@
-# Lab 11 Kotlin Object Orientated Programming
+c# Lab 11 Kotlin Object Orientated Programming
 
 Welcome to the Kotlin Banking System workshop/lab! In this session, you will learn how to create a *simple* banking system using Kotlin. The system includes classes for `BankCustomer`, `FundsController`, `ATM`, `Hashing`, and `ErrorMessage`.
 
@@ -791,3 +791,567 @@ Play with the functions and classes to experiment and explore the uses. Try and 
             ```
 
          </details>
+
+---------------------------------------
+---------------------------------------
+
+<p></p>
+
+<details>
+<summary>Full code: Main.kt</summary>
+
+```kt
+fun main(args: Array<String>) {
+
+    val fundsController = FundsController()
+    val atm = ATM()
+
+    //declaration and initialisation
+    var cust1 : BankCustomer = BankCustomer(12312124,1234,0.0)
+    var cust2 : BankCustomer = BankCustomer(12318888,1104, "First","Last",1200.00)
+    var cust3 : BankCustomer = BankCustomer()
+
+    // View the BankCustomer objects
+    println("Information for :\n");
+
+    printBankCustomer(1,cust1)
+    fundsController.withdrawal(cust1,10.00)
+
+    printBankCustomer(2,cust2)
+    fundsController.withdrawal(cust2,500.00)
+    printBankCustomer(2,cust2)
+    fundsController.transfer(cust2,cust1,500.00)
+    printBankCustomer(2,cust2)
+    printBankCustomer(1,cust1)
+
+    println("Pin match: ${atm.checkPin(1235,cust1)}")
+    println("Pin match: ${atm.checkPin(1234,cust1)}")
+
+    atm.printBalance(cust2,atm.checkPin(1104,cust2))
+    atm.getCash(50,cust2,atm.checkPin(1104,cust2))
+    atm.printBalance(cust2,atm.checkPin(1104,cust2))
+    printBankCustomer(2,cust2)
+
+    val card1 = Card()
+
+    card1.createCard(cust2)
+    println(card1.printDetails())
+}
+
+/**
+ * prints the object on to new lines
+ * @param Object BankCustomer
+ * @see BankCustomer.customerToString
+ */
+fun printBankCustomer(n:Int , c: BankCustomer) {
+    println("Customer number:${n} \n ${c.customerToString()}")
+}
+```
+
+</details>
+
+
+<p></p>
+
+<details>
+<summary>Full code: BankCustomer.kt</summary>
+
+```kt
+import java.security.SecureRandom
+import kotlin.random.Random
+
+class BankCustomer {
+    private var accNumber : Int? = null; private var pin : Int? = null; private var pinHash : String? = null
+    private var firstName : String? = null; private var lastName: String? = null
+    internal var balance : Double? = null; private var sortCode : String? = null
+
+    /**
+     * @constructor initialises account, pin, and balance with 0 and first and last name as empty by invocating setBankCustomer()
+     * @see setBankCustomer
+     */
+    constructor() {
+        setBankCustomer ( 0, 0,"","",0.0 );
+    }
+
+    /**
+     * @constructor initialises the account, pin, and balance with supplied arguments and first and last name as empty by invocating setBankCustomer()
+     * @param Int account
+     * @param Int pin
+     * @param Double balance
+     * @see setBankCustomer
+     */
+    constructor( acc: Int, p : Int, bal: Double )  {
+        setBankCustomer( acc, p,"", "", bal );
+    }
+
+    /**
+     * @constructor initialises account, pin, first & last name and balance with supplied arguments by invocating setBankCustomer()
+     * @param Int account
+     * @param Int pin
+     * @param String first name
+     * @param Strng last name
+     * @param Double balance
+     * @see setBankCustomer
+     */
+    constructor( acc : Int, p : Int, fn : String, ln : String, bal : Double )  {
+        setBankCustomer( acc, p, fn, ln, bal );
+    }
+
+    /**
+     * when using a constructor it initialises the object.
+     * @param Int accountNumber
+     * @param Int pin
+     * @param String FirstName
+     * @param String LastName
+     * @param Double Balance
+     */
+    private fun setBankCustomer ( acc : Int, p: Int, fn : String, ln : String, bal: Double ) {
+        makeAccountNumber(); makeSortCode(); this.pin = p; this.pinHash = setHashOfPin(p)
+        this.firstName = fn;  this.lastName = ln;
+        this.balance = bal;
+    }
+
+    /**
+     * Get the first and lastname
+     * @return String
+     */
+    fun getName() : String
+    {
+        return "${this.firstName} ${this.lastName}"
+    }
+    /**
+     * Sets account balanace for current customer
+     * @param Double new balance
+     */
+    fun setBalance(bal : Double)
+    {
+        this.balance = bal
+    }
+
+    /**
+     * Hashes the supplied pin2
+     * @param Int p
+     * @return String Hash of Pin
+     * @see Hashing.sha256
+     */
+    fun setHashOfPin(p : Int): String
+    {
+        val h = Hashing()
+        val hash : String = h.sha256(p)
+        return hash
+    }
+
+    /**
+     * Gets the hash of the pib of customer supplied
+     * @return String Hash of Pin
+     */
+    fun getHashOfPin(): String?
+    {
+        return this.pinHash
+    }
+
+    /**
+     * Get account number
+     * @return Int accNumber
+     */
+    fun getAccount() : Int?
+    {
+        return this.accNumber
+    }
+
+    /**
+     * Get sort number
+     * @return String sortCode
+     */
+    fun getSortCode() : String?
+    {
+        return this.sortCode
+    }
+
+    /**
+     * Retrieves the current customers details in a nice format
+     * @return String Customer Information
+     */
+    fun customerToString() : String {
+        return ("\n Sort Code: ${this.sortCode}\n Acc No:${this.accNumber}\n Name: ${this.firstName} ${this.lastName}\n Balance: £${this.balance}\n" );
+    }
+
+    /**
+     * Creates an account number using repeat and random.
+     *
+     * Format: xxxxxxxx
+     */
+    fun makeAccountNumber()
+    {
+        var tmpAccNumber : String? = null
+        repeat(8){
+
+            var tmpNum = Random.nextInt(0, 9)
+            // Avoid 0 as the first number.
+            while (it == 0 && tmpNum == 0)
+            {
+                tmpNum = Random.nextInt(0, 9)
+            }
+            if(it == 0) {
+                tmpAccNumber = tmpNum.toString()
+            }
+            else {
+                tmpAccNumber += tmpNum.toString()
+            }
+        }
+        this.accNumber = tmpAccNumber?.toInt()
+    }
+
+    /**
+     * Creates an account number using repeat and random.
+     *
+     * Format: xx-xx-xx
+     */
+    fun makeSortCode()
+    {
+        var tmpSortCode : String = ""
+        repeat(6){
+            if (it != 0 && it % 2 == 0)
+            {
+                tmpSortCode += '-'
+            }
+            tmpSortCode += Random.nextInt(0, 6).toString()
+        }
+        this.sortCode = tmpSortCode
+    }
+}
+```
+
+</details>
+
+
+<p></p>
+
+<details>
+<summary>Full code: Hashing.kt</summary>
+
+```kt
+import java.math.BigInteger
+import java.security.MessageDigest
+class Hashing {
+
+    /**
+     * Hashes supplied pin
+     * @param Int p
+     * @return String Hash
+     */
+    fun sha256(p: Int): String {
+        val pinString : String = p.toString()
+        val md = MessageDigest.getInstance("SHA-256")
+        return BigInteger(1, md.digest(pinString.toByteArray())).toString(16).padStart(32, '0')
+    }
+}
+```
+
+</details>
+
+
+<p></p>
+
+<details>
+<summary>Full code: FundsController.kt</summary>
+
+```kt
+class FundsController {
+
+    private val e = ErrorMessage()
+
+    /**
+     * With draw provide amount does not put the balance below 0.
+     *
+     * Will set account balance = balance - withdrawal
+     * @param Object BankCustomer
+     * @param Double withdrawal
+     * @throws Exception balance less than zero
+     **/
+    fun withdrawal(bc: BankCustomer, withdrawal : Double)
+    {
+        if(withdrawal <= 0.00)
+        {
+            e.errorMessage("Withdrawal amount must be greater than 0.00")
+        }
+        if(bc.balance == 0.00)
+        {
+            e.errorMessage("Insufficient funds. Current Balance is: ${bc.balance}")
+        }
+        else if((bc.balance?.minus(withdrawal))!! >= 0.00)
+        {
+            bc.setBalance(bc.balance?.minus(withdrawal)!!)
+        }
+        else
+        {
+           e.errorMessage("Balance will be less than 0.00")
+        }
+    }
+
+    /**
+     * Deposits the provided amount into the account.
+     * @param Object BankCustomer
+     * @param Double deposit
+     * @throws Exception deposit less than zero
+     **/
+    fun deposit(bc: BankCustomer, amount : Double)
+    {
+       if(amount <= 0.00)
+       {
+           e.errorMessage("Amount being deposit must be greater than 0.00")
+       }
+       else
+       {
+         bc.setBalance(bc.balance!!.plus(amount))
+       }
+    }
+
+    /**
+     * Transfers amount from one acoount to another
+     * @param Object fromAcc
+     * @param Object toAcc
+     * @param Double amount
+     * @throws insufficient funds and if amount is less than 0.00
+     **/
+    fun transfer(fromAcc: BankCustomer,toAcc: BankCustomer,amount: Double)
+    {
+        if(amount <= 0.00)
+        {
+            e.errorMessage("Amount being deposit must be greater than 0.00")
+        }
+        else if(fromAcc.balance == 0.00)
+        {
+            e.errorMessage("Insufficient funds. Current Balance is: ${fromAcc.balance}")
+        }
+        else if(fromAcc.balance!!.minus(amount) >= 0.00)
+        {
+            fromAcc.setBalance(fromAcc.balance!!.minus(amount))
+            toAcc.setBalance(toAcc.balance!!.plus(amount))
+        }
+        else
+        {
+            e.errorMessage("Transfer cancelled balance will be less than 0.00")
+        }
+    }
+}
+```
+
+</details>
+
+
+<p></p>
+
+<details>
+<summary>Full code: ErrorMessage.kt</summary>
+
+```kt
+class ErrorMessage {
+
+    /**
+     * Throws custom error message and prints out error
+     * @param String message you want as an exception
+     */
+    fun errorMessage(error: String)
+    {
+        runCatching {
+            println(Exception(error))
+            throw Exception(error)
+        }
+    }
+}
+```
+
+</details>
+
+
+<p></p>
+
+<details>
+<summary>Full code: ATM.kt</summary>
+
+```kt
+import javax.swing.text.StyledEditorKit.BoldAction
+
+/**
+ *
+ */
+class ATM {
+
+    private val e = ErrorMessage()
+    private val fc = FundsController()
+
+    /**
+     * checkPin to see if it is correct
+     * @param Int checkPin
+     * @param Object BankCustomer
+     * @return Boolean
+     */
+    fun checkPin(p : Int, c: BankCustomer) : Boolean
+    {
+        val h = Hashing()
+        var match : Boolean = false
+
+        match = h.sha256(p) == c.getHashOfPin()
+
+        return match
+    }
+
+    /**
+     *
+     * @param Object BankCustomer
+     * @param Boolean m
+     * @return String
+     * @see BankCustomer.balance
+     */
+    fun printBalance(c: BankCustomer,m : Boolean)
+    {
+        if( m == true)
+        {
+            println("Customer Balanace: ${c.balance}")
+        }
+        else
+        {
+            e.errorMessage("Incorrect Pin Supplied")
+        }
+    }
+
+    /**
+     * Withdraws cash from ATM, based on available funds
+     * @param Int Amount
+     * @param Object BankCustomer
+     * @param Boolean ATM.checkPin
+     * @return String
+     * @throws Exception balance less than zero
+     * @see FundsController.withdrawal
+     * @see ATM.checkPin
+     */
+    fun getCash(amount : Int, c: BankCustomer, m : Boolean)
+    {
+        if( m == true)
+        {
+         fc.withdrawal(c,amount.toDouble())
+        }
+        else
+        {
+          e.errorMessage("Incorrect Pin Supplied")
+        }
+    }
+}
+```
+
+</details>
+
+<p></p>
+
+<details>
+<summary>Card.kt</summary>
+
+```kt
+import java.text.DateFormat
+import java.util.*
+import javax.print.DocFlavor.STRING
+import kotlin.random.Random
+
+class Card {
+
+    private var card : String? = null
+    private var name : String? = null
+    private var expiryDate : String? = null
+    private var cvv : Int? = null
+
+    fun createCard(c:BankCustomer)
+    {
+        /*
+            Visa cards:
+            Digit 1: identifies as visa
+            Digits 2 – 6: Make up the bank/sort number
+            Digits 7 – 12 or 7 – 15: Represent the account number
+            Digits 13 or 16: Is a check digit
+        */
+
+        var tmpCardNumber : String ="4"
+
+        var tmpSortCode : String? = c.getSortCode()
+
+        if (tmpSortCode != null) {
+            tmpCardNumber += tmpSortCode.replace("-", "")
+        }
+
+        tmpCardNumber += c.getAccount()
+        tmpCardNumber += checkDigit(tmpCardNumber)
+        this.card = tmpCardNumber
+        this.cvv = cvvGenterator()
+        this.expiryDate = generateRandomExpiryDate()
+        this.name = c.getName()
+    }
+
+    /**
+     * Calculates and returns the Luhn Algorithm check digit for a given partial card number.
+     *
+     * The Luhn Algorithm is used to validate credit card numbers.
+     *
+     * See: http://datagenetics.com/blog/july42013/index.html
+     *
+     * @param partial The partial card number (without the check digit).
+     * @return The calculated check digit.
+     *
+     */
+    fun checkDigit(partial: String?): Int {
+        var checkSum = 0
+
+        if (partial != null) {
+            for (p in 0 until partial.length) {
+                val digit = partial[p].toString().toInt()
+
+                if (p % 2 == 0) {
+                    // For even-indexed digits, add them directly to the sum
+                    checkSum += digit
+                } else {
+                    // For odd-indexed digits, double the digit and add the digits of the result to the sum
+                    val doubled = digit * 2
+                    checkSum += if (doubled > 9) doubled - 9 else doubled
+                }
+            }
+        }
+
+        // Calculate the check digit by finding the remainder when the sum is divided by 10
+        // and then subtracting the result from 10.
+        return (10 - (checkSum % 10)) % 10
+    }
+
+
+    /**
+     * Generate 3 digits for cvv
+     * @return Int CVV
+     */
+    fun cvvGenterator() : Int
+    {
+        return  Random.nextInt(100, 999)
+    }
+
+
+    /**
+     * Generates a random MM/YYYY expiry date for a credit card.
+     *
+     * The generated date is within the next 10 years from the current year.
+     *
+     * @return The formatted expiry date as MM/YYYY.
+     */
+    fun generateRandomExpiryDate(): String {
+        val currentYear = Calendar.getInstance().get(Calendar.YEAR)
+        val randomYear = currentYear + Random.nextInt(10) // Generating a random year within the next 10 years
+        val randomMonth = Random.nextInt(12) + 1 // Generating a random month (1-12)
+
+        // Formatting the date as MM/YYYY
+        return String.format("%02d/%d", randomMonth, randomYear)
+    }
+
+    fun printDetails() : String
+    {
+        return "Name: ${this.name}\nCard No: ${this.card}\n Expiry Date: ${this.expiryDate}\nCVV: ${this.cvv}"
+    }
+}
+```
+
+</details>
