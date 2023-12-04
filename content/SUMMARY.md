@@ -16,7 +16,7 @@
   - [Lab 9.1: One Dimensional Arrays (Intellij)](Kotlin/Lab_9/Lab_9-1.md)
   - [Lab 9.2: Lists, Arrays and Web Browsers](Kotlin/Lab_9/Lab_9-2.md)
   - [Lab 9.3: Lists, Arrays and Web Browsers](Kotlin/Lab_9-3/Lab_9-3.md)
-  - [Lab 10: Exception Handling]())
+  - [Lab 10: Exception Handling]()
   - [Lab 11: Kotlin Object Orientated Programming]()
   - [Lab 12: OOP with Data Storage]()
   - [Lab 13: Permissions]()
@@ -44,15 +44,15 @@
 
   - [Lab 7: Icons and Decision Making Controls Pt 2 ](Java/Lab_7/Lab_7.md)
 
-  - [Lab 8.1: One Dimensional Arrays (Intellij)]()
+  - [Lab 8.1: One Dimensional Arrays (Intellij)](Java/Lab_8/Lab_8-1.md)
 
-  - [Lab 8.2: Lists, Arrays and Web Browsers Pt1]()
+  - [Lab 8.2: Lists, Arrays and Web Browsers Pt1](Java/Lab_8/Lab_8-2.md)
 
-  - [Lab 9: Lists, Arrays and Web Browsers Pt2 ]()
+  - [Lab 9: Lists, Arrays and Web Browsers Pt2 ](Java/Lab_9/Lab_9.md)
 
-  - [Lab 10: Java Object Orientated Programming]()
+  - [Lab 10: Exception Handling]()
 
-  - [Lab 11: Exception Handling]()
+  - [Lab 11: Java Object Orientated Programming]()
 
   - [Lab 12: Permissions]()
 
