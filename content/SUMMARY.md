@@ -50,7 +50,7 @@
 
   - [Lab 9: Lists, Arrays and Web Browsers Pt2 ](Java/Lab_9/Lab_9.md)
 
-  - [Lab 10: Exception Handling]()
+  - [Lab 10: Exception Handling](Java/Lab_10/Lab_10.md)
 
   - [Lab 11: Java Object Orientated Programming]()
 
