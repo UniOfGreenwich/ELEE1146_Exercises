@@ -16,7 +16,7 @@
   - [Lab 9.1: One Dimensional Arrays (Intellij)](Kotlin/Lab_9/Lab_9-1.md)
   - [Lab 9.2: Lists, Arrays and Web Browsers](Kotlin/Lab_9/Lab_9-2.md)
   - [Lab 9.3: Lists, Arrays and Web Browsers](Kotlin/Lab_9-3/Lab_9-3.md)
-  - [Lab 10: Exception Handling]()
+  - [Lab 10: Exception Handling](Kotlin/Lab_10/Lab_10.md)
   - [Lab 11: Kotlin Object Orientated Programming]()
   - [Lab 12: OOP with Data Storage]()
   - [Lab 13: Permissions]()
