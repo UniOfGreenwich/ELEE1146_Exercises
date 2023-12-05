@@ -364,8 +364,37 @@ override fun actionPerformed(evt: ActionEvent) {
 >**Note:**
 >> This function is called when a **button** is clicked. It tries different actions based on the clicked button, and catches specific exceptions (e.g., `ArithmeticException`, `ClassCastException`). It also catches more general exceptions (`RuntimeException`, `Exception`).
 
+10. Now create a `Companion` object after the closing brace of the previous function, which will act as the main entry point for the program:
 
-10. Build and run the program.
+    ```kt
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            // Create a frame and set up the UI
+
+            try{
+                println(3/0);
+            }
+            catch(e : Exception){
+                println("Caught runtime exception = ${e}\n" );
+            }
+            val frame: JFrame = Main()
+            frame.type = Type.POPUP
+            frame.setLocation(800,300)
+            frame.setSize(200, 250)
+            frame.addWindowListener(object : WindowAdapter() {
+                override fun windowClosing(e: WindowEvent) {
+                    exitProcess(0)
+                }
+            })
+            frame.isVisible = true
+        }
+    }
+    ```
+    >**Note:**
+    >>A **companion** object is a type of object declaration that allows an object to act similar to **static** objects in other languages. A companion object is always declared inside of another class, and its properties and functions can be accessed directly with the class name. The Kotlin compiler ensures that there is only one instance of a companion object.
+
+11. Build and run the program.
   - Observe dialog box appears.
     - Click any of the radio buttons. 
     - Clicking a button will execute code fragement that generates an exception.
@@ -377,11 +406,11 @@ override fun actionPerformed(evt: ActionEvent) {
 ![](./figures/step12.png)
 </div>
 
-11. Please do the following tasks
+12. Please do the following tasks
     - Try other buttons and observe the exceptions that are caught
     - Try to catch exceptions using more specific exception classes (over `RuntimeException` and `Exception` classes).
 
-12. If you have got to here, great job. 
+13. If you have got to here, great job. 3
     -  Convert the `try` and `catch` to t `runCatching` with `onSuccess` and `onFailure` extension methods (see lecture if unsure) inside the `actionPerformed` function.
 
 -----------------
