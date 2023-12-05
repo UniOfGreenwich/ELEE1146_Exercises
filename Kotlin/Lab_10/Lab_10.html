@@ -1,0 +1,751 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lab 10: Exception Handling - Mobile Applications for Engineers and Technologists</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Introduction.html">Introduction</a></li><li class="chapter-item affix "><li class="part-title">Kotlin</li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Kotlin Labs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Kotlin/Lab_1/Lab_1.html"><strong aria-hidden="true">1.1.</strong> Lab 1: Hello World and more!</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_2/2_Kotlin_Intro.html"><strong aria-hidden="true">1.2.</strong> Lab 2: Introduction to Kotlin</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_3/Lab_3.html"><strong aria-hidden="true">1.3.</strong> Lab 3: Android User Interface Part 1</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_4/Lab_4.html"><strong aria-hidden="true">1.4.</strong> Lab 4: Android User Interface Part 2</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_5/Lab_5.html"><strong aria-hidden="true">1.5.</strong> Lab 5: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_6/Lab_6.html"><strong aria-hidden="true">1.6.</strong> Lab 6: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_7/Lab_7.html"><strong aria-hidden="true">1.7.</strong> Lab 7: Android App using Icons and Decision Making Controls. Part 1</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_8/Lab_8.html"><strong aria-hidden="true">1.8.</strong> Lab 8: Android App using Icons and Decision Making Controls. Part 2</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_9/Lab_9-1.html"><strong aria-hidden="true">1.9.</strong> Lab 9.1: One Dimensional Arrays (Intellij)</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_9/Lab_9-2.html"><strong aria-hidden="true">1.10.</strong> Lab 9.2: Lists, Arrays and Web Browsers</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_9-3/Lab_9-3.html"><strong aria-hidden="true">1.11.</strong> Lab 9.3: Lists, Arrays and Web Browsers</a></li><li class="chapter-item expanded "><a href="../../Kotlin/Lab_10/Lab_10.html" class="active"><strong aria-hidden="true">1.12.</strong> Lab 10: Exception Handling</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.13.</strong> Lab 11: Kotlin Object Orientated Programming</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.14.</strong> Lab 12: OOP with Data Storage</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.15.</strong> Lab 13: Permissions</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.16.</strong> Lab 14: Sensors 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.17.</strong> Lab 15: Sensors 2</div></li><li class="chapter-item "><div><strong aria-hidden="true">1.18.</strong> Lab 16: Splash Screens</div></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item "><div><strong aria-hidden="true">2.</strong> Java Labs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Java/Lab_1/Lab_1.html"><strong aria-hidden="true">2.1.</strong> Lab 1: Hello World and More!</a></li><li class="chapter-item "><a href="../../Java/Lab_2/Lab_2.html"><strong aria-hidden="true">2.2.</strong> Lab 2: User Interface. Part 1</a></li><li class="chapter-item "><a href="../../Java/Lab_3/Lab_3.html"><strong aria-hidden="true">2.3.</strong> Lab 3: User Interface. Part 2</a></li><li class="chapter-item "><a href="../../Java/Lab_4/Lab_4.html"><strong aria-hidden="true">2.4.</strong> Lab 4: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item "><a href="../../Java/Lab_5/Lab_5.html"><strong aria-hidden="true">2.5.</strong> Lab 5: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item "><a href="../../Java/Lab_6/Lab_6.html"><strong aria-hidden="true">2.6.</strong> Lab 6: Icons and Decision Making Controls Pt1</a></li><li class="chapter-item "><a href="../../Java/Lab_7/Lab_7.html"><strong aria-hidden="true">2.7.</strong> Lab 7: Icons and Decision Making Controls Pt 2 </a></li><li class="chapter-item "><a href="../../Java/Lab_8/Lab_8-1.html"><strong aria-hidden="true">2.8.</strong> Lab 8.1: One Dimensional Arrays (Intellij)</a></li><li class="chapter-item "><a href="../../Java/Lab_8/Lab_8-2.html"><strong aria-hidden="true">2.9.</strong> Lab 8.2: Lists, Arrays and Web Browsers Pt1</a></li><li class="chapter-item "><a href="../../Java/Lab_9/Lab_9.html"><strong aria-hidden="true">2.10.</strong> Lab 9: Lists, Arrays and Web Browsers Pt2 </a></li><li class="chapter-item "><a href="../../Java/Lab_10/Lab_10.html"><strong aria-hidden="true">2.11.</strong> Lab 10: Exception Handling</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.12.</strong> Lab 11: Java Object Orientated Programming</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.13.</strong> Lab 12: Permissions</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.14.</strong> Lab 13: Sensors 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.15.</strong> Lab 14: Sensors 2</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.16.</strong> Lab 15: Splash Screens</div></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title">Assignments</li><li class="chapter-item "><a href="../../COMP1836_Assignment_1/COMP1836_Assignment_1.html"><strong aria-hidden="true">3.</strong> Comp1836 Assignment 1</a></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> Comp1836 Assignment 2</div></li><li class="spacer"></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> ELEE1146 Assignment 1</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers and Technologists</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/content/Kotlin/Lab_10/Lab_10.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lab-10-exception-handling"><a class="header" href="#lab-10-exception-handling">Lab 10: Exception Handling</a></h1>
+<p>Using IntelliJ you are going to do some error handling exploration. </p>
+<ul>
+<li>
+<p>Open IntelliJ </p>
+</li>
+<li>
+<p>Create a new project</p>
+<ul>
+<li>Call it <code>ErrorHandling</code> like the screen shot below.</li>
+<li>Note you can use any JDK for this exercise, I am using JDK 17.0.6</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step0.png" alt="" /></p>
+</div>
+</li>
+</ul>
+<h2 id="step-1"><a class="header" href="#step-1">Step 1</a></h2>
+<p>Reproduce the following to set up the project</p>
+<div align=center>
+<p><img src="./figures/step1.png" alt="" /></p>
+</div>
+<p>Now you can edit <code>main()</code> with the following code, then compile and run.</p>
+<pre><code class="language-kt">{
+    System.out.println(3/0);
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<blockquote>
+<ul>
+<li>We are explicity calling the <code>println()</code> from the function from the <code>System</code> library.</li>
+<li>You can do this implicitly just by writing <code>println(...)</code></li>
+<li>I would recommend the former, until you undestand this.</li>
+</ul>
+</blockquote>
+</blockquote>
+<p>You should see the following output in the Run terminal... </p>
+<div align=center>
+<p><img src="./figures/step2.png" alt="" /></p>
+</div>
+<p>Modify the <code>Main.kt</code> as shown below. The change is to catch an exception through try-catch block.</p>
+<pre><code class="language-kt">    try{
+        System.out.println(3/0);
+    } 
+    catch(e : Exception){
+        System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+    }
+</code></pre>
+<p>If you run the program again you should get the following output:</p>
+<div align=center>
+<p><img src="./figures/step3.png" alt="" /></p>
+</div>
+<p>Modify the Main.java as shown below. The change is to use more specific Exception class, <code>ArithmeticException</code> in this case.</p>
+<pre><code class="language-kt">    try{
+        System.out.println(3/0);
+    } 
+    catch( e : ArithmeticException ){
+        System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+    }
+</code></pre>
+<p>If you run the program again you should get the following output:</p>
+<div align=center>
+<p><img src="./figures/step4.png" alt="" /></p>
+</div>
+<p>Let's try changing the Exception Class, to <code>NumberFormatExpression</code>.</p>
+<pre><code class="language-kt">    try{
+            System.out.println(3/0);
+        } 
+        catch( e : NumberFormatException){
+            System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+        }
+</code></pre>
+<details>
+<summary>What happens when you run it?</summary>
+<div align=center>
+<p><img src="./figures/step5.png" alt="" /></p>
+</div>
+<p>Because the expected Exception Class is wrong.</p>
+</details>
+<p>For fun, do the following, what happens and why?</p>
+<pre><code class="language-kt">    try{
+            System.out.println(3/0);
+        } catch( e : ArithmeticException){
+            System.out.printf(&quot;Caught runtime exception = %s\n&quot;, e);
+            System.out.println(3/0);
+        }
+</code></pre>
+<h2 id="step-2-catch-multiple-exceptions"><a class="header" href="#step-2-catch-multiple-exceptions">Step 2: Catch multiple exceptions</a></h2>
+<p>Reproduce the following code:</p>
+<pre><code class="language-kt">import javax.swing.JOptionPane
+
+fun main(args: Array&lt;String&gt;) {
+
+    // Enter the following values and see what exception is caught.
+    //    0, 4, character, &lt;no value&gt;
+    try {
+        val value = JOptionPane.showInputDialog(null, &quot;Enter value:&quot;)
+        // Non-numeric value will result an NumberFormatException
+        val divisor = value.toInt()
+        // If the divisor is 0, it will result in ArithmetricException
+        println(3 / divisor)
+    } catch (e: NumberFormatException) {
+        println(&quot;Exception caught by this program: Enter numeric value.&quot;)
+    } catch (e: ArithmeticException) {
+        println(&quot;Exception caught by this program: Divisor was 0.&quot;)
+    }
+    println(&quot;After exception.&quot;)
+}
+</code></pre>
+<p>You'll notice that we are now importing a library on line 2 <code>import javax.swing.JOptionPane;</code> we now will be able to have a GUI.</p>
+<ul>
+<li>Build and run the program
+<ul>
+<li>Observe Input dialog box appears.</li>
+<li>Enter 0 in the field.</li>
+<li>Click OK.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step6.png" alt="" /></p>
+</div>
+<p>Notice that the exception was caught.</p>
+<div align=center>
+<p><img src="./figures/step7.png" alt="" /></p>
+</div>
+<ul>
+<li>Build and run the program
+<ul>
+<li>Observe Input dialog box appears.</li>
+<li>Enter 4 in the field.</li>
+<li>Click OK.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step8.png" alt="" /></p>
+</div>
+<p>Notice that the No exception was caught as it was not needed</p>
+<div align=center>
+<p><img src="./figures/step9.png" alt="" /></p>
+</div>
+<p>What happens when you enter a character or nothing instead? </p>
+<h1 id="step-3"><a class="header" href="#step-3">Step 3</a></h1>
+<ul>
+<li>Either start a new project or remove what you have done before</li>
+</ul>
+<p>You are now going to implement a larger program that illustrates many different types of <code>Exception</code>'s</p>
+<ol>
+<li>
+<p>Import the following libraries at the top of the script:</p>
+<pre><code class="language-kt">import java.awt.Frame
+import java.awt.GridLayout
+import java.awt.event.ActionEvent
+import java.awt.event.ActionListener
+import java.awt.event.WindowAdapter
+import java.awt.event.WindowEvent
+import java.io.FileInputStream
+import javax.swing.ButtonGroup
+import javax.swing.JFrame
+import javax.swing.JPanel
+import javax.swing.JRadioButton
+</code></pre>
+</li>
+<li>
+<p>Modify the <code>main</code> class line: </p>
+<pre><code class="language-kt">// Create a class Main that extends JFrame and implements ActionListener
+class Main : JFrame(), ActionListener {
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>This declares a class named <code>Main</code> that extends <code>JFrame</code> (a <code>Swing</code> component for creating windows) and implements the <code>ActionListener</code> interface (for handling button clicks).</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>After updating <code>main</code> in step 2, add declare and initialise a private immutable array of Doubles with two elements with values <code>0.0</code>. </p>
+<details>
+ <summary>Solution</summary>
+<pre><code class="language-kt">private val a = arrayOf&lt;Double&gt;(0.0,0.0)  // Create an array of Doubles
+</code></pre>
+</details>
+</li>
+<li>
+<p>Now create n JButton objects:</p>
+<ul>
+<li>divideByZeroButton</li>
+<li>badCastButton</li>
+<li>arrayBoundsButton</li>
+<li>nullPointerButton</li>
+<li>overflowButton</li>
+<li>noSuchFileButton</li>
+<li>throwUnknownButton</li>
+</ul>
+<p></p>
+<details>
+ <summary>Solution</summary>
+<pre><code class="language-kt">private val divideByZeroButton: JRadioButton
+private val badCastButton: JRadioButton
+private val arrayBoundsButton: JRadioButton
+private val nullPointerButton: JRadioButton
+private val overflowButton: JRadioButton
+private val noSuchFileButton: JRadioButton
+private val throwUnknownButton: JRadioButton
+</code></pre>
+</details>
+</li>
+<li>
+<p>Now we are going to use <code>init</code> to initialise our graphical setup</p>
+<pre><code class="language-kt"> // Constructor
+ init {
+     // Create a JPanel and GridLayout
+     val p = JPanel()
+     p.layout = GridLayout(8, 1)
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>This is the constructor (<code>init</code> block) of the <code>Main</code> class. It creates a <code>JPanel</code> (a container) and sets its layout to a grid with 8 rows and 1 column.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>Now create a block of radio buttons, after the <code>p.layout = GridLayout(8,1)</code> line, for the various exception scenarios by adding them to a button group (<code>ButtonGroup</code> ensures only one button is selected at a time), and adds them to the panel. </p>
+<pre><code class="language-kt">    // Create radio buttons and add them to the panel
+    val g = ButtonGroup()
+    divideByZeroButton = addRadioButton(&quot;Divide by zero&quot;, g, p)
+    badCastButton = addRadioButton(&quot;Bad cast&quot;, g, p)
+    arrayBoundsButton = addRadioButton(&quot;Array bounds&quot;, g, p)
+    nullPointerButton = addRadioButton(&quot;Null pointer&quot;, g, p)
+    overflowButton = addRadioButton(&quot;Overflow&quot;, g, p)
+    noSuchFileButton = addRadioButton(&quot;No such file&quot;, g, p)
+    throwUnknownButton = addRadioButton(&quot;Throw unknown&quot;, g, p)
+    contentPane.add(p)
+} // remeber to add this closing brace for init
+</code></pre>
+</li>
+<li>
+<p>After the closing brace <code>}</code> for <code>init</code> create a new function that is called <code>addRadioButton()</code>, that takes the following arguments: </p>
+<ul>
+<li><code>String</code> declared as <code>s</code></li>
+<li><code>ButtonGroup</code> declared as <code>g</code></li>
+<li><code>JPanel</code> declared as <code>p</code></li>
+</ul>
+<p></p>
+<details>
+ <summary>Solution</summary>
+<pre><code class="language-kt">private fun addRadioButton(s: String, g: ButtonGroup, p: JPanel): JRadioButton {
+</code></pre>
+</details>
+</li>
+<li>
+<p>Inside the function reproduce the follwing:</p>
+<pre><code class="language-kt">    val button = JRadioButton(s, false)
+    button.addActionListener(this)
+    g.add(button)
+    p.add(button)
+    return button
+}
+</code></pre>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>This function creates and configures a radio button, adds it to the specified <code>ButtonGroup</code> and <code>JPanel</code>, then returns the button.</p>
+</blockquote>
+</blockquote>
+<ol start="9">
+<li>After the closing <code>}</code> of the <code>addRadioButton()</code> we are going to add the core functionality of the program, create the following <code>actionPerformed</code> function: </li>
+</ol>
+<pre><code class="language-kt">// Handle button clicks and trigger/catch exceptions
+override fun actionPerformed(evt: ActionEvent) {
+    try {
+        val source = evt.source
+        if (source === divideByZeroButton) {
+            // Attempt to divide by zero, which will throw an ArithmeticException
+            print(0/0)
+        } else if (source === badCastButton) {
+            // Attempt to perform a bad cast, which will throw a ClassCastException
+            val f = evt.source as Frame
+        } else if (source === arrayBoundsButton) {
+            // Attempt to access an out-of-bounds array index, which will throw an ArrayIndexOutOfBoundsException
+            a[1] = a[10]
+        } else if (source === nullPointerButton) {
+            // Attempt to access a null object, which will throw a NullPointerException
+            val f: Frame? = null
+            f!!.setSize(200, 200);
+        } else if (source === overflowButton) {
+            // Perform integer overflow, which Kotlin does not natively detect
+            a[1] = (1000 * 1000 * 1000 * 1000).toDouble()
+            val n = a[1].toInt()
+            print(&quot;Value of a[1]: ${a[1]}... Value of n: $n\n&quot;)
+
+            // Manually check for integer overflow and throw an exception
+            check((n) &gt; Int.MAX_VALUE) { &quot;Integer overflow detected&quot; }
+        } else if (source === noSuchFileButton) {
+            // Attempt to open a non-existent file, which will throw a FileNotFoundException
+            val `is` = FileInputStream(&quot;Java Source and Support&quot;)
+        } else if (source === throwUnknownButton) {
+            // Explicitly throw an UnknownError
+            throw UnknownError()
+        }
+    } catch (e: RuntimeException) {
+        // Catch and print a RuntimeException
+        println(&quot;Caught RuntimeException: $e&quot;)
+    } catch (e: Exception) {
+        // Catch and print a more general Exception
+        println(&quot;Caught Exception: $e&quot;)
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>This function is called when a <strong>button</strong> is clicked. It tries different actions based on the clicked button, and catches specific exceptions (e.g., <code>ArithmeticException</code>, <code>ClassCastException</code>). It also catches more general exceptions (<code>RuntimeException</code>, <code>Exception</code>).</p>
+</blockquote>
+</blockquote>
+<ol start="10">
+<li>Build and run the program.</li>
+</ol>
+<ul>
+<li>Observe dialog box appears.
+<ul>
+<li>Click any of the radio buttons. </li>
+<li>Clicking a button will execute code fragement that generates an exception.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step10.png" alt="" /> 
+<img src="./figures/step11.png" alt="" />
+<img src="./figures/step12.png" alt="" /></p>
+</div>
+<ol start="11">
+<li>
+<p>Please do the following tasks</p>
+<ul>
+<li>Try other buttons and observe the exceptions that are caught</li>
+<li>Try to catch exceptions using more specific exception classes (over <code>RuntimeException</code> and <code>Exception</code> classes).</li>
+</ul>
+</li>
+<li>
+<p>If you have got to here, great job. </p>
+<ul>
+<li>Convert the <code>try</code> and <code>catch</code> to t <code>runCatching</code> with <code>onSuccess</code> and <code>onFailure</code> extension methods (see lecture if unsure) inside the <code>actionPerformed</code> function.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<hr />
+<details>
+<summary>Full code for up to section 10. </summary>
+<pre><code class="language-kt">import java.awt.Frame
+import java.awt.GridLayout
+import java.awt.event.ActionEvent
+import java.awt.event.ActionListener
+import java.awt.event.WindowAdapter
+import java.awt.event.WindowEvent
+import java.io.FileInputStream
+import javax.swing.ButtonGroup
+import javax.swing.JFrame
+import javax.swing.JPanel
+import javax.swing.JRadioButton
+
+// Create a class Main that extends JFrame and implements ActionListener
+class Main : JFrame(), ActionListener {
+    private val a = arrayOf&lt;Double&gt;(0.0,0.0)  // Create an array of Doubles
+    private val divideByZeroButton: JRadioButton
+    private val badCastButton: JRadioButton
+    private val arrayBoundsButton: JRadioButton
+    private val nullPointerButton: JRadioButton
+    private val overflowButton: JRadioButton
+    private val noSuchFileButton: JRadioButton
+    private val throwUnknownButton: JRadioButton
+
+    // Constructor
+    init {
+        // Create a JPanel and GridLayout
+        val p = JPanel()
+        p.layout = GridLayout(8, 1)
+
+        // Create radio buttons and add them to the panel
+        val g = ButtonGroup()
+        divideByZeroButton = addRadioButton(&quot;Divide by zero&quot;, g, p)
+        badCastButton = addRadioButton(&quot;Bad cast&quot;, g, p)
+        arrayBoundsButton = addRadioButton(&quot;Array bounds&quot;, g, p)
+        nullPointerButton = addRadioButton(&quot;Null pointer&quot;, g, p)
+        overflowButton = addRadioButton(&quot;Overflow&quot;, g, p)
+        noSuchFileButton = addRadioButton(&quot;No such file&quot;, g, p)
+        throwUnknownButton = addRadioButton(&quot;Throw unknown&quot;, g, p)
+        contentPane.add(p)
+    }
+
+    private fun addRadioButton(s: String, g: ButtonGroup, p: JPanel): JRadioButton {
+        val button = JRadioButton(s, false)
+        button.addActionListener(this)
+        g.add(button)
+        p.add(button)
+        return button
+    }
+
+    // Handle button clicks and trigger/catch exceptions
+    override fun actionPerformed(evt: ActionEvent) {
+        try {
+            val source = evt.source
+            if (source === divideByZeroButton) {
+                // Attempt to divide by zero, which will throw an ArithmeticException
+                 print(0/0)
+            } else if (source === badCastButton) {
+                // Attempt to perform a bad cast, which will throw a ClassCastException
+                val f = evt.source as Frame
+            } else if (source === arrayBoundsButton) {
+                // Attempt to access an out-of-bounds array index, which will throw an ArrayIndexOutOfBoundsException
+                a[1] = a[10]
+            } else if (source === nullPointerButton) {
+                // Attempt to access a null object, which will throw a NullPointerException
+                val f: Frame? = null
+                f!!.setSize(200, 200);
+            } else if (source === overflowButton) {
+                // Perform integer overflow, which Kotlin does not natively detect
+                a[1] = (1000 * 1000 * 1000 * 1000).toDouble()
+                val n = a[1].toInt()
+                print(&quot;Value of a[1]: ${a[1]}... Value of n: $n\n&quot;)
+
+                // Manually check for integer overflow and throw an exception
+                check((n) &gt; Int.MAX_VALUE) { &quot;Integer overflow detected&quot; }
+            } else if (source === noSuchFileButton) {
+                // Attempt to open a non-existent file, which will throw a FileNotFoundException
+                val `is` = FileInputStream(&quot;Java Source and Support&quot;)
+            } else if (source === throwUnknownButton) {
+                // Explicitly throw an UnknownError
+                throw UnknownError()
+            }
+        } catch (e: RuntimeException) {
+            // Catch and print a RuntimeException
+            println(&quot;Caught RuntimeException: $e&quot;)
+        } catch (e: Exception) {
+            // Catch and print a more general Exception
+            println(&quot;Caught Exception: $e&quot;)
+        }
+    }
+
+    // Main entry point
+    companion object {
+        @JvmStatic
+        fun main(args: Array&lt;String&gt;) {
+            // Create a frame and set up the UI
+            val frame: JFrame = Main()
+            frame.type = Type.POPUP
+            frame.setSize(200, 300)
+            frame.addWindowListener(object : WindowAdapter() {
+                override fun windowClosing(e: WindowEvent) {
+                    exitProcess(0)
+                }
+            })
+            frame.isVisible = true
+        }
+    }
+}
+</code></pre>
+</details>
+<p></p>
+<details>
+<summary>actionPerformed: runCatching code for section 12. </summary>
+<p>In this version, <code>runCatching</code> is used to encapsulate the code that might throw exceptions. <code>onSuccess</code> is a block that executes when there is no exception, and <code>onFailure</code> is a block that executes when an exception occurs. The specific exception types are checked inside the <code>onFailure</code> block, and other exceptions are rethrown.</p>
+<pre><code class="language-kt">override fun actionPerformed(evt: ActionEvent) {
+    runCatching {
+        val source = evt.source
+        when {
+            source === divideByZeroButton -&gt; {
+                // Attempt to divide by zero, which will throw an ArithmeticException
+                print(0 / 0)
+            }
+            source === badCastButton -&gt; {
+                // Attempt to perform a bad cast, which will throw a ClassCastException
+                val f = evt.source as Frame
+            }
+            source === arrayBoundsButton -&gt; {
+                // Attempt to access an out-of-bounds array index, which will throw an ArrayIndexOutOfBoundsException
+                a[1] = a[10]
+            }
+            source === nullPointerButton -&gt; {
+                // Attempt to access a null object, which will throw a NullPointerException
+                val f: Frame? = null
+                f!!.setSize(200, 200)
+            }
+            source === overflowButton -&gt; {
+                // Perform integer overflow, which Kotlin does not natively detect
+                a[1] = (1000 * 1000 * 1000 * 1000).toDouble()
+                val n = a[1].toInt()
+                print(&quot;Value of a[1]: ${a[1]}... Value of n: $n\n&quot;)
+
+                // Manually check for integer overflow and throw an exception
+                check((n) &gt; Int.MAX_VALUE) { &quot;Integer overflow detected&quot; }
+            }
+            source === noSuchFileButton -&gt; {
+                // Attempt to open a non-existent file, which will throw a FileNotFoundException
+                val `is` = FileInputStream(&quot;Java Source and Support&quot;)
+            }
+            source === throwUnknownButton -&gt; {
+                // Explicitly throw an UnknownError
+                throw UnknownError()
+            }
+        }
+    }.onSuccess {
+        // This block executes if there is no exception
+        println(&quot;No exception occurred&quot;)
+    }.onFailure { e -&gt;
+        // This block executes if an exception occurs
+        when (e) {
+            is RuntimeException -&gt; println(&quot;Caught RuntimeException: $e&quot;)
+            is Exception -&gt; println(&quot;Caught Exception: $e&quot;)
+            else -&gt; throw e // rethrow other exceptions
+        }
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../Kotlin/Lab_9-3/Lab_9-3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../Java/Lab_1/Lab_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../Kotlin/Lab_9-3/Lab_9-3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../Java/Lab_1/Lab_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
