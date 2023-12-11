@@ -1,4 +1,4 @@
-c# Lab 11 Kotlin Object Orientated Programming
+# Lab 11 Kotlin Object Orientated Programming
 
 Welcome to the Kotlin Banking System workshop/lab! In this session, you will learn how to create a *simple* banking system using Kotlin. The system includes classes for `BankCustomer`, `FundsController`, `ATM`, `Hashing`, and `ErrorMessage`.
 
