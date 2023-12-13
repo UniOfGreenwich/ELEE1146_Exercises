@@ -52,7 +52,7 @@
 
   - [Lab 10: Exception Handling](Java/Lab_10/Lab_10.md)
 
-  - [Lab 11: Java Object Orientated Programming]()
+  - [Lab 11: Java Object Orientated Programming](Java/Lab_11/Lab_11.md)
 
   - [Lab 12: Permissions]()
 
