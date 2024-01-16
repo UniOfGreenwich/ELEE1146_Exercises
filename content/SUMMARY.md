@@ -18,7 +18,7 @@
   - [Lab 9.3: Lists, Arrays and Web Browsers](Kotlin/Lab_9-3/Lab_9-3.md)
   - [Lab 10: Exception Handling](Kotlin/Lab_10/Lab_10.md)
   - [Lab 11: Kotlin Object Orientated Programming](Kotlin/Lab_11/Lab_11.md)
-  - [Lab 12: OOP with Data Storage]()
+  - [Lab 12: OOP with Data Storage](Kotlin/Lab_12/Lab_12.md)
   - [Lab 13: Permissions]()
   - [Lab 14: Sensors 1]()
   - [Lab 15: Sensors 2]()
