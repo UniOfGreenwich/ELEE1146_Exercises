@@ -23,7 +23,6 @@ In this lab you will write 414 lines of code.
 4. Make these files in the directory `src/main/kotlin`:
    - `BankCustomer` Class (Kotlin Class/File)
    - `DataUtils.kt` File (Kotlin Class/File)
-   - `DataUtils.kt` File (Kotlin Class/File)
    - `MyMutuableExtensions` Object (Kotlin Class/File)
 
 5. Make these files in `src`:
