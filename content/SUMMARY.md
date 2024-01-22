@@ -19,7 +19,7 @@
   - [Lab 10: Exception Handling](Kotlin/Lab_10/Lab_10.md)
   - [Lab 11: Kotlin Object Orientated Programming](Kotlin/Lab_11/Lab_11.md)
   - [Lab 12: OOP with Data Storage](Kotlin/Lab_12/Lab_12.md)
-  - [Lab 13: Permissions]()
+  - [Lab 13: Permissions](Kotlin/Lab_13/Lab_13.md)
   - [Lab 14: Sensors 1]()
   - [Lab 15: Sensors 2]()
   - [Lab 16: Splash Screens]()
