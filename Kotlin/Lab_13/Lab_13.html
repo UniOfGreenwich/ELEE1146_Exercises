@@ -288,7 +288,19 @@ override fun onRequestPermissionsResult(permsRequestCode:Int, permissions : Arra
         app:layout_constraintTop_toTopOf=&quot;parent&quot;
         tools:layout_editor_absoluteX=&quot;32dp&quot; /&gt;
 
-&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+    &lt;androidx.appcompat.widget.Toolbar
+        android:id=&quot;@+id/newToolbar&quot;
+        android:layout_width=&quot;409dp&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:background=&quot;?attr/colorPrimary&quot;
+        android:minHeight=&quot;?attr/actionBarSize&quot;
+        android:theme=&quot;?attr/actionBarTheme&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.0&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.005&quot; /&gt;
 </code></pre>
 <p>Now open the <code>strings.xml</code> file and add entries for <code>@string/request</code> as &quot;Request Permission&quot;  and <code>@string/check</code> as &quot;Check Permission&quot;.</p>
 <div align=center>
