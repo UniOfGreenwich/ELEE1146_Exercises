@@ -295,6 +295,18 @@ override fun onRequestPermissionsResult(permsRequestCode:Int, permissions : Arra
 <img src="figures/step1.png" style="object-fit:scale-down; height: 500px">
 </div>
 <hr />
+<h2 id="mainfest-file"><a class="header" href="#mainfest-file">Mainfest File</a></h2>
+<ol>
+<li>
+<p>Open <code>AndroidMainfest.xml</code></p>
+</li>
+<li>
+<p>Add the following tags underneat the 3rd line:</p>
+</li>
+</ol>
+<pre><code class="language-xml">    &lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot;/&gt;
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_COARSE_LOCATION&quot; /&gt;
+</code></pre>
 <h3 id="mainactivitykt"><a class="header" href="#mainactivitykt"><code>MainActivity.kt</code></a></h3>
 <ol>
 <li>
