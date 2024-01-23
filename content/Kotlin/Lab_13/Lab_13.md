@@ -375,6 +375,12 @@ private fun showMessageOKCancel(message: String, okListener: DialogInterface.OnC
 
 `companion object` is used to define constants, properties, and functions associated with a class. It's a way to create shared members that are accessible without creating an instance of the class. Members of the companion object can be accessed using the class name itself, without the need to create an instance of the class.
 
+```kotlin
+companion object {
+    private const val PERMISSION_REQUEST_CODE = 200
+}
+```
+
 -----------------
 
 ## Running the App
