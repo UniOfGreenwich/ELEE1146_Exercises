@@ -99,6 +99,7 @@ Now you are going to develop an application which checks if the permission is al
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
