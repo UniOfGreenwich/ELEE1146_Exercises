@@ -138,6 +138,18 @@ Now open the `strings.xml` file and add entries for `@string/request` as "Reques
 
 -------------------------------------------
 
+
+## Mainfest File
+
+1. Open `AndroidMainfest.xml`
+
+2. Add the following tags underneat the 3rd line:
+
+```xml
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+```
+
 ### `MainActivity.kt`
 
 1. Open `MainActivity.kt`
