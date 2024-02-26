@@ -22,7 +22,7 @@
   - [Lab 13: Permissions](Kotlin/Lab_13/Lab_13.md)
   - [Lab 14: Sensors 1]()
   - [Lab 15: Sensors 2]()
-  - [Lab 16: Splash Screens]()
+  - [Lab 16: Splash Screens](Kotlin/Lab_16/Lab_16.md)
 
 -----------
 -----------

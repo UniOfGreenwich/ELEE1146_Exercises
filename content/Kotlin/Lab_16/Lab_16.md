@@ -2,7 +2,7 @@
 
 ## Introduction 
 
-Android Splash Screen is the first screen visible to the user when the application’s launched. Splash screen is one of the most vital screens in the application since it’s the user’s first experience with the application. Splash screens are used to display some animations (typically of the application logo) and illustrations while some data for the next screens are fetched.
+Android Splash Screen is the first screen visible to the user when the application is launched. Splash screen is one of the most vital screens in the application since it’s the user’s first experience with the application. Splash screens are used to display some animations (typically of the application logo) and illustrations while some data for the next screens are fetched.
 
 Typically, the Activity that has the following intent filter set in the `AndroidManifest.xml` file is the Splash Activity.
 
@@ -20,8 +20,6 @@ Typically, the Activity that has the following intent filter set in the `Android
 ![](./figures/android-splash-screen-project-structure.png)
 
 </div>
-
-There are few ways to create the initial screen i.e. Splash Screen of the application. Let’s see each of them.
 
 ----------- 
 
@@ -105,7 +103,6 @@ class SplashActivity : AppCompatActivity() {
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,9 +141,9 @@ It’ll give rise to slow starts to the application which is bad for the user ex
 
 ## Aninmation
 
-This has been written for sdk 33, and core-ktx:1.8.0 so ensure you follow the steps below:
+This has been written for SDK 33, and core-ktx:1.8.0 so ensure you follow the steps below:
 
-1. Open the build gradle file and change your `compileSdk 34` to `compileSdk 33`, and change the `targetSdk 33` to `targetSdk 32`
+1. Open the build gradle file change your `compileSdk 34` to `compileSdk 33`, and change the `targetSdk 33` to `targetSdk 32`
 
 2. Navigate down to the `dependicies {...}` and change the following line from -> to:
 
@@ -179,7 +176,7 @@ This has been written for sdk 33, and core-ktx:1.8.0 so ensure you follow the st
     <string name="trans_fade_out">Fade out</string>
     <string name="trans_scale">Scale</string>
     ``` 
-8. We are going to produce the following files that will contain our animations for tranisitioning from one activity to another: 
+8. We are going to produce the following files that will contain our animations for transitioning from one activity to another: 
 
     ![](figures/anim_folder_structure.png)
 
@@ -289,7 +286,7 @@ This has been written for sdk 33, and core-ktx:1.8.0 so ensure you follow the st
           android:duration="1000" />
       ```
 
-10. Revist `MainActivty.kt` so we can implement the button functionality to invoke each animation.
+10. Revisit `MainActivty.kt` so we can implement the button functionality to invoke each animation.
 
 11. Your `class MainActivty : ...` needs to implement a `View`
     
@@ -343,10 +340,23 @@ This has been written for sdk 33, and core-ktx:1.8.0 so ensure you follow the st
     ```
     This function will detect when each button is pressed and invoke the corresponding animation. All we are doing here is reopening the `MainActivity` with that animation.
 
+    If you run this in its current state you will see the following: 
+
+    <div align=center>
+
+    <img src="./figures/slide_left.gif" style="width: 40vw; min-width: 100px;">
+
+    </div>
+
 15. Complete the rest of the buttons.
 
 16. Run the activity and you should see the following:
-    ![]() // GIF to be added
+    
+      <div align=center>
+
+    <img src="./figures/all_anim.gif" style="width: 40vw; min-width: 100px;">
+
+    </div>
 
 ---------------------
 
