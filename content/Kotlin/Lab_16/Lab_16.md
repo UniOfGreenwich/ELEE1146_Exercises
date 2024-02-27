@@ -1,4 +1,4 @@
-# Lab 15: Splash Screens
+# Lab 14: Splash Screens
 
 ## Introduction 
 
@@ -344,7 +344,7 @@ This has been written for SDK 33, and core-ktx:1.8.0 so ensure you follow the st
 
     <div align=center>
 
-    <img src="./figures/slide_left.gif" style="width: 40vw; min-width: 100px;">
+    <img src="./figures/slide_left.gif" style="width: 200px; min-width: 200px;">
 
     </div>
 
@@ -354,7 +354,7 @@ This has been written for SDK 33, and core-ktx:1.8.0 so ensure you follow the st
     
       <div align=center>
 
-    <img src="./figures/all_anim.gif" style="width: 40vw; min-width: 100px;">
+    <img src="./figures/all_anim.gif" style="width: 200px; min-width: 200px;">
 
     </div>
 
