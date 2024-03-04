@@ -20,7 +20,7 @@
   - [Lab 11: Kotlin Object Orientated Programming](Kotlin/Lab_11/Lab_11.md)
   - [Lab 12: OOP with Data Storage](Kotlin/Lab_12/Lab_12.md)
   - [Lab 13: Permissions](Kotlin/Lab_13/Lab_13.md)
-  - [Lab 14: Sensors 1]()
+  - [Lab 14: Sensors 1](Kotlin/Lab_14/Lab_14.md)
   - [Lab 15: Sensors 2]()
   - [Lab 16: Splash Screens](Kotlin/Lab_16/Lab_16.md)
 

@@ -200,7 +200,11 @@ First off in the `activity_main.xml` design view add:
 
 You should be good to run the program now, create virtual device and test the app.
 
+<div align=center>
+
 ![](./figures/AllofSensorsList.png)![](./figures/Sensor_Orientation.png)
+
+</div>
 
 Once, tried with one type of virtual device, try using a different one, see if you get different sensors.
 
