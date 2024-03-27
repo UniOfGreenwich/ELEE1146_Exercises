@@ -54,13 +54,13 @@
 
   - [Lab 11: Java Object Orientated Programming](Java/Lab_11/Lab_11.md)
 
-  - [Lab 12: Permissions]()
+  - [Lab 12: Permissions](Java/Lab_12/Lab_12.md)
 
-  - [Lab 13: Sensors 1]()
+  - [Lab 13: Sensors 1](Java/Lab_13/Lab_13.md)
 
-  - [Lab 14: Sensors 2]()
+  - [Lab 14: Sensors 2](Java/Lab_14/Lab_14.md)
 
-  - [Lab 15: Splash Screens]()
+  - [Lab 15: Splash Screens](Java/Lab_15/Lab_15.md)
 
 ------
 
