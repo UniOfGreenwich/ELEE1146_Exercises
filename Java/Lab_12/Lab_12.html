@@ -1,0 +1,713 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lab 12: Permissions - Mobile Applications for Engineers and Technologists</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Introduction.html">Introduction</a></li><li class="chapter-item affix "><li class="part-title">Kotlin</li><li class="chapter-item "><div><strong aria-hidden="true">1.</strong> Kotlin Labs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Kotlin/Lab_1/Lab_1.html"><strong aria-hidden="true">1.1.</strong> Lab 1: Hello World and more!</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_2/2_Kotlin_Intro.html"><strong aria-hidden="true">1.2.</strong> Lab 2: Introduction to Kotlin</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_3/Lab_3.html"><strong aria-hidden="true">1.3.</strong> Lab 3: Android User Interface Part 1</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_4/Lab_4.html"><strong aria-hidden="true">1.4.</strong> Lab 4: Android User Interface Part 2</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_5/Lab_5.html"><strong aria-hidden="true">1.5.</strong> Lab 5: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_6/Lab_6.html"><strong aria-hidden="true">1.6.</strong> Lab 6: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_7/Lab_7.html"><strong aria-hidden="true">1.7.</strong> Lab 7: Android App using Icons and Decision Making Controls. Part 1</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_8/Lab_8.html"><strong aria-hidden="true">1.8.</strong> Lab 8: Android App using Icons and Decision Making Controls. Part 2</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_9/Lab_9-1.html"><strong aria-hidden="true">1.9.</strong> Lab 9.1: One Dimensional Arrays (Intellij)</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_9/Lab_9-2.html"><strong aria-hidden="true">1.10.</strong> Lab 9.2: Lists, Arrays and Web Browsers</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_9-3/Lab_9-3.html"><strong aria-hidden="true">1.11.</strong> Lab 9.3: Lists, Arrays and Web Browsers</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_10/Lab_10.html"><strong aria-hidden="true">1.12.</strong> Lab 10: Exception Handling</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_11/Lab_11.html"><strong aria-hidden="true">1.13.</strong> Lab 11: Kotlin Object Orientated Programming</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_12/Lab_12.html"><strong aria-hidden="true">1.14.</strong> Lab 12: OOP with Data Storage</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_13/Lab_13.html"><strong aria-hidden="true">1.15.</strong> Lab 13: Permissions</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_14/Lab_14.html"><strong aria-hidden="true">1.16.</strong> Lab 14: Sensors 1</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.17.</strong> Lab 15: Sensors 2</div></li><li class="chapter-item "><a href="../../Kotlin/Lab_16/Lab_16.html"><strong aria-hidden="true">1.18.</strong> Lab 16: Splash Screens</a></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Java Labs</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Java/Lab_1/Lab_1.html"><strong aria-hidden="true">2.1.</strong> Lab 1: Hello World and More!</a></li><li class="chapter-item "><a href="../../Java/Lab_2/Lab_2.html"><strong aria-hidden="true">2.2.</strong> Lab 2: User Interface. Part 1</a></li><li class="chapter-item "><a href="../../Java/Lab_3/Lab_3.html"><strong aria-hidden="true">2.3.</strong> Lab 3: User Interface. Part 2</a></li><li class="chapter-item "><a href="../../Java/Lab_4/Lab_4.html"><strong aria-hidden="true">2.4.</strong> Lab 4: User Input, Variables and Operations. Part 1</a></li><li class="chapter-item "><a href="../../Java/Lab_5/Lab_5.html"><strong aria-hidden="true">2.5.</strong> Lab 5: User Input, Variables and Operations. Part 2</a></li><li class="chapter-item "><a href="../../Java/Lab_6/Lab_6.html"><strong aria-hidden="true">2.6.</strong> Lab 6: Icons and Decision Making Controls Pt1</a></li><li class="chapter-item "><a href="../../Java/Lab_7/Lab_7.html"><strong aria-hidden="true">2.7.</strong> Lab 7: Icons and Decision Making Controls Pt 2 </a></li><li class="chapter-item "><a href="../../Java/Lab_8/Lab_8-1.html"><strong aria-hidden="true">2.8.</strong> Lab 8.1: One Dimensional Arrays (Intellij)</a></li><li class="chapter-item "><a href="../../Java/Lab_8/Lab_8-2.html"><strong aria-hidden="true">2.9.</strong> Lab 8.2: Lists, Arrays and Web Browsers Pt1</a></li><li class="chapter-item "><a href="../../Java/Lab_9/Lab_9.html"><strong aria-hidden="true">2.10.</strong> Lab 9: Lists, Arrays and Web Browsers Pt2 </a></li><li class="chapter-item "><a href="../../Java/Lab_10/Lab_10.html"><strong aria-hidden="true">2.11.</strong> Lab 10: Exception Handling</a></li><li class="chapter-item "><a href="../../Java/Lab_11/Lab_11.html"><strong aria-hidden="true">2.12.</strong> Lab 11: Java Object Orientated Programming</a></li><li class="chapter-item expanded "><a href="../../Java/Lab_12/Lab_12.html" class="active"><strong aria-hidden="true">2.13.</strong> Lab 12: Permissions</a></li><li class="chapter-item "><a href="../../Java/Lab_13/Lab_13.html"><strong aria-hidden="true">2.14.</strong> Lab 13: Sensors 1</a></li><li class="chapter-item "><a href="../../Java/Lab_14/Lab_14.html"><strong aria-hidden="true">2.15.</strong> Lab 14: Sensors 2</a></li><li class="chapter-item "><a href="../../Java/Lab_15/Lab_15.html"><strong aria-hidden="true">2.16.</strong> Lab 15: Splash Screens</a></li><li class="spacer"></li></ol></li><li class="chapter-item "><li class="part-title">Assignments</li><li class="chapter-item "><a href="../../COMP1836_Assignment_1/COMP1836_Assignment_1.html"><strong aria-hidden="true">3.</strong> Comp1836 Assignment 1</a></li><li class="chapter-item "><a href="../../COMP1836_Assignment_2/COMP1836_Assignment_2.html"><strong aria-hidden="true">4.</strong> Comp1836 Assignment 2</a></li><li class="spacer"></li><li class="chapter-item "><a href="../../ELEE1146_Assignment_1/ELEE1146_Assignment_1.html"><strong aria-hidden="true">5.</strong> ELEE1146 Assignment 1</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers and Technologists</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/content/Java/Lab_12/Lab_12.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lab-12-permissions"><a class="header" href="#lab-12-permissions">Lab 12: Permissions</a></h1>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>Recommended reading for permissions, useful for assignment as well.
+<a href="https://developer.android.com/guide/topics/permissions/overview">https://developer.android.com/guide/topics/permissions/overview</a></p>
+</blockquote>
+</blockquote>
+<h2 id="what-are-android-runtime-permissions"><a class="header" href="#what-are-android-runtime-permissions">What are Android Runtime Permissions?</a></h2>
+<p>With the introduction of Android 6.0 (SDK 23), users are prompted for some specific permissions at runtime when they become necessary to use.</p>
+<p>Will the older apps run on Android Marshmallow?</p>
+<hr />
+<details>
+<summary>Answer</summary>
+<ul>
+<li>
+<p>If the targetSdkVersion is 22 or less.</p>
+</li>
+<li>
+<p>Thus android runtime permissions support backward compatibility.</p>
+</li>
+<li>
+<p>Now this doesn’t mean that you can work with old model of permissions by setting the sdk version to 22.</p>
+</li>
+</ul>
+</details>
+<hr />
+<p>A user using Marshmallow can revoke the dangerous permissions (we’ll discuss the dangerous and normal permissions later) from the Settings-&gt;Apps-&gt;Permissions.</p>
+<p>In the case we try to call some function that requires a permission which user has not granted yet, the function will suddenly throw an Exception(<code>java.lang.SecurityException</code>) that will lead to the application crashing.</p>
+<p>Hence you need to implement this new android permissions model in the below application.</p>
+<h2 id="dangerous-and-normal-android-permissions"><a class="header" href="#dangerous-and-normal-android-permissions">Dangerous and Normal android permissions</a></h2>
+<p>Android defines some permissions as dangerous and some as normal.</p>
+<p>The common thing in both the types is that they need to be defined in the Manifest file.</p>
+<p>From Android 6.0 only dangerous permissions are checked at runtime, normal permissions are not. An example of a normal permission is <code>android.permission.INTERNET</code>.</p>
+<p>Dangerous permissions are grouped into categories that make it easier for the user to understand what they are allowing the application to do. If the user accepts one permission in a group/category they accept the entire group. An example of dangerous permission is <code>android.permission.FINE_LOCATION</code> and <code>android.permission.COARSE_LOCATION</code>.</p>
+<p>Enabling anyone of the location permissions enables all.</p>
+<h2 id="requesting-android-runtime-permissions"><a class="header" href="#requesting-android-runtime-permissions">Requesting Android Runtime Permissions</a></h2>
+<p>The method <code>requestPermissions(String[] permissions, int requestCode);</code> is a public method that is used to request dangerous permissions. You can ask for multiple dangerous permissions by passing a string array of permissions.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>Android Permissions belonging to two different groups would prompt the user with an individual dialog for each of them. If they belong to the same group, then only one dialog prompt would be displayed.
+The results of the requests will be passed into the method <code>onRequestPermissionResult</code>.</p>
+</blockquote>
+</blockquote>
+<p><strong>Example :</strong> Let’s say we want to access the camera and location in your app. Both are dangerous permissions. You'll display a prompt requesting access to these permissions when the application is launched. So you'd add the permissions into a string array and call the <code>requestPermissions</code> as shown below:</p>
+<pre><code class="language-java">String[] perms = {"android.permission.FINE_LOCATION", "android.permission.CAMERA"};
+
+int permsRequestCode = 200; 
+requestPermissions(perms, permsRequestCode);
+
+@Override
+public void onRequestPermissionsResult(int permsRequestCode, String[] permissions, int[] grantResults){
+    switch(permsRequestCode){
+        case 200:
+            boolean locationAccepted = grantResults[0]==PackageManager.PERMISSION_GRANTED;
+            boolean cameraAccepted = grantResults[1]==PackageManager.PERMISSION_GRANTED;
+            break;
+    }
+}
+</code></pre>
+<p>Now you don’t want the user to keep accepting permissions that they've already accepted. Even if the permission has been previously granted it is necessary to check again to be sure that the user did not later revoke that permission. For this the following method needs to be called on every permission.</p>
+<pre><code class="language-java">checkSelfPermission(String perm);
+</code></pre>
+<p>It returns an integer value of <code>PERMISSION_GRANTED</code> or <code>PERMISSION_DENIED</code>.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>If a user declines a permission that is critical in the app, then <code>shouldShowRequestPermissionRationale(String permission);</code> is used to describe the user the need for the permission.</p>
+</blockquote>
+</blockquote>
+<p>Now you are going to develop an application which checks if the permission is already present. If not, then it’s requested at runtime.</p>
+<h2 id="build"><a class="header" href="#build">Build</a></h2>
+<ol>
+<li>Create application with at least API 23 selected.</li>
+<li>Name it <code>runtimepermissions</code></li>
+<li>Open the activity_main.xml and reproduce the following code:</li>
+</ol>
+<h3 id="xml-files"><a class="header" href="#xml-files">XML FILES</a></h3>
+<pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.coordinatorLayout.widget.coordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.uog.runtimepermissions.MainActivity"&gt;
+
+    &lt;include layout="@layout/content_main" /&gt;
+
+&lt;/androidx.coordinatorLayout.widget.coordinatorLayout&gt;
+</code></pre>
+<p>Did you see the <code>&lt;include layout="@layout/content_main"/&gt;</code> line? You can include other XML files to increase readibilty of the main XML file.</p>
+<ol start="3">
+<li>Create a new XML file <code>content_main.xml</code> in the layout directory, and reproduce the following:</li>
+</ol>
+<pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.uog.runtimepermissions.MainActivity"
+    tools:showIn="@layout/activity_main"&gt;
+    &lt;Button
+        android:id="@+id/check_permission"
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:text="@string/check"/&gt;
+    &lt;Button
+        android:id="@+id/request_permission"
+        android:layout_below="@+id/check_permission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/request"/&gt;
+&lt;/RelativeLayout&gt;
+</code></pre>
+<p>Again notice that <code>tools:context="com.example.runtimepermissions.MainActivity"</code> and  <code>tools:showIn="@layout/activity_main"</code> to complete the reference.</p>
+<p>You need to add the following dependency to <code>build.gradle</code>:</p>
+<pre><code class="language-xml">dependencies{
+...
+implementation 'androidx.coordinatorLayout:androidx.coordinatorLayout:1.2.0'
+...
+}
+
+</code></pre>
+<p>Now open the <code>strings.xml</code> file and add entries for <code>@string/request</code> as "Request Permission"  and <code>@string/check</code> as "Check Permission".</p>
+<h3 id="mainactivityjava"><a class="header" href="#mainactivityjava"><code>MainActivity.java</code></a></h3>
+<p>Reproduce the following code in the <code>MainActivity.java</code> file:</p>
+<pre><code class="language-java">package com.uog.runtimepermissions;
+
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
+import android.view.View;
+import android.widget.Button;
+
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission.CAMERA;
+</code></pre>
+<p>See a few new lines within this code block you may not have seen before..</p>
+<ul>
+<li><code>import android.content.pm.PackageManager;</code>
+<ul>
+<li>Class for retrieving various kinds of information related to the application packages that are currently installed on the device.</li>
+<li>recommended to read the documentation here -&gt; <a href="https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/content/pm/PackageManager.html">https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/content/pm/PackageManager.html</a></li>
+</ul>
+</li>
+<li><code>import android.support.design.widget.Snackbar;</code>
+<ul>
+<li>Instead of using a <code>Toast</code> you are going to use <code>Snackbar</code> widget.</li>
+</ul>
+</li>
+<li><code>import static android.Manifest.permission.*</code>
+<ul>
+<li>So you can use the permissions stored in the AndroidManifest.xml file you will populate later.</li>
+</ul>
+</li>
+</ul>
+<p>The <code>MainActivity</code> class declaration should look like below, make it so...</p>
+<pre><code class="language-java">public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final int PERMISSION_REQUEST_CODE = 200; // return value you need for success in an API call
+    private View view;
+
+
+}
+</code></pre>
+<p>After <code>private View view;</code> reproduce the following code for <code>onCreate()</code> method:</p>
+<pre><code class="language-java">  @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        Button check_permission = findViewById(R.id.check_permission);
+        Button request_permission =  findViewById(R.id.request_permission);
+        check_permission.setOnClickListener(this);
+        request_permission.setOnClickListener(this);
+    }
+</code></pre>
+<p>Next after the <code>onCreate()</code> method you will create the <code>onClick()</code> method:</p>
+<pre><code class="language-java"> @Override
+    public void onClick(View v) {
+        view = v;
+        int id = v.getId();
+        switch (id) {
+            case R.id.check_permission:
+                if (checkPermission()) {
+                    Snackbar.make(view, "Permission already granted.", Snackbar.LENGTH_LONG).show();
+                } else {
+                    Snackbar.make(view, "Please request permission.", Snackbar.LENGTH_LONG).show();
+                }
+                break;
+            case R.id.request_permission:
+                if (!checkPermission()) {
+                    requestPermission();
+                } else {
+                    Snackbar.make(view, "Permission already granted.", Snackbar.LENGTH_LONG).show();
+                }
+                break;
+        }
+    }
+</code></pre>
+<p>The code should be self explanatory, with <code>switch</code> and <code>if</code> conditions.</p>
+<p>What does this code snippet mean from the <code>onClick()</code> method?</p>
+<pre><code class="language-java"> if (!checkPermission()) {
+        requestPermission();
+    } else {
+        Snackbar.make(view, "Permission already granted.", Snackbar.LENGTH_LONG).show();
+    }
+</code></pre>
+<hr />
+<details>
+<summary>Answer</summary>
+<ol>
+<li>need to inverse the result of <code>checkPermission()</code> as in if <code>true</code> then it is <code>false</code> then permission is already granted.</li>
+<li>if <code>false</code> then <code>true</code> and permission needs to be requested again, <code>requestPermission()</code></li>
+</ol>
+</details>
+<hr />
+<p>So now we need to create the <code>*Permission()</code> methods.</p>
+<p>Firstly, underneath  <code>onClick()</code> method, reproduce the following code for <code>checkPermission()</code>:</p>
+<pre><code class="language-java">private boolean checkPermission() {
+        int location = ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_FINE_LOCATION);
+        int camera = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
+        return location == PackageManager.PERMISSION_GRANTED &amp;&amp; camera == PackageManager.PERMISSION_GRANTED;
+}
+</code></pre>
+<p>Notice that both <code>location</code> and <code>camera</code> variables must equal the same value. <code>checkPermission()</code> calls the <code>checkSelfPermission</code> on each of the permissions.</p>
+<p>Secondly, underneath <code>checkPermission()</code> method, reproduce the following code for <code>requestPermission()</code>:</p>
+<pre><code class="language-java">private void requestPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, CAMERA}, PERMISSION_REQUEST_CODE);
+}
+</code></pre>
+<p><code>requestPermission()</code> calls <code>ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, CAMERA}, PERMISSION_REQUEST_CODE);</code>.</p>
+<p>The <code>ActivityCompat.requestPermissions()</code> needs an array of permissions and specified return code, such as 200 for no error.</p>
+<p>For example, the 200 series of return codes are as follows:</p>
+<div class="table-wrapper"><table><thead><tr><th>Code</th><th>Meaning</th><th></th><th>Code</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>200</td><td>OK</td><td></td><td>205</td><td>Reset Content</td></tr>
+<tr><td>201</td><td>Created</td><td></td><td>206</td><td>Partial Content</td></tr>
+<tr><td>202</td><td>Accepted</td><td></td><td>207</td><td>Multi-Status</td></tr>
+<tr><td>203</td><td>Non-Authoritative Information</td><td></td><td>208</td><td>Already Reported</td></tr>
+<tr><td>204</td><td>No Content</td><td></td><td>226</td><td>IM Used</td></tr>
+</tbody></table>
+</div>
+<p>Now it's time to code the bulk of the programme, that handles the API Get for the requested premissions</p>
+<pre><code class="language-java">@Override
+public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+  switch (requestCode) {
+    case PERMISSION_REQUEST_CODE:
+      if (grantResults.length &gt; 0) {
+        
+        boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+        boolean cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+
+        if (locationAccepted &amp;&amp; cameraAccepted)
+          Snackbar.make(view, "Permission Granted, Now you can access location data and camera.", 
+          Snackbar.LENGTH_LONG).show();
+        else {
+          Snackbar.make(view, "Permission Denied, You cannot access location data and camera.",
+          Snackbar.LENGTH_LONG).show();
+          
+          if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+          
+             if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)) {
+                  showMessageOKCancel("You need to allow access to both the permissions",
+                  new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                      if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+                          requestPermissions(new String[]{ACCESS_FINE_LOCATION, CAMERA}, PERMISSION_REQUEST_CODE);
+                        }
+                      }
+                   });
+                return;
+              }
+          }
+        }
+      }
+    break;
+   }
+}
+</code></pre>
+<p><code>onRequestPermissionsResult</code> checks if the permissions are granted or not.</p>
+<p>In the code if both the permissions are not granted an alert dialog is popped showing the mandatory need to request the permissions. To do that <code>shouldShowRequestPermissionRationale(String permission)</code> is invoked which invokes an alert dialog showing the need for the permissions. You can revoke the permissions manually from Settings-&gt;Apps-&gt;Permissions.</p>
+<p>Lastly, within the MainActivity.java script you need the metho <code>ShowMessageOkCancel()</code> that is invoked by <code>onRequestPermissionsResult()</code> method using the <code>DialogInterface</code> class.</p>
+<pre><code class="language-java">private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(MainActivity.this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
+    }
+</code></pre>
+<h3 id="androidmainfestxml"><a class="header" href="#androidmainfestxml"><code>AndroidMainfest.xml</code></a></h3>
+<p>Reproduce the following code in the <code>AndroidManifest.xml</code>.</p>
+<p>Pay attention to the uses-permission lines.</p>
+<pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.uog.runtimepermissions"&gt;
+
+    &lt;uses-permission android:name="android.permission.CAMERA" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"&gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;
+
+</code></pre>
+<ol>
+<li>In the above code the two permissions that are checked and requested are <code>CAMERA</code> and <code>LOCATION</code>.</li>
+<li>Importing the static permission full class name allows us to write just the <code>PERMISSION</code> object instead of the fully qualified path.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>The runtime permission specific methods are available only since API 23. Hence the following condition is checked at each of the methods :</p>
+<p><code>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M)</code></p>
+</blockquote>
+</blockquote>
+<h2 id="result"><a class="header" href="#result">Result</a></h2>
+<p>The output of the android runtime permissions example application in action is given below.</p>
+<div align=center>
+<p><img src="https://journaldev.nyc3.digitaloceanspaces.com/2016/03/android-runtime-permission-output.gif" alt="" /></p>
+</div>
+<hr />
+<details>
+<summary>MainActivity Code in full</summary>
+<pre><code class="language-java">package com.uog.runtimepermissions;
+
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
+import android.view.View;
+import android.widget.Button;
+
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission.CAMERA;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final int PERMISSION_REQUEST_CODE = 200;
+    private View view;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        Button check_permission = (Button) findViewById(R.id.check_permission);
+        Button request_permission = (Button) findViewById(R.id.request_permission);
+        check_permission.setOnClickListener(this);
+        request_permission.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        view = v;
+        int id = v.getId();
+        switch (id) {
+            case R.id.check_permission:
+                if (checkPermission()) {
+                    Snackbar.make(view, "Permission already granted.", Snackbar.LENGTH_LONG).show();
+                } else {
+                    Snackbar.make(view, "Please request permission.", Snackbar.LENGTH_LONG).show();
+                }
+                break;
+            case R.id.request_permission:
+                if (!checkPermission()) {
+                    requestPermission();
+                } else {
+                    Snackbar.make(view, "Permission already granted.", Snackbar.LENGTH_LONG).show();
+                }
+                break;
+        }
+
+    }
+
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_FINE_LOCATION);
+        int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
+        return result == PackageManager.PERMISSION_GRANTED &amp;&amp; result1 == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, CAMERA}, PERMISSION_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length &gt; 0) {
+                    boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    if (locationAccepted &amp;&amp; cameraAccepted)
+                        Snackbar.make(view, "Permission Granted, Now you can access location data and camera.", Snackbar.LENGTH_LONG).show();
+                    else {
+                        Snackbar.make(view, "Permission Denied, You cannot access location data and camera.", Snackbar.LENGTH_LONG).show();
+                        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+                            if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)) {
+                                showMessageOKCancel("You need to allow access to both the permissions",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+                                                    requestPermissions(new String[]{ACCESS_FINE_LOCATION, CAMERA},
+                                                            PERMISSION_REQUEST_CODE);
+                                                }
+                                            }
+                                        });
+                                return;
+                            }
+                        }
+                    }
+                }
+                break;
+        }
+    }
+
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(MainActivity.this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
+    }
+
+}
+
+</code></pre>
+</details>
+<hr />
+<h2 id="afterwards"><a class="header" href="#afterwards">Afterwards</a></h2>
+<p>Experiment with other permissions</p>
+<blockquote>
+<p><a href="https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f">https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f</a> and see what they mean.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../Java/Lab_11/Lab_11.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../Java/Lab_13/Lab_13.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../Java/Lab_11/Lab_11.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../Java/Lab_13/Lab_13.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
