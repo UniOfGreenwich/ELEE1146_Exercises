@@ -2,8 +2,6 @@
 
 [Introduction](Introduction.md)
 
-- [REVISION](Revision/Revision.md)
-
 # Kotlin
 
 - [Kotlin Labs]()
