@@ -1,525 +1,692 @@
-# Lab 5 Android User Input, Variables and Operations. Part 1
+# Lab 5: Android App using Icons and Decision Making Controls
+
+## 1. Medical Calculator App
 
 > You will need to download the following picture folder -> [Lab_5_Picture.zip](Lab_5_Pictures.zip)
 
-## 1. Concert Ticket App
+Start a new Android Studio Project and name it the Application Medical Calculator. Copy the file `ic_launcher_weight.png` from the Pictures folder you have downloaded above.
 
-You are to develop a Concert Tickets App as shown below:
+**Customizing a Launcher Icon**
 
+- **Step 1:**
+  -  In the Android Project View, click the `activity_main.xml` file.
+  -  Click File on the menu bar and then click New.  From the drop down list choose Image Asset. The Asset Studio dialog box opens to display the default launcher icons for the resolutions of various devices.  
 <div align=center>
 
-![](figures/concertAppFinished.png)
+![](./figures/iconResources.png)
 
 </div>
 
-In the field **Number of Tickets**, you are to enter a positive integer.  You can also choose from the drop-down list the concert you are interested in and then click the **FIND THE COST** button.  Then the cost of the tickets will be displayed just above the picture as shown below (it is assumed that a single ticket is priced at £79.99):
+- **Step 2:**
+  - In the Path: field (in the red square in the picture above) click on the folder icon to the very end of the field and navigate to the location of `ic_launcher_weight.png` file, and then select the file as shown on the picture below. Note that the path on your PC will be different from the path shown as this is where the file is saved on my laptop.
 
 <div align=center>
 
-![](./figures/concertAppFinishedPrice2.png)
+![](./figures/iconSelectPath.png)
 
 </div>
 
+- Click the Ok button. 
 
-### Using the String Table
-
-- Double click on the strings.xml file in the values subfolder to display its contents
-
-- Click the Add key (plus sign) in the Translations Editor and type txtTitle in the Key text box and Ticket Vault in the Default Value text box as shown below:
+- Click the Next button and on the following window that appears, click the Finish button to add the custom launcher icon. The custom icons will be displayed in `res/mipmap` folder. Expand the `res/mipmap` folder and check that the icon is there as expected. The result is shown below:
 
 <div align=center>
 
-![](./figures/stringTableKey.png)
+![](./figures/resultsMipMap.png)
 
 </div>
 
-- Using the `string.xml` file add the strings specified in the table below:
-
-    ```xml
-    <string name="txtTitle">Ticket Vault</string>
-    <string name="txtTickets">Number of Tickets</string> 
-    <string name="prompt">Select Group</string>
-    <string name="description">Concert Image</string>
-    <string name="btnCost">FIND THE COST</string>
-    ```
-
-### Adding a String Array
-
-- Now you need to add a string array, modify the `string.xml` with the following code:
-
-    ```xml
-    <string-array name="txtGroup">
-        <item>Select a Band</item>
-        <item>Linkin Park</item>
-        <item>Hollywood Undead</item>
-        <item>Man with a Mission</item>
-        <item>Written by Wolves</item>
-    </string-array>
-    ```
-
-### Adding Controls to the Emulator
-**Step 1:**
-- Click the Save All button on the Standard toolbar and close `strings.xml` tab.
-- With `activity_main.xml` opened and displaying the emulator screen, from the Palette, choose the Common category and then choose the **TextView** widget 
-- Drag the **TextView** widget to the centre of the emulator screen until a dashed vertical line identifying the screen’s centre is displayed and drop it onto the top part of the emulator.  
-- In the Attributes Pane click on the vertical bar next to the **text** attribute to open the Pick a Resource dialog. 
-- Choose **txtTitle** from the list to name the TextView widget.
-- Press the Ok button.
-- In the **textSize** property, type **48sp** and the press Enter.  
-- Right click on the **TextView** widget and choose Center/Horizontally form the drop down list. 
-
-<div align=center>
-
-![](./figures/pickResource1.png)
-
-</div>
-
-**Step 2:**
-- In the Text category in the Palette, scroll down to the Number control.
-- Drag and drop the Number control onto the emulator bellow the Ticket Vault text.
-- Drag the control to the centre of the screen until a dashed vertical line identifying the screen centre is displayed.
-- Set the **textSize** property to **28sp** from the drop-down list. 
-
-### Setting the Hint Property for the Text Field
+## Displaying the Action Bar Icon Using Code
 
 **Step 1:**
-- With the Number control selected in the emulator, find the hint property in the Attributes pane (by typing hint in the search box for example) and then click on the vertical line next to the hint property.
-- Pick a Resource dialog box will appear.  Click **txtTickets** to select the assigned string. Click the OK button as shown below:
-
-<div align=center>
-
-![](./figures/pickResource2.png)
-
-</div>
-
-### Using the Android Spinner Control
-
-**Step 1:**
-- With the `activity_main.xml` tab open, scroll to view the Containers category in the Palette.
-- Drag and drop the Spinner control below the Number control and centre it horizontally. 
-
-**Step 2:**
-- In the Attributes pane using search facility at the top of the pane, type in prompt and click to the right of the prompt property on the vertical line to display the Pick a Resources dialog box. 
-- Find the prompt and click it to display instructions when the user touches the Spinner control.
-- Click the OK button as shown below:
-
-<div align=center>
-
-![](./figures/pickResource3.png)
-
-</div>
-
-- In the Attributes pane, click the vertical bar to the right of the entries property.
-- Choose txtGroup from the dialog box as shown below. Press OK.
-
-<div align=center>
-
-![](./figures/pickResource4.png)
-
-</div>
-
-### Adding the Button, TextView and ImageView Controls
-
-**Step 1:**
-- In the `activity_main.xml` tab, the Common category in the Palette, drag the Button control to the emulator and centre it below the Spinner control.
-- Click on the vertical bar next to the text attribute and from the Pick a Resource dialog box choose btnCost and then press ok. 
-- Change the **textSize** property to **36sp** from the drop-down list and save your work. 
-
-**Step 2:**
-- From the Common category in the Palette, choose the **TextView** control and drag the control to the emulator and centre it below the Button control.
-- Inside the **text** property delete **TextView**.
-- Change the **textSize** property to **24sp** from the drop-down list. 
-
-**Step 3:**
-- To add the **Image View** control, copy the file `concert.png` from the Pictures folder on moodle to your computer. 
-- Copy the `concert.png` file (CTRL + C) and then right click the drawable folder in the Android project view pane. Click Paste. From the Choose Destination Directory dialog choose the **drawable folder** and then click the Ok button as shown below.
-
-<div align=center>
-
-![](./figures/pickResource5.png)
-
-</div>
-
-- Click OK on the next Copy dialog which appears to copy the concert.png file into the drawable directory.
-- From the Common category in the Palette, drag the ImageView control to the emulator and centre it below the TextView control at the bottom of the emulator.
-- From the Pick a Resources dialog box which appears, choose the concert picture. Now click the OK button.  
-- With the image selected, click the vertical bar to the right of the contentDescription property in the Attributes pane.  Select description and then click the OK button.
-
-**Step 4:**
-- Now apply Infer Constraints by clicking the button on the top of the emulator.  
-- Run the emulator to see if your interface looks like what you expected.  If you are happy with the interface, proceed with the next step.  If not – fix it!
-
-### Coding the EditText Class for the TextField, the Spinner Control and the Button Control
-
->**IMPORTANT**
->> Throughout this exercise you are encouraged to write comments in the code to explain what different bits do, this is to help remind yourself of what is going on. 
->>
->> Comments are indicated by using `//` symbols for inline comments, or `/* */`  for multiline:
->> ```kt
->>   // intialise a variable that stores the information about currency that can be update later
->>   val format: NumberFormat = NumberFormat.getCurrencyInstance()
->>
->>     /* using the format object I have set the currency to ,'£', using the country code "GBP"
->>      * Additionaly I have set the format so that the maximum and minimum fractional digits are 2
->>      * i.e ##.## 
->>      */
->>   format.currency = Currency.getInstance("GBP")
->>   format.maximumFractionDigits = 2
->>   format.minimumFractionDigits = 2
->>   ```
-
-**Step 1:**
-- In the Android project view, expand the java folder and the first folder under it and then double click to open the `MainActivity.java` file.
-- Click to the right of the line `setContentView(R.layout.activity_main)`
-
-- Press **Enter** to insert a blank line.
-
-- To initialise and reference the `Spinner` control with the Id name of spinner, type:
-  - `val group = findViewById<Spinner>(R.id.spinner)`
-
-- After you have entered the line above, press Enter. 
-- To initialise the `Button` control with the id of button type:
-  - `val costBtn = findViewById<Button>(R.id.button)`
-
-- Press **Enter** to insert a blank line.
-- To initialise and reference the `EditText` class with the Id name of **editText** type: 
-  - `val tickets = findViewById<EditText>(R.id.editTextNumber)`
-
-- After you have entered the line above, press Enter. 
-- To initialise the `TextView` for the resulting calculations with the id of TextView type:
-  - `val result = findViewById<TextView>(R.id.textView)`
-
-- New line
-- To reference the `ImageView` to be able to change images based on the `Spinner`'s selected item:
-  - `val groupImage = findViewById<ImageView>(R.id.imageView)`
-
-
-
-- Finally, after you have entered the line above, press 
-**Enter**
-- To initialise and reference the `NumberFormat` class: 
-  - ```kt 
-    val format: NumberFormat = NumberFormat.getCurrencyInstance()
-
-    format.currency = Currency.getInstance("GBP")
-    format.maximumFractionDigits = 2
-    format.minimumFractionDigits = 2
-    ```
-- The result is shown below:
-
-    ```kt
-
-    package com.example.concerttickets
-
-    import ...
-
-    class MainActivity : AppCompatActivity() {
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
-
-            val group = findViewById<Spinner>(R.id.spinner)
-            val costBtn = findViewById<Button>(R.id.costButton)
-            val tickets = findViewById<EditText>(R.id.editTextNumber)
-            val result = findViewById<TextView>(R.id.resultsTextView)
-            val groupImage = findViewById<ImageView>(R.id.imageView)
-            val format: NumberFormat = NumberFormat.getCurrencyInstance()
-
-            format.currency = Currency.getInstance("GBP")
-            format.maximumFractionDigits = 2
-            format.minimumFractionDigits = 2
-
-        }
-    }
-    ```
-
-### Declaring Variables
-**Step 1:**
--  In `MainActivity.java` on the line declaring the class, after the `{`, press Enter:
-
-    ```kt 
-    class MainActivity : AppCompatActivity() {
-
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-    ...
-    ```
-
-- Press the Tab key to indent the text, and then insert the following four lines of code to initialize the variables in this activity:
-  
-    ```kt
-    private val costPerTicket : Double = 79.99
-    private var numberOfTickets : Int = 0
-    private var totalCost : Double = 0.0
-    private var groupChoice: String? = null
-    ```
-    > **Note**
-    >> `private` means that only this class `MainActivity` can reference these global variables
-
-- The result is shown below:
-
-    ```kt
-
-    package com.example.concerttickets;
-
-    import ...
-
-    class MainActivity : AppCompatActivity() {
-
-        private val costPerTicket : Double = 79.99
-        private var numberOfTickets : Int = 0
-        private var totalCost : Double = 0.0
-        private var groupChoice: String? = null
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
-
-            val group = findViewById<Spinner>(R.id.spinner)
-            val costBtn = findViewById<Button>(R.id.costButton)
-            val tickets = findViewById<EditText>(R.id.editTextNumberSigned)
-            val result = findViewById<TextView>(R.id.resultsTextView)
-            val groupImage = findViewById<ImageView>(R.id.imageView)
-            val format: NumberFormat = NumberFormat.getCurrencyInstance()
-
-            format.currency = Currency.getInstance("GBP")
-            format.maximumFractionDigits = 2
-            format.minimumFractionDigits = 2
-        }
-    }
-    ```
-### Coding the `onItemSelectedListener`
-
-**Step 1:**
-- To code the `Spinner` listener that awaits user interaction, after the line for the **format.minimumFractionDigits = 2**, type:
-  ```kt
-  group?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-
-  }
-  ```
-- You should be able to auto complete by pressing the **Tab key**
-- Else you will need to add the following in side this new method:
-  ```kt
-  override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-  override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-  }
-  ```
-
-  > **Note**:
-  >> If auto completion has worked removed the lines `TODO("Not yet implemented")`
-
-- The result is shown below:
-
-  ```kt
-
-  package com.example.concerttickets;
-
-  import ...
-
-  class MainActivity : AppCompatActivity() {
-
-      private val costPerTicket : Double = 79.99
-      private var numberOfTickets : Int = 0
-      private var totalCost : Double = 0.0
-      private var groupChoice: String? = null
-
-      override fun onCreate(savedInstanceState: Bundle?) {
-          super.onCreate(savedInstanceState)
-          setContentView(R.layout.activity_main)
-
-          val group = findViewById<Spinner>(R.id.spinner)
-          val costBtn = findViewById<Button>(R.id.costButton)
-          val tickets = findViewById<EditText>(R.id.editTextNumberSigned)
-          val result = findViewById<TextView>(R.id.resultsTextView)
-          val groupImage = findViewById<ImageView>(R.id.imageView)
-          val format: NumberFormat = NumberFormat.getCurrencyInstance()
-
-          format.currency = Currency.getInstance("GBP")
-          format.maximumFractionDigits = 2
-          format.minimumFractionDigits = 2
-
-          group?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-              override fun onNothingSelected(parent: AdapterView<*>?) {
-              }
-
-              override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-              }
-      }
-  }
-  ```
-
-- Inside the `group?.onItemSelected(parent: AdapterView<*>?,...){}` reproduce the following:
-
-    ```kt
-    val groupSelected = group.selectedItem
-    if (groupSelected == "Written by Wolves")
-        groupImage.setImageResource(R.drawable.written_by_wolves)
-    else if (groupSelected == "Linkin Park")
-        groupImage.setImageResource(R.drawable.linkin_park)
-    else if (groupSelected == "Man with a Mission")
-        groupImage.setImageResource(R.drawable.man_with_a_mission)
-    else if (groupSelected == "Hollywood Undead")
-        groupImage.setImageResource(R.drawable.hollywood_undead)
-    else
-        groupImage.setImageResource(R.drawable.concert)
-    ```
-- Here the whenever an item is selected from the `Spinner` the selected item is stored in the `groupSelected` variable.
-
-- A comparison is made to which `String` matches to the `groupSelected` variable.
-
-- If a match is found lets say `"Written by Wolves"`, then the `ImageView` is updated to store the corresponding image via the `groupImage` variable/objet using the `setImageResource(...)` method. 
-
-- Of course the default case `else` implicitly says that if `groupSelected` is `"Select a Band"` as all other options have been programmed, then display the default image `R.drawable.concert`
-
-<div align="center>
-
-![](./figures/imageChange.png)
-
-</div>
-
-### Coding the `costBtn.setOnClickListener`
-
-This code block will provide the functionality to calculate the cost of the number of tickets for the selected group.
-
-- So after the closing brace '}' of the `group?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {...}` write the following:
-
-    ```kt
-    costBtn.setOnClickListener{
-        groupChoice = group.getSelectedItem( ).toString( )
-        numberOfTickets = tickets.getText().toString().toIntOrNull() ?: 0
-    }
-    ```
-
-- The selected item from the `group`, (`Spinner`), is converted to a `String` and assigned to the `groupChoice` variable.
-- Next the `numberOfTickets` is assigned the value entered in to the `tickets` (`editText` widget) field. We first convert the method gets the text, `getTexts`, converts this to `String` like in the previous line. But is then converted through parsing,`.toIntOrNull() ?: 0` to a interger or `Int`, where if you have a value in the the field that is convertable you will get that value i.e:
-- `1` would give you `1` 
-- `a` would give you `null`, and therefore using the operator `?:` if `null` give me a `0` instead
-
-Now we are ready to do something with these two variables:
-- First by ensuring that a band has not been selected
-- Then checking to see if the number of tickets is equal to `0`.
-
-If either of these conditions are true then we will get a Toast Notifcication or pop up telling the user to fix the issue. 
-
-- Repeat the below after the `numberOfTickets = Integer.parseInt(tickets.getText().toString())` line:
-
-    ```kt
-    if (groupChoice == "Select a Band") {
-        val toast = Toast.makeText(this, "Please select a band", Toast.LENGTH_LONG) 
-        toast.show()
-    }
-    else if (numberOfTickets == 0 ) {
-        val toast = Toast.makeText(this, "Enter value greater than 0", Toast.LENGTH_LONG) 
-        toast.show()
-    }
-    else {
-        totalCost = costPerTicket * numberOfTickets
-        groupChoice = group.getSelectedItem().toString()
-        result.setText("Cost for " + groupChoice + " is " + format.format(totalCost))
-    }
-    ```
-
-Should looks something like this when complete: 
-
-<div align="center">
-
-![](./figures/toasts.png)
-
-</div>
-
-<details>
-<summary>The whole program should look like this: </summary>
+- In the Android project view, expand the java folder and the first sub-folder, and then double click on the `MainActivity.kt` to open the code window.
+- Click at the end of `setContentView` line, press Enter and type the following three statements to display the logo in the Action bar:
 
 ```kt
-package com.example.concerttickets
+supportActionBar?.setDisplayShowCustomEnabled(true)
+supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
+supportActionBar?.setDisplayShowTitleEnabled(true)
+supportActionBar?.setDisplayUseLogoEnabled(true)
+supportActionBar?.setDisplayShowHomeEnabled(true)
+supportActionBar?.show()
+```
 
-import androidx.appcompat.app.AppCompatActivity
+- The result is shown below:
+
+```kt
+package com.example.medicalcalculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+override fun onCreate(savedInstanceState: Bundle?) {
+  super.onCreate(savedInstanceState)
+  setContentView(R.layout.activity_main)
+
+  supportActionBar?.setDisplayShowCustomEnabled(true)
+  supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
+  supportActionBar?.setDisplayShowTitleEnabled(true)
+  supportActionBar?.setDisplayUseLogoEnabled(true)
+  supportActionBar?.setDisplayShowHomeEnabled(true)
+  supportActionBar?.show()
+
+  }
+}
+```
+
+- Next we will play with the `themes.xml` in the `res/vaules/themes` folder, reproduce the following: 
+
+```xml
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MedicalCalculator" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/design_default_color_primary</item>
+        <item name="colorPrimaryDark">@color/design_default_color_primary</item>
+        <item name="colorAccent">@color/design_default_color_on_secondary</item>
+    </style>
+
+    <style name="Theme.MedicalCalculator" parent="Base.Theme.MedicalCalculator" />
+    
+</resources>
+```
+
+<div align=center>
+
+![](./figures/themes.png)
+
+</div>
+
+
+Run the app. The icon is displayed in the running emulator acting bar as shown below:
+
+<div align=center>
+
+![](./figures/baseBuildOfMedicalApp.png)
+
+</div>
+
+## String Table
+**Step 1:**
+- In the Android project view, open the stirngs.xml file in the res\values folder.
+- Click the Open editor link and then the Add Key (+ sign) button in the Translations Editor.
+- Enter the following values shown in the table below:
+
+<div align=center>
+
+|String Name | String Value |
+|---|---|
+|txtTitle | Convert Patient Weight|
+|txtWeight| Weight of Patient|
+|radLbToKilo| Convert LBS to Kgs|
+|radKiloToLb| Convert Kgs to LBS |
+|btnConvert| Convert Weight |
+
+</div>
+
+- Click the Save All button on the toolbar and then close the Translators Editor tab and the `strings.xml` tab. 
+
+## Creating the GUI in the Emulator
+
+**Step 1:**
+- With the `activity_main.xml` open and displaying the emulator screen, from the Widgets category of the Palette, drag and drop the `TextView` control onto the top part of the emulator.  Centre it (drag it till a dashed vertical line appears).
+- Click the vertical bar next to the text attribute of the `TextView` control in the Attribute Pane and in the Pick a Resource dialog choose the `txtTitle` box. Press OK. 
+- Change the `textSize` property to `30sp`.
+- Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the Color section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
+- Right click on the `TextView` control, choose Center/ Horizontally to centre the control.
+
+**Step 2:**
+- From the Text category in the Palette, drag and drop the `Number` control onto the emulator below the `TextView` control in the centre.
+- Click on the vertical bar next to the `hint` property in the Property pane.
+- Choose `txtWeight` from the Resources dialog and then click the OK button.
+- Change the `textSize` property to `24sp`.
+
+**Step 3:**
+- In the Buttons category of the Palette, select `RadioButton`, and then drag and drop the `RadioButton` control onto the user interface below the `Number` control. Expand the size of the `RadioButton`, do this repeat for a second `RadioButton` and place underneath the last. 
+- Click the vertical bar next to the `text` attribute of the first `RadioButton` control in the Attribute Pane and in the Pick a Resource dialog choose the `radKiloToLbbox`. Press OK. 
+- In the Attributes list for the first `RadioButton`, click on the checked property indicating that the first radio button is the default selection.
+- Change the `textSize` property to `18sp` from the drop down list. 
+- Click the vertical bar next to the `text` attribute of the second `RadioButton` control in the Attribute Pane and in the Pick a Resource dialog choose the `radLbToKilo` box. Press OK. 
+- Change the `textSize` property to `18sp` from the drop-down list. 
+
+**Step 4:**
+- Drag the `Button` control from the Palette to the emulator below the `RadioButton`s. 
+- Click the vertical bar next to the `text` attribute of the `Button` control in the Attribute Pane and in the Pick a Resource dialog choose the `btnConvert` box. Press OK.
+- Change the `textSize` property to `24sp` form the drop-down list.
+- Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the `Color` section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
+
+
+**Step 5:**
+- From the Common category in the Palette, drag another `TextView` control to the emulator below the `Button`.
+- In the `text` attribute box delete `TextView`. The `text` attribute is now empty and the `TextView` component you just dragged to the emulator has no label.
+- Change the `textSize` property to `24sp`.
+- Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the `Color` section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
+- Click Save All button on the Standard toolbar.
+
+Now Apply Constraints to the layout using the Infer Constraints button above the emulator and run the app in the emulator to see if you have correctly placed all the controls.  The result should look similar to this:
+
+<div align=center>
+
+![](./figures/step5.png)
+
+</div>
+
+## Coding a Radio Button Control
+
+**Step 1:**
+- Click on the `MainActivity.kt` tab.
+- Click at the end of line (just after `{`)  
+
+```kt
+override fun onCreate(savedInstanceState: Bundle?) {
+```
+
+and then press Tab to indent the line.
+
+- To initialize the conversion rate value of 2.2., type:
+```kt
+val conversionRate : Double = 2.20462262
+```
+and press Enter.
+
+- To initialize the weightEntered variable and the convertedWeight, type:
+
+```kt
+var weightEntered :  Double = 0.0
+var convertedWeight : Double = 0.0
+```
+and press Enter.
+
+**Step 2:**
+- Click at the end of the line
+```kt
+supportActionBar?.show()
+``` 
+and press Enter.
+
+- to instantiate and reference the `EditText` class:
+
+```kt
+val weight = findViewById<EditText>(R.id.editTextNumer)
+```
+Press Enter.
+- To instantiate and reference the two radio buttons, type:
+
+```kt
+val kiloToLb = findViewById<RadioButton>(R.id.radiobutton)
+val lbToKilo = findViewById<RadioButton>(R.id.radiobutton2)
+```
+- Save your work.
+
+## Coding the Button Control
+
+**Step 1:**
+- After the two lines of code referring to the radio buttons, type:
+
+```kt
+val result = findViewById<TextView>(R.id.textView2)
+```
+and press Enter.
+
+- To code the button, type:
+
+```kt
+val convert = findViewById<Button>(R.id.button)
+```
+and press Enter.
+
+- Your `MainActivity.kt` class should look like this:
+
+```kt
+class MainActivity : AppCompatActivity() {
+
+  val conversionRate : Double = 2.20462262
+  var weightEntered :  Double = 0.0
+  var convertedWeight : Double = 0.0
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    supportActionBar?.setDisplayShowCustomEnabled(true)
+    supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
+    supportActionBar?.setDisplayShowTitleEnabled(true)
+    supportActionBar?.setDisplayUseLogoEnabled(true)
+
+    val kiloToLb = findViewById<RadioButton>(R.id.radiobutton)
+    val lbToKilo = findViewById<RadioButton>(R.id.radiobutton2)
+    val weight = findViewById<EditText>(R.id.editTextNumberDecimal)
+    val result = findViewById<TextView>(R.id.textView2)
+    val convert = findViewById<Button>(R.id.button)
+  }
+}
+```
+
+- To code the `Button` listener, type `convert.setOnClickListener{}`.
+
+## Coding the Button Event
+
+**Step 1:**
+- Inside the `setOnClickListener{}` method stub of the MainActivity.java code, type the code to convert the weight entered to a Double data type and press Enter.
+
+```kt
+weightEntered = weight.getText().toString().toDouble()
+```
+
+- To create a decimal layout that changes the weight to a decimal rounded to the nearest tenth for use in the result later in the code, type: 
+
+```kt
+// Configure number formatting
+val tenth: NumberFormat = NumberFormat.getInstance()
+tenth.maximumFractionDigits = 2
+tenth.minimumFractionDigits = 2
+```
+
+## Coding the Nested `If` Statements
+
+**Step 1:**
+- After the `NumberFormat` line of code, to determine if the first `RadioButton` control is selected, insert a new line and type:
+
+```kt
+if (lbToKilo.isChecked()) {
+
+}
+```
+
+And then press Enter and reproduce the following:
+
+```kt
+convert.setOnClickListener {
+  weightEntered = weight.getText().toString().toDouble()
+  // Configure number formatting
+  val tenth: NumberFormat = NumberFormat.getInstance()
+  tenth.maximumFractionDigits = 2
+  tenth.minimumFractionDigits = 2
+
+  if (lbToKilo.isChecked()) {
+   
+  }
+}
+```
+
+**Step 2:**
+- Within the first if statement, braces create a nested `if/else` statement that determines if the weight entered for kilograms is less than or equal to 255.  Type:
+
+```kt
+if (weightEntered <= 255) { 
+```
+
+And press Enter.  Java automatically adds the closing brace.
+
+On line 41, after the closing brace, type `else { }` and press Enter in between the braces. See the code below:
+
+```kt
+  convert.setOnClickListener {
+  weightEntered = weight.getText().toString().toDouble()
+  // Configure number formatting
+  val tenth: NumberFormat = NumberFormat.getInstance()
+  tenth.maximumFractionDigits = 2
+  tenth.minimumFractionDigits = 2
+
+  if (lbToKilo.isChecked()) {
+    if (weightEntered <=  255){
+
+    }else{
+
+    }
+  }
+}
+```
+
+**Step 3:**
+
+- After the pounds variable is validated, the weight must be converted. To divide the weight by the conversion rate of 2.2, inside the nested if statement (line 41) after the weightEntered `<= 255 {` line, type:
+
+```kt
+convertedWeight = weightEntered  * conversionRate;
+```
+and press Enter.
+- To display the result of the equation rounded to one place past the decimal point, type:
+
+```kt
+result.setText(tenth.foramt(convertedWeight) + “ pounds”);
+```
+- If the weight is not in valid range, a toast message requesting that the user enter a valid weight is displayed briefly. Click the line after the else statement and type:
+
+```kt
+Toast.makeText(this, “Kilos must be less than 255”, Toast.LENGHT_LONG).show();
+```
+
+The result is shown in the code below: 
+
+```kt
+convert.setOnClickListener {
+  weightEntered = weight.getText().toString().toDouble()
+  // Configure number formatting
+  val tenth: NumberFormat = NumberFormat.getInstance()
+  tenth.maximumFractionDigits = 2
+  tenth.minimumFractionDigits = 2
+
+  if (lbToKilo.isChecked()) {
+      if (weightEntered <= 500) {
+          convertedWeight = weightEntered / conversionRate
+          result.setText(tenth.format(convertedWeight) + " kilograms")
+      } else {
+          Toast.makeText(
+              this,
+              "Pounds must be less than 500",
+              Toast.LENGTH_LONG
+          ).show()
+      }
+      lbToKilo.setChecked(false)
+  }
+}
+```
+
+**Step 4:**
+- For when the user selects the `Convert Pounds to Kilograms RadioButton` control, type the following lines of code starting after the closing brace in line 47 (the second closing `}` after `else`) and press Enter after each line, as shown on the figure below:
+
+```kt
+if (lbToKilo.isChecked()) {
+    if (weightEntered <= 500) {
+        convertedWeight = weightEntered / conversionRate
+        result.setText(tenth.format(convertedWeight) + " kilograms")
+    } else {
+        Toast.makeText(
+            this,
+            "Pounds must be less than 500",
+            Toast.LENGTH_LONG
+        ).show()
+    }
+    lbToKilo.setChecked(false)
+}
+```
+The result is shown below:
+
+```kt
+package com.example.medicalcalculator
+
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Spinner
+import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
-import java.text.NumberFormat
-import java.util.Currency
+import androidx.appcompat.app.AppCompatActivity
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
-    private val costPerTicket : Double = 79.99
-    private var numberOfTickets : Int = 0
-    private var totalCost : Double = 0.0
-    private var groupChoice: String? = null
-
+    private val conversion : Double = 2.20462262
+    private var weightEntered : Double = 0.0
+    private var convertedWeight : Double = 0.0
+   
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setLogo(R.drawable.ic_launcher_foreground)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
 
-        val group = findViewById<Spinner>(R.id.spinner)
-        val costBtn = findViewById<Button>(R.id.costButton)
-        val tickets = findViewById<EditText>(R.id.editTextNumberSigned)
-        val result = findViewById<TextView>(R.id.resultsTextView)
-        val groupImage = findViewById<ImageView>(R.id.imageView)
-        val format: NumberFormat = NumberFormat.getCurrencyInstance()
-
-        format.currency = Currency.getInstance("GBP")
-        format.maximumFractionDigits = 2
-        format.minimumFractionDigits = 2
-
-        group?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val groupSelected = group.selectedItem
-                if (groupSelected == "Written by Wolves")
-                    groupImage.setImageResource(R.drawable.written_by_wolves)
-                else if (groupSelected == "Linkin Park")
-                    groupImage.setImageResource(R.drawable.linkin_park)
-                else if (groupSelected == "Man with a Mission")
-                    groupImage.setImageResource(R.drawable.man_with_a_mission)
-                else if (groupSelected == "Hollywood Undead")
-                    groupImage.setImageResource(R.drawable.hollywood_undead)
-                else
-                    groupImage.setImageResource(R.drawable.concert)
-            }
+        val kiloToLb = findViewById<RadioButton>(R.id.radioButton)
+        val lbToKilo = findViewById<RadioButton>(R.id.radioButton2)
+        val weight = findViewById<EditText>(R.id.editTextNumberDecimal)
+        val result = findViewById<TextView>(R.id.textView2)
+        val convert = findViewById<Button>(R.id.button)
+      
+        kiloToLb.setOnClickListener{
+            lbToKilo.setChecked(false)
         }
+        lbToKilo.setOnClickListener{
+            kiloToLb.setChecked(false)
+        }
+        convert.setOnClickListener {
+            weightEntered = weight.getText().toString().toDoubleOrNull() ?: 0.0
 
-        costBtn.setOnClickListener{
-            groupChoice = group.getSelectedItem( ).toString( )
-            numberOfTickets = tickets.getText().toString().toIntOrNull() ?: 0
+            // Configure number formatting
+            val tenth: NumberFormat = NumberFormat.getInstance()
+            tenth.maximumFractionDigits = 2
+            tenth.minimumFractionDigits = 2
 
-            if (groupChoice == "Select a Band") {
-                val toast = Toast.makeText(this, "Please select a band", Toast.LENGTH_LONG) 
-                toast.show()
+            if (lbToKilo.isChecked()) {
+                kiloToLb.setChecked(false)
+                if (weightEntered > 0) {
+                    convertedWeight = weightEntered / conversion
+                    result.setText(tenth.format(convertedWeight) + " kilograms")
+                } else {
+                    Toast.makeText(this,  "Pounds must be greater than 0",Toast.LENGTH_LONG).show()
+                }
             }
-            else if (numberOfTickets == 0 ) {
-                val toast = Toast.makeText(this, "Enter value greater than 0", Toast.LENGTH_LONG)
-                toast.show()
-            }
-            else {
-                totalCost = costPerTicket * numberOfTickets
-                groupChoice = group.getSelectedItem().toString()
-                result.setText("Cost for " + groupChoice + " is " + format.format(totalCost))
+            else if (kiloToLb.isChecked()){
+                if (weightEntered > 0){
+                    convertedWeight = weightEntered * conversion
+                    result.setText(tenth.format(convertedWeight) + " Kilograms")
+                }else{
+                    Toast.makeText(this, "Did you enter anything?", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
     }
 }
 ```
-</details>
 
->**MORE!**
->> If you are finished with this guided part of the lab try to do the following, based off of what you know now:
->> - Add more bands of your choice with more images
->> - Have a range of prices for different bands
->>    - Consider using more `if ,else if and else` statements 
->>    - add different currencies, remember there are 230 pf them.
->>    - additional `ticketCost<SomeBandName>` variables for different bands, remeber to make them a `Double`
->> -  Add another `TextView` that shows the cost of one ticket for any band selected, and when the cost botton is pressed the total appears in the `result` like normal
+Now use Run ‘app’ button (or SHIFT + F10) to run the app.  When you run the program, make sure you test it with correct data and then with more than 500 pounds and more than 225 kilos in order to see the toast message appear. Two cases of the app running with correct data are shown below. In the first case - the first radio button was clicked and in the second case – the second radio button is clicked by the user.
+
+<div align=center>
+
+![](./figures/finishedMedicalApp.png)
+
+</div>
+
+-------------------------------------
+
+
+## Converted weight on different Solar objects
+
+- Add options (`Spinner` widget for example ) to change the effect of gravity on someones weight. Use the table below for reference:
+
+<div align=center>
+
+|Planet|	Gravity (m/s²)|Conversion (%)|
+|---|---|---|
+|Mercury|3.78 | \\( 0.378 = \frac{3.78}{10}\\) 
+|Venus|	9.07| \\( 0.907 = \frac{9.07}{10}\\) |
+|Earth | 10.0|\\( 1.0 = \frac{10}{10}\\) |
+|Mars|	3.77|\\( 0.377 = \frac{3.77}{10}\\) |
+|Jupiter|	25.28|\\( 2.528 = \frac{25.28}{10}\\) |
+|Saturn|	10.64|\\( 1.064 = \frac{10.64}{10}\\) |
+|Uranus|	8.889|\\( 0.8889 = \frac{8.889}{10}\\) |
+|Neptune| 11.15|\\( 1.115 = \frac{11.15}{10}\\) |
+|Pluto|	0.67|\\( 0.067 = \frac{0.67}{10}\\) |
+|Moon|	1.62|\\( 0.162 = \frac{1.62}{10}\\) |
+
+Formula:
+
+\\(yourWeightOnSolObject = convertedWeight \cdot \frac{Sol\ Object}{10}\\)
+
+</div>
+<p>
+
+</p>
+
+1. Add a `Spinner` and `TextView` for list of Sol objects and the resulting conversion.
+    
+    <div align=center>
+    
+    ![](figures/designView.png)
+
+    </div>
+
+2. Consider using `map` for each sol object and their convesion value, recall the slides from earlier, or...
+
+    <details>
+    <summary>Suggested Code</summary>
+
+    After the line ending `private var convertedWeight: Double = 0.0`
+
+    ```kt
+    // Map that holds relative gravitational accelerations on celestial bodies
+    private val solObjectModifiers = mapOf(
+        "Moon" to 0.1622, "Mercury" to 0.378, "Venus" to 0.907,
+        "Mars" to 0.377, "Jupiter" to 2.528, "Saturn" to 1.064,
+        "Uranus" to 0.889, "Neptune" to 1.125, "Pluto" to 0.067
+    )
+
+    // Initialise the selected celestial body's conversion factor
+    private var solConversion: Double = solObjectModifiers.entries.elementAt(0).value
+
+    ```
+
+    </details>
+
+<p>
+
+</p>
+
+3. Remeber to populate the `Spinner` using the `Adapter` class. 
+
+    <details>
+    <summary>Suggested Code</summary>
+
+    After line ending ` val solSpinner = findViewById<Spinner>(R.id.spinner)`
+
+    ```kt
+    // Initialize the Spinner with data from the map
+    val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, solObjectModifiers.keys.toTypedArray())
+    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+    solSpinner.adapter = adapter
+    ```
+
+    </details>
+
+<p>
+
+</p>
+
+4. Inside the `convert.onClick` method after `weightEntered = weight.getText().toString().toDoubleOrNull() ?: 0.0` get correct value from the map of sol objects by referencing the `spinner.selectedItem.toString()`
+  
+    <details>
+        <summary>Suggested Code</summary>
+
+        ```kt
+        // Get the selected celestial body's conversion factor
+        solConversion = solObjectModifiers.getValue(solSpinner.selectedItem.toString())
+        ```
+    </details>
+
+<p>
+
+</p>
+
+5. Modify return the result of the `solConversion` to the Sol `TextView`, do this after `result.setText(tenth.format(convertedWeight) + " kilograms")` inside the `lbToKilo` radio button:
+
+    <details>
+    <summary>Suggested Code</summary>
+
+    ```kt  
+    solConversionResult.setText(tenth.format(convertedWeight * solConversion) + " kilograms")
+    ```
+
+    </details>
+
+<p>
+
+</p>
+
+6. Repeat the last two steps for KiloToLb radio button
+  
+    <details>
+    <summary>Suggested Code</summary>
+
+    ```kt 
+    convertedWeight = (weightEntered * conversion)
+    ... 
+    solConversionResult.setText(tenth.format(convertedWeight * solConversion) + " lbs")
+    ```
+
+    </details>
+
+<p>
+
+</p>
+
+7.  Should look something like this...
+
+    <div align=center>
+
+    ![](./figures/solobjects.png) 
+
+    </div>
+
+
+-------------------------------------------------------
+-------------------------------------------------------
+
+## Continue Here....
+
+> You will need to download the following picture folder -> [Lab_5-2_Picture.zip](Lab_5-2_Pictures.zip)
+
+For the exercises below, follow the steps in the Ticket Vault example (from last week lab).
+
+## 1. Phone Photo Prints App
+
+|Application Title|Phone Photo Prints App|
+|---|---|
+|Purpose|The app determines the cost of printing photos from your phone. The pictures are delivered directly to your home|
+|Algorithm 1:|The opening screen requests the number of photos to print form a user’s phone|
+|Algorithm 2:|The user selects a `radio button` labelled 4 x 6 prints (19 pence each), 5 x 7 prints (49 cent each) and 8 x 10 prints (79 cents each) then selects ORDER PRINTS button.|
+|Alogrithm 3:|The cost is displayed for the number of prints and the result is rounded to the nearest cent. Do not enter more than 50 prints.|
+|Alogrithm 4:|Use a theme that displays an Action bar with the custom Action bar icon in the finished layout.  Use a custom launcher icon named ic_aluncher_photo.png from the downloaded zip folder.|
+
+<div align=center>
+
+![h:500](figures/step5-2-1.png)
+
+</div>
+
+---------
+
+## 2. Car Wash App
+
+|Application Title|Car Wash App|
+|---|---|
+|Purpose|Large cities provide car wash apps where you can purchase packages for your vehicle.|
+|Alogrithm 1:|The opening screen requests the type of car wash package you would like to purchase.|
+|Algorithm 2:|The user selects which type of car wash – exterior only or exterior with interior vacuum services. The Car Wash App charges $8.99 for an exterior wash and $12.99 for an exterior wash with an interior vacuum for a package of 12 or more car washes. If you select less than 12 washes, the charge is $10.99 for an exterior wash and $15.99 for an exterior with interior vacuum.|
+|Algorithm 3:|After the user clicks the `Button` control, the selected location and the total team coast are displayed in the `TextView` control.|
+|Algorithm 4:|Use a customized launcher icon ic_launcher_carwash.png (from the zip folder) and display the same icon in the Action Bar using Theme.`AppCompat.Light theme`. Display an `ImageView` control (carwash.png, from the zip folder).  Only one `RadioButton` control can be selected. A toast message should pop up when the user enters less than 12 washes that they must buy 12 washes to receive a discount.|
+
+
+<div align=center>
+
+![](./figures/step5-2-2.png)
+</div>
+
+-----
+
+## 3. Power Tool Rental App
+
+|Application Title|Power Tool Rental App|
+|---|---|
+|Purpose|The app determines the cost of power washer or tiller|
+|Algorithm 1:|The opening screen requests the number of days that the power tool will be rented.|
+|Algorithm 2:|The user selects a radio button labelled Power Washer or Tiller and then selects the `COMPUTE COST` button.|
+|Algorithm 3:|The final cost is displayed for the number of days rented and the result is rounded to the nearest penny.|
+|Alogrithm 4:|The power washer costs £55.99 a day and the tiller - £68.99 a day.  Do not enter more than 7 days.|
+|Alogrithm 5:|Locate an image online and resize it for use as a custom launcher icon and Action bar icon.|
+
+------
+
+
+## 4. Floor Tiling App
+
+|Application Title|Floor Tiling App|
+|---|---|
+|Purpose|The tiling app allows you to calculate how many tiles you need to cover a rectangular area.|
+|Algorithm 1:|The opening screen requests the length and the width of a room in whole feet.|
+|Algorithm 2:|The user selects whether the tiles are 12 inches by 12 inches or 18 inches by 18 inches.|
+|Algorithm 3:|The number of tiles to cover the area in square feet is displayed|
+|Algorithm 4:|Ensure that the user can have other units of measurement, centimeters\\(^{2}\\), meters\\(^{2}\\) etc.

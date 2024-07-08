@@ -1,4 +1,4 @@
-# Lab 9.1: Arrays in Kotlin
+# Lab 6.1: Arrays in Kotlin
 
 In this lab you are going to experiment with Arrays. You will need to use **IntelliJ** IDE.
 

@@ -22,7 +22,7 @@ On completion of the assignment, the student will develop:
 ## Brief
 
 1. **Expansion of Lab Application:**
-   - Select a lab exercise provided during the module.
+   - Select a lab exercise provided during the module, **__excluding the first three__**.
    - Expand the existing functionality by adding at least three significant new features.
    - Redesign the application to improve user experience (UX) and user interface (UI).
 

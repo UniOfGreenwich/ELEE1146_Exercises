@@ -7,8 +7,8 @@ src = "content"
 
 [output.html]
 mathjax-support = true
-git-repository-url = "https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises"
-edit-url-template = "https://github.com/cccu-uk/ELEE1149-COMP1836_Exercises/edit/master/{path}"
+git-repository-url = "https://github.com/uniofgreenwich/ELEE1149-COMP1836_Exercises"
+edit-url-template = "https://github.com/uniofgreenwich/ELEE1149-COMP1836_Exercises/edit/master/{path}"
 input-404 = "404/404.md"
 
 [output.html.print]

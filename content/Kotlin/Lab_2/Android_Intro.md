@@ -1,4 +1,4 @@
-# Lab 1: Hello World and More!
+# Lab 2: Introduction to Android Studio!
     
 **1.**
 
