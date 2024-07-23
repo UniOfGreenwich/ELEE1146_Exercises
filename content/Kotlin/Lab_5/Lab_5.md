@@ -10,7 +10,7 @@ Start a new Android Studio Project and name it the Application Medical Calculato
 
 - **Step 1:**
   -  In the Android Project View, click the `activity_main.xml` file.
-  -  Click File on the menu bar and then click New.  From the drop down list choose Image Asset. The Asset Studio dialog box opens to display the default launcher icons for the resolutions of various devices.  
+  -  Click File on the menu bar and then click New.  From the drop-down list choose Image Asset. The Asset Studio dialog box opens to display the default launcher icons for the resolutions of various devices.  
 <div align=center>
 
 ![](./figures/iconResources.png)
@@ -18,7 +18,7 @@ Start a new Android Studio Project and name it the Application Medical Calculato
 </div>
 
 - **Step 2:**
-  - In the Path: field (in the red square in the picture above) click on the folder icon to the very end of the field and navigate to the location of `ic_launcher_weight.png` file, and then select the file as shown on the picture below. Note that the path on your PC will be different from the path shown as this is where the file is saved on my laptop.
+  - In the Path: field (in the red square in the picture above) click on the folder icon at the very end of the field, and then navigate to the location of `ic_launcher_weight.png` file, and then select the file as shown in the picture below. Note that the path on your PC will be different from the path shown as this is where the file is saved on my laptop.
 
 <div align=center>
 
@@ -39,8 +39,8 @@ Start a new Android Studio Project and name it the Application Medical Calculato
 ## Displaying the Action Bar Icon Using Code
 
 **Step 1:**
-- In the Android project view, expand the java folder and the first sub-folder, and then double click on the `MainActivity.kt` to open the code window.
-- Click at the end of `setContentView` line, press Enter and type the following three statements to display the logo in the Action bar:
+- In the Android project view, expand the java folder and the first sub-folder, and then double-click on the `MainActivity.kt` to open the code window.
+- Click at the end of `setContentView` line, press Enter, and type the following three statements to display the logo in the Action bar:
 
 ```kt
 supportActionBar?.setDisplayShowCustomEnabled(true)
@@ -75,7 +75,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-- Next we will play with the `themes.xml` in the `res/vaules/themes` folder, reproduce the following: 
+- Next, we will play with the `themes.xml` in the `res/vaules/themes` folder, reproduce the following: 
 
 ```xml
 <resources xmlns:tools="http://schemas.android.com/tools">
@@ -111,7 +111,7 @@ Run the app. The icon is displayed in the running emulator acting bar as shown b
 ## String Table
 **Step 1:**
 - In the Android project view, open the stirngs.xml file in the res\values folder.
-- Click the Open editor link and then the Add Key (+ sign) button in the Translations Editor.
+- Click the Open Editor link and then the Add Key (+ sign) button in the Translations Editor.
 - Enter the following values shown in the table below:
 
 <div align=center>
@@ -131,39 +131,39 @@ Run the app. The icon is displayed in the running emulator acting bar as shown b
 ## Creating the GUI in the Emulator
 
 **Step 1:**
-- With the `activity_main.xml` open and displaying the emulator screen, from the Widgets category of the Palette, drag and drop the `TextView` control onto the top part of the emulator.  Centre it (drag it till a dashed vertical line appears).
+- With the `activity_main.xml` open and displaying the emulator screen, from the Widgets category of the Palette, drag and drop the `TextView` control onto the top part of the emulator.  center it (drag it till a dashed vertical line appears).
 - Click the vertical bar next to the text attribute of the `TextView` control in the Attribute Pane and in the Pick a Resource dialog choose the `txtTitle` box. Press OK. 
 - Change the `textSize` property to `30sp`.
-- Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the Color section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
-- Right click on the `TextView` control, choose Center/ Horizontally to centre the control.
+- Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the Color section scroll down in Android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
+- Right-click on the `TextView` control, choose Center/ Horizontally to center the control.
 
 **Step 2:**
-- From the Text category in the Palette, drag and drop the `Number` control onto the emulator below the `TextView` control in the centre.
+- From the Text category in the Palette, drag and drop the `Number` control onto the emulator below the `TextView` control in the center.
 - Click on the vertical bar next to the `hint` property in the Property pane.
 - Choose `txtWeight` from the Resources dialog and then click the OK button.
 - Change the `textSize` property to `24sp`.
 
 **Step 3:**
-- In the Buttons category of the Palette, select `RadioButton`, and then drag and drop the `RadioButton` control onto the user interface below the `Number` control. Expand the size of the `RadioButton`, do this repeat for a second `RadioButton` and place underneath the last. 
+- In the Buttons category of the Palette, select `RadioButton`, and then drag and drop the `RadioButton` control onto the user interface below the `Number` control. Expand the size of the `RadioButton`, repeat this for a second `RadioButton`, and place underneath the last. 
 - Click the vertical bar next to the `text` attribute of the first `RadioButton` control in the Attribute Pane and in the Pick a Resource dialog choose the `radKiloToLbbox`. Press OK. 
 - In the Attributes list for the first `RadioButton`, click on the checked property indicating that the first radio button is the default selection.
-- Change the `textSize` property to `18sp` from the drop down list. 
+- Change the `textSize` property to `18sp` from the drop-down list. 
 - Click the vertical bar next to the `text` attribute of the second `RadioButton` control in the Attribute Pane and in the Pick a Resource dialog choose the `radLbToKilo` box. Press OK. 
 - Change the `textSize` property to `18sp` from the drop-down list. 
 
 **Step 4:**
 - Drag the `Button` control from the Palette to the emulator below the `RadioButton`s. 
 - Click the vertical bar next to the `text` attribute of the `Button` control in the Attribute Pane and in the Pick a Resource dialog choose the `btnConvert` box. Press OK.
-- Change the `textSize` property to `24sp` form the drop-down list.
-- Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the `Color` section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
+- Change the `textSize` property to `24sp` from the drop-down list.
+- Click the vertical bar next to the `textColor` property.  In the `Pick a Resource` dialog box that appears in the `Color` section scroll down in Android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
 
 
 **Step 5:**
 - From the Common category in the Palette, drag another `TextView` control to the emulator below the `Button`.
 - In the `text` attribute box delete `TextView`. The `text` attribute is now empty and the `TextView` component you just dragged to the emulator has no label.
 - Change the `textSize` property to `24sp`.
-- Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the `Color` section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
-- Click Save All button on the Standard toolbar.
+- Click the vertical bar next to the `textColor` property.  In the `Pick a Resource` dialog box that appears in the `Color` section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
+- Click the **Save All** button on the Standard toolbar.
 
 Now Apply Constraints to the layout using the Infer Constraints button above the emulator and run the app in the emulator to see if you have correctly placed all the controls.  The result should look similar to this:
 
@@ -177,7 +177,7 @@ Now Apply Constraints to the layout using the Infer Constraints button above the
 
 **Step 1:**
 - Click on the `MainActivity.kt` tab.
-- Click at the end of line (just after `{`)  
+- Click at the end of the line (just after `{`)  
 
 ```kt
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -191,7 +191,7 @@ val conversionRate : Double = 2.20462262
 ```
 and press Enter.
 
-- To initialize the weightEntered variable and the convertedWeight, type:
+- To initialize the `weightEntered` variable and the convertedWeight, type:
 
 ```kt
 var weightEntered :  Double = 0.0
@@ -317,7 +317,7 @@ convert.setOnClickListener {
 if (weightEntered <= 255) { 
 ```
 
-And press Enter.  Java automatically adds the closing brace.
+And, press Enter.  Java automatically adds the closing brace.
 
 On line 41, after the closing brace, type `else { }` and press Enter in between the braces. See the code below:
 
@@ -341,7 +341,7 @@ On line 41, after the closing brace, type `else { }` and press Enter in between 
 
 **Step 3:**
 
-- After the pounds variable is validated, the weight must be converted. To divide the weight by the conversion rate of 2.2, inside the nested if statement (line 41) after the weightEntered `<= 255 {` line, type:
+- After the pounds variable is validated, the weight must be converted. To divide the weight by the conversion rate of 2.2, inside the nested if statement (line 41) after the `weightEntered` `<= 255 {` line, type:
 
 ```kt
 convertedWeight = weightEntered  * conversionRate;
@@ -385,7 +385,7 @@ convert.setOnClickListener {
 ```
 
 **Step 4:**
-- For when the user selects the `Convert Pounds to Kilograms RadioButton` control, type the following lines of code starting after the closing brace in line 47 (the second closing `}` after `else`) and press Enter after each line, as shown on the figure below:
+- When the user selects the `Convert Pounds to Kilograms RadioButton` control, type the following lines of code starting after the closing brace in line 47 (the second closing `}` after `else`) and press Enter after each line, as shown on the figure below:
 
 ```kt
 if (lbToKilo.isChecked()) {
@@ -473,7 +473,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-Now use Run ‘app’ button (or SHIFT + F10) to run the app.  When you run the program, make sure you test it with correct data and then with more than 500 pounds and more than 225 kilos in order to see the toast message appear. Two cases of the app running with correct data are shown below. In the first case - the first radio button was clicked and in the second case – the second radio button is clicked by the user.
+Now use the **Run** ‘app’ button (or SHIFT + F10) to run the app.  When you run the program, make sure you test it with correct data and then with more than 500 pounds and more than 225 kilos to see the toast message appear. Two cases of the app running with correct data are shown below. In the first case - the first radio button was clicked and in the second case – the second radio button is clicked by the user.
 
 <div align=center>
 
@@ -486,7 +486,7 @@ Now use Run ‘app’ button (or SHIFT + F10) to run the app.  When you run the 
 
 ## Converted weight on different Solar objects
 
-- Add options (`Spinner` widget for example ) to change the effect of gravity on someones weight. Use the table below for reference:
+- Add options (`Spinner` widget for example ) to change the effect of gravity on someone's weight. Use the table below for reference:
 
 <div align=center>
 
@@ -512,7 +512,7 @@ Formula:
 
 </p>
 
-1. Add a `Spinner` and `TextView` for list of Sol objects and the resulting conversion.
+1. Add a `Spinner` and `TextView` for the list of Sol objects and the resulting conversion.
     
     <div align=center>
     
@@ -520,7 +520,7 @@ Formula:
 
     </div>
 
-2. Consider using `map` for each sol object and their convesion value, recall the slides from earlier, or...
+2. Consider using `map` for each sol object and their conversion value, recall the slides from earlier, or...
 
     <details>
     <summary>Suggested Code</summary>
@@ -546,7 +546,7 @@ Formula:
 
 </p>
 
-3. Remeber to populate the `Spinner` using the `Adapter` class. 
+3. Remember to populate the `Spinner` using the `Adapter` class. 
 
     <details>
     <summary>Suggested Code</summary>
@@ -566,7 +566,7 @@ Formula:
 
 </p>
 
-4. Inside the `convert.onClick` method after `weightEntered = weight.getText().toString().toDoubleOrNull() ?: 0.0` get correct value from the map of sol objects by referencing the `spinner.selectedItem.toString()`
+4. Inside the `convert.onClick` method after `weightEntered = weight.getText().toString().toDoubleOrNull() ?: 0.0` get the correct value from the map of sol objects by referencing the `spinner.selectedItem.toString()`
   
     <details>
         <summary>Suggested Code</summary>
@@ -596,7 +596,7 @@ Formula:
 
 </p>
 
-6. Repeat the last two steps for KiloToLb radio button
+6. Repeat the last two steps for **KiloToLb** radio button
   
     <details>
     <summary>Suggested Code</summary>
@@ -629,7 +629,7 @@ Formula:
 
 > You will need to download the following picture folder -> [Lab_5-2_Picture.zip](Lab_5-2_Pictures.zip)
 
-For the exercises below, follow the steps in the Ticket Vault example (from last week lab).
+For the exercises below, us the above lab as a reference.
 
 ## 1. Phone Photo Prints App
 

@@ -23,7 +23,7 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
 
 ### Using the String Table
 
-- Double click on the strings.xml file in the values subfolder to display its contents
+- Double-click on the strings.xml file in the values subfolder to display its contents
 
 - Click the Add key (plus sign) in the Translations Editor and type txtTitle in the Key text box and Ticket Vault in the Default Value text box as shown below:
 
@@ -61,12 +61,12 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
 **Step 1:**
 - Click the Save All button on the Standard toolbar and close `strings.xml` tab.
 - With `activity_main.xml` opened and displaying the emulator screen, from the Palette, choose the Common category and then choose the **TextView** widget 
-- Drag the **TextView** widget to the centre of the emulator screen until a dashed vertical line identifying the screen’s centre is displayed and drop it onto the top part of the emulator.  
+- Drag the **TextView** widget to the center of the emulator screen until a dashed vertical line identifying the screen’s center is displayed and drop it onto the top part of the emulator.  
 - In the Attributes Pane click on the vertical bar next to the **text** attribute to open the Pick a Resource dialog. 
 - Choose **txtTitle** from the list to name the TextView widget.
 - Press the Ok button.
-- In the **textSize** property, type **48sp** and the press Enter.  
-- Right click on the **TextView** widget and choose Center/Horizontally form the drop down list. 
+- In the **textSize** property, type **48sp** and then press Enter.  
+- Right -click on the **TextView** widget and choose Center/Horizontally form the drop down list. 
 
 <div align=center>
 
@@ -77,7 +77,7 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
 **Step 2:**
 - In the Text category in the Palette, scroll down to the Number control.
 - Drag and drop the Number control onto the emulator bellow the Ticket Vault text.
-- Drag the control to the centre of the screen until a dashed vertical line identifying the screen centre is displayed.
+- Drag the control to the center of the screen until a dashed vertical line identifying the screen center is displayed.
 - Set the **textSize** property to **28sp** from the drop-down list. 
 
 ### Setting the Hint Property for the Text Field
@@ -96,7 +96,7 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
 
 **Step 1:**
 - With the `activity_main.xml` tab open, scroll to view the Containers category in the Palette.
-- Drag and drop the Spinner control below the Number control and centre it horizontally. 
+- Drag and drop the Spinner control below the Number control and center it horizontally. 
 
 **Step 2:**
 - In the Attributes pane using search facility at the top of the pane, type in prompt and click to the right of the prompt property on the vertical line to display the Pick a Resources dialog box. 
@@ -121,18 +121,18 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
 ### Adding the Button, TextView and ImageView Controls
 
 **Step 1:**
-- In the `activity_main.xml` tab, the Common category in the Palette, drag the Button control to the emulator and centre it below the Spinner control.
+- In the `activity_main.xml` tab, the Common category in the Palette, drag the Button control to the emulator and center it below the Spinner control.
 - Click on the vertical bar next to the text attribute and from the Pick a Resource dialog box choose btnCost and then press ok. 
 - Change the **textSize** property to **36sp** from the drop-down list and save your work. 
 
 **Step 2:**
-- From the Common category in the Palette, choose the **TextView** control and drag the control to the emulator and centre it below the Button control.
+- From the Common category in the Palette, choose the **TextView** control and drag the control to the emulator and center it below the Button control.
 - Inside the **text** property delete **TextView**.
 - Change the **textSize** property to **24sp** from the drop-down list. 
 
 **Step 3:**
 - To add the **Image View** control, copy the file `concert.png` from the Pictures folder on moodle to your computer. 
-- Copy the `concert.png` file (CTRL + C) and then right click the drawable folder in the Android project view pane. Click Paste. From the Choose Destination Directory dialog choose the **drawable folder** and then click the Ok button as shown below.
+- Copy the `concert.png` file (CTRL + C) and then Right -click the drawable folder in the Android project view pane. Click Paste. From the Choose Destination Directory dialog choose the **drawable folder** and then click the Ok button as shown below.
 
 <div align=center>
 
@@ -141,7 +141,7 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
 </div>
 
 - Click OK on the next Copy dialog which appears to copy the concert.png file into the drawable directory.
-- From the Common category in the Palette, drag the ImageView control to the emulator and centre it below the TextView control at the bottom of the emulator.
+- From the Common category in the Palette, drag the ImageView control to the emulator and center it below the TextView control at the bottom of the emulator.
 - From the Pick a Resources dialog box which appears, choose the concert picture. Now click the OK button.  
 - With the image selected, click the vertical bar to the right of the contentDescription property in the Attributes pane.  Select description and then click the OK button.
 
@@ -169,12 +169,12 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
 >>   ```
 
 **Step 1:**
-- In the Android project view, expand the java folder and the first folder under it and then double click to open the `MainActivity.java` file.
+- In the Android project view, expand the java folder and the first folder under it and, then double-click to open the `MainActivity.java` file.
 - Click to the right of the line `setContentView(R.layout.activity_main)`
 
 - Press **Enter** to insert a blank line.
 
-- To initialise and reference the `Spinner` control with the Id name of spinner, type:
+- To initialise and reference the `Spinner` control with the `Id` name of `spinner`, type:
   - `val group = findViewById<Spinner>(R.id.spinner)`
 
 - After you have entered the line above, press Enter. 
@@ -300,8 +300,8 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
 
   }
   ```
-- You should be able to auto complete by pressing the **Tab key**
-- Else you will need to add the following in side this new method:
+- You should be able to auto-complete by pressing the **Tab key**
+- Else you will need to add the following inside this new method:
   ```kt
   override fun onNothingSelected(parent: AdapterView<*>?) {
             }
@@ -368,13 +368,13 @@ In the field **Number of Tickets**, you are to enter a positive integer.  You ca
     else
         groupImage.setImageResource(R.drawable.concert)
     ```
-- Here the whenever an item is selected from the `Spinner` the selected item is stored in the `groupSelected` variable.
+- Here, whenever, an item is selected from the `Spinner` the selected item is stored in the `groupSelected` variable.
 
-- A comparison is made to which `String` matches to the `groupSelected` variable.
+- A comparison is made to which `String` matches too the `groupSelected` variable.
 
-- If a match is found lets say `"Written by Wolves"`, then the `ImageView` is updated to store the corresponding image via the `groupImage` variable/objet using the `setImageResource(...)` method. 
+- If a match is found let's say `"Written by Wolves"`, then the `ImageView` is updated to store the corresponding image via the `groupImage` variable/objet using the `setImageResource(...)` method. 
 
-- Of course the default case `else` implicitly says that if `groupSelected` is `"Select a Band"` as all other options have been programmed, then display the default image `R.drawable.concert`
+- Of course, the default case `else` implicitly says that if `groupSelected` is `"Select a Band"` as all other options have been programmed, then display the default image `R.drawable.concert`
 
 <div align="center>
 
@@ -396,15 +396,15 @@ This code block will provide the functionality to calculate the cost of the numb
     ```
 
 - The selected item from the `group`, (`Spinner`), is converted to a `String` and assigned to the `groupChoice` variable.
-- Next the `numberOfTickets` is assigned the value entered in to the `tickets` (`editText` widget) field. We first convert the method gets the text, `getTexts`, converts this to `String` like in the previous line. But is then converted through parsing,`.toIntOrNull() ?: 0` to a interger or `Int`, where if you have a value in the the field that is convertable you will get that value i.e:
+- Next the `numberOfTickets` is assigned the value entered in to the `tickets` (`editText` widget) field. We first convert the method gets the text, `getTexts`, converts this to `String` like in the previous line. But is then converted through parsing,`.toIntOrNull() ?: 0` to an interger or `Int`, where if you have a value in the field that is castable you will get that value i.e:
 - `1` would give you `1` 
 - `a` would give you `null`, and therefore using the operator `?:` if `null` give me a `0` instead
 
 Now we are ready to do something with these two variables:
 - First by ensuring that a band has not been selected
-- Then checking to see if the number of tickets is equal to `0`.
+- Then check to see if the number of tickets is equal to `0`.
 
-If either of these conditions are true then we will get a Toast Notifcication or pop up telling the user to fix the issue. 
+If either of these conditions is `true` then we will get a Toast Notification or pop up telling the user to fix the issue. 
 
 - Repeat the below after the `numberOfTickets = Integer.parseInt(tickets.getText().toString())` line:
 
@@ -424,7 +424,7 @@ If either of these conditions are true then we will get a Toast Notifcication or
     }
     ```
 
-Should looks something like this when complete: 
+Should look something like this when complete: 
 
 <div align="center">
 
@@ -532,7 +532,7 @@ class MainActivity : AppCompatActivity() {
 
 > You will need to download the following picture folder -> [Lab_4-2_Picture.zip](Lab_4-2_Pictures.zip)
 
-For the exercises below, follow the steps in the Ticket Vault example (from last week lab).
+For the exercises below, follow the steps in the Ticket Vault example (above).
 
 ## 1. Catalina Island Boat Express App
 
