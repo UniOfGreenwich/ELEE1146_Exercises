@@ -1,633 +1,706 @@
-# Lab 5: Android App using Icons and Decision Making Controls
+# Lab 5: Mass Converter App
 
-## 1. Medical Calculator App
+## 1. Mass Calculator App Setup
+
+
+<div align=center>
+
+<table>
+<tr>
+<td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
+
+You will be developing concert ticket app that lets you select predifined bands and check the cost of each ticket.  The Mass Converter App is demoed right:
 
 > You will need to download the following picture folder -> [Lab_5_Picture.zip](Lab_5_Pictures.zip)
+> - The completed project can be found here at end of session -> [https://github.com/UniOfGreenwich/MobileApps-MassConvertor](https://github.com/UniOfGreenwich/MobileApps-MassConvertor)
 
-Start a new Android Studio Project and name it the Application Medical Calculator. Copy the file `ic_launcher_weight.png` from the Pictures folder you have downloaded above.
+</td>
+<td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
 
-**Customizing a Launcher Icon**
-
-- **Step 1:**
-  -  In the Android Project View, click the `activity_main.xml` file.
-  -  Click File on the menu bar and then click New.  From the drop down list choose Image Asset. The Asset Studio dialog box opens to display the default launcher icons for the resolutions of various devices.  
-<div align=center>
-
-![](./figures/iconResources.png)
+<img src="./figures/demo.gif" alt="Demo of App" >
+</td>
+</tr>
+</table>
 
 </div>
 
-- **Step 2:**
-  - In the Path: field (in the red square in the picture above) click on the folder icon to the very end of the field and navigate to the location of `ic_launcher_weight.png` file, and then select the file as shown on the picture below. Note that the path on your PC will be different from the path shown as this is where the file is saved on my laptop.
 
-<div align=center>
+----
 
-![](./figures/iconSelectPath.png)
+## Setting Up the Project
 
-</div>
+### Video @ 1:13 - 2:02
 
-- Click the Ok button. 
+1. **Create a New Project:**
+    - Select "Empty Activity" and click "Next".
+    - Name your application "Mass Converter".
+    - Ensure the package name is set to `com.uog.massconverter`.
+    - Set the minimum API level to 24.
+    - Click "Finish" to create the project.
 
-- Click the Next button and on the following window that appears, click the Finish button to add the custom launcher icon. The custom icons will be displayed in `res/mipmap` folder. Expand the `res/mipmap` folder and check that the icon is there as expected. The result is shown below:
 
-<div align=center>
-
-![](./figures/resultsMipMap.png)
-
-</div>
-
-## Displaying the Action Bar Icon Using Code
-
-**Step 1:**
-- In the Android project view, expand the java folder and the first sub-folder, and then double click on the `MainActivity.kt` to open the code window.
-- Click at the end of `setContentView` line, press Enter and type the following three statements to display the logo in the Action bar:
-
-```kt
-supportActionBar?.setDisplayShowCustomEnabled(true)
-supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
-supportActionBar?.setDisplayShowTitleEnabled(true)
-supportActionBar?.setDisplayUseLogoEnabled(true)
-supportActionBar?.setDisplayShowHomeEnabled(true)
-supportActionBar?.show()
-```
-
-- The result is shown below:
-
-```kt
-package com.example.medicalcalculator;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-override fun onCreate(savedInstanceState: Bundle?) {
-  super.onCreate(savedInstanceState)
-  setContentView(R.layout.activity_main)
-
-  supportActionBar?.setDisplayShowCustomEnabled(true)
-  supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
-  supportActionBar?.setDisplayShowTitleEnabled(true)
-  supportActionBar?.setDisplayUseLogoEnabled(true)
-  supportActionBar?.setDisplayShowHomeEnabled(true)
-  supportActionBar?.show()
-
-  }
-}
-```
-
-- Next we will play with the `themes.xml` in the `res/vaules/themes` folder, reproduce the following: 
-
-```xml
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.MedicalCalculator" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="colorPrimary">@color/design_default_color_primary</item>
-        <item name="colorPrimaryDark">@color/design_default_color_primary</item>
-        <item name="colorAccent">@color/design_default_color_on_secondary</item>
-    </style>
-
-    <style name="Theme.MedicalCalculator" parent="Base.Theme.MedicalCalculator" />
+    ![](./figures/choosingLayoutKt.png)
     
-</resources>
-```
-
-<div align=center>
-
-![](./figures/themes.png)
-
-</div>
-
-
-Run the app. The icon is displayed in the running emulator acting bar as shown below:
-
-<div align=center>
-
-![](./figures/baseBuildOfMedicalApp.png)
-
-</div>
-
-## String Table
-**Step 1:**
-- In the Android project view, open the stirngs.xml file in the res\values folder.
-- Click the Open editor link and then the Add Key (+ sign) button in the Translations Editor.
-- Enter the following values shown in the table below:
-
-<div align=center>
-
-|String Name | String Value |
-|---|---|
-|txtTitle | Convert Patient Weight|
-|txtWeight| Weight of Patient|
-|radLbToKilo| Convert LBS to Kgs|
-|radKiloToLb| Convert Kgs to LBS |
-|btnConvert| Convert Weight |
-
-</div>
-
-- Click the Save All button on the toolbar and then close the Translators Editor tab and the `strings.xml` tab. 
-
-## Creating the GUI in the Emulator
-
-**Step 1:**
-- With the `activity_main.xml` open and displaying the emulator screen, from the Widgets category of the Palette, drag and drop the `TextView` control onto the top part of the emulator.  Centre it (drag it till a dashed vertical line appears).
-- Click the vertical bar next to the text attribute of the `TextView` control in the Attribute Pane and in the Pick a Resource dialog choose the `txtTitle` box. Press OK. 
-- Change the `textSize` property to `30sp`.
-- Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the Color section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
-- Right click on the `TextView` control, choose Center/ Horizontally to centre the control.
-
-**Step 2:**
-- From the Text category in the Palette, drag and drop the `Number` control onto the emulator below the `TextView` control in the centre.
-- Click on the vertical bar next to the `hint` property in the Property pane.
-- Choose `txtWeight` from the Resources dialog and then click the OK button.
-- Change the `textSize` property to `24sp`.
-
-**Step 3:**
-- In the Buttons category of the Palette, select `RadioButton`, and then drag and drop the `RadioButton` control onto the user interface below the `Number` control. Expand the size of the `RadioButton`, do this repeat for a second `RadioButton` and place underneath the last. 
-- Click the vertical bar next to the `text` attribute of the first `RadioButton` control in the Attribute Pane and in the Pick a Resource dialog choose the `radKiloToLbbox`. Press OK. 
-- In the Attributes list for the first `RadioButton`, click on the checked property indicating that the first radio button is the default selection.
-- Change the `textSize` property to `18sp` from the drop down list. 
-- Click the vertical bar next to the `text` attribute of the second `RadioButton` control in the Attribute Pane and in the Pick a Resource dialog choose the `radLbToKilo` box. Press OK. 
-- Change the `textSize` property to `18sp` from the drop-down list. 
-
-**Step 4:**
-- Drag the `Button` control from the Palette to the emulator below the `RadioButton`s. 
-- Click the vertical bar next to the `text` attribute of the `Button` control in the Attribute Pane and in the Pick a Resource dialog choose the `btnConvert` box. Press OK.
-- Change the `textSize` property to `24sp` form the drop-down list.
-- Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the `Color` section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
-
-
-**Step 5:**
-- From the Common category in the Palette, drag another `TextView` control to the emulator below the `Button`.
-- In the `text` attribute box delete `TextView`. The `text` attribute is now empty and the `TextView` component you just dragged to the emulator has no label.
-- Change the `textSize` property to `24sp`.
-- Click the vertical bar next to the `textColor` property.  In the Pick a Resource dialog box that appears in the `Color` section scroll down in android and choose `holo_red_dark` colour to change the text colour to red to match the launcher icon.  Click the OK button.
-- Click Save All button on the Standard toolbar.
-
-Now Apply Constraints to the layout using the Infer Constraints button above the emulator and run the app in the emulator to see if you have correctly placed all the controls.  The result should look similar to this:
-
-<div align=center>
-
-![](./figures/step5.png)
-
-</div>
-
-## Coding a Radio Button Control
-
-**Step 1:**
-- Click on the `MainActivity.kt` tab.
-- Click at the end of line (just after `{`)  
-
-```kt
-override fun onCreate(savedInstanceState: Bundle?) {
-```
-
-and then press Tab to indent the line.
-
-- To initialize the conversion rate value of 2.2., type:
-```kt
-val conversionRate : Double = 2.20462262
-```
-and press Enter.
-
-- To initialize the weightEntered variable and the convertedWeight, type:
-
-```kt
-var weightEntered :  Double = 0.0
-var convertedWeight : Double = 0.0
-```
-and press Enter.
-
-**Step 2:**
-- Click at the end of the line
-```kt
-supportActionBar?.show()
-``` 
-and press Enter.
-
-- to instantiate and reference the `EditText` class:
-
-```kt
-val weight = findViewById<EditText>(R.id.editTextNumer)
-```
-Press Enter.
-- To instantiate and reference the two radio buttons, type:
-
-```kt
-val kiloToLb = findViewById<RadioButton>(R.id.radiobutton)
-val lbToKilo = findViewById<RadioButton>(R.id.radiobutton2)
-```
-- Save your work.
-
-## Coding the Button Control
-
-**Step 1:**
-- After the two lines of code referring to the radio buttons, type:
-
-```kt
-val result = findViewById<TextView>(R.id.textView2)
-```
-and press Enter.
-
-- To code the button, type:
-
-```kt
-val convert = findViewById<Button>(R.id.button)
-```
-and press Enter.
-
-- Your `MainActivity.kt` class should look like this:
-
-```kt
-class MainActivity : AppCompatActivity() {
-
-  val conversionRate : Double = 2.20462262
-  var weightEntered :  Double = 0.0
-  var convertedWeight : Double = 0.0
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-    supportActionBar?.setDisplayShowCustomEnabled(true)
-    supportActionBar?.setLogo(R.mipmap.ic_launcher_foreground)
-    supportActionBar?.setDisplayShowTitleEnabled(true)
-    supportActionBar?.setDisplayUseLogoEnabled(true)
-
-    val kiloToLb = findViewById<RadioButton>(R.id.radiobutton)
-    val lbToKilo = findViewById<RadioButton>(R.id.radiobutton2)
-    val weight = findViewById<EditText>(R.id.editTextNumberDecimal)
-    val result = findViewById<TextView>(R.id.textView2)
-    val convert = findViewById<Button>(R.id.button)
-  }
-}
-```
-
-- To code the `Button` listener, type `convert.setOnClickListener{}`.
-
-## Coding the Button Event
-
-**Step 1:**
-- Inside the `setOnClickListener{}` method stub of the MainActivity.java code, type the code to convert the weight entered to a Double data type and press Enter.
-
-```kt
-weightEntered = weight.getText().toString().toDouble()
-```
-
-- To create a decimal layout that changes the weight to a decimal rounded to the nearest tenth for use in the result later in the code, type: 
-
-```kt
-// Configure number formatting
-val tenth: NumberFormat = NumberFormat.getInstance()
-tenth.maximumFractionDigits = 2
-tenth.minimumFractionDigits = 2
-```
-
-## Coding the Nested `If` Statements
-
-**Step 1:**
-- After the `NumberFormat` line of code, to determine if the first `RadioButton` control is selected, insert a new line and type:
-
-```kt
-if (lbToKilo.isChecked()) {
-
-}
-```
-
-And then press Enter and reproduce the following:
-
-```kt
-convert.setOnClickListener {
-  weightEntered = weight.getText().toString().toDouble()
-  // Configure number formatting
-  val tenth: NumberFormat = NumberFormat.getInstance()
-  tenth.maximumFractionDigits = 2
-  tenth.minimumFractionDigits = 2
-
-  if (lbToKilo.isChecked()) {
-   
-  }
-}
-```
-
-**Step 2:**
-- Within the first if statement, braces create a nested `if/else` statement that determines if the weight entered for kilograms is less than or equal to 255.  Type:
-
-```kt
-if (weightEntered <= 255) { 
-```
-
-And press Enter.  Java automatically adds the closing brace.
-
-On line 41, after the closing brace, type `else { }` and press Enter in between the braces. See the code below:
-
-```kt
-  convert.setOnClickListener {
-  weightEntered = weight.getText().toString().toDouble()
-  // Configure number formatting
-  val tenth: NumberFormat = NumberFormat.getInstance()
-  tenth.maximumFractionDigits = 2
-  tenth.minimumFractionDigits = 2
-
-  if (lbToKilo.isChecked()) {
-    if (weightEntered <=  255){
-
-    }else{
+2. **Adding images and creating logo assest**
+
+<table>
+<tr>
+<td style="width: 70%; padding: 10px; border: 0px solid #ddd;">
+
+- All the images are available in the Pictures folder downloaded in the zip.  Drag the files to the mipmap folder.
+- For the assest right clock the `conversion_logo.png` and get the `absolute path` 
+- right click the res folder and add new image asset
+- In the Path: field paste the **Absolute File** path you copied earlier, and then select the file. 
+- Click the Next button to add the custom launcher icon. 
+- On the next dialog window, click the Finish button. The custom icons will be displayed in `res/mipmap` folder
+
+
+</td>
+<td style="width: 100%; padding: 20px; border: 0px solid #ddd;">
+
+<img src="./figures/conversion_logo.png" alt="Image of Conversion Logo" width="55%">
+
+</td>
+</tr>
+</table>
+
+--- 
+
+## Modifying MainActivity
+
+### Video @ 2.02 - 10.21
+
+1. **Modify the Main Activity Layout:**
+
+- Update the `MainActivity.kt` file so that we have our own layout and set of Composables etc... 
+
+    ```kt
+    class MainActivity : ComponentActivity() {
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContent {
+                MassConvertorTheme {
+                    WeightConverterApp()
+                }
+            }
+        }
+
+        @Composable
+        fun WeightConverterApp() {
+            var massEntered by remember { mutableStateOf("") }
+
+            Column(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxSize()
+            ) {
+                Text(text = "Mass Converter", style = MaterialTheme.typography.headlineSmall)
+                Spacer(modifier = Modifier.height(16.dp))
+
+                TextField(
+                    value = massEntered,
+                    onValueChange = { massEntered = it },
+                )
+            }
+        }
+
+        private fun converter(){
+
+        }
+
+    @Preview(showBackground = true)
+        @Composable
+        fun DefaultPreview() {
+            MassConvertorTheme {
+                WeightConverterApp()
+            }
+        }
+    }
+    ```
+
+    >> **Notes:**
+    >> - **@Composable**: This annotation is used to mark a function as composable. Functions marked with `@Composable` can be used to describe part of a UI in Jetpack Compose. This allows you to build UI elements declaratively.
+    >>
+    >> - **by**: This is used for delegation in Kotlin. Here, it is used with `remember` and `mutableStateOf` to create a state variable.
+    >>
+    >> - **remember**: This composable function is used to **remember** a single object in a composable function. It retains state across recompositions.
+    >>
+    >> - **mutableStateOf("")**: This creates a mutable state initialized with an empty `string`. `mutableStateOf` is used to create state that Jetpack Compose can observe and react to changes
+    >> 
+    >> - **Column**: This is a composable function that places its children in a vertical sequence.
+    >> 
+    >> - **modifier**: This parameter allows you to modify the layout or behavior of a Composable.
+    >>
+    >> - **Spacer**: This composable function is used to create empty space in layouts.
+    >> 
+    >> - **TextField**: This composable function creates an editable text input field.
+    >>
+    >> - **onValueChange = { massEntered = it }**: A **lambda** function that updates the `massEntered` state variable whenever the text in the text field changes.
+    >>
+    >> - **lamdba**: In Kotlin, a lambda is an anonymous function (a function without a name) that can be treated as a value. Lambdas are often used to pass functions as arguments to higher-order functions, which are functions that take other functions as parameters or return functions.
+
+
+    ![](./figures/mainActivity_1.png)
+
+- Finish modifying the `TextField` so that only a number style keyboard is displayed on focus and give the field a hint/ghost text "Enter Mass"
+
+    ```kt
+    @Composable
+    fun WeightConverterApp() {
+        var massEntered by remember { mutableStateOf("") }
+
+        Column(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxSize()
+        ) {
+            Text(text = "Mass Converter", style = MaterialTheme.typography.headlineSmall)
+            Spacer(modifier = Modifier.height(16.dp))
+
+            TextField(
+                value = massEntered,
+                onValueChange = { massEntered = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                label = { Text("Enter mass") },
+                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+    }
+    ```
+
+    >**Notes:**
+    >> - **label** - this is a parameter for the TextField composable in Jetpack Compose. It specifies a label for the text field.
+    >>
+    >> - **{ Text("Enter mass") }**: This is a lambda expression that defines the content of the `label`. In this case, the `label` is a `Text` composable displaying the string `"Enter mass"`.
+    >>
+    >> - **keyboardOptions**: This is another parameter for the `TextField` composable. It specifies the behavior of the on-screen keyboard that appears when the text field gains focus.
+    >> 
+    >> - **KeyboardOptions.Default**: This provides the default keyboard options. 
+    >>
+    >> - **.copy(keyboardType = KeyboardType.Number)**: This creates a copy of the default keyboard options, modifying the `keyboardType` to `KeyboardType.Number`.
+
+    
+    ![](./figures/mainActivity_2.png)
+
+------
+
+## MainActivity: RadioButtons
+
+### Video @ 10.21 - 17.11
+
+1. **Creating InputMass RadioButtons:**
+
+ - We now are going to use some `RadioButtons` that can be selected by the user to indicate their choices, after the `TextField` and `Spacer` add a `Text` Composable and a `Row` Composable with 3 RadioButtons, 3 `Text` and 2 `Spacers`:
+
+    ```kt
+    ... 
+
+    TextField(){...}
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    Text("Input Mass Unit")
+    Row {
+        RadioButton(
+            selected = inputMassUnit == "kg",
+            onClick = { inputMassUnit = "kg" })
+        
+        Text("Kilograms")
+        
+        Spacer(modifier = Modifier.width(8.dp))
+        
+        RadioButton(
+            selected = inputMassUnit == "lbs", 
+            onClick = { inputMassUnit = "lbs" })
+        
+        Text("Pounds")
+        
+        Spacer(modifier = Modifier.width(8.dp))
+        
+        RadioButton(
+            selected = inputMassUnit == "stone", 
+            onClick = { inputMassUnit = "stone" })
+        
+        Text("Stone")
+    }
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    ...
+
+    ```
+
+- Also, note that the `inputMassUnit` needs to bound to the so that it stores data during recomposition process, add the line below where you create the `massEntered` variable, you could also add the `outputMassUnit` too:
+
+    ```kt
+    var inputMassUnit by remember { mutableStateOf("kg") }
+    var outputMassUnit by remember { mutableStateOf("lbs") }
+    ```
+
+
+    >>**Notes:**
+    >> - **Row** - This is a composable that arranges its children in a horizontal sequence.
+    >>
+    >> - **RadioButton**: This composable represents a radio button, which is a circular button that can be either selected or unselected. It is typically used in groups to allow users to select one option from a set.
+    >> 
+    >> - **selected**: This parameter determines whether the radio button is `selected` or not.
+    >>
+    >> - **inputMassUnit == "kg"**: This expression checks if the current value of `inputMassUnit` is equal to `"kg"`. If it is, the radio button will be shown as `selected`.
+    >>
+    >> - **onClick**: This is a lambda function that gets executed when the radio button is clicked.
+    >>
+    >> - **{ inputMassUnit = "kg" }**: This lambda sets the value of `inputMassUnit` to `"kg"` when the radio button is clicked. This means that clicking the radio button will update the state to indicate that "kg" is the selected unit.
+
+    ![](./figures/mainActivity_3.png)
+
+- Create a new `Row` that replicates the previous `Row` for `outputMassUnit`
+
+    ```kt
+    Row{...}
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    Text("Convert to Mass Unit")
+    Row {
+        RadioButton(
+            selected = outputMassUnit == "kg",
+            onClick = { outputMassUnit = "kg" })
+
+        Text("Kilograms")
+
+        Spacer(modifier = Modifier.width(8.dp))
+
+        RadioButton(
+            selected = outputMassUnit == "lbs",
+            onClick = { outputMassUnit = "lbs" })
+        Text("Pounds")
+
+        Spacer(modifier = Modifier.width(8.dp))
+
+        RadioButton(
+            selected = outputMassUnit == "stone",
+            onClick = { outputMassUnit = "stone" })
+        
+        Text("Stone")
+    }
+    ```
+
+    ![](./figures/mainActivity_4.png)
+
+
+## MainActivity: Button and Converter Function
+
+### Video @ 17.11 - 27.39
+
+- Now we are going to use a `Button` Composable that invokes and `onClick` method to calcualte the user input and their selected `RadioButton` options. Underneath the last `Row{...}` create a new `Spacer` Composable and a `Button` Composable:
+
+    ```kt
+    Row{...}
+    Spacer(modifier = Modifier.height(16.dp))
+
+    Button(onClick = { /*TODO*/}) { 
 
     }
-  }
-}
-```
+    ...
+    ```
 
-**Step 3:**
+    ![](./figures/mainActivity_5.png)
 
-- After the pounds variable is validated, the weight must be converted. To divide the weight by the conversion rate of 2.2, inside the nested if statement (line 41) after the weightEntered `<= 255 {` line, type:
+- Navigate back up to where you defined the variables that are remembered across recompositon and define the following; ` var massEntered by remember { mutableStateOf("") }` and `var convertedValues by remember { mutableStateOf(arrayOf("","","")) }`
 
-```kt
-convertedWeight = weightEntered  * conversionRate;
-```
-and press Enter.
-- To display the result of the equation rounded to one place past the decimal point, type:
 
-```kt
-result.setText(tenth.foramt(convertedWeight) + “ pounds”);
-```
-- If the weight is not in valid range, a toast message requesting that the user enter a valid weight is displayed briefly. Click the line after the else statement and type:
+- Continue building the functionality of the `Button` and update the arguments field of the `converter` function where it is declared:
 
-```kt
-Toast.makeText(this, “Kilos must be less than 255”, Toast.LENGHT_LONG).show();
-```
+    ```kt
+    Row{
+        ...
+        Button(
+            onClick = {
+                val mass = massEntered.toDoubleOrNull()
 
-The result is shown in the code below: 
-
-```kt
-convert.setOnClickListener {
-  weightEntered = weight.getText().toString().toDouble()
-  // Configure number formatting
-  val tenth: NumberFormat = NumberFormat.getInstance()
-  tenth.maximumFractionDigits = 2
-  tenth.minimumFractionDigits = 2
-
-  if (lbToKilo.isChecked()) {
-      if (weightEntered <= 500) {
-          convertedWeight = weightEntered / conversionRate
-          result.setText(tenth.format(convertedWeight) + " kilograms")
-      } else {
-          Toast.makeText(
-              this,
-              "Pounds must be less than 500",
-              Toast.LENGTH_LONG
-          ).show()
-      }
-      lbToKilo.setChecked(false)
-  }
-}
-```
-
-**Step 4:**
-- For when the user selects the `Convert Pounds to Kilograms RadioButton` control, type the following lines of code starting after the closing brace in line 47 (the second closing `}` after `else`) and press Enter after each line, as shown on the figure below:
-
-```kt
-if (lbToKilo.isChecked()) {
-    if (weightEntered <= 500) {
-        convertedWeight = weightEntered / conversionRate
-        result.setText(tenth.format(convertedWeight) + " kilograms")
-    } else {
-        Toast.makeText(
-            this,
-            "Pounds must be less than 500",
-            Toast.LENGTH_LONG
-        ).show()
+                if (mass != null && mass > 0) {
+                    convertedValues = convertor(numberFormat,mass, 
+                                        inputMassUnit, outputMassUnit)
+                } 
+            }
     }
-    lbToKilo.setChecked(false)
-}
-```
-The result is shown below:
+
+    private fun convertor(numberFormat: NumberFormat, mass: Double, inputUnit: String,
+                          outputUnit: String) : Array<String> {
+
+        val conversionsToBeReturned = arrayOf<String>("","","")
+
+        return conversionsToBeReturned
+    }
+    ```
+
+    >**Notes:**
+    >> - **onClick** - This is a lambda function that gets executed when the button is clicked.
+    >>
+    >> - **massEntered.toDoubleOrNull()**: This function attempts to convert the string `massEntered` into a `Double`. If the conversion is not possible (e.g., if `massEntered` is not a valid number), it returns `null`.
+    >> - **mass != null**: This checks if the conversion was successful.
+    >>
+    >> - **mass > 0**: This checks if the mass entered is greater than zero.
+
+    ![](./figures/mainActivity_6.png)
+
+- Continuing with the conditions inside the `Button`, we will add an `else` to catch the inverse of the `if` and display at `Toast` Notification. We also going to add a `Spacer` after the Button and 3 `Text` Composables that will display the result of the `converter` function by referencing the respectively array index of the `convertedValues` variable:
+
+    ```kt
+    Button(onClick = {
+        val mass = massEntered.toDoubleOrNull()
+
+        if (mass != null && mass > 0) {
+            convertedValues = convertor(numberFormat,mass, inputMassUnit, outputMassUnit)
+
+        } else {
+            Toast.makeText(context, "Mass must be greater than 0",
+                Toast.LENGTH_LONG).show()
+        }
+    }) {
+        Text("Convert")
+    }
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    Text("Converted Mass: ${convertedValues[0]}")
+    Text("Weight in Newtons: ${convertedValues[1]}")
+    Text("Weight in Kilonewtons: ${convertedValues[2]}")
+    }
+    ```
+
+- declare the `context` variable at the underneath the remembered variables.
+
+    ```kt
+    ...
+
+    var massEntered by remember { mutableStateOf("") }
+    var convertedValues by remember { mutableStateOf(arrayOf("","","")) }
+    var inputMassUnit by remember { mutableStateOf("kg") }
+    var outputMassUnit by remember { mutableStateOf("lbs") }
+
+    var context =  LocalContext.current
+    ...
+
+    ```
+
+    > **Notes:**
+    >> - **else**: This keyword is used to define a block of code that runs if the preceding `if` condition(s) is `false`. In this case, it runs when the mass is not greater than 0.
+    >>
+    >> - **Toast.makeText**: This function creates a Toast message, which is a small popup message that briefly appears on the screen.
+    >>
+    >> - **context**: This is the `context` in which the `Toast` should run. It is obtained from the `LocalContext.current` in a Compose function defined after remembered variables we declared.
+    >>
+    >> - **Toast.LENGTH_LONG**: This is the duration for which the `Toast` will be shown. `Toast.LENGTH_LONG` means it will be displayed for a long duration.
+    >>
+    >> - **show()**: This function call displays the `Toast`.
+    >> 
+    >> - **Text("Converted Mass: $\{convertedValues[0]}")** -  Displays the first converted value, we use the `${}` to reference variable that are are defined as collection, list and arrays etc
+
+    ![](./figures/mainActivity_7.png)
+
+
+
+## MainActivity: Converter Functionality
+
+### Video @ 27.39 - 43.24
+
+- Navigate to the top of the `MainActivty()` add the following variables that stored constant conversion values and the `NumberFormat` to the `WeightConverterApp()`: 
+
+    ```kt
+    class MainActivity : ComponentActivity() {
+
+        private val conversionToPounds: Double = 2.20462262 // lbs to kg
+        private val conversionToStones: Double = 0.15747304 // lbs to kg
+        private val gravity : Double = 9.81 // m/s^2
+
+        ...
+            override fun onCreate(savedInstanceState: Bundle?) { ... }
+
+
+        @Composable
+        fun WeightConverterApp() {
+            var massEntered by remember { mutableStateOf("") }
+            ...
+
+            val numberFormat = remember {
+                NumberFormat.getInstance().apply {
+                    maximumFractionDigits = 2
+                    minimumFractionDigits = 2
+                }
+            }
+        
+        ```
+
+    ![](./figures/mainActivity_8.png)
+
+- Next go back `Converter()` and let's create the calculations to convert between different units
+
+    ```kt
+    private fun converter(numberFormat: NumberFormat, mass : Double,
+                            inputUnit: String, outputUnit: String) : Array<String>{
+
+        val conversionsToBeReturned = arrayOf<String>("","","")
+
+        val massInKg = when (inputUnit) {
+            "kg" -> mass
+            "lbs" -> mass / conversionToPounds
+            "st" -> mass / conversionToStones
+            else -> 0.0
+        }
+
+        val converted = when (outputUnit){
+            "kg" -> "$massInKg kg"
+            "lbs" -> "${numberFormat.format(mass * conversionToPounds)} lbs"
+            "st" -> "${numberFormat.format(mass * conversionToStones)} stone"
+            else -> ""
+        }
+
+        conversionsToBeReturned[0] = converted
+        conversionsToBeReturned[1] = "${numberFormat.format(massInKg * gravity)} N"
+        conversionsToBeReturned[2] = "${numberFormat.format(massInKg * gravity / 1000)}  kN"
+
+        return conversionsToBeReturned
+    }
+
+    ```
+    > **Notes:**
+    >> - **val massInKg** - Declares a read-only variable that stores the `mass` converted to kilograms.
+    >> 
+    >> - **when (inputUnit)** - Checks the value of the `inputUnit` variable and performs different actions based on its value.
+    >>  - **"kg"** - If the `inputUnit` is kilograms, it directly assigns the input mass to `massInKg`.
+    >>  - **"lbs"** - If the `inputUnit` is pounds, it converts the mass from pounds to kilograms by dividing it by `conversionToPounds`.
+    >>  - **"st"** - If the `inputUnit` is stones, it converts the mass from stones to kilograms by dividing it by `conversionToStones`.
+    >>  - **else** - For any other unit (or if `inputUnit` doesn't match any of the specified cases), it assigns `0.0` to `massInKg`.
+    >> 
+    >> - **when (outputUnit)**: Checks the value of the `outputUnit` variable and performs different actions based on its value.
+    >>  - **"kg"** - If the `outputUnit` is kilograms, it creates a string that includes the mass in kilograms (`massInKg`).
+    >>  - **"lbs"** - If the `outputUnit` is pounds, it converts the mass from kilograms to pounds by multiplying it by `conversionToPounds` and formats the result using `numberFormat`. The formatted string includes the mass in pounds.
+    >>  - **"st"** - If the `outputUnit` is stones, it converts the mass from kilograms to stones by multiplying it by `conversionToStones` and formats the result using `numberFormat`. The formatted string includes the mass in stones.
+    >>  - **else** - For any other unit (or if `outputUnit` doesn't match any of the specified cases), it assigns an empty string to converted.
+
+    - Without the **Formater**:
+
+        ![](./figures/mainActivity_9.png)
+
+    - With the **Formater**:
+
+        ![](./figures/mainActivity_10.png)
+
+-----
+
+
+<table>
+<tr>
+<td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
+
+If you run the app you should now be able to reproduce the following: 
+
+</td>
+<td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
+
+<img src="./figures/demo.gif" alt="Demo of App" >
+</td>
+</tr>
+</table>
+
+
+-----------
+
+
+<details>
+
+<summary>The whole program should look like this: </summary>
 
 ```kt
-package com.example.medicalcalculator
+package com.uog.massconverter
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import java.text.DecimalFormat
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.uog.massconverter.ui.theme.MassConverterTheme
+import java.text.NumberFormat
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
 
-    private val conversion : Double = 2.20462262
-    private var weightEntered : Double = 0.0
-    private var convertedWeight : Double = 0.0
-   
+    private val conversionToPounds: Double = 2.20462262 // lbs to kg
+    private val conversionToStones: Double = 0.15747304 // lbs to kg
+    private val gravity : Double = 9.81 // m/s^2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        supportActionBar?.setDisplayShowCustomEnabled(true)
-        supportActionBar?.setLogo(R.drawable.ic_launcher_foreground)
-        supportActionBar?.setDisplayShowTitleEnabled(true)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
-
-        val kiloToLb = findViewById<RadioButton>(R.id.radioButton)
-        val lbToKilo = findViewById<RadioButton>(R.id.radioButton2)
-        val weight = findViewById<EditText>(R.id.editTextNumberDecimal)
-        val result = findViewById<TextView>(R.id.textView2)
-        val convert = findViewById<Button>(R.id.button)
-      
-        kiloToLb.setOnClickListener{
-            lbToKilo.setChecked(false)
-        }
-        lbToKilo.setOnClickListener{
-            kiloToLb.setChecked(false)
-        }
-        convert.setOnClickListener {
-            weightEntered = weight.getText().toString().toDoubleOrNull() ?: 0.0
-
-            // Configure number formatting
-            val tenth: NumberFormat = NumberFormat.getInstance()
-            tenth.maximumFractionDigits = 2
-            tenth.minimumFractionDigits = 2
-
-            if (lbToKilo.isChecked()) {
-                kiloToLb.setChecked(false)
-                if (weightEntered > 0) {
-                    convertedWeight = weightEntered / conversion
-                    result.setText(tenth.format(convertedWeight) + " kilograms")
-                } else {
-                    Toast.makeText(this,  "Pounds must be greater than 0",Toast.LENGTH_LONG).show()
-                }
-            }
-            else if (kiloToLb.isChecked()){
-                if (weightEntered > 0){
-                    convertedWeight = weightEntered * conversion
-                    result.setText(tenth.format(convertedWeight) + " Kilograms")
-                }else{
-                    Toast.makeText(this, "Did you enter anything?", Toast.LENGTH_SHORT).show()
-                }
-
+        enableEdgeToEdge()
+        setContent {
+            MassConverterTheme {
+                WeightConverterApp()
             }
         }
     }
+
+
+    @Composable
+    fun WeightConverterApp() {
+        var massEntered by remember { mutableStateOf("") }
+        var inputMassUnit by remember { mutableStateOf("") }
+        var outputMassUnit by remember { mutableStateOf("") }
+        var convertedValues by remember { mutableStateOf(arrayOf("","","")) }
+
+        val numberFormat = remember {
+            NumberFormat.getInstance().apply {
+                maximumFractionDigits = 2
+                minimumFractionDigits = 2
+            }
+        }
+
+        val context = LocalContext.current
+        Column(modifier = Modifier
+            .padding(24.dp)
+            .fillMaxSize()
+        ) {
+            Text(
+                text = stringResource(id = R.string.app_name),
+                style = MaterialTheme.typography.headlineLarge)
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            TextField(
+                value = massEntered,
+                onValueChange = { massEntered = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                label = { Text(text = "Enter Mass")},
+                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(text = "Input Mass Unit")
+            Row {
+                RadioButton(selected = inputMassUnit == "kg" , onClick = { inputMassUnit = "kg" })
+                Text(text = "Kilograms")
+                Spacer(modifier = Modifier.width(8.dp))
+                RadioButton(selected = inputMassUnit == "lbs" , onClick = { inputMassUnit = "lbs" })
+                Text(text = "Pounds")
+                Spacer(modifier = Modifier.width(8.dp))
+                RadioButton(selected = inputMassUnit == "st" , onClick = { inputMassUnit = "st" })
+                Text(text = "Stones")
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(text = "Convert to Mass Unit")
+            Row {
+                RadioButton(selected = outputMassUnit == "kg" , onClick = { outputMassUnit = "kg" })
+                Text(text = "Kilograms")
+                Spacer(modifier = Modifier.width(8.dp))
+                RadioButton(selected = outputMassUnit == "lbs" , onClick = { outputMassUnit = "lbs" })
+                Text(text = "Pounds")
+                Spacer(modifier = Modifier.width(8.dp))
+                RadioButton(selected = outputMassUnit == "st" , onClick = { outputMassUnit = "st" })
+                Text(text = "Stones")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(onClick = {
+                val mass = massEntered.toDoubleOrNull()
+
+                if(mass != null && mass > 0){
+                    convertedValues = converter(numberFormat, mass, inputMassUnit, outputMassUnit)
+                } else{
+                    Toast.makeText(context,"Mass must be greater than 0",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }) {
+                Text("Convert")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text("Converted Mass: ${convertedValues[0]}")
+            Text("Weight in Newtons: ${convertedValues[1]}")
+            Text("Weight in Kilonewtons: ${convertedValues[2]}")
+        }
+    }
+
+    private fun converter(numberFormat: NumberFormat, mass : Double,
+                          inputUnit: String, outputUnit: String) : Array<String>{
+
+        val conversionsToBeReturned = arrayOf<String>("","","")
+
+        val massInKg = when (inputUnit) {
+            "kg" -> mass
+            "lbs" -> mass / conversionToPounds
+            "st" -> mass / conversionToStones
+            else -> 0.0
+        }
+
+        val converted = when (outputUnit){
+            "kg" -> "$massInKg kg"
+            "lbs" -> "${numberFormat.format(mass * conversionToPounds)} lbs"
+            "st" -> "${numberFormat.format(mass * conversionToStones)} stone"
+            else -> ""
+        }
+
+        conversionsToBeReturned[0] = converted
+        conversionsToBeReturned[1] = "${numberFormat.format(massInKg * gravity)} N"
+        conversionsToBeReturned[2] = "${numberFormat.format(massInKg * gravity / 1000)}  kN"
+
+        return conversionsToBeReturned
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun GreetingPreview() {
+        MassConverterTheme {
+            WeightConverterApp()
+        }
+    }
+
 }
 ```
 
-Now use Run ‘app’ button (or SHIFT + F10) to run the app.  When you run the program, make sure you test it with correct data and then with more than 500 pounds and more than 225 kilos in order to see the toast message appear. Two cases of the app running with correct data are shown below. In the first case - the first radio button was clicked and in the second case – the second radio button is clicked by the user.
-
-<div align=center>
-
-![](./figures/finishedMedicalApp.png)
-
-</div>
-
--------------------------------------
-
-
-## Converted weight on different Solar objects
-
-- Add options (`Spinner` widget for example ) to change the effect of gravity on someones weight. Use the table below for reference:
-
-<div align=center>
-
-|Planet|	Gravity (m/s²)|Conversion (%)|
-|---|---|---|
-|Mercury|3.78 | \\( 0.378 = \frac{3.78}{10}\\) 
-|Venus|	9.07| \\( 0.907 = \frac{9.07}{10}\\) |
-|Earth | 10.0|\\( 1.0 = \frac{10}{10}\\) |
-|Mars|	3.77|\\( 0.377 = \frac{3.77}{10}\\) |
-|Jupiter|	25.28|\\( 2.528 = \frac{25.28}{10}\\) |
-|Saturn|	10.64|\\( 1.064 = \frac{10.64}{10}\\) |
-|Uranus|	8.889|\\( 0.8889 = \frac{8.889}{10}\\) |
-|Neptune| 11.15|\\( 1.115 = \frac{11.15}{10}\\) |
-|Pluto|	0.67|\\( 0.067 = \frac{0.67}{10}\\) |
-|Moon|	1.62|\\( 0.162 = \frac{1.62}{10}\\) |
-
-Formula:
-
-\\(yourWeightOnSolObject = convertedWeight \cdot \frac{Sol\ Object}{10}\\)
-
-</div>
-<p>
-
-</p>
-
-1. Add a `Spinner` and `TextView` for list of Sol objects and the resulting conversion.
-    
-    <div align=center>
-    
-    ![](figures/designView.png)
-
-    </div>
-
-2. Consider using `map` for each sol object and their convesion value, recall the slides from earlier, or...
-
-    <details>
-    <summary>Suggested Code</summary>
-
-    After the line ending `private var convertedWeight: Double = 0.0`
-
-    ```kt
-    // Map that holds relative gravitational accelerations on celestial bodies
-    private val solObjectModifiers = mapOf(
-        "Moon" to 0.1622, "Mercury" to 0.378, "Venus" to 0.907,
-        "Mars" to 0.377, "Jupiter" to 2.528, "Saturn" to 1.064,
-        "Uranus" to 0.889, "Neptune" to 1.125, "Pluto" to 0.067
-    )
-
-    // Initialise the selected celestial body's conversion factor
-    private var solConversion: Double = solObjectModifiers.entries.elementAt(0).value
-
-    ```
-
-    </details>
-
-<p>
-
-</p>
-
-3. Remeber to populate the `Spinner` using the `Adapter` class. 
-
-    <details>
-    <summary>Suggested Code</summary>
-
-    After line ending ` val solSpinner = findViewById<Spinner>(R.id.spinner)`
-
-    ```kt
-    // Initialize the Spinner with data from the map
-    val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, solObjectModifiers.keys.toTypedArray())
-    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-    solSpinner.adapter = adapter
-    ```
-
-    </details>
-
-<p>
-
-</p>
-
-4. Inside the `convert.onClick` method after `weightEntered = weight.getText().toString().toDoubleOrNull() ?: 0.0` get correct value from the map of sol objects by referencing the `spinner.selectedItem.toString()`
-  
-    <details>
-        <summary>Suggested Code</summary>
-
-        ```kt
-        // Get the selected celestial body's conversion factor
-        solConversion = solObjectModifiers.getValue(solSpinner.selectedItem.toString())
-        ```
-    </details>
-
-<p>
-
-</p>
-
-5. Modify return the result of the `solConversion` to the Sol `TextView`, do this after `result.setText(tenth.format(convertedWeight) + " kilograms")` inside the `lbToKilo` radio button:
-
-    <details>
-    <summary>Suggested Code</summary>
-
-    ```kt  
-    solConversionResult.setText(tenth.format(convertedWeight * solConversion) + " kilograms")
-    ```
-
-    </details>
-
-<p>
-
-</p>
-
-6. Repeat the last two steps for KiloToLb radio button
-  
-    <details>
-    <summary>Suggested Code</summary>
-
-    ```kt 
-    convertedWeight = (weightEntered * conversion)
-    ... 
-    solConversionResult.setText(tenth.format(convertedWeight * solConversion) + " lbs")
-    ```
-
-    </details>
-
-<p>
-
-</p>
-
-7.  Should look something like this...
-
-    <div align=center>
-
-    ![](./figures/solobjects.png) 
-
-    </div>
-
+</details>
 
 -------------------------------------------------------
 -------------------------------------------------------
 
 ## Continue Here....
 
-> You will need to download the following picture folder -> [Lab_5-2_Picture.zip](Lab_5-2_Pictures.zip)
+>**Note**:
+>> - You can find royalty-freee images here: [https://www.freeimages.com/](https://www.freeimages.com)
 
 For the exercises below, follow the steps in the Ticket Vault example (from last week lab).
 

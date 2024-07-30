@@ -3,7 +3,7 @@
 **1.**
 
 Start a new Android Studio project, `empty view acitvity` – the Hello World app will appear. Run the app following the steps described in the lecture. 
-
+![Refer to the video here]()
 ______
 
 **2.** 

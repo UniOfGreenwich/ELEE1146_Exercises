@@ -22,7 +22,11 @@ On completion of the assignment, the student will develop:
 ## Brief
 
 1. **Expansion of Lab Application:**
-   - Select a lab exercise provided during the module, **__excluding the first three__**.
+   - Select one of the following lab exercises provided during the module:
+      - [User Input, Variables and Operations](https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises/Kotlin/Lab_4/Lab_4.html)
+      - [Android App Using Icons and Decision Making Controls](https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises/Kotlin/Lab_5/Lab_5.html)
+      - [Lists, Arrays, and Web Browsers]()
+      - [Sensors]()
    - Expand the existing functionality by adding at least three significant new features.
    - Redesign the application to improve user experience (UX) and user interface (UI).
 
