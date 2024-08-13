@@ -1,0 +1,444 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Assignment 2 - Mobile Applications for Engineers and Technologists</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction/Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../Kotlin/Lab_1/Kotlin_Intro.html"><strong aria-hidden="true">1.</strong> Introduction to Kotlin</a></li><li class="chapter-item "><a href="../Kotlin/Lab_2/Android_Intro.html"><strong aria-hidden="true">2.</strong> Introduction to Android Studio</a></li><li class="chapter-item "><a href="../Kotlin/Lab_3/Lab_3.html"><strong aria-hidden="true">3.</strong> Healthy Recipe App</a></li><li class="chapter-item "><a href="../Kotlin/Lab_4/Lab_4.html"><strong aria-hidden="true">4.</strong> Concert Ticket App</a></li><li class="chapter-item "><a href="../Kotlin/Lab_5/Lab_5.html"><strong aria-hidden="true">5.</strong> Mass Converter App</a></li><li class="chapter-item "><a href="../Kotlin/Lab_6/Lab_6.html"><strong aria-hidden="true">6.</strong> Lists, Arrays and Web Browsers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Kotlin/Lab_6/Lab_6-1.html"><strong aria-hidden="true">6.1.</strong> Arrays in Kotlin</a></li><li class="chapter-item "><a href="../Kotlin/Lab_6/Lab_6-2.html"><strong aria-hidden="true">6.2.</strong> City Guide App</a></li></ol></li><li class="chapter-item "><a href="../Kotlin/Lab_7/Lab_7.html"><strong aria-hidden="true">7.</strong> Exception Handling</a></li><li class="chapter-item "><a href="../Kotlin/Lab_8/Lab_8.html"><strong aria-hidden="true">8.</strong> Kotlin Object Orientated Programming</a></li><li class="chapter-item "><a href="../Kotlin/Lab_9/Lab_9.html"><strong aria-hidden="true">9.</strong> OOP with Data Storage ?</a></li><li class="chapter-item "><a href="../Kotlin/Lab_10/Lab_10.html"><strong aria-hidden="true">10.</strong> Permissions </a></li><li class="chapter-item "><a href="../Kotlin/Lab_11/Lab_11.html"><strong aria-hidden="true">11.</strong> Sensors</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Kotlin/Lab_11/Lab_11-1.html"><strong aria-hidden="true">11.1.</strong> All of the Sensors</a></li><li class="chapter-item "><a href="../Kotlin/Lab_11/Lab_11-2.html"><strong aria-hidden="true">11.2.</strong> Using the Sensors</a></li></ol></li><li class="chapter-item "><a href="../Kotlin/Lab_12/Lab_12.html"><strong aria-hidden="true">12.</strong> Splash Screens </a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">Assignments</li><li class="chapter-item "><a href="../Assignment_1/Assignment_1.html"><strong aria-hidden="true">13.</strong> Assignment 1</a></li><li class="chapter-item expanded "><a href="../Assignment_2/Assignment_2.html" class="active"><strong aria-hidden="true">14.</strong> Assignment 2</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers and Technologists</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1149-COMP1836_Exercises/edit/main/content/Assignment_2/Assignment_2.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="assignment-2"><a class="header" href="#assignment-2">Assignment 2</a></h1>
+<p><strong>Submission Date: 17th December March 2024 @ 2300</strong></p>
+<p><strong>Weighting: 70%</strong></p>
+<blockquote>
+<p><strong>WARNING:</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>All submitted work will be electronically scanned for plagiarism and the use of Artificial Intelligence (AI) software. The work that you submit must be your own; any material from other sources must be correctly cited and referenced. If unreferenced material is detected a student will be reported for plagiarism. AI should not be used in the production of this work. Use of AI which has not been acknowledged is an academic misconduct offence and again will lead to a report of plagiarism.</p>
+</li>
+<li>
+<p>Assessor reserve the right to viva you to explain the code and it's implementation.</p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h2 id="learning-outcomes"><a class="header" href="#learning-outcomes">Learning Outcomes</a></h2>
+<p>On completion of the assignment, the student will develop:</p>
+<ol>
+<li>an in-depth understanding of object-oriented programming</li>
+<li>understanding of the basic principles of mobile apps design</li>
+<li>skills in designing a mobile app.</li>
+</ol>
+<hr />
+<h2 id="brief"><a class="header" href="#brief">Brief</a></h2>
+<ol>
+<li>
+<p><strong>Expansion of Lab Application:</strong></p>
+<p>The last UK goverment tried to bring back imperial units over metric (EU rules). However that government suffered a humilating defeat as 100k traders rejected the change. If this change had happened the UK would have to convert to imperial units, with that in mind, you are to expand on the <a href="https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises/Kotlin/Lab_5/Lab_5.html">Mass Converter App</a> to convert between the imperial units overleaf.</p>
+</li>
+<li>
+<p><strong>Implementation Requirements:</strong></p>
+<ul>
+<li>Utilise OOP principles to define and manage data structures and classes.</li>
+<li>Ensure the application follows clean code practices, including proper naming conventions, modularity, and efficient use of resources.</li>
+<li>Implement data validation checks to ensure the accuracy and integrity of the data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Documentation:</strong></p>
+<ul>
+<li>Use KDoc to document classes, methods, and important code segments.</li>
+<li>Provide a comprehensive README file explaining the application's features, design choices, and usage instructions.</li>
+</ul>
+</li>
+</ol>
+<p><em>Continued overleaf</em></p>
+<p><img src="./Visual-Units-of-length-in-Imperial-System.jpg" alt="" /></p>
+<h2 id="coursework-submission-link"><a class="header" href="#coursework-submission-link">Coursework Submission Link</a></h2>
+<ul>
+<li><a href="">Moodle submission link TODO!</a></li>
+<li><strong>Source Code:</strong> Submit the complete source code of the application, including all necessary files to compile and run the project.</li>
+<li><strong>Documentation:</strong> Include:
+<ul>
+<li>KDoc comments within the code.</li>
+<li>README explaining the added features, design choices, and how OOP principles were applied</li>
+</ul>
+</li>
+<li><strong>Executable APK:</strong> Provide an executable APK file of the final application.</li>
+</ul>
+<h2 id="rubic-summary"><a class="header" href="#rubic-summary">Rubic Summary</a></h2>
+<p>Full rubric is at the bottom of the brief.</p>
+<ol>
+<li>
+<p><strong>OOP Implementation (25%)</strong></p>
+<ul>
+<li>Effective use of classes and objects.</li>
+<li>Proper implementation of inheritance, polymorphism, encapsulation, and abstraction.</li>
+<li>Efficient data management and manipulation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Clean Code (25%)</strong></p>
+<ul>
+<li>Adherence to clean code principles.</li>
+<li>Readability and maintainability of the code.</li>
+<li>Proper naming conventions, modularity, and code organization.</li>
+</ul>
+</li>
+<li>
+<p><strong>KDoc Utilisation (10%)</strong></p>
+<ul>
+<li>Comprehensive and clear documentation using KDoc.</li>
+<li>Proper use of comments to explain complex code segments.</li>
+<li>Inclusion of usage examples where appropriate.</li>
+</ul>
+</li>
+<li>
+<p><strong>README (15%)</strong></p>
+<ul>
+<li>Correct syntax</li>
+<li>Explanation of design choice</li>
+<li>explanation of the application's features</li>
+<li>How to use the application</li>
+</ul>
+</li>
+<li>
+<p><strong>App Design (25%)</strong></p>
+<ul>
+<li>Quality and intuitiveness of the user interface (UI).</li>
+<li>User experience (UX) enhancements.</li>
+<li>Aesthetic design and visual appeal.</li>
+<li>Functionality and usability of new features.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p><em>Continued overleaf</em></p>
+<p>\newpage</p>
+<h2 id="rubric-in-full"><a class="header" href="#rubric-in-full">Rubric in Full</a></h2>
+<div align="center">
+<p><strong>Clean Code</strong></p>
+</div>
+<div class="table-wrapper"><table><thead><tr><th>Performance Level</th><th>Description</th></tr></thead><tbody>
+<tr><td>0-29% Fail</td><td>Code exhibits a lack of understanding and application of clean code principles. The structure is severely deficient, hindering comprehension. Naming conventions are inconsistent and fail to adhere to best practices. The overall code quality is substantially below the expected standard.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>30-39% Fail</td><td>Limited understanding of clean code principles is evident. The code structure is basic, but significant improvements are needed for clarity. Naming conventions are inconsistent and do not fully adhere to best practices. The code, while functional, lacks the sophistication expected in clean code.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>40-49% Satisfactory</td><td>The code demonstrates a basic understanding of clean code principles. The structure meets minimum requirements but lacks sophistication. Naming conventions are basic and partially follow best practices. While the code is acceptable, it falls short of achieving a higher level of cleanliness and clarity.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>50-59% Good</td><td>There is a good understanding and application of clean code principles. The code structure is above average, contributing to clarity and understanding. Naming conventions are good and mostly follow best practices. The code demonstrates a commendable effort in adhering to clean code standards.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>60-69% Very Good</td><td>The code exhibits a very good understanding of clean code principles. The structure is impressive, contributing to a high level of clarity and understanding. Naming conventions are very good and consistently follow best practices. The code showcases a level of cleanliness that goes beyond the expected standard.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>70-79% Excellent</td><td>An excellent understanding and application of clean code principles are evident. The code structure is exceptional, setting a benchmark for clarity and understanding. Naming conventions are excellent and consistently follow best practices. The code exemplifies an exceptional standard of cleanliness and organization.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>80-100% Exceptional</td><td>The code demonstrates an exceptional understanding and application of clean code principles. The structure is outstanding, demonstrating an unparalleled level of clarity and understanding. Naming conventions are exceptional and consistently follow best practices. The code sets an extraordinary standard for cleanliness and represents an outstanding example of clean and maintainable code.</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><em>Continued overleaf</em></p>
+<p>\newpage</p>
+<div align="center">
+<p><strong>OOP</strong></p>
+</div>
+<div class="table-wrapper"><table><thead><tr><th>Performance Level</th><th>Description</th></tr></thead><tbody>
+<tr><td>0-29% Fail</td><td>Inadequate use of classes and objects. Lack of implementation of key OOP principles. Data management is inefficient and poorly structured.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>30-39% Fail</td><td>Basic use of classes and objects with significant errors. Limited implementation of OOP principles. Data management needs major improvement.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>40-49% Satisfactory</td><td>Basic understanding of OOP principles. Adequate use of classes and objects. Data management is functional but lacks sophistication.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>50-59% Good</td><td>Good understanding of OOP principles. Effective use of classes and objects. Data management is above average but not exceptional.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>60-69% Very Good</td><td>Very good understanding of OOP principles. Well-structured use of classes and objects. Data management is efficient and well-organized.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>70-79% Excellent</td><td>Excellent understanding of OOP principles. Advanced use of classes and objects. Data management is highly efficient and structured.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>80-100% Exceptional</td><td>Outstanding understanding of OOP principles. Exceptional use of classes and objects. Data management is exemplary and sets a high standard.</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><em>Continued overleaf</em></p>
+<p>\newpage</p>
+<div align="center">
+<p><strong>KDoc</strong></p>
+</div>
+<div class="table-wrapper"><table><thead><tr><th>Performance Level</th><th>Description</th></tr></thead><tbody>
+<tr><td>0-29% Fail</td><td>Lack of KDoc documentation. Minimal or no comments explaining the code. No usage examples provided.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>30-39% Fail</td><td>Limited KDoc documentation. Few comments explaining the code. Usage examples are incomplete or missing.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>40-49% Satisfactory</td><td>Basic KDoc documentation. Some comments explaining the code. Usage examples are basic and incomplete.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>50-59% Good</td><td>Good KDoc documentation. Adequate comments explaining the code. Usage examples are helpful but not comprehensive.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>60-69% Very Good</td><td>Very good KDoc documentation. Clear and helpful comments explaining the code. Usage examples are detailed and informative.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>70-79% Excellent</td><td>Excellent KDoc documentation. Comments are clear, detailed, and enhance understanding. Usage examples are comprehensive.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>80-100% Exceptional</td><td>Exceptional KDoc documentation. Comments are exceptionally clear and detailed. Usage examples are outstanding and greatly enhance understanding.</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><em>Continued overleaf</em></p>
+<p>\newpage</p>
+<div align="center">
+<p><strong>README</strong></p>
+</div>
+<div class="table-wrapper"><table><thead><tr><th>Performance Level</th><th>Description</th></tr></thead><tbody>
+<tr><td>0-29% Fail</td><td>README is missing or severely lacking in detail. Syntax is incorrect. Design choices and application features are not explained. Usage instructions are unclear or missing.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>30-39% Fail</td><td>README is incomplete. Syntax is largely incorrect. Design choices and application features are poorly explained. Usage instructions are minimal and unclear.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>40-49% Satisfactory</td><td>README is basic but functional. Syntax is partially correct. Design choices and application features are briefly explained. Usage instructions are present but not detailed.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>50-59% Good</td><td>README is good and functional. Syntax is mostly correct. Design choices and application features are adequately explained. Usage instructions are clear but could be more detailed.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>60-69% Very Good</td><td>README is very good and detailed. Syntax is correct. Design choices and application features are well explained. Usage instructions are clear and detailed.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>70-79% Excellent</td><td>README is excellent and comprehensive. Syntax is correct. Design choices and application features are thoroughly explained. Usage instructions are clear, detailed, and easy to follow.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>80-100% Exceptional</td><td>README is exceptional in detail and clarity. Syntax is flawless. Design choices and application features are excellently explained. Usage instructions are outstandingly clear, detailed, and easy to follow.</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><em>Continued overleaf</em></p>
+<p>\newpage</p>
+<div align="center">
+<p><strong>App Design/Usability</strong></p>
+</div>
+<div class="table-wrapper"><table><thead><tr><th>Performance Level</th><th>Description</th></tr></thead><tbody>
+<tr><td>0-29% Fail</td><td>User interface is poorly designed and unintuitive. User experience is severely lacking. Aesthetic design is unappealing. Functionality and usability of new features are minimal or non-existent. Few or no significant features added.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>30-39% Fail</td><td>User interface is basic and not intuitive. User experience is limited. Aesthetic design needs significant improvement. Functionality and usability of new features are limited. Less than three significant features added, and those added lack meaningful impact.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>40-49% Satisfactory</td><td>User interface is functional but lacks sophistication. User experience is basic. Aesthetic design is acceptable but could be improved. Functionality and usability of new features are satisfactory. Three significant features added, but their implementation lacks depth or polish.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>50-59% Good</td><td>User interface is good and fairly intuitive. User experience is positive. Aesthetic design is good but not outstanding. Functionality and usability of new features are above average. Three significant features added and implemented competently.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>60-69% Very Good</td><td>User interface is very good and intuitive. User experience is very positive. Aesthetic design is visually appealing. Functionality and usability of new features are very good. Three significant features added with a high level of functionality and integration.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>70-79% Excellent</td><td>User interface is excellent and highly intuitive. User experience is excellent. Aesthetic design is highly appealing. Functionality and usability of new features are excellent. Three significant features added with excellent functionality and seamless integration.</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>80-100% Exceptional</td><td>User interface is outstanding and exceptionally intuitive. User experience is exceptional. Aesthetic design is outstanding and visually striking. Functionality and usability of new features are exceptional and innovative. Three or more significant features added with outstanding functionality and innovative implementation.</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p>\hspace{8em} <em>End of Brief</em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Assignment_1/Assignment_1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Assignment_1/Assignment_1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
