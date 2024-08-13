@@ -1,6 +1,6 @@
 # Assignment Part 1
 
-**Submission Date: 5th Novemeber 2024 @ 2300**
+**Submission Date: 29th October 2024 @ 2300**
 
 --------------
 
@@ -15,7 +15,8 @@ The main aim of this assignment is to develop and test students’ understanding
 
 ## Coursework Submission Link
 
-- [Moodle submission link TODO!]()
+- [ELEE1146 Submission Link](https://moodlecurrent.gre.ac.uk/mod/turnitintooltwo/view.php?id=2875935)
+- [COMP1836 Submission Link](https://moodlecurrent.gre.ac.uk/mod/turnitintooltwo/view.php?id=2876034)
 
 ## Learning Outcomes
 
