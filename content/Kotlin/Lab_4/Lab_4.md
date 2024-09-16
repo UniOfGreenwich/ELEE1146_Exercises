@@ -1,531 +1,894 @@
-# Lab 4: Android User Input, Variables and Operations
-
-> You will need to download the following picture folder -> [Lab_4_Picture.zip](Lab_4_Pictures.zip)
-
-## 1. Concert Ticket App
-
-You are to develop a Concert Tickets App as shown below:
+# Lab 4: Concert Ticket App
 
 <div align=center>
 
-![](figures/concertAppFinished.png)
+<table>
+<tr>
+<td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
+You will be developing concert ticket app that lets you select predifined bands and check the cost of each ticket.  The Concert Ticket App is demoed right:
+
+> - You will need to download the following picture folder -> [Lab_4_Picture.zip](Lab_4_Pictures.zip)
+> - The completed project can be found here at end of session -> [https://github.com/UniOfGreenwich/MobileApps-ConcertTickets](https://github.com/UniOfGreenwich/MobileApps-ConcertTickets)
+
+</td>
+<td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
+
+<img src="./figures/demo.gif" alt="Demo of App" >
+</td>
+</tr>
+</table>
 
 </div>
 
-In the field **Number of Tickets**, you are to enter a positive integer.  You can also choose from the drop-down list the concert you are interested in and then click the **FIND THE COST** button.  Then the cost of the tickets will be displayed just above the picture as shown below (it is assumed that a single ticket is priced at £79.99):
+ ## Colours used:
 
-<div align=center>
+ - <p style="background-color:#1E2C41;color:#ffffff">0XFF1E2C41</p>
+ - <p style="background-color:#E3E3E6; color:#000000">0XFFE3E3E6</p>
 
-![](./figures/concertAppFinishedPrice2.png)
+----
 
-</div>
+## Setting Up the Project
 
+### Video @ 1:13 - 4:40
 
-### Using the String Table
-
-- Double-click on the strings.xml file in the values subfolder to display its contents
-
-- Click the Add key (plus sign) in the Translations Editor and type txtTitle in the Key text box and Ticket Vault in the Default Value text box as shown below:
-
-<div align=center>
-
-![](./figures/stringTableKey.png)
-
-</div>
-
-- Using the `string.xml` file add the strings specified in the table below:
-
-    ```xml
-    <string name="txtTitle">Ticket Vault</string>
-    <string name="txtTickets">Number of Tickets</string> 
-    <string name="prompt">Select Group</string>
-    <string name="description">Concert Image</string>
-    <string name="btnCost">FIND THE COST</string>
-    ```
-
-### Adding a String Array
-
-- Now you need to add a string array, modify the `string.xml` with the following code:
-
-    ```xml
-    <string-array name="txtGroup">
-        <item>Select a Band</item>
-        <item>Linkin Park</item>
-        <item>Hollywood Undead</item>
-        <item>Man with a Mission</item>
-        <item>Written by Wolves</item>
-    </string-array>
-    ```
-
-### Adding Controls to the Emulator
-**Step 1:**
-- Click the Save All button on the Standard toolbar and close `strings.xml` tab.
-- With `activity_main.xml` opened and displaying the emulator screen, from the Palette, choose the Common category and then choose the **TextView** widget 
-- Drag the **TextView** widget to the center of the emulator screen until a dashed vertical line identifying the screen’s center is displayed and drop it onto the top part of the emulator.  
-- In the Attributes Pane click on the vertical bar next to the **text** attribute to open the Pick a Resource dialog. 
-- Choose **txtTitle** from the list to name the TextView widget.
-- Press the Ok button.
-- In the **textSize** property, type **48sp** and then press Enter.  
-- Right -click on the **TextView** widget and choose Center/Horizontally form the drop down list. 
-
-<div align=center>
-
-![](./figures/pickResource1.png)
-
-</div>
-
-**Step 2:**
-- In the Text category in the Palette, scroll down to the Number control.
-- Drag and drop the Number control onto the emulator bellow the Ticket Vault text.
-- Drag the control to the center of the screen until a dashed vertical line identifying the screen center is displayed.
-- Set the **textSize** property to **28sp** from the drop-down list. 
-
-### Setting the Hint Property for the Text Field
-
-**Step 1:**
-- With the Number control selected in the emulator, find the hint property in the Attributes pane (by typing hint in the search box for example) and then click on the vertical line next to the hint property.
-- Pick a Resource dialog box will appear.  Click **txtTickets** to select the assigned string. Click the OK button as shown below:
-
-<div align=center>
-
-![](./figures/pickResource2.png)
-
-</div>
-
-### Using the Android Spinner Control
-
-**Step 1:**
-- With the `activity_main.xml` tab open, scroll to view the Containers category in the Palette.
-- Drag and drop the Spinner control below the Number control and center it horizontally. 
-
-**Step 2:**
-- In the Attributes pane using search facility at the top of the pane, type in prompt and click to the right of the prompt property on the vertical line to display the Pick a Resources dialog box. 
-- Find the prompt and click it to display instructions when the user touches the Spinner control.
-- Click the OK button as shown below:
-
-<div align=center>
-
-![](./figures/pickResource3.png)
-
-</div>
-
-- In the Attributes pane, click the vertical bar to the right of the entries property.
-- Choose txtGroup from the dialog box as shown below. Press OK.
-
-<div align=center>
-
-![](./figures/pickResource4.png)
-
-</div>
-
-### Adding the Button, TextView and ImageView Controls
-
-**Step 1:**
-- In the `activity_main.xml` tab, the Common category in the Palette, drag the Button control to the emulator and center it below the Spinner control.
-- Click on the vertical bar next to the text attribute and from the Pick a Resource dialog box choose btnCost and then press ok. 
-- Change the **textSize** property to **36sp** from the drop-down list and save your work. 
-
-**Step 2:**
-- From the Common category in the Palette, choose the **TextView** control and drag the control to the emulator and center it below the Button control.
-- Inside the **text** property delete **TextView**.
-- Change the **textSize** property to **24sp** from the drop-down list. 
-
-**Step 3:**
-- To add the **Image View** control, copy the file `concert.png` from the Pictures folder on moodle to your computer. 
-- Copy the `concert.png` file (CTRL + C) and then Right -click the drawable folder in the Android project view pane. Click Paste. From the Choose Destination Directory dialog choose the **drawable folder** and then click the Ok button as shown below.
-
-<div align=center>
-
-![](./figures/pickResource5.png)
-
-</div>
-
-- Click OK on the next Copy dialog which appears to copy the concert.png file into the drawable directory.
-- From the Common category in the Palette, drag the ImageView control to the emulator and center it below the TextView control at the bottom of the emulator.
-- From the Pick a Resources dialog box which appears, choose the concert picture. Now click the OK button.  
-- With the image selected, click the vertical bar to the right of the contentDescription property in the Attributes pane.  Select description and then click the OK button.
-
-**Step 4:**
-- Now apply Infer Constraints by clicking the button on the top of the emulator.  
-- Run the emulator to see if your interface looks like what you expected.  If you are happy with the interface, proceed with the next step.  If not – fix it!
-
-### Coding the EditText Class for the TextField, the Spinner Control and the Button Control
-
->**IMPORTANT**
->> Throughout this exercise you are encouraged to write comments in the code to explain what different bits do, this is to help remind yourself of what is going on. 
->>
->> Comments are indicated by using `//` symbols for inline comments, or `/* */`  for multiline:
->> ```kt
->>   // intialise a variable that stores the information about currency that can be update later
->>   val format: NumberFormat = NumberFormat.getCurrencyInstance()
->>
->>     /* using the format object I have set the currency to ,'£', using the country code "GBP"
->>      * Additionaly I have set the format so that the maximum and minimum fractional digits are 2
->>      * i.e ##.## 
->>      */
->>   format.currency = Currency.getInstance("GBP")
->>   format.maximumFractionDigits = 2
->>   format.minimumFractionDigits = 2
->>   ```
-
-**Step 1:**
-- In the Android project view, expand the java folder and the first folder under it and, then double-click to open the `MainActivity.java` file.
-- Click to the right of the line `setContentView(R.layout.activity_main)`
-
-- Press **Enter** to insert a blank line.
-
-- To initialise and reference the `Spinner` control with the `Id` name of `spinner`, type:
-  - `val group = findViewById<Spinner>(R.id.spinner)`
-
-- After you have entered the line above, press Enter. 
-- To initialise the `Button` control with the id of button type:
-  - `val costBtn = findViewById<Button>(R.id.button)`
-
-- Press **Enter** to insert a blank line.
-- To initialise and reference the `EditText` class with the Id name of **editText** type: 
-  - `val tickets = findViewById<EditText>(R.id.editTextNumber)`
-
-- After you have entered the line above, press Enter. 
-- To initialise the `TextView` for the resulting calculations with the id of TextView type:
-  - `val result = findViewById<TextView>(R.id.textView)`
-
-- New line
-- To reference the `ImageView` to be able to change images based on the `Spinner`'s selected item:
-  - `val groupImage = findViewById<ImageView>(R.id.imageView)`
+1. **Create a New Project:**
+    - Select "Empty Activity" and click "Next".
+    - Name your application "Concert Tickets".
+    - Ensure the package name is set to `com.uog.concerttickets`.
+    - Set the minimum API level to 24.
+    - Click "Finish" to create the project.
 
 
+    ![](./figures/choosingLayoutKt.png)
+    
+2. **Adding images and creating logo assest**
 
-- Finally, after you have entered the line above, press 
-**Enter**
-- To initialise and reference the `NumberFormat` class: 
-  - ```kt 
-    val format: NumberFormat = NumberFormat.getCurrencyInstance()
+    - All the images are available in the Pictures folder downloaded in the zip.  Drag the files to the mipmap folder.
+    - For the assest right clock the `concert_ticket_logo.png` and get the `absolute path` 
+    - right click the res folder and add new image asset
+    - In the Path: field paste the **Absolute File** path you copied earlier, and then select the file. 
+    - Click the Next button to add the custom launcher icon. 
+    - On the next dialog window, click the Finish button. The custom icons will be displayed in `res/mipmap` folder
 
-    format.currency = Currency.getInstance("GBP")
-    format.maximumFractionDigits = 2
-    format.minimumFractionDigits = 2
-    ```
-- The result is shown below:
+        ![](./figures/logo_asset.gif)
+
+---
+
+## Modifying MainActivity
+
+### Video @ 4.40 - 17.35
+
+1. **Modify the Main Activity Layout:**
+    - Open `MainActivity.kt`.
+    - Reprodce this:
+
+        ```kotlin
+        package com.uog.concerttickets
+
+        ... 
+
+        class MainActivity : ComponentActivity() {
+            override fun onCreate(savedInstanceState: Bundle?) {
+                super.onCreate(savedInstanceState)
+                enableEdgeToEdge()
+                setContent {
+                    ConcertTicketsTheme {
+                        ConcertTicketApp()
+                    }
+                }
+            }
+        }
+
+        @OptIn(ExperimentalMaterial3Api::class)
+        @Composable
+        fun ConcertTicketApp(){
+            Scaffold(
+                topBar = {
+                    TopAppBar(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp),
+                        title = { /* TODO */}
+                    
+                    )
+                }
+            ) { innerPadding ->
+                Surface(modifier = Modifier.padding(innerPadding)) {
+                    
+                }
+            }
+        }
+
+        @Preview(showBackground = true)
+        @Composable
+        fun GreetingPreview() {
+            ConcertTicketsTheme {
+                ConcertTicketApp()
+            }
+        }
+        ``` 
+
+    >**Notes on Composables Used:**
+    >> - **Scaffold**: Provides a basic structure for the app’s layout, including slots for common UI components such as `TopAppBar`, `BottomAppBar`, `FloatingActionButton`, and `Drawer`.
+    >>
+    >> - **TopAppBar**: A composable that represents the top app bar, which usually contains the app title, navigation icons, and actions
+    >>
+    >> - **Modifier**: A flexible way to describe how a composable should be laid out, styled, or behave.
+    >> 
+    >> - **Surface**:  A composable that provides a background and other properties like elevation and shape, often used as a container for other composables
+    >>
+    >> - **@OptIn**: An annotation that indicates the usage of an experimental API
+    >> 
+    >> - **enableEdgeToEdge()**: This function is typically used to set up the app to render edge-to-edge, utilizing the full screen area
+    >>
+    
+    - You can modify the  title element to hold an image and text: 
+
+        ```
+        title = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ){
+                Image(painter = painterResource(id = R.mipmap.concert_ticket_logo),
+                    contentDescription = "App Logo",
+                    modifier = Modifier.size(50.dp))
+
+                Spacer(modifier = Modifier
+                    .align(alignment = Alignment.CenterVertically)
+                    .background(Color.White))
+
+                Text(
+                    text = stringResource(id = R.string.app_name), 
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0XFF1E2C41))
+            }
+        }
+        ```
+
+    <div align="center">
+
+    <img src="./figures/topBar.png" alt="Image of TopBar" style="width:230px;height:480px;">
+    
+    </div>
+
+- Modify the string resoucre app_name so that there is a space between the `ConcertTickets` like so `Concert Tickets`
+
+    ![](./figures/stringResource_1.png)
+
+- We need to create several composables that will show the DropDownMenu, TextField, Text, Button and Image, reproduce the following, inside the `Surface` Composable add the following `Column`:
 
     ```kt
+    ...
+    ) { innerPadding ->
+        Surface(modifier = Modifier.padding(innerPadding)) {
+            Column(modifier = Modifier.fillMaxSize()) {
+                // Band Selection
+            }
+        }
+    ...
 
-    package com.example.concerttickets
+    ```
 
-    import ...
+    >> **Notes on Composables Used:**
+    >> - **Row**: Layout composable that arranges its children in a horizontal sequence.
+    >>
+    >> - **Image**: A composable for displaying images.
+    >>
+    >> - **Spacer**: A composable that creates an empty space in the layout
+    >>
+    >> - **Text**: A composable for displaying text.
+    >>
+    >> - **Column**: A layout composable that arranges its children in a vertical sequence
 
-    class MainActivity : AppCompatActivity() {
+## BandSelection, Band and Band Data
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
+### Video @ 17.35 - 44.10
 
-            val group = findViewById<Spinner>(R.id.spinner)
-            val costBtn = findViewById<Button>(R.id.costButton)
-            val tickets = findViewById<EditText>(R.id.editTextNumber)
-            val result = findViewById<TextView>(R.id.resultsTextView)
-            val groupImage = findViewById<ImageView>(R.id.imageView)
-            val format: NumberFormat = NumberFormat.getCurrencyInstance()
+- Underneath the ConcertTicketApp Composable create a new Composable that will handle our Band Selection, called `BandSelection(selectedBand : Band)`
 
-            format.currency = Currency.getInstance("GBP")
-            format.maximumFractionDigits = 2
-            format.minimumFractionDigits = 2
+    ![](./figures/BandSelectionDefinition.png)
 
+- Now we need to create the `Band` `data class`, navigate to the top of the file and  between the `import`'s and the `MainActivity` definition and create a `data Class Band()` with the following fields:
+
+    ```kt
+    data class Band(val name: String, val imageRes: Int, val price: Float)
+    ```
+
+- Next we need to add the `object BandDataSource` underneath the `data class` we just defined, that will hold the static band data:
+
+    ```kt
+    object BandDataSource {
+
+        val bands = listOf(
+            Band("Select a Band", R.mipmap.concert,0.0f),
+            Band("Written By Wolves", R.mipmap.written_by_wolves,24.95f),
+            Band("Linkin Park", R.mipmap.linkin_park,63.95f),
+            Band("Man with a Mission", R.mipmap.man_with_a_mission,36.00f),
+            Band("Hollywood Undead", R.mipmap.hollywood_undead,125.00f)
+        )
+    }
+    ```
+
+
+    ![](./figures/bandClass.png)
+
+    >>**Notes on Kotlin Syntax:**
+    >> - **data class**: A `data class` in Kotlin is used to hold data. It automatically provides several useful methods, such as `equals()`, `hashCode()`, `toString()`, and `copy()`, based on the properties defined in the class.
+    >>
+    >> - **object**: In Kotlin, the `object` keyword is used to declare a **singleton**, which means there will be only one instance of `BandDataSource` in the app.
+    >>    - **Predefined Band List**: A list containing instances of the `Band` `data class`. Each instance has a name, an image resource ID, and a price.
+
+- Go back to `BandSelection` Composable and we no modify the arguments and the body:
+
+    ```kt
+    @Composable
+    fun BandSelection(selectedBand : Band, onBandSelected: (Band) -> Unit){
+        var expanded by remember { mutableStateOf(false)}
+
+        Row(
+        modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ){
+            Box(modifier = Modifier
+                .background(Color(0XFFE3E3E1), RoundedCornerShape(8.dp))
+                .padding(8.dp)
+                .fillMaxWidth()
+            ){
+                TextButton(
+                    onClick = { expanded = true },
+                    modifier = Modifier.fillMaxWidth())
+                {
+                    Row(modifier = Modifier.fillMaxWidth())
+                    {
+                    
+                    }
+                }
+            }
         }
     }
     ```
 
-### Declaring Variables
-**Step 1:**
--  In `MainActivity.java` on the line declaring the class, after the `{`, press Enter:
+    >> **Notes on Composables etc:**
+    >> - **remember**: `remember` is a composable function that allows a state to be remembered across recompositions
+    >>
+    >> - **mutableStateOf**: `mutableStateOf` is used to create a state variable that can be observed for changes.
+    >> 
+    >> - Putting both together, they are used to hold and manage state in Jetpack Compose.
+    >> 
+    >> - **Box**: A layout composable that places its children on top of each other (like a stack) with the first child on the bottom
+    >>
+    >> - **TextButton**: A button composable that displays text. It is used for simple text-based buttons without background or elevation
+    >>
+    >> - **onBandSelection**: A lambda function that takes a `Band` as a parameter and returns `Unit`. This function is called when a new band is selected, allowing the parent composable to update the selected band.
+    >>
+    >> - **Unit**: is a type that corresponds to `void` in other programming languages. It is used to indicate that a function does not return any meaningful value. When a function returns `Unit`, it means that the function's purpose is to perform some action rather than produce a result.
 
-    ```kt 
-    class MainActivity : AppCompatActivity() {
+    ![](./figures/BandSelectionDefinition2.png)
+
+-  Go back to the top of the `ConcertTicketApp` and add a new remember initialisation so that when a band is selected and the recompostion is invoked the band selected is stored presistently across recompositions.
+
+    ```kt
+
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun ConcertTicketApp(){
+        var selectedBand by remember { mutableStateOf(BandDataSource.bands[0]) }
+        ...
+    }
+    ```
+    >> **Notes:**
+    >> - **mutableStateOf(BandDataSource.bands[0])**: Initially, when the app loads the `selectedBand` stores the the first element in the `BandDataSource`, everytime a new selection is made the `selectedBand` will store the current selected index
+
+- Update the Surface too, so that we can preview the `BandSelection`
+
+    ```kt
+    ...
+    Surface(modifier = Modifier.padding(innerPadding)) {
+    Column(modifier = Modifier.fillMaxSize()) {
+        BandSelection(selectedBand = selectedBand) {selectedBand = it }
+    ...
+
+    ```
+
+    >> **Notes:**
+    >> - Lambda Function `{selectedBand = it}`: The lambda function takes a band (`it`) as a parameter and assigns it to the `selectedBand` variable. This updates the state with the newly selected band.
+
+    ![](./figures/BandSelectionDefinition3.png)
 
 
+-  Continue modifying the `BandSelection` composable `Row` so:
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+    ```kt
+    ...
+    Row(modifier = Modifier.fillMaxWidth())
+    {
+        Text(
+            text = selectedBand.name,
+            color = Color(0XFF1E2C41),
+            fontSize = 25.sp)
+        Icon(imageVector = ImageVector
+            .vectorResource(id = R.drawable.ic_baseline_arrow_drop_down),
+            contentDescription = "Dropdown Arrow",
+            tint = Color.Black)
+    }
     ...
     ```
 
-- Press the Tab key to indent the text, and then insert the following four lines of code to initialize the variables in this activity:
-  
+    - You need to create the `ic_baseline_arrow_drop_down` assest, copy the code in the collaspable field below and create a new image resource :
+
+        <details>
+        <summary> ic_baseline_arrow_drop_down xml code</summary>
+
+        ```xml
+        <vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:viewportHeight="24" android:viewportWidth="24" android:width="24dp">
+
+        <path android:fillColor="#000000" android:fillType="evenOdd" android:pathData="M12.707,14.707C12.317,15.098 11.683,15.098 11.293,14.707L6.293,9.707C5.902,9.317 5.902,8.683 6.293,8.293C6.683,7.902 7.317,7.902 7.707,8.293L12,12.586L16.293,8.293C16.683,7.902 17.317,7.902 17.707,8.293C18.098,8.683 18.098,9.317 17.707,9.707L12.707,14.707Z"/>
+
+        </vector>
+        ```
+
+        ![](./figures/dropDownArrow.gif)
+
+        </details>
+
+    ![](./figures/BandSelectionDefinition4.png)
+
+-  Following on we need to add the `DropDownMenuItem`'s so that the `DropDownMenu` can display each `Band` name from the dropdown list:
+
     ```kt
-    private val costPerTicket : Double = 79.99
-    private var numberOfTickets : Int = 0
-    private var totalCost : Double = 0.0
-    private var groupChoice: String? = null
+    ...
+    DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                modifier = Modifier
+                    .background(Color(0XFFE3E3E6))
+                    .width(400.dp)) {
+                BandDataSource.bands.forEach { band ->
+                    DropdownMenuItem(text = {
+                        Text(
+                            text = band.name,
+                            color = Color(0XFF1E2C41),
+                            fontSize = 25.sp)
+                    }, onClick = {
+                        onBandSelected(band)
+                        expanded = false})
+                }
+            }
+    ...
     ```
-    > **Note**
-    >> `private` means that only this class `MainActivity` can reference these global variables
 
-- The result is shown below:
+    >**Note:**
+    >> - This block dynamically creates a list of dropdown menu items for each band.#
+    >>    - Each item's text is the band's name, styled with a specific color and font size.
+    >>    - Clicking an item triggers a selection function and closes the dropdown menu.
+    >> 
+    >> - **BandDataSource.bands.forEach { band ->**: this line iterates through a list of bands provided by `BandDataSource.bands`, for each band in the list, the code inside the `forEach` block is executed.
+    >>
+    >> - **DropdownMenuItem**: Menus display a list of choices on a temporary surface. They appear when users interact with a button, action, or other control.
+
+    ![](./figures/selectBandDropdown_1.gif)
+
+
+## BandSelection, Band Image
+
+### Video @ 44.10 - 46.35
+
+- Go  back up to the `Surface` where we invoke our `BandSelection(...){...}`, and reproduce the new lines below, several comments and a new function call `BandImage(selectedBand)` below:
 
     ```kt
+    ...
 
-    package com.example.concerttickets;
-
-    import ...
-
-    class MainActivity : AppCompatActivity() {
-
-        private val costPerTicket : Double = 79.99
-        private var numberOfTickets : Int = 0
-        private var totalCost : Double = 0.0
-        private var groupChoice: String? = null
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
-
-            val group = findViewById<Spinner>(R.id.spinner)
-            val costBtn = findViewById<Button>(R.id.costButton)
-            val tickets = findViewById<EditText>(R.id.editTextNumberSigned)
-            val result = findViewById<TextView>(R.id.resultsTextView)
-            val groupImage = findViewById<ImageView>(R.id.imageView)
-            val format: NumberFormat = NumberFormat.getCurrencyInstance()
-
-            format.currency = Currency.getInstance("GBP")
-            format.maximumFractionDigits = 2
-            format.minimumFractionDigits = 2
+    innerPadding ->
+    Surface(modifier = Modifier.padding(innerPadding)) {
+        Column(modifier = Modifier.fillMaxSize()) {
+            BandSelection(selectedBand = selectedBand) {selectedBand = it }
+            //Text FOR TICKET COST
+            //Calcuate the cost
+            // Display the cost
+            // display Band image
+            BandImage(selectedBand)
         }
     }
+    ...
     ```
-### Coding the `onItemSelectedListener`
 
-**Step 1:**
-- To code the `Spinner` listener that awaits user interaction, after the line for the **format.minimumFractionDigits = 2**, type:
-  ```kt
-  group?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+- Navigate to the end of the file and create a new composable function called `BandImage()`, like below:
 
-  }
-  ```
-- You should be able to auto-complete by pressing the **Tab key**
-- Else you will need to add the following inside this new method:
-  ```kt
-  override fun onNothingSelected(parent: AdapterView<*>?) {
+    ```kt
+    @Composable
+    fun BandImage(selectedBand: Band) {
+        Image(
+            painter = painterResource(id = selectedBand.imageRes),
+            contentDescription = null,
+            contentScale = ContentScale.Fit,
+            alignment = Alignment.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp))
+    }
+    ```
+    ![](./figures/selectBandDropdown_2.png)
+
+## BandSelection, TicketCost
+
+### Video @ 46.35 - 51.25
+
+- Go  back up to the `Surface` where we invoke our `BandSelection(...){...}`, and reproduce the new lines below, several comments and a new function call `TicketInput(ticketCost)` below:
+
+    ```kt
+    innerPadding ->
+            Surface(modifier = Modifier.padding(innerPadding)) {
+                Column(modifier = Modifier.fillMaxSize()) {
+                    BandSelection(selectedBand = selectedBand) {selectedBand = it }
+                    //Text FOR TICKET COST
+                    TicketInput(ticketCount){ticketCount = it}
+                    //Calcuate the cost
+                    // Display the cost
+                    // display Band image
+                    BandImage(selectedBand)
+                }
             }
-
-  override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-  }
-  ```
-
-  > **Note**:
-  >> If auto completion has worked removed the lines `TODO("Not yet implemented")`
-
-- The result is shown below:
-
-  ```kt
-
-  package com.example.concerttickets;
-
-  import ...
-
-  class MainActivity : AppCompatActivity() {
-
-      private val costPerTicket : Double = 79.99
-      private var numberOfTickets : Int = 0
-      private var totalCost : Double = 0.0
-      private var groupChoice: String? = null
-
-      override fun onCreate(savedInstanceState: Bundle?) {
-          super.onCreate(savedInstanceState)
-          setContentView(R.layout.activity_main)
-
-          val group = findViewById<Spinner>(R.id.spinner)
-          val costBtn = findViewById<Button>(R.id.costButton)
-          val tickets = findViewById<EditText>(R.id.editTextNumberSigned)
-          val result = findViewById<TextView>(R.id.resultsTextView)
-          val groupImage = findViewById<ImageView>(R.id.imageView)
-          val format: NumberFormat = NumberFormat.getCurrencyInstance()
-
-          format.currency = Currency.getInstance("GBP")
-          format.maximumFractionDigits = 2
-          format.minimumFractionDigits = 2
-
-          group?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-              override fun onNothingSelected(parent: AdapterView<*>?) {
-              }
-
-              override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-              }
-      }
-  }
-  ```
-
-- Inside the `group?.onItemSelected(parent: AdapterView<*>?,...){}` reproduce the following:
-
-    ```kt
-    val groupSelected = group.selectedItem
-    if (groupSelected == "Written by Wolves")
-        groupImage.setImageResource(R.drawable.written_by_wolves)
-    else if (groupSelected == "Linkin Park")
-        groupImage.setImageResource(R.drawable.linkin_park)
-    else if (groupSelected == "Man with a Mission")
-        groupImage.setImageResource(R.drawable.man_with_a_mission)
-    else if (groupSelected == "Hollywood Undead")
-        groupImage.setImageResource(R.drawable.hollywood_undead)
-    else
-        groupImage.setImageResource(R.drawable.concert)
     ```
-- Here, whenever, an item is selected from the `Spinner` the selected item is stored in the `groupSelected` variable.
 
-- A comparison is made to which `String` matches too the `groupSelected` variable.
-
-- If a match is found let's say `"Written by Wolves"`, then the `ImageView` is updated to store the corresponding image via the `groupImage` variable/objet using the `setImageResource(...)` method. 
-
-- Of course, the default case `else` implicitly says that if `groupSelected` is `"Select a Band"` as all other options have been programmed, then display the default image `R.drawable.concert`
-
-<div align="center>
-
-![](./figures/imageChange.png)
-
-</div>
-
-### Coding the `costBtn.setOnClickListener`
-
-This code block will provide the functionality to calculate the cost of the number of tickets for the selected group.
-
-- So after the closing brace '}' of the `group?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {...}` write the following:
+-  Go back to the top of the `ConcertTicketApp` and add a new remember initialisation so that when you use the input field and it recomposes each time the userinput is presistent,called `ticketCount`.
 
     ```kt
-    costBtn.setOnClickListener{
-        groupChoice = group.getSelectedItem( ).toString( )
-        numberOfTickets = tickets.getText().toString().toIntOrNull() ?: 0
+
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun ConcertTicketApp(){
+        var selectedBand by remember { mutableStateOf(BandDataSource.bands[0]) }
+        var ticketCount by remember { mutableStateOf("") }  
+        ...
+    }
+    ```
+    >> **Notes:**
+    >> - ** mutableStateOf("")**: Initially, when the app loads the `TextInput` composable, the field is empty. Then when a user enters a character the value is stored across recompositions.
+
+- Navigate to the `BandImage(...)` function and above the declaration add the new function `TextInput()`:
+
+    ```kt
+    @Composable
+    fun TicketInput(ticketCount: String, onTicketCountChange: (String) -> Unit){
+        TextField(value = ticketCount, onValueChange = onTicketCountChange,
+            label = { Text(text = "Number of Tickets")},
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = Modifier.fillMaxWidth()
+        )
     }
     ```
 
-- The selected item from the `group`, (`Spinner`), is converted to a `String` and assigned to the `groupChoice` variable.
-- Next the `numberOfTickets` is assigned the value entered in to the `tickets` (`editText` widget) field. We first convert the method gets the text, `getTexts`, converts this to `String` like in the previous line. But is then converted through parsing,`.toIntOrNull() ?: 0` to an interger or `Int`, where if you have a value in the field that is castable you will get that value i.e:
-- `1` would give you `1` 
-- `a` would give you `null`, and therefore using the operator `?:` if `null` give me a `0` instead
+## BandSelection, CalculateCostButton
 
-Now we are ready to do something with these two variables:
-- First by ensuring that a band has not been selected
-- Then check to see if the number of tickets is equal to `0`.
+### Video @ 51.25 - 1:03:17
 
-If either of these conditions is `true` then we will get a Toast Notification or pop up telling the user to fix the issue. 
-
-- Repeat the below after the `numberOfTickets = Integer.parseInt(tickets.getText().toString())` line:
+- Navigate back to `Surface` and update the code to create some spacing between `Composable`'s, a new function call `CalcualteCostButton` and create a new `remember` type called `totalCost`:
 
     ```kt
-    if (groupChoice == "Select a Band") {
-        val toast = Toast.makeText(this, "Please select a band", Toast.LENGTH_LONG) 
-        toast.show()
-    }
-    else if (numberOfTickets == 0 ) {
-        val toast = Toast.makeText(this, "Enter value greater than 0", Toast.LENGTH_LONG) 
-        toast.show()
-    }
-    else {
-        totalCost = costPerTicket * numberOfTickets
-        groupChoice = group.getSelectedItem().toString()
-        result.setText("Cost for " + groupChoice + " is " + format.format(totalCost))
+    innerPadding ->
+        Surface(modifier = Modifier.padding(innerPadding)) {
+            Column(modifier = Modifier.fillMaxSize()) {
+                BandSelection(selectedBand = selectedBand) {selectedBand = it }
+                Spacer(modifier = Modifier.height(32.dp))
+                //Text FOR TICKET COST
+                TicketInput(ticketCount){ticketCount = it}
+                Spacer(modifier = Modifier.height(42.dp))
+                //Calcuate the cost
+                CalculateCostButton(selectedBand,ticketCount){totalCost = it}
+                Spacer(modifier = Modifier.height(42.dp))
+                // Display the cost
+                // display Band image
+                BandImage(selectedBand)
+            }
+        }
+    ```
+    - `totalCost` `remember` type:
+    
+        ```kt
+        
+        @OptIn(ExperimentalMaterial3Api::class)
+        @Composable
+        fun ConcertTicketApp(){
+            var selectedBand by remember { mutableStateOf(BandDataSource.bands[0]) }
+            var ticketCount by remember { mutableStateOf("") }
+            var totalCost by remember { mutableStateOf("") }
+            ...
+        ```
+
+        ![](./figures/mainLayout_1.png)
+
+- Navigate to the `TextInput()` `Composable`, and declare the newly referenced function `CalculateCostButton`:
+
+    ```kt
+    @Composable
+    fun CalculateCostButton(selectedBand: Band,ticketCount: String,onCalculate: (String) -> Unit){
+        val costPerTicket = selectedBand.price
+        val format: NumberFormat = NumberFormat.getCurrencyInstance().apply {
+            currency = Currency.getInstance("GBP")
+            maximumFractionDigits = 2
+            minimumFractionDigits = 2
+        }
+
     }
     ```
 
-Should look something like this when complete: 
+  >**Note:**
+  >> - **NumberFormat**: used to format numbers as currency, specifically in this instance GBP (British Pounds). It sets up a `NumberFormat` instance that ensures all currency values have exactly two decimal places.
 
-<div align="center">
+- Next in side the body of the function use the `Button` `Composable`: 
 
-![](./figures/toasts.png)
+    ```kt
+    Button(onClick = {
+        val count = ticketCount.toIntOrNull() ?: 0
+        if (selectedBand.name == "Select a Band"){
+            onCalculate("Please Select a Band")
+        }
+        else if (count <= 0){
+            onCalculate("Enter value greater than 0")
+        }
+        else{
+            val total = costPerTicket * count
+            onCalculate("Cost for ${selectedBand.name} is ${format.format(total)}")
+        }
 
-</div>
+    },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(65.dp),
+        colors = ButtonDefaults.buttonColors(contentColor = Color(0XFF1E2C41))
+        ) {
+        Text(text = "Find Cost", fontSize = 20.sp, color = Color.White)
+
+    }
+    ```
+
+    >**Notes:**
+    >> - **val count = ticketCount.toIntOrNull() ?: 0**: `ticketCount.toIntOrNull()` attempts to convert the `ticketCount` string to an integer.
+    >>    - If the conversion fails (i.e., `ticketCount` is not a valid integer), `toIntOrNull()` returns `null`, and the **Elvis** operator (`?:`) assigns `0` to `count`.
+    >>    - This ensures that count is always an integer, defaulting to `0` if the conversion fails
+    >>
+    >> - **onCalculate("Cost for ${selectedBand.name} is ${format.format(total)}")**:
+    >>    - "`Cost for ${selectedBand.name} is ${format.format(total)}`": This is a string with interpolated expressions inside it. In Kotlin, string interpolation allows you to include variables or expressions within a string by enclosing them in `${}`
+    >>
+    >> - **${selectedBand.name}**: This expression accesses the name property of the `selectedBand` object and inserts its value into the string.
+    >> - **${format.format(total)}**: This expression formats the total value as a currency string using the format object, which is an instance of `NumberFormat` configured for currency formatting.
+
+    ![](./figures/mainLayout_2.png)
+
+
+## BandSelection, CostDisplay
+
+### Video @ 1:03:17 - 1:05:38
+
+- - Navigate back to `Surface` and update the code to create some spacing between `Composable`'s, a new function call `CostDisplay`:
+
+    ```kt
+    innerPadding ->
+            Surface(modifier = Modifier.padding(innerPadding)) {
+                Column(modifier = Modifier.fillMaxSize()) {
+                    BandSelection(selectedBand = selectedBand) {selectedBand = it }
+                    Spacer(modifier = Modifier.height(32.dp))
+                    //Text FOR TICKET COST
+                    TicketInput(ticketCount){ticketCount = it}
+                    Spacer(modifier = Modifier.height(42.dp))
+                    //Calcuate the cost
+                    CalculateCostButton(selectedBand,ticketCount){totalCost = it}
+                    Spacer(modifier = Modifier.height(42.dp))
+                    // Display the cost
+                    CostDisplay(totalCost)
+                    Spacer(modifier = Modifier.height(42.dp))
+                    // display Band image
+                    BandImage(selectedBand)
+                }
+            }
+    ```
+
+- Navigate to the `BandImage()` `Composable`, and declare the newly referenced function `CostDisplay`:
+
+    ```kt
+    @Composable
+    fun CostDisplay(totalCost : String){
+    Text(
+        text = totalCost,
+        fontSize = 20.sp,
+        color = Color.Black,
+        modifier =  Modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center)
+
+    }
+    ```
+
+    ![](./figures/mainLayout_3.png)
+
+
+-----
+
+
+<table>
+<tr>
+<td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
+
+If you run the app you should now be able to reproduce the following: 
+
+</td>
+<td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
+
+<img src="./figures/demo.gif" alt="Demo of App" >
+</td>
+</tr>
+</table>
+
+-----------
 
 <details>
+
 <summary>The whole program should look like this: </summary>
 
 ```kt
-package com.example.concerttickets
+package com.uog.concerttickets
 
-import androidx.appcompat.app.AppCompatActivity
+import android.icu.text.NumberFormat
+import android.icu.util.Currency
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
-import java.text.NumberFormat
-import java.util.Currency
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.collection.mutableObjectIntMapOf
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.currentComposer
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.uog.concerttickets.ui.theme.ConcertTicketsTheme
 
-class MainActivity : AppCompatActivity() {
+data class Band(val name: String, val imageRes: Int, val price: Float)
 
-    private val costPerTicket : Double = 79.99
-    private var numberOfTickets : Int = 0
-    private var totalCost : Double = 0.0
-    private var groupChoice: String? = null
+object BandDataSource {
 
+    val bands = listOf(
+        Band("Select a Band", R.mipmap.concert,0.0f),
+        Band("Written By Wolves", R.mipmap.written_by_wolves,24.95f),
+        Band("Linkin Park", R.mipmap.linkin_park,63.95f),
+        Band("Man with a Mission", R.mipmap.man_with_a_mission,36.00f),
+        Band("Hollywood Undead", R.mipmap.hollywood_undead,125.00f)
+    )
+}
+
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val group = findViewById<Spinner>(R.id.spinner)
-        val costBtn = findViewById<Button>(R.id.costButton)
-        val tickets = findViewById<EditText>(R.id.editTextNumberSigned)
-        val result = findViewById<TextView>(R.id.resultsTextView)
-        val groupImage = findViewById<ImageView>(R.id.imageView)
-        val format: NumberFormat = NumberFormat.getCurrencyInstance()
-
-        format.currency = Currency.getInstance("GBP")
-        format.maximumFractionDigits = 2
-        format.minimumFractionDigits = 2
-
-        group?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
+        enableEdgeToEdge()
+        setContent {
+            ConcertTicketsTheme {
+               ConcertTicketApp()
             }
+        }
+    }
+}
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val groupSelected = group.selectedItem
-                if (groupSelected == "Written by Wolves")
-                    groupImage.setImageResource(R.drawable.written_by_wolves)
-                else if (groupSelected == "Linkin Park")
-                    groupImage.setImageResource(R.drawable.linkin_park)
-                else if (groupSelected == "Man with a Mission")
-                    groupImage.setImageResource(R.drawable.man_with_a_mission)
-                else if (groupSelected == "Hollywood Undead")
-                    groupImage.setImageResource(R.drawable.hollywood_undead)
-                else
-                    groupImage.setImageResource(R.drawable.concert)
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ConcertTicketApp(){
+    var selectedBand by remember { mutableStateOf(BandDataSource.bands[0]) }
+    var ticketCount by remember { mutableStateOf("") }
+    var totalCost by remember { mutableStateOf("") }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp),
+                title = {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ){
+                        Image(painter = painterResource(id = R.mipmap.concert_ticket_logo),
+                            contentDescription = "App Logo",
+                            modifier = Modifier.size(50.dp))
+
+                        Spacer(modifier = Modifier
+                            .align(alignment = Alignment.CenterVertically)
+                            .background(Color.White))
+
+                        Text(text = stringResource(id = R.string.app_name), fontWeight = FontWeight.Bold,
+                            color = Color(0XFF1E2C41))
+                    }
+                 }
+            )
+        }
+    ) { innerPadding ->
+        Surface(modifier = Modifier.padding(innerPadding)) {
+            Column(modifier = Modifier.fillMaxSize()) {
+                BandSelection(selectedBand = selectedBand) {selectedBand = it }
+                Spacer(modifier = Modifier.height(32.dp))
+                //Text FOR TICKET COST
+                TicketInput(ticketCount){ticketCount = it}
+                Spacer(modifier = Modifier.height(42.dp))
+                //Calcuate the cost
+                CalculateCostButton(selectedBand,ticketCount){totalCost = it}
+                Spacer(modifier = Modifier.height(42.dp))
+                // Display the cost
+                CostDisplay(totalCost)
+                Spacer(modifier = Modifier.height(42.dp))
+                // display Band image
+                BandImage(selectedBand)
             }
         }
 
-        costBtn.setOnClickListener{
-            groupChoice = group.getSelectedItem( ).toString( )
-            numberOfTickets = tickets.getText().toString().toIntOrNull() ?: 0
+    }
+}
 
-            if (groupChoice == "Select a Band") {
-                val toast = Toast.makeText(this, "Please select a band", Toast.LENGTH_LONG) 
-                toast.show()
+@Composable
+fun BandSelection(selectedBand : Band, onBandSelected: (Band) -> Unit){
+    var expanded by remember { mutableStateOf(false)}
+
+    Row(
+       modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center
+    ){
+        Box(modifier = Modifier
+            .background(Color(0XFFE3E3E1), RoundedCornerShape(8.dp))
+            .padding(8.dp)
+            .fillMaxWidth()
+        ){
+            TextButton(
+                onClick = { expanded = true },
+                modifier = Modifier.fillMaxWidth())
+            {
+                Row(modifier = Modifier.fillMaxWidth())
+                {
+                    Text(
+                        text = selectedBand.name,
+                        color = Color(0XFF1E2C41),
+                        fontSize = 25.sp)
+                    Icon(imageVector = ImageVector
+                        .vectorResource(id = R.drawable.ic_baseline_arrow_drop_down),
+                        contentDescription = "Dropdown Arrow",
+                        tint = Color.Black)
+                }
             }
-            else if (numberOfTickets == 0 ) {
-                val toast = Toast.makeText(this, "Enter value greater than 0", Toast.LENGTH_LONG)
-                toast.show()
-            }
-            else {
-                totalCost = costPerTicket * numberOfTickets
-                groupChoice = group.getSelectedItem().toString()
-                result.setText("Cost for " + groupChoice + " is " + format.format(totalCost))
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                modifier = Modifier
+                    .background(Color(0XFFE3E3E6))
+                    .width(400.dp)) {
+                BandDataSource.bands.forEach { band ->
+                    DropdownMenuItem(text = {
+                        Text(
+                            text = band.name,
+                            color = Color(0XFF1E2C41),
+                            fontSize = 25.sp)
+                    }, onClick = {
+                        onBandSelected(band)
+                        expanded = false})
+                }
             }
         }
+    }
+}
+
+@Composable
+fun TicketInput(ticketCount: String, onTicketCountChange: (String) -> Unit){
+    TextField(value = ticketCount, onValueChange = onTicketCountChange,
+        label = { Text(text = "Number of Tickets")},
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        modifier = Modifier.fillMaxWidth()
+    )
+}
+
+@Composable
+fun CalculateCostButton(selectedBand: Band,ticketCount: String,onCalculate: (String) -> Unit){
+    val costPerTicket = selectedBand.price
+    val format: NumberFormat = NumberFormat.getCurrencyInstance().apply {
+        currency = Currency.getInstance("GBP")
+        maximumFractionDigits = 2
+        minimumFractionDigits = 2
+    }
+
+    Button(onClick = {
+        val count = ticketCount.toIntOrNull() ?: 0
+        if (selectedBand.name == "Select a Band"){
+            onCalculate("Please Select a Band")
+        }
+        else if (count <= 0){
+            onCalculate("Enter value greater than 0")
+        }
+        else{
+            val total = costPerTicket * count
+            onCalculate("Cost for ${selectedBand.name} is ${format.format(total)}")
+        }
+
+    },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(65.dp),
+        colors = ButtonDefaults.buttonColors(contentColor = Color(0XFF1E2C41))
+        ) {
+        Text(text = "Find Cost", fontSize = 20.sp, color = Color.White)
+
+    }
+}
+
+@Composable
+fun CostDisplay(totalCost : String){
+Text(
+    text = totalCost,
+    fontSize = 20.sp,
+    color = Color.Black,
+    modifier =  Modifier.fillMaxWidth(),
+    textAlign = TextAlign.Center)
+
+}
+
+@Composable
+fun BandImage(selectedBand: Band) {
+    Image(
+        painter = painterResource(id = selectedBand.imageRes),
+        contentDescription = null,
+        contentScale = ContentScale.Fit,
+        alignment = Alignment.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(300.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    ConcertTicketsTheme {
+        ConcertTicketApp()
     }
 }
 ```
 </details>
 
->**MORE!**
->> If you are finished with this guided part of the lab try to do the following, based off of what you know now:
->> - Add more bands of your choice with more images
->> - Have a range of prices for different bands
->>    - Consider using more `if ,else if and else` statements 
->>    - add different currencies, remember there are 230 pf them.
->>    - additional `ticketCost<SomeBandName>` variables for different bands, remeber to make them a `Double`
->> -  Add another `TextView` that shows the cost of one ticket for any band selected, and when the cost botton is pressed the total appears in the `result` like normal
-
-------------------------------------------------
-------------------------------------------------
+-------------
 
 ## Continue Here...
 

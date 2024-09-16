@@ -1,316 +1,566 @@
-# Lab 3: Android User Interface
+# Healthy Recipe App Walkthrough
 
-Do the example from the lecture following the guidelines below.
+## Introduction
 
-## Using the Android User Interface
+Welcome to this walkthrough guide for building a healthy recipes app using Kotlin and Jetpack Compose in Android Studio.
 
-Download images for the lab from here [pictures_lab_3.zip](./pictures_lab_3.zip)
-### Step 1
+Download and extract all pictures from the [Pictures_Lab_3.zip](./Pictures_Lab_3.zip).
 
-• Start a new project.  Open Android Studio.  Select File/New/New Project... from the main menu. Make sure the language selected is `Kotlin`.
+---
 
-• On the window that appears just click the Next button, making sure the Empty Views Activity is chosen (it is by default!).
+## Setting Up the Project
 
-![](./figures/choosingLayoutKt.png)
+### Video @ 0:02 - 1:45
 
-### Step 2:
-• After clicking the next button, the Create New Project dialog appears.
+1. **Create a New Project:**
+    - Select "Empty Activity" and click "Next".
+    - Name your application "Healthy Recipes".
+    - Ensure the package name is set to `com.uog.healthyrecipes`.
+    - Set the minimum API level to 24.
+    - Click "Finish" to create the project.
 
-• In the Name: text box, type in Healthy Recipes.
 
-• Choose the location where you want to save your projects or just use the default suggested location if you are happy with it.
+    ![](./figures/choosingLayoutKt.png)
 
-• Make sure the language chosen is Kotlin and NOT Java!
+2. **Project Structure:**
+    - Expand the project structure and locate the `values` and `mipmap` directories under `res`.
 
-• If necessary, select API16: Android 4.1 (Jelly Bean) for the Minimum SDK as shown below:
-
-![](./figures/newProjectKt.png)
-
-### Step 3:
-• Click the Finish button. 
-
-• The Android project is now created and the `activity_main.xml` file and `MainActivity.kt` file are visible as tabs. 
-
-### Step 4:
-
-• Click on the `activity_main.xml` tab
-
-• Click the Hello world! TextView widget (displayed by default) in the emulator and press the Delete key. 
-
-## Using the String Table in the Transitions Editor
-
-### Step 1:
-
-• In the Android project view, expand the values folder within the res folder.
-
-• Double-click the strings.xml file to display its default string resources
-
-![](./figures/stringsXMLKt.png)
-
-### Step 2:
-
-• Click the Open editor link.
-
-• Click the Add Key (+) button in the Translations Editor.
-
-• In the Key text box, type `txtTitle` to name the string for the TextView control.
-
-• In the Default Value text box, type `Bruschetta Recipe` to define the text to display.
-
-![](./figures/titleTextKt.png)
-
-### Step 3:
-
-• Click the OK button.
-
-• Click the Add key (+) button in the Translations Editor.
-
-• In the Key text box, type btnRecipe to name the string for the Button control.
-
-• In the Default Value text box, type View Recipe to define the text.
-
-• Click the OK button.
-
-• Click the Add key (+) button in the Translations Editor.
-
-• In the Key text box, type description to name the string for the Button control.
-
-• In the Default Value text box, type Recipe Image to define the text.
- 
-### Step 4:
-
-• Click the OK button to add the string for the Button control to the String table, and then click the Add Key (plus sign) button in the Translations Editor.
-
-• In the Key text box, type txtIngredients to name the string for a TextView control to display on the second app screen.
-
-• In the Default Value text box, type Ingredients to define the text, and then click the OK button to add the string to the String table.
-
-• Using the techniques taught in this step, add the strings in the table below to the String table in the Translations Editor:
-
-|Key|Default Value|
-|---|----|
-|hello| Hello Seb!|
-|btnRecipe|View Recipe|
-|description|Recipe Image|
-|txtItem1| 4 plum tomatoes|
-|txtItem2| 6 basil leaves|
-|txtItem3| 3 garlic cloves, chopped|
-|txtItem4| 3 TB olive oil |
-|txtDirections| Directions|
-|txtIngredients| Ingredients|
-|txtMix| Combine the ingredients and add salt to taste. Top French bread slices with mixture.|
-
-![](./figures/completedStringsXML.png)
-
-## Android Text Properties
-
-### Step 1:
-
-• In the Common category in the Palette, select the widget named `TextView` and drag it near the top of the emulator.
-
-• To center the `TextView` control, drag it to the center of the emulator until a dashed vertical line identifying the window’s center is displayed.
-
-### Step 2:
-
-• Click on the TextView control on the emulator.
-
-• Click on the vertical bar next to the text Property of the `textView` in the Attributes window.
-
-![](./figures/projectLayout.png)
-
-• Type into the Text field that has the value Text View
-
-• Replace with the following `@string/txtTitle`, which references the string.xml file in the resource folder and accesses the string named txtTitle.
-
-<div style="positon: absolute">
-
-![](./figures/pickAResource.png)
-
-</div>
-
-**Step 2:**
-
-• Click on the textView and then take the anchor points on the top bottom left and right, looks like a filled 'O', and drag the lines to the edge of the white area, you are aiming for the below image. 
-
-![](./figures/txtViewLayoutView.png)
-
-• In the Attributes pane, choose the magnifiying glass and type in text. Find the textSize property from the list of text properties that appears. Like the image above.
-
-• Click to the right of the textSize property (highlighted in blue), type `40sp`, and then press Enter.
-
-• Select the Hello World TextView and delete it.
-
-• The result is shown below:
-
-![](./figures/txtViewFontSize.png)
-
-## Adding a File to the Resources Folder
-
-**Step 1:**
-
-• From the downloaded pictures copy the bruschetta.png 
-
-• To paste the image file into the drawable folder, right-click the drawable folder in the Android project view.
-
-• Click the "Show In Resources Manager"
-
-• Click the plus `+` in the top left-hand corner of the new window
-
-• Select the picture you want using the file explorer that popped up.
-
-![](./figures/addPictureToResoruces.gif)
-
-## Adding an ImageView Control
-
-**Step 1:**
-
-• Click ImageView in the Common category in the Palette on the Design tab and drag it to the center of the emulator until a dashed vertical line appears, indicating the control is centered.  
-
-• A Resources pane will appear, choose the bruschetta image.
-
-• Press the Ok button.
-
-![](./figures/selectingImage.png)
-
-**Step 2:**
-
-• In the Attributes pane find the contentDescription property.
-
-• Click the vertical bar next to it. 
-
-• In the Pick a Resource Pane choose description and then press Enter.
-
-![](./figures/imageDescription.png)
-
-## Adding a Button Control
-
-**Step 1:**
-
-• From the Common category in the Palette, drag the Button control to the emulator below the ImageView control until a dashed vertical line appears, indicating the control is centered.  Release the mouse button.
-
-• Click the button and in the Attributes pane, click on the vertical line next to the text attribute.
-
-• In the Pick a Resource Pane which appears, btnRecipe and then press Enter.
-
-• In the Attributes pane, choose the and type in text. Find the textSize property from the list of text properties that appears.
-
-• Click to the right of the textSize property, type 36sp, and then press Enter.
-
-• Now press the Infer Constraints button as shown below To automatically create constraints.  If constraints are not present, all the controls will appear at the top of the emulator. 
-
-Now run the emulator to see what the layout will look like.  To do that click the Run ‘app’ green arrow below the main menu or press Shift +F10.  
-
-![](./figures/launchApp.png)
-
-The result is shown below:
-
-![](./figures/launchedApp.png)
-
-## Adding a New Class File
-
-**Step 1:**
-
-• Close the activity_main.xml tab.
-
-• In the Android project view, expand the Java folder and the first package to view the MainActivity Java class.
-
-• To create a second class, press and hold or right-click the first folder, click New and the shortcut menu, and then click Activity,
-
-**Step 2:**
-
-• Click Empty  Views Activity to create a second Activity class.
-
-• In the Activity Name text box, type Recipe to create a second class.
-
-![](./figures/createRecipeActivity.gif)
-
-**Step 3:**
-
-• Click the Finish button to finish creating the Recipe class and XML layout for the second screen.
-
-• Delete the default Hello world! Text object from the activity_recipe.xml emulator.
-
-• Using the techniques described earlier, create the second user interface, `activity_recipe.xml`, as shown below with multiple TextView controls.
-
-![](./figures/overviewOfLayout.png)
-
-• Ingredients and Direction headings have a `textSize` of 30sp.
-
-• Ingredients and Direction content have a `textSize` of 25sp.
-
-• Do not forget after you have finished developing the user interface, to Infer Constraints using the button on the top of the emulator screen.   Otherwise, all the text will appear at the top of the emulator, and it will overlap!
-
-• The result is shown below:
-
-![](./figures/updatedLaunch.png)
-
-## Coding a Button Event Handler
-
-The `MainActivity.kt` class was created automatically by Android Studio.
-
-**Step 1:**
-
-• Click the `MainActivity.kt` tab to open its code window.
-
-• To initialize and reference the Button control, type: ` val button Button = findViewbyId(R.id.button)` as seen under the `setContentView(R.layout.activity_main)` in the code block below.
-
-• To initialize and reference the Button control, type: ` val button Button = findViewbyId(R.id.button)` as seen under the `setContentView(R.layout.activity_main)` in the code snippet below.
-
-
-```kt
-1 package com.example.healthyrecipes
-2
-3 import android.content.Intent
-4 import androidx.appcompat.app.AppCompatActivity
-5 import android.os.Bundle
-6 import android.widget.Button
-7
-8 class MainActivity : AppCompatActivity() {
-9    override fun onCreate(savedInstanceState: Bundle?) {
-10      super.onCreate(savedInstanceState)
-11      setContentView(R.layout.activity_main)
-12
-13      val button : Button = findViewById(R.id.button)
-14
-```
-
-**Step 2:**
+    - Open the preview window to see the default layout.
     
-• To code the button listener that awaits user interaction, type `button.setOn` to display an auto-complete listing with all the possible entries that are valid at that point in the code. 
+       ![](./figures/projectStructure.png)
 
-• Double-click the first `setOnClickListener{}` to select it from the auto-complete listing.
+---
 
-• Inside the method add the functionality to launch the Recipe activity by initalising an `Intent`. An `Intent` is like a promise. Add the following line `val intent = Intent(this, Recipe::class.java)`
+## Creating the Data Model
 
-• Lastly, add the function `startActivity(Intent)`, this will load the Recipe activity once the button has been clicked.
+### Video @ 2:33 - 10:11
+
+1. **Create a Data Package:**
+    - Right-click on the `healthyrecipes` package.
+    - Select "New" > "Package" and name it `data`.
+
+2. **Define the Recipe Data Class:**
+    - Right-click on the `data` package, select "New" > "Kotlin Class/File", and name it `Recipe`.
+    - Modify the class as follows:
+
+    ```kotlin
+    data class Recipe(
+        val id: Int,
+        val title: String,
+        val description: String,
+        val ingredients: List<String>,
+        val imageResId: Int
+    )
+    ```
+
+    - **Data Classes**: In Kotlin, data classes are used to hold data. They automatically provide getter and setter methods, `equals()`, `hashCode()`, and `toString()` methods. 
+
+3. **Create the Recipe Data Object:**
+    - In the `data` package, create a new Kotlin file named `RecipeData`.
+    - Define the object as follows:
+
+    ```kotlin
+    import com.uog.healthyrecipes.R
+    import com.uog.healthyrecipes.data.Recipe
+
+    object RecipeData {
+        val recipes = listOf(
+            Recipe(
+                id = 1,
+                title = "Spaghetti Carbonara",
+                description = "A classic Italian pasta dish made with eggs, cheese, pancetta...",
+                ingredients = listOf("item 1", "item 2", "item 3..."),
+                imageResId = R.drawable.spaghetti_carbonara
+            )
+            // Add more recipes here
+        )
+    }
+    ```
+
+    - **Objects**: In Kotlin, objects are used to create singleton instances. They can hold state and behavior, and there is only one instance of the object created in the entire application.
+    
+    >**Note:**
+    >> - Remember to import those images from the Downloaded Picture file <p></p>
+    >> ![](./figures/importImages.gif)
+     
+---
+
+## Setting Up the Main Activity
+
+### Video @ 10:11 - 19:44
+
+1. **Modify the Main Activity Layout:**
+    - Open `MainActivity.kt`.
+    - Replace the content of the `setContent` block with a `Scaffold` layout and a `topBar`.
+
+        ```kotlin
+        package com.uog.healthyrecipes
+
+        ...
+
+        class MainActivity : ComponentActivity() {
+            @OptIn(ExperimentalMaterial3Api::class)
+            override fun onCreate(savedInstanceState: Bundle?) {
+                super.onCreate(savedInstanceState)
+                enableEdgeToEdge()
+                setContent {
+                    HealthyRecipesTheme {
+                        val navController = rememberNavController()
+                        Scaffold(
+                            topBar = {
+                                TopAppBar(
+                                    title = {
+                                        Text(
+                                            text = stringResource(id = R.string.app_name)
+                                        )
+                                    }
+                                )
+                            }) { paddingValues ->
+                            RecipeNavHost(navController = navController, paddingValues)
+                        }
+                    }
+                }
+            }
+        }
+        ```
+
+    - **Scaffold**: In Jetpack Compose, `Scaffold` is a component that provides a structure for implementing the basic material design layout. It contains slots for the top bar, bottom bar, floating action button, and a content area.
+
+    - **NavController**: The `NavController` is the central API for navigating between composables in Jetpack Compose. It handles the navigation stack and the navigation destinations.
+
+    - **rememberNavController**: This function provides an instance of `NavController` that is remembered across recompositions, ensuring that the navigation state is retained.
+
+    - **enableEdgeToEdge**: This function enables edge-to-edge display on Android devices, allowing your app to use the entire screen space.
+
+        >**Note:**
+        >> -  Import all libraries as needed, <kbd>Alt</kbd>+<kbd>Enter</kbd> <p></p>
+        >>   ![](./figures/importLibraries.gif)
+
+    - Add a preview function:
+
+        ```kotlin
+        @Preview(showBackground = true)
+        @Composable
+        fun RecipeNavHostPreview() {
+            HealthyRecipesTheme {
+                val navController = rememberNavController()
+                RecipeNavHost(navController = navController, paddingValues = PaddingValues())
+            }
+        }
+        ```
+
+        >**Note**
+        >> - The renderer will still have some errors due to the missing 
+
+---
+
+## Creating the Navigation Host
+
+### Video @ 19:44 - 26:02
+
+1. **Define the Navigation Host:**
+    - Create a new Kotlin file named `RecipeNavHost.kt`.
+    - Define the composable function as follows:
+
+        ```kotlin
+        @Composable
+        fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
+        {
+            NavHost(
+                navController = navController,
+                startDestination ="recipe_list",
+                Modifier.padding(paddingValues)) {
+                // NEED TO BUILD RecipeListScreen
+ 
+            }
+        }
+        ```
+
+    - **NavHost()**: `NavHost` is a container composable that hosts the navigation graph. It connects the NavController with the navigation graph, allowing navigation between `composable` destinations.
+
+    - **composable()**: This function is used to define a navigation destination in the `NavHost`. Each composable represents a screen in the app.
+
+    - **Modifier.padding()**: This `modifier` adds padding around the `composable`. In this case, it applies the padding values passed from the `Scaffold`.
+
+
+---
+
+## Building the Recipe List Screen
+
+### Video @ 26:02 - 26:42
+
+1. **Create the Recipe List Screen:**
+    - Create a new Kotlin file named `RecipeListScreen.kt`.
+    - Define the composable function as follows:
+
+    ```kotlin
+    package com.uog.healthyrecipes
+    
+    ...
+
+    @Composable
+    fun RecipeListScreen(navController: NavHostController) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Choose a Recipe",
+                style = MaterialTheme.typography.headlineSmall
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            RecipeData.recipes.forEach { recipe ->
+                RecipeItem(recipe = recipe, onClick = {
+                    navController.navigate("recipe/${recipe.id}")
+                })
+                Spacer(modifier = Modifier.height(10.dp))
+            }
+        }
+    }
+    ```
+
+    - **Column**: `Column` is a layout composable that places its children in a vertical sequence. It's similar to a vertical LinearLayout in traditional Android development.
+
+    - **Modifier**: Modifiers in Jetpack Compose are used to decorate or augment composables. They can be used to adjust the layout, add padding, set click actions, and more.
+
+    - **Text**: The `Text` composable is used to display text on the screen. It can be styled using various properties.
+
+    - **Spacer**: `Spacer` is a composable used to create space between other composables. It can be given specific height or width to create padding.
+
+    - **MaterialTheme**: `MaterialTheme` provides theming capabilities based on Material Design principles. It includes typography, shapes, and colors that can be applied to composables.
+
+    - Add a preview function:
+
+        ```kotlin
+        @Preview(showBackground = true)
+        @Composable
+        fun PreviewRecipeListScreen(){
+            HealthyRecipesTheme {
+                val navController = rememberNavController()
+                RecipeListScreen(navController = navController)
+            }
+        }
+        ```
+
+        ![](./figures/recipeListScreen_start.png)
+
+---
+
+
+
+## Building the Recipe Item Component
+
+### Video @ 26:42 - 35:40
+
+1. **Create the Recipe Item Component:**
+    - Conitinuing in the `RecipeListScreen.kt` file, add the following composable function:
+
+    ```kotlin
+    @Composable
+    fun RecipeItem(recipe: Recipe, onClick: () -> Unit) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .clickable(onClick = onClick),
+            shape = RoundedCornerShape(8.dp)
+        ) {
+            Row(modifier = Modifier.padding(8.dp)) {
+                Image(
+                    painter = painterResource(id = recipe.imageResId),
+                    contentDescription = recipe.title,
+                    modifier = Modifier.size(70.dp).clip(RoundedCornerShape(8.dp)),
+                    contentScale = ContentScale.Crop
+                )
+                Spacer(modifier = Modifier.width(16.dp))
+                Column {
+                    Text(text = recipe.title, style = MaterialTheme.typography.headlineSmall)
+                    Text(text = recipe.description, style = MaterialTheme.typography.bodySmall)
+                }
+            }
+        }
+    }
+    ```
+
+    - **Card**: `Card` is a composable that displays its children with a customizable background, elevation, and rounded corners. It is used to create a consistent look for elements like cards.
+
+    - **Row**: `Row` is a layout composable that places its children in a horizontal sequence. It's similar to a horizontal LinearLayout in traditional Android development.
+
+    - **Image**: The `Image` composable is used to display images. It can be loaded from resources or URLs and can be styled with modifiers.
+
+    - **painterResource**: This function loads an image resource into an `Image` composable.
+
+        ![](./figures/recipeListScreen_mid.png)
+---
+
+
+## Updating the Recipe Nav Host 1
+
+### Video @ 35:40 - 38.00
+
+1. Go back to the MainActivity.kt and navigate the function `RecipeNavHost(...)`, we are going add a `composable()` for our `recipeListScreen()` to for MainActivity.kt
+
+2. We are going to add this line in the body of the `NavHost(){...}`: `composable("recipe_list){ RecipeListScreen(navController = navController)}`
 
 ```kt
-15      button.setOnClickListener {
-16         val intent = Intent(this, Recipe::class.java)
-17         // start your next activity
-18         startActivity(intent)
-19      }
-20   }
-21 }
+@Composable
+fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
+{
+    NavHost(
+        navController = navController,
+        startDestination = stringResource(id = R.string.recipe_list),
+        Modifier.padding(paddingValues)) {
+        composable("recipe_list"){ RecipeListScreen(navController = navController)}
+        // TO DO show each recipe onclick.
+    }
+}
 ```
 
-- Run the app and test it.
+3. The build preview should update and you'll see the same preview as in `RecipeListScreen.kt`
 
 
-**Step 3:**
+     ![](./figures/mainActivity_mid.png)
 
-- If this works as intended, can you add a button to the recipe page to take you back to the main activity? 
+---
 
----------------------------------
----------------------------------
+## Building the Recipe Screen
 
-## Continue here
+### Video @ 38.00 - 47.05
 
-For the exercises below, follow the steps above.
+1. **Create the Recipe Screen:**
+    - Create a new Kotlin file named `RecipeScreen.kt`.
+    - Define the composable function as follows:
 
-Download images for Task 1 and 2 from here -> [Pictures Lab 3.2](./Pictures_Lab_3_2.zip)
+    ```kotlin
+    package com.uog.healthyrecipes
 
-## 1. Youth Hostel App
+    ...
+
+    @Composable
+    fun RecipeScreen(recipe: Recipe) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
+            Image(
+                painter = painterResource(id = recipe.imageResId),
+                contentDescription = recipe.title,
+                modifier = Modifier
+                    .height(200.dp)
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = recipe.title, style = MaterialTheme.typography.headlineSmall)
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = recipe.description, style = MaterialTheme.typography.bodySmall)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "Ingredients", style = MaterialTheme.typography.headlineSmall)
+            Spacer(modifier = Modifier.height(8.dp))
+            recipe.ingredients.forEach { ingredient ->
+                Text(text = "• $ingredient", style = MaterialTheme.typography.bodySmall)
+            }
+        }
+    }
+    ```
+
+    - **Image**: The Image composable is used to display images. It can be loaded from resources or URLs and can be styled with modifiers.
+
+    - **Spacer**: Spacer is a composable used to create space between other composables. It can be given specific height or width to create padding.
+
+    - **Column**: Column is a layout composable that places its children in a vertical sequence. It's similar to a vertical LinearLayout in traditional Android development.
+
+    - **Modifier**: Modifiers in Jetpack Compose are used to decorate or augment composables. They can be used to adjust the layout, add padding, set click actions, and more.
+
+    - **MaterialTheme**: MaterialTheme provides theming capabilities based on Material Design principles. It includes typography, shapes, and colors that can be applied to composables.
+
+2. Remember we should add a preview to see what we are doing:
+
+    ```kt
+    @Preview(showBackground = true)
+    @Composable
+    fun PreviewRecipeScreen(){
+        HealthyRecipesTheme {
+            RecipeScreen(recipe = RecipeData.recipes[0])
+        }
+    }
+    ```
+    ![](./figures/recipeScreen.png)
+---
+
+## Updating the Recipe Nav Host 2
+
+### Video @ 47.05 - 49.45
+
+1. Go back to the MainActivity.kt and navigate the function `RecipeNavHost(...)`, we are going add a `composable()` for our `recipeListScreen()` to for MainActivity.kt
+
+2. We are going to add this line in the body of the `NavHost(){...}`: `composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}`
+
+```kt
+@Composable
+fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
+{
+    NavHost(
+        navController = navController,
+        startDestination = stringResource(id = R.string.recipe_list),
+        Modifier.padding(paddingValues)) {
+        composable("recipe_list"){ RecipeListScreen(navController = navController)}
+        composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}
+    }
+}
+```
+
+3. If you run the app in the emulator, you will see the following: 
+
+    ```
+    ... Navigation destination that mathces request NavDeepLinkRequest{ uri=android-app://androidx.navigation/recipe1} cannot be found...
+    ```
+     ![](./figures/route_error.gif)
+
+4. This is because we did not reference the correct format of a route, go back to RecipeListScreen.kt, and you will see the block of code:
+    
+    ```kt
+    RecipeData.recipes.forEach { recipe ->
+    RecipeItem(recipe = recipe, onClick = {
+        navController.navigate(
+            "recipe${recipe.id}"
+        )
+    })
+    ```
+
+    - the line `"recipe${recipe.id}"` is a different format that one we have provide `composable("Recipe_1",...)`, update the line:
+
+    ```kt
+    RecipeData.recipes.forEach { recipe ->
+    RecipeItem(recipe = recipe, onClick = {
+        navController.navigate(
+            "recipe_${recipe.id}"
+        )
+    })
+    ```
+
+    ![](./figures//route_error_fixed.gif)
+
+
+## Filling out Recipe Data
+
+### Video @ 49.50 to 53.28
+
+
+1. Navigate back to the RecipeData.kt file and lets add some more recipes and fill out the carbonara too.
+
+    ```kt
+    Recipe(
+        1,
+        "Spaghetti Carbonara",
+        "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper."+
+                " It’s creamy and delicious!",
+        listOf(
+            "200g spaghetti",
+            "100g pancetta",
+            "2 large eggs",
+            "50g pecorino cheese",
+            "50g parmesan",
+            "2 cloves of garlic",
+            "Black pepper",
+            "Salt"),
+        R.mipmap.spaghetti_carbonara ),
+
+    Recipe(
+        2,
+        "Chicken Tikka Masala",
+        "A popular Indian dish with grilled chunks of chicken enveloped in a creamy,"+
+                " spicy tomato sauce.",
+        listOf("4 chicken breasts",
+            "1 cup yogurt",
+            "2 tbsp lemon juice",
+            "2 tsp ground cumin",
+            "2 tsp ground coriander",
+            "1 tsp turmeric",
+            "1 tsp paprika",
+            "1 tsp chili powder",
+            "2 tbsp vegetable oil",
+            "1 onion",
+            "2 cloves of garlic",
+            "1 tsp ginger",
+            "1 can of tomatoes",
+            "1 cup cream",
+            "Fresh coriander"),
+        R.mipmap.chicken_tikka_masala),
+
+    Recipe(
+        3,
+        "Avocado Toast",
+        "A simple and healthy breakfast option with mashed avocado spread on toasted"+
+                " bread, often topped with various ingredients.",
+        listOf(
+            "2 slices of bread",
+            "1 ripe avocado",
+            "Salt", "Pepper",
+            "Lemon juice",
+            "Chili flakes (optional)",
+            "Cherry tomatoes (optional)",
+            "Feta cheese (optional)"),
+        R.mipmap.avocado_toast
+    )
+    ```
+
+    <div style="display:flex">
+    <div style="margin: 5px;">
+    
+    ![](./figures/recipeDataFull.png)
+
+    </div>
+    <div width="50%">
+    
+    ![](./figures/recipeScreen_End.png)
+
+    </div>
+    </div>
+
+2. Go back to the MainActivity.kt and navigate the function `RecipeNavHost(...)`, we are going add a `composable()` for our `recipeListScreen()` to for MainActivity.kt
+
+3. We are going to add this line in the body of the `NavHost(){...}`: `composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}`
+
+```kt
+@Composable
+fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
+{
+    NavHost(
+        navController = navController,
+        startDestination = stringResource(id = R.string.recipe_list),
+        Modifier.padding(paddingValues)) {
+        composable("recipe_list"){ RecipeListScreen(navController = navController)}
+        composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}
+        composable("recipe_2"){ RecipeScreen(RecipeData.recipes[1])}
+        composable("recipe_3"){ RecipeScreen(RecipeData.recipes[2])}
+    }
+}
+```
+
+4. Build and run to see the "finished" application...
+
+    ![](./figures/finished_application.gif)
+
+## Conclusion
+
+Congratulations! You have successfully built a Healthy Recipe App using Kotlin and Jetpack Compose. You can now extend this app by adding more recipes, improving the UI, and using external data sources and much more.
+
+----------
+
+
+## Extra's
+
+You can use the lab above as a guide on building the following apps:
+
+>**Note**:
+>> - You can find royalty-freee images here: [https://www.freeimages.com/](https://www.freeimages.com)
+
+### 1. Youth Hostel App
 
 |Application Title|Youth Hostel App|
 |---|---|
@@ -318,15 +568,9 @@ Download images for Task 1 and 2 from here -> [Pictures Lab 3.2](./Pictures_Lab_
 |Algorithm 1:|The opening screen displays the name of a hostel, an image (provided in the Pictures folder at top of workbook), and a Button control. Research a real name of a hostel and address and cost range to display in your own customized app (do not use the one in the figure below!)
 |Algorithm 2:|When the user selects a hostel, an address and a cost range are displayed in a second screen.|
 
-<div align=center>
-
-![h:500](figures/hostelAPp.png)
-
-</div>
-
 ---------
 
-## 2. Segway Rental App
+### 2. Segway Rental App
 
 |Application Title|Segway Rental App|
 |---|---|
@@ -335,17 +579,12 @@ Download images for Task 1 and 2 from here -> [Pictures Lab 3.2](./Pictures_Lab_
 |Algorithm 2:|When the user chooses to rent a Segway, an image (provided in the Pictures folder at top of workbook) displaying the Segway and tour price is shown.|
 
 
-<div align=center>
-
-![](./figures/segway.png)
-</div>
-
 -----
 
-## 3. Business Card App
+### 3. Business Card App
 
 |Application Title|Business Card App|
 |---|---|
 |Purpose|This app provides your business card information with your own picture. Create two screens for the business card app.  You use the app to select the name of a business contact, and then display detailed business card information|
-|Algorithm 1:|The opening screen displays the name of the contact, your picture converted to a .png file, and a Button control. Create your own layout. You can find royalty-freee images here: [https://www.freeimages.com/](https://www.freeimages.com)|
+|Algorithm 1:|The opening screen displays the name of the contact, your picture converted to a .png file, and a Button control. Create your own layout.|
 |Algorithm 2:|The second screen displays your business card information.  Create your own layout.|

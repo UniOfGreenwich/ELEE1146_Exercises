@@ -6,7 +6,8 @@
 
 > **WARNING:**
 >
->> - All submitted work will be electronically scanned for plagiarism and the use of Artificial Intelligence (AI) software. The work that you submit must be your own; any material from other sources must be correctly cited and referenced. If unreferenced material is detected a student will be reported for plagiarism. AI should not be used in the production of this work. Use of AI which has not been acknowledged is an academic misconduct offence and again will lead to a report of plagiarism. University regulations require that this fact is clearly stated in the [README].
+>> - All submitted work will be electronically scanned for plagiarism and the use of Artificial Intelligence (AI) software. The work that you submit must be your own; any material from other sources must be correctly cited and referenced. If unreferenced material is detected a student will be reported for plagiarism. AI should not be used in the production of this work. Use of AI which has not been acknowledged is an academic misconduct offence and again will lead to a report of plagiarism.
+>>
 >> - Assessor reserve the right to viva you to explain the code and it's implementation.
 
 ## Learning Outcomes
@@ -22,10 +23,9 @@ On completion of the assignment, the student will develop:
 ## Brief
 
 1. **Expansion of Lab Application:**
-   - Select a lab exercise provided during the module, **__excluding the first three__**.
-   - Expand the existing functionality by adding at least three significant new features.
-   - Redesign the application to improve user experience (UX) and user interface (UI).
 
+   The last UK goverment tried to bring back imperial units over metric (EU rules). However that government suffered a humilating defeat as 100k traders rejected the change. If this change had happened the UK would have to convert to imperial units, with that in mind, you are to expand on the [Mass Converter App](https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises/Kotlin/Lab_5/Lab_5.html) to convert between the imperial units overleaf.
+     
 2. **Implementation Requirements:**
    - Utilise OOP principles to define and manage data structures and classes.
    - Ensure the application follows clean code practices, including proper naming conventions, modularity, and efficient use of resources.
@@ -35,11 +35,10 @@ On completion of the assignment, the student will develop:
    - Use KDoc to document classes, methods, and important code segments.
    - Provide a comprehensive README file explaining the application's features, design choices, and usage instructions.
 
--------
-
 *Continued overleaf*
 
-\newpage
+![](./Visual-Units-of-length-in-Imperial-System.jpg)
+
 
 ## Coursework Submission Link
 
