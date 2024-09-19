@@ -1,0 +1,667 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Permissions  - Mobile Applications for Engineers and Technologists</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Introduction/Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_1/Kotlin_Intro.html"><strong aria-hidden="true">1.</strong> Introduction to Kotlin</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_2/Android_Intro.html"><strong aria-hidden="true">2.</strong> Introduction to Android Studio</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_3/Lab_3.html"><strong aria-hidden="true">3.</strong> Healthy Recipe App</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_4/Lab_4.html"><strong aria-hidden="true">4.</strong> Concert Ticket App</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_5/Lab_5.html"><strong aria-hidden="true">5.</strong> Mass Converter App</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_6/Lab_6.html"><strong aria-hidden="true">6.</strong> Lists, Arrays and Web Browsers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Kotlin/Lab_6/Lab_6-1.html"><strong aria-hidden="true">6.1.</strong> Arrays in Kotlin</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_6/Lab_6-2.html"><strong aria-hidden="true">6.2.</strong> City Guide App</a></li></ol></li><li class="chapter-item "><a href="../../Kotlin/Lab_7/Lab_7.html"><strong aria-hidden="true">7.</strong> Exception Handling</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_8/Lab_8.html"><strong aria-hidden="true">8.</strong> Kotlin Object Orientated Programming</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_9/Lab_9.html"><strong aria-hidden="true">9.</strong> OOP with Data Storage ?</a></li><li class="chapter-item expanded "><a href="../../Kotlin/Lab_10/Lab_10.html" class="active"><strong aria-hidden="true">10.</strong> Permissions </a></li><li class="chapter-item "><a href="../../Kotlin/Lab_11/Lab_11.html"><strong aria-hidden="true">11.</strong> Sensors</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Kotlin/Lab_11/Lab_11-1.html"><strong aria-hidden="true">11.1.</strong> All of the Sensors</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_11/Lab_11-2.html"><strong aria-hidden="true">11.2.</strong> Using the Sensors</a></li></ol></li><li class="chapter-item "><a href="../../Kotlin/Lab_12/Lab_12.html"><strong aria-hidden="true">12.</strong> Splash Screens </a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">Assignments</li><li class="chapter-item "><div><strong aria-hidden="true">13.</strong> Assignment 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">14.</strong> Assignment 2</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers and Technologists</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1149-COMP1836_Exercises/edit/main/content/Kotlin/Lab_10/Lab_10.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lab-10-permissions"><a class="header" href="#lab-10-permissions">Lab 10: Permissions</a></h1>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>Recommended reading for permissions, useful for assignment as well.
+<a href="https://developer.android.com/guide/topics/permissions/overview">https://developer.android.com/guide/topics/permissions/overview</a></p>
+</blockquote>
+</blockquote>
+<h2 id="what-are-android-runtime-permissions"><a class="header" href="#what-are-android-runtime-permissions">What are Android Runtime Permissions?</a></h2>
+<p>With the introduction of Android 6.0 (SDK 23), users are prompted for some specific permissions at runtime when they become necessary to use.</p>
+<p>Will the older apps run on Android Marshmallow?</p>
+<hr />
+<details>
+<summary>Answer</summary>
+<ul>
+<li>
+<p>If the targetSdkVersion is 22 or less.</p>
+</li>
+<li>
+<p>Thus android runtime permissions support backward compatibility.</p>
+</li>
+<li>
+<p>Now this doesn’t mean that you can work with old model of permissions by setting the sdk version to 22.</p>
+</li>
+</ul>
+</details>
+<hr />
+<p>A user using Marshmallow can revoke the dangerous permissions (we’ll discuss the dangerous and normal permissions later) from the Settings-&gt;Apps-&gt;Permissions.</p>
+<p>In the case we try to call some function that requires a permission which user has not granted yet, the function will suddenly throw an Exception(<code>java.lang.SecurityException</code>) that will lead to the application crashing.</p>
+<p>Hence you need to implement this new android permissions model in the below application.</p>
+<h2 id="dangerous-and-normal-android-permissions"><a class="header" href="#dangerous-and-normal-android-permissions">Dangerous and Normal android permissions</a></h2>
+<p>Android defines some permissions as dangerous and some as normal.</p>
+<p>The common thing in both the types is that they need to be defined in the Manifest file.</p>
+<p>From Android 6.0 only dangerous permissions are checked at runtime, normal permissions are not. An example of a normal permission is <code>android.permission.INTERNET</code>.</p>
+<p>Dangerous permissions are grouped into categories that make it easier for the user to understand what they are allowing the application to do. If the user accepts one permission in a group/category they accept the entire group. An example of dangerous permission is <code>android.permission.FINE_LOCATION</code> and <code>android.permission.COARSE_LOCATION</code>.</p>
+<p>Enabling anyone of the location permissions enables all.</p>
+<h2 id="requesting-android-runtime-permissions"><a class="header" href="#requesting-android-runtime-permissions">Requesting Android Runtime Permissions</a></h2>
+<p>The method <code>requestPermissions(permissions: Array&lt;String&gt;,  requestCode : IntArray);</code> is a public method that is used to request dangerous permissions. You can ask for multiple dangerous permissions by passing a string array of permissions.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>Android Permissions belonging to two different groups would prompt the user with an individual dialog for each of them. If they belong to the same group, then only one dialog prompt would be displayed.
+The results of the requests will be passed into the method <code>onRequestPermissionResult</code>.</p>
+</blockquote>
+</blockquote>
+<p><strong>Example :</strong> Let’s say we want to access the camera and location in your app. Both are dangerous permissions. You'll display a prompt requesting access to these permissions when the application is launched. So you'd add the permissions into a string array and call the <code>requestPermissions</code> as shown below:</p>
+<pre><code class="language-kt">val perms = arrayOf("android.permission.FINE_LOCATION", "android.permission.CAMERA")
+val permsRequestCode : Int =  200
+requestPermissions(perms, permsRequestCode)
+
+override fun onRequestPermissionsResult(permsRequestCode:Int, permissions : Array&lt;String&gt;, grantResults: IntArray){
+    super.onRequestPermissionsResult(permsRequestCode, permissions, grantResults)
+    when(permsRequestCode){
+        200 -&gt; {
+            val locationAccepted : Boolean = grantResults [0] == PackageManager.PERMISSION_GRANTED;
+            val cameraAccepted : Boolean = grantResults [1] == PackageManager.PERMISSION_GRANTED;
+
+            Toast.makeText(this@MainActivity, "Location:$locationAccepted\nCamera:$cameraAccepted", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+</code></pre>
+<p>Now you don’t want the user to keep accepting permissions that they've already accepted. Even if the permission has been previously granted it is necessary to check again to be sure that the user did not later revoke that permission. For this the following method needs to be called on every permission.</p>
+<pre><code class="language-kt">checkSelfPermission(perm: String);
+</code></pre>
+<p>It returns an integer value of <code>PERMISSION_GRANTED</code> or <code>PERMISSION_DENIED</code>.</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>If a user declines a permission that is critical in the app, then <code>shouldShowRequestPermissionRationale(permission:String);</code> is used to describe the user the need for the permission.</p>
+</blockquote>
+</blockquote>
+<hr />
+<p>Now you are going to develop an application which checks if the permission is already present. If not, then it’s requested at runtime.</p>
+<h2 id="build"><a class="header" href="#build">Build</a></h2>
+<ol>
+<li>Create application with at least API 28 selected.</li>
+<li>Name it <code>mobileapps_permissions</code></li>
+<li>Open the activity_main.xml and reproduce the following code:</li>
+</ol>
+<h3 id="xml-files"><a class="header" href="#xml-files">XML FILES</a></h3>
+<pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"&gt;
+
+    &lt;Button
+        android:id="@+id/check_permission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/check"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571"
+        tools:layout_editor_absoluteX="0dp" /&gt;
+
+    &lt;Button
+        android:id="@+id/request_permission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/check_permission"
+        android:text="@string/request"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="32dp" /&gt;
+
+    &lt;androidx.appcompat.widget.Toolbar
+        android:id="@+id/newToolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005" /&gt;
+</code></pre>
+<p>Now open the <code>strings.xml</code> file and add entries for <code>@string/request</code> as "Request Permission"  and <code>@string/check</code> as "Check Permission".</p>
+<div align=center>
+<img src="figures/step1.png" style="object-fit:scale-down; height: 500px">
+</div>
+<hr />
+<h2 id="mainfest-file"><a class="header" href="#mainfest-file">Mainfest File</a></h2>
+<ol>
+<li>
+<p>Open <code>AndroidMainfest.xml</code></p>
+</li>
+<li>
+<p>Add the following tags underneat the 3rd line:</p>
+</li>
+</ol>
+<pre><code class="language-xml">    &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt;
+</code></pre>
+<h3 id="mainactivitykt"><a class="header" href="#mainactivitykt"><code>MainActivity.kt</code></a></h3>
+<ol>
+<li>
+<p>Open <code>MainActivity.kt</code></p>
+</li>
+<li>
+<p>Implement the necessary imports at the top of the file.</p>
+<pre><code class="language-kt">package com.example.mobileapps_permissions;
+
+import android.Manifest.permission
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.pm.PackageManager
+import android.os.Build
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
+</code></pre>
+</li>
+<li>
+<p>See a few new lines within this code block you may not have seen before..</p>
+<ul>
+<li><code>import android.content.pm.PackageManager</code>
+<ul>
+<li>Class for retrieving various kinds of information related to the application packages that are currently installed on the device.</li>
+<li>recommended to read the documentation here -&gt; <a href="https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/content/pm/PackageManager.html">https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/content/pm/PackageManager.html</a></li>
+</ul>
+</li>
+<li><code>import android.support.design.widget.Snackbar</code>
+<ul>
+<li>Instead of using a <code>Toast</code> you are going to use <code>Snackbar</code> widget.</li>
+</ul>
+</li>
+<li><code>import static android.Manifest.permission.*</code>
+<ul>
+<li>So you can use the permissions stored in the <code>AndroidManifest.xml</code> file you will populate later.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Modify the class declaration to <em>extend</em> <code>AppCompatActivity</code> and <em>implement</em> <code>View.OnClickListener</code>.</p>
+</li>
+<li>
+<p>Define variables for the UI components and override onCreate.</p>
+<pre><code class="language-kt">...
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+    private var view: View? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        
+        // Initialise the toolbar
+        val toolbar: Toolbar = findViewById(R.id.newToolbar)
+        setSupportActionBar(toolbar)
+
+        // Initialise buttons and set click listeners
+        val check_permission = findViewById&lt;View&gt;(R.id.check_permission) as Button
+        val request_permission = findViewById&lt;View&gt;(R.id.request_permission) as Button
+        check_permission.setOnClickListener(this)
+        request_permission.setOnClickListener(this)
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><code>class MainActivity : AppCompatActivity(), View.OnClickListener {</code></p>
+<p>This line declares the <code>MainActivity</code> class, which is the main activity of the Android application. It extends <code>AppCompatActivity</code>, indicating that it is an activity in Android, and implements the <code>View.OnClickListener</code> interface, suggesting that it will handle click events.</p>
+</li>
+<li>
+<p><code>private var view: View? = null</code>
+This line declares a private variable <code>view</code> of type <code>View?</code> and initialises it as <code>null</code>. This variable will be used to store the current view (button) clicked.</p>
+</li>
+<li>
+<p>The onCreate method is called when the activity is created. Here's what it does:</p>
+<ul>
+<li><code>super.onCreate(savedInstanceState): This calls the superclass's </code>onCreate` method.</li>
+<li>s<code>etContentView(R.layout.activity_main)</code>: This sets the content view to the XML layout defined in <code>activity_main.xml</code>.</li>
+<li><code>val toolbar: Toolbar = findViewById(R.id.newToolbar)</code>: This finds and assigns the Toolbar widget with the ID newToolbar from the layout.</li>
+<li><code>setSupportActionBar(toolbar)</code>: This sets the toolbar as the app's action bar.</li>
+<li><code>val check_permission = findViewById&lt;View&gt;(R.id.check_permission) as Button</code>: This finds and assigns the "Check Permission" button.</li>
+<li><code>val request_permission = findViewById&lt;View&gt;(R.id.request_permission) as Button</code>: This finds and assigns the "Request Permission" button.</li>
+<li><code>check_permission.setOnClickListener(this)</code> and <code>request_permission.setOnClickListener(this)</code>: These lines set click listeners for both buttons, using the current activity (<code>this</code>) as the click listener.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="implement-permission-checking-and-requesting"><a class="header" href="#implement-permission-checking-and-requesting">Implement Permission Checking and Requesting</a></h3>
+<ol>
+<li>
+<p>Define the <code>checkPermission</code> and <code>requestPermission</code> methods to check and request permissions.</p>
+</li>
+<li>
+<p>In <code>checkPermission</code>, use <code>ContextCompat.checkSelfPermission</code> to check if both <code>ACCESS_FINE_LOCATION</code> and <code>CAMERA</code> permissions are granted.</p>
+</li>
+</ol>
+<p>Repoduce outside of the <code>onCreate</code> method:</p>
+<pre><code class="language-kt">private fun checkPermission(): Boolean {
+    // Check if both permissions are granted
+    val result = ContextCompat.checkSelfPermission(applicationContext, permission.ACCESS_FINE_LOCATION)
+    val result1 = ContextCompat.checkSelfPermission(applicationContext, permission.CAMERA)
+    return result == PackageManager.PERMISSION_GRANTED &amp;&amp; result1 == PackageManager.PERMISSION_GRANTED
+}
+
+private fun requestPermission() {
+    // Request permissions for ACCESS_FINE_LOCATION and CAMERA
+    ActivityCompat.requestPermissions(
+        this,
+        arrayOf(permission.ACCESS_FINE_LOCATION, permission.CAMERA),
+        PERMISSION_REQUEST_CODE
+    )
+}
+</code></pre>
+<ol start="3">
+<li>
+<p>The <code>checkPermission</code> function checks if both A<code>CCESS_FINE_LOCATION</code> and <code>CAMERA</code> permissions are granted using <code>ContextCompat.checkSelfPermission</code>. It returns <code>true</code> if both permissions are granted and <code>false</code> otherwise.</p>
+</li>
+<li>
+<p>The <code>requestPermission</code> function is used to request the <code>ACCESS_FINE_LOCATION</code> and <code>CAMERA</code> permissions using <code>ActivityCompat.requestPermissions</code>. The request code is <code>PERMISSION_REQUEST_CODE</code>.</p>
+</li>
+<li>
+<p><code>checkPermission(): Boolean</code> means tha the methods should return a Boolean from the methods scope, in this case whether the permission has been granted... <code>true</code> or <code>false</code></p>
+</li>
+</ol>
+<hr />
+<h3 id="handle-permission-request-results"><a class="header" href="#handle-permission-request-results">Handle Permission Request Results</a></h3>
+<ol>
+<li>
+<p><em>Override</em> <code>onRequestPermissionsResult</code> to handle the results of the permission request.</p>
+</li>
+<li>
+<p>Check if the requested permissions have been granted or denied.</p>
+</li>
+<li>
+<p>Show appropriate messages to the user using <code>Snackbar</code>.</p>
+</li>
+<li>
+<p>Optionally, you can show an <code>AlertDialog</code> to explain the need for permissions if they were denied.</p>
+</li>
+</ol>
+<p>Reproduce <code>requestPermissions</code> method:</p>
+<pre><code class="language-kt">override fun onRequestPermissionsResult(requestCode: Int, permissions: Array&lt;String&gt;, grantResults: IntArray) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+    // Check if the request code matches the one used for requesting permissions
+    when (requestCode) {
+        PERMISSION_REQUEST_CODE -&gt; if (grantResults.size &gt; 0) {
+            // The request resulted in some responses
+
+            // Check if the location and camera permissions were granted
+            val locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED
+            val cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED
+
+            if (locationAccepted &amp;&amp; cameraAccepted) {
+                // Both permissions were granted, show a Snackbar message
+                Snackbar.make(view!!, "Permission Granted, Now you can access location data and camera.", Snackbar.LENGTH_LONG).show()
+            } else {
+                // Permissions were denied, show a Snackbar message
+                Snackbar.make(view!!, "Permission Denied, You cannot access location data and camera.", Snackbar.LENGTH_LONG).show()
+
+                if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+                    if (shouldShowRequestPermissionRationale(permission.ACCESS_FINE_LOCATION)) {
+                        // If the user denied permissions, and the system allows showing rationale, show an AlertDialog
+                        showMessageOKCancel("You need to allow access to both the permissions") { dialog, which -&gt;
+                            if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+                                // If the user agrees in the AlertDialog, re-request the permissions
+                                requestPermissions(
+                                    arrayOf(permission.ACCESS_FINE_LOCATION, permission.CAMERA),
+                                    PERMISSION_REQUEST_CODE
+                                )
+                            }
+                        }
+                        return
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<ol start="5">
+<li>
+<p>The <code>onRequestPermissionsResult</code> method is an overridden function that handles the results of permission requests.</p>
+</li>
+<li>
+<p>It checks if the requestCode matches the <code>PERMISSION_REQUEST_CODE</code> to ensure that it's handling the response to the correct permission request.</p>
+</li>
+<li>
+<p>If <code>grantResults.size &gt; 0</code>, it means that the user responded to the permission request.</p>
+</li>
+<li>
+<p>It then checks if both the location and camera permissions were granted by examining the <code>grantResults</code> array. If both are granted, it displays a <code>Snackbar</code> message indicating that permission is granted and that the app can now access location data and the camera.</p>
+</li>
+<li>
+<p>If the permissions are denied, it displays a <code>Snackbar</code> message indicating that the user cannot access location data and the camera.</p>
+</li>
+<li>
+<p>It also checks if the device's Android version is at least <strong>Marshmallow (API level 23)</strong> using <code>Build.VERSION.SDK_INT</code>. If it is, it further checks if the system allows showing a rationale for the permission request using <code>shouldShowRequestPermissionRationale</code>. If the rationale can be shown, it displays an <code>AlertDialog</code> explaining why both permissions are needed.</p>
+</li>
+<li>
+<p>If the user accepts the explanation in the <code>AlertDialog</code>, it re-requests the permissions using <code>requestPermissions</code>. The <code>requestPermissions</code> method is called with an array of <code>permissions</code> (<code>ACCESS_FINE_LOCATION</code> and <code>CAMERA</code>) and the <code>PERMISSION_REQUEST_CODE</code>.</p>
+</li>
+<li>
+<p>The <code>return</code> statement is used to exit the method after showing the rationale <code>AlertDialog</code> to avoid executing the subsequent code.</p>
+</li>
+</ol>
+<hr />
+<h3 id="onclick-method"><a class="header" href="#onclick-method"><code>onClick()</code> method</a></h3>
+<ol>
+<li>After the <code>onCreate()</code> and before <code>checkPermissions())</code> methods make some empty space so that the onClick method can be created.</li>
+</ol>
+<pre><code class="language-kt">override fun onClick(v: View) {
+    view = v
+    val id = v.id
+    when (id) {
+        R.id.check_permission -&gt; if (checkPermission()) {
+            Snackbar.make(view!!, "Permission already granted.", Snackbar.LENGTH_LONG).show()
+        } else {
+            Snackbar.make(view!!, "Please request permission.", Snackbar.LENGTH_LONG).show()
+        }
+        R.id.request_permission -&gt; if (!checkPermission()) {
+            requestPermission()
+        } else {
+            Snackbar.make(view!!, "Permission already granted.", Snackbar.LENGTH_LONG).show()
+        }
+    }
+}
+</code></pre>
+<ol start="2">
+<li>The <code>onClick</code> method is called when one of the buttons is clicked. Here's what it does:
+<ul>
+<li><code>view = v:</code> Stores the clicked <strong>view</strong> in the <code>view</code> variable.</li>
+<li><code>val id = v.id</code>: Gets the ID of the clicked <strong>view</strong>.</li>
+<li>The code uses a when statement to determine which button was clicked based on its ID (<code>R.id.check_permission</code> or <code>R.id.request_permission</code>).</li>
+<li>If the "Check Permission" button is clicked, it calls the <code>checkPermission</code> function. If permission is granted, it shows a <code>Snackbar</code> saying permission is already granted; otherwise, it requests permission.</li>
+<li>If the "Request Permission" button is clicked, it checks if permissions are already granted. If not, it calls the <code>requestPermission</code> function; otherwise, it shows a <code>Snackbar</code> indicating that permission is already granted.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="show-an-alertdialog-for-permissions"><a class="header" href="#show-an-alertdialog-for-permissions">Show an <code>AlertDialog</code> for Permissions</a></h3>
+<p>After the closing <code>}</code> of the <code>onRequestPermissionsResult(...){</code> function</p>
+<p>Implement the <code>showMessageOKCancel</code> method to show an <code>AlertDialog</code> with an OK button to explain the need for permissions.</p>
+<pre><code class="language-kt">private fun showMessageOKCancel(message: String, okListener: DialogInterface.OnClickListener) {
+    AlertDialog.Builder(this@MainActivity)
+        .setMessage(message)
+        .setPositiveButton("OK", okListener)
+        .setNegativeButton("Cancel", null)
+        .create()
+        .show()
+}
+</code></pre>
+<hr />
+<h3 id="companion-object-with"><a class="header" href="#companion-object-with">Companion Object with</a></h3>
+<p><code>companion object</code> is used to define constants, properties, and functions associated with a class. It's a way to create shared members that are accessible without creating an instance of the class. Members of the companion object can be accessed using the class name itself, without the need to create an instance of the class.</p>
+<pre><code class="language-kotlin">companion object {
+    private const val PERMISSION_REQUEST_CODE = 200
+}
+</code></pre>
+<hr />
+<h2 id="running-the-app"><a class="header" href="#running-the-app">Running the App</a></h2>
+<ol>
+<li>
+<p>Build and run your app on an Android emulator or a physical Android device.</p>
+</li>
+<li>
+<p>Click the "Check Permission" button to see if permissions are already granted.</p>
+</li>
+<li>
+<p>Click the "Request Permission" button to request permissions if they are not granted.</p>
+</li>
+<li>
+<p>Verify that the Snackbar and AlertDialog messages are displayed appropriately based on permission status.</p>
+</li>
+</ol>
+<div align=center>
+<img src="figures/Granted.gif">
+<img src="figures/SemiGranted.gif">
+</div>
+<h2 id="afterwards"><a class="header" href="#afterwards">Afterwards</a></h2>
+<p>Experiment with other permissions</p>
+<blockquote>
+<ul>
+<li><a href="https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f">https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f</a> and see what they mean.</li>
+<li><a href="https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml#L833">https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml#L833</a></li>
+</ul>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../Kotlin/Lab_9/Lab_9.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../Kotlin/Lab_11/Lab_11.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../Kotlin/Lab_9/Lab_9.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../Kotlin/Lab_11/Lab_11.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

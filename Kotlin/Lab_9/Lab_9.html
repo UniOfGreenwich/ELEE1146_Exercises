@@ -1,0 +1,1062 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>OOP with Data Storage ? - Mobile Applications for Engineers and Technologists</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Introduction/Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_1/Kotlin_Intro.html"><strong aria-hidden="true">1.</strong> Introduction to Kotlin</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_2/Android_Intro.html"><strong aria-hidden="true">2.</strong> Introduction to Android Studio</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_3/Lab_3.html"><strong aria-hidden="true">3.</strong> Healthy Recipe App</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_4/Lab_4.html"><strong aria-hidden="true">4.</strong> Concert Ticket App</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_5/Lab_5.html"><strong aria-hidden="true">5.</strong> Mass Converter App</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_6/Lab_6.html"><strong aria-hidden="true">6.</strong> Lists, Arrays and Web Browsers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Kotlin/Lab_6/Lab_6-1.html"><strong aria-hidden="true">6.1.</strong> Arrays in Kotlin</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_6/Lab_6-2.html"><strong aria-hidden="true">6.2.</strong> City Guide App</a></li></ol></li><li class="chapter-item "><a href="../../Kotlin/Lab_7/Lab_7.html"><strong aria-hidden="true">7.</strong> Exception Handling</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_8/Lab_8.html"><strong aria-hidden="true">8.</strong> Kotlin Object Orientated Programming</a></li><li class="chapter-item expanded "><a href="../../Kotlin/Lab_9/Lab_9.html" class="active"><strong aria-hidden="true">9.</strong> OOP with Data Storage ?</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_10/Lab_10.html"><strong aria-hidden="true">10.</strong> Permissions </a></li><li class="chapter-item "><a href="../../Kotlin/Lab_11/Lab_11.html"><strong aria-hidden="true">11.</strong> Sensors</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../Kotlin/Lab_11/Lab_11-1.html"><strong aria-hidden="true">11.1.</strong> All of the Sensors</a></li><li class="chapter-item "><a href="../../Kotlin/Lab_11/Lab_11-2.html"><strong aria-hidden="true">11.2.</strong> Using the Sensors</a></li></ol></li><li class="chapter-item "><a href="../../Kotlin/Lab_12/Lab_12.html"><strong aria-hidden="true">12.</strong> Splash Screens </a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">Assignments</li><li class="chapter-item "><div><strong aria-hidden="true">13.</strong> Assignment 1</div></li><li class="chapter-item "><div><strong aria-hidden="true">14.</strong> Assignment 2</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers and Technologists</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1149-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1149-COMP1836_Exercises/edit/main/content/Kotlin/Lab_9/Lab_9.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lab-9-oop-with-data-storage"><a class="header" href="#lab-9-oop-with-data-storage">Lab 9: OOP with Data Storage</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>In this lab you are going to utilise what you have learnt about Object Oriented Program, methods, error handling, XML, JSON and CSV.</p>
+<p>Remember that when you see <code>...</code> in a code block it means code before or after is not shown for readability.</p>
+<p>In this lab you will write 414 lines of code.</p>
+<h2 id="step-1-initialise-the-project"><a class="header" href="#step-1-initialise-the-project">Step 1: Initialise the Project</a></h2>
+<ol>
+<li>Launch a new IntelliJ project and give it an appropriate name</li>
+<li>Select <code>Kotlin</code> as the <strong>Language</strong></li>
+<li>Select <code>Gradle</code> as the <strong>Build system</strong></li>
+</ol>
+<div align=center>
+<p><img src="./figures/step1.png" alt="" /></p>
+</div>
+<ol start="4">
+<li>
+<p>Make these files in the directory <code>src/main/kotlin</code>:</p>
+<ul>
+<li><code>BankCustomer</code> Class (Kotlin Class/File)</li>
+<li><code>DataUtils.kt</code> File (Kotlin Class/File)</li>
+<li><code>MyMutuableExtensions</code> Object (Kotlin Class/File)</li>
+</ul>
+</li>
+<li>
+<p>Make these files in <code>src</code>:</p>
+<ul>
+<li><code>customers.csv</code> File (File)</li>
+<li><code>customers.json</code> File (File)</li>
+<li><code>customers.xml</code> File (File)</li>
+</ul>
+ <div align=center>
+<p><img src="./figures/step2.png" alt="" /></p>
+ </div>
+</li>
+</ol>
+<h2 id="step-2-bankcustomer-class-part-1"><a class="header" href="#step-2-bankcustomer-class-part-1">Step 2: <code>BankCustomer</code> Class Part 1</a></h2>
+<p>We are using the some of the BankCustomer code we had from <strong>Lab 10</strong>.</p>
+<ol start="6">
+<li>
+<p>Reproduce the following as is:</p>
+<pre><code class="language-kt">/**
+* Represents a bank customer with basic information such as first name, last name, PIN, account number,
+* and sort code.
+*
+* @property firstName The first name of the customer.
+* @property lastName The last name of the customer.
+* @property pin The PIN (Personal Identification Number) of the customer.
+* @property account The account number of the customer.
+* @property sortCode The sort code associated with the customer's account.
+*
+* @constructor Creates a new [BankCustomer] with the specified details.
+* @param fn The first name of the customer.
+* @param ln The last name of the customer.
+* @param p The PIN (Personal Identification Number) of the customer.
+* @param acc The account number of the customer.
+* @param sc The sort code associated with the customer's account.
+*/
+class BankCustomer {
+    var firstName: String? = null
+    var lastName: String? = null
+    var pin: Int? = null
+    var account: String? = null
+    var sortCode: String? = null
+
+    /**
+    * Default constructor for [BankCustomer].
+    */
+    constructor()
+
+    /**
+    * Creates a new [BankCustomer] with the specified details.
+    *
+    * @param fn The first name of the customer.
+    * @param ln The last name of the customer.
+    * @param p The PIN (Personal Identification Number) of the customer.
+    * @param acc The account number of the customer.
+    * @param sc The sort code associated with the customer's account.
+    */
+    constructor(fn: String, ln: String, p: Int, acc: String, sc: String) {
+        firstName = fn
+        lastName = ln
+        pin = p
+        account = acc
+        sortCode = sc
+    }
+
+    /**
+    * Prints the details of the customer, including name, PIN, account number, and sort code.
+    */
+    fun printMe() {
+        println(
+            "Customer:\n\tName: ${this.firstName} ${this.lastName}\n\tPin: ${this.pin}\n\t" +
+                    "Account: ${this.account}\n\tSort Code:${this.sortCode}"
+        )
+    }
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="step-3-main-class-part-1"><a class="header" href="#step-3-main-class-part-1">Step 3: <code>Main</code> class Part 1</a></h2>
+<ol start="7">
+<li>
+<p>Open the <code>Main.kt</code> file and modify the contents to look like this:</p>
+</li>
+<li>
+<p>We are going to initialise <strong>three</strong> bankCustomers, the two you see below and one more of your choice.</p>
+<pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
+
+    // Create a new BankCustomer
+    val newCustomer = BankCustomer(
+        "Jane",
+        "Doe",
+        5678,
+        "987654321",
+        "123456"
+    )
+    val customer = BankCustomer(
+        "Marshall",
+        "Mathers",
+        5678,
+        "123456789",
+        "123456"
+    )
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="step-4-buildgradlekts-part-1"><a class="header" href="#step-4-buildgradlekts-part-1">Step 4: <code>build.gradle.kts</code> Part 1</a></h2>
+<ol start="9">
+<li>
+<p>Open the <code>build.gradle.kts</code> file located in the project view just under the <strong><code>test\</code></strong> folder.</p>
+</li>
+<li>
+<p>Navigate to the <code>dependices</code> sections and add the following code to import the CSV library using <code>implementation("com.opencsv:opencsv:3.7")</code> into the project;</p>
+</li>
+</ol>
+<div align=center>
+<p><img src="./figures/step4.png" alt="" /></p>
+</div>
+<blockquote>
+<p><strong>Note</strong></p>
+<blockquote>
+<ul>
+<li>Any version greater than <code>opencsv:3.7</code> has security vulnerabilities.</li>
+</ul>
+</blockquote>
+</blockquote>
+<h2 id="step-5-datautilstk-part-1"><a class="header" href="#step-5-datautilstk-part-1">Step 5: <code>DataUtils.tk</code> Part 1</a></h2>
+<p>We are now going to create functionality to read and write to a CSV, our fist type of data storage file.</p>
+<ol start="11">
+<li>
+<p>Open the <code>DataUtils.kt</code> file</p>
+</li>
+<li>
+<p>Reproduce the following code:</p>
+<pre><code class="language-kt">import com.opencsv.CSVReaderBuilder // implementation("com.opencsv:opencsv:3.7")
+import com.opencsv.CSVWriter // implementation("com.opencsv:opencsv:3.7")
+import java.io.File // for writing and reading from a file.
+
+
+/**
+* Utility object for handling data operations, including loading and writing data in JSON, CSV, and XML formats.
+*/
+object DataUtils {
+
+    /**
+    * Loads a list of [BankCustomer] objects from a CSV file.
+    *
+    * @param filePath The path to the CSV file.
+    * @return A [MutableList] of [BankCustomer] objects loaded from the CSV file.
+    */
+    fun loadCustomersFromCSV(filePath: String): MutableList&lt;BankCustomer&gt; {
+        val file = File(filePath)
+        
+        // create file if needed
+        makeFile(filePath)
+
+        if (file.exists()) {
+            file.reader().use { reader -&gt;
+                try {
+                    val csvReader = CSVReaderBuilder(reader).build()
+                    val lines = csvReader.readAll()
+                    val customerList = mutableListOf&lt;BankCustomer&gt;()
+
+                    for (line in lines) {
+                        // Create BankCustomer objects from CSV lines
+                        // for each column in a a line[#]
+                        val customer = BankCustomer(line[0], line[1], line[2].toInt(), line[3], line[4])
+
+                        // add customer to the list of BankCustomers
+                        customerList.add(customer)
+                    }
+                    // once finished return the list
+                    return customerList
+                } catch (e: Exception) {
+                    // Handle exceptions during CSV parsing
+                    // return and empty list if fails
+                    return mutableListOf()
+                }
+            }
+        } else {
+            // return and empty list if all fails
+            return mutableListOf()
+        }
+    }
+
+    /**
+    * Writes a list of [BankCustomer] objects to a CSV file.
+    *
+    * @param customerList The list of [BankCustomer] objects to be written to the CSV file.
+    * @param filePath The path to the CSV file.
+    */
+    fun writeCustomersToCSV(customerList: List&lt;BankCustomer&gt;, filePath: String) {
+        val file = File(filePath)
+        
+        // create file if needed
+        makeFile(filePath)
+        
+        if (file.exists()) {
+            file.writer().use { writer -&gt;
+                val csvWriter = CSVWriter(writer)
+
+                for (customer in customerList) {
+                    // Convert BankCustomer objects to CSV records
+                    val record = arrayOf(
+                        customer.firstName.orEmpty(),
+                        customer.lastName.orEmpty(),
+                        customer.pin?.toString() ?: "",
+                        customer.account.orEmpty(),
+                        customer.sortCode.orEmpty()
+                    )
+                    csvWriter.writeNext(record)
+                }
+
+                csvWriter.close()
+            }
+        } else {
+            println("File doesn't exist")
+        }
+    }
+
+    /**
+    * Creates a new file at the specified [filePath].
+    *
+    * @param filePath The path to the file to be created.
+    */
+    fun makeFile(filePath: String) {
+        val file = File(filePath)
+
+        try {
+            if (file.createNewFile()) {
+                println("File created successfully.")
+            } else {
+                println("File already exists.")
+            }
+        } catch (e: Exception) {
+            // Handle exceptions during file creation
+            println("An error occurred while creating the file: ${e.message}")
+        }
+    }
+}
+</code></pre>
+</li>
+</ol>
+<p>Remember each <code>KDoc</code> you create provides helper inforamtion when you hover over each function/method.</p>
+<h2 id="step-6-mymutuableextensionskt"><a class="header" href="#step-6-mymutuableextensionskt">Step 6: <code>MyMutuableExtensions.kt</code></a></h2>
+<p>We are going to create some extension methods for the <code>MutuableList</code> class. Sometimes for example we need to extra features where sometimes you don't want to add duplicates by mistake.</p>
+<ol start="13">
+<li>
+<p>Open the <code>MyMutuableExtensions</code></p>
+</li>
+<li>
+<p>Reproduce the follwing code:</p>
+<pre><code class="language-kt">/**
+* Extension functions for [MutableList] of [BankCustomer] to perform various operations.
+*/
+object MyMutableExtensions {
+
+    /**
+    * Removes duplicate [BankCustomer] objects based on their account numbers.
+    *
+    * @return A new [MutableList] containing distinct [BankCustomer] objects based on account numbers.
+    */
+    fun MutableList&lt;BankCustomer&gt;.removeDuplicatesByAccountNumber() : MutableList&lt;BankCustomer&gt;{
+        return this.distinctBy { it.account }.toMutableList()
+    }
+
+    /**
+    * Adds a [BankCustomer] to the [MutableList] only if a customer with the same account number
+    * does not already exist in the list.
+    *
+    * @param customer The [BankCustomer] to be added.
+    */
+    fun MutableList&lt;BankCustomer&gt;.addIfNotDuplicate(customer: BankCustomer) {
+        if (this.all { it.account != customer.account }) {
+            this.add(customer)
+        }
+    }
+
+    /**
+    * Extension function to remove a [BankCustomer] from the [MutableList] based on the account number.
+    *
+    * @param accountNumber The account number of the customer to be removed.
+    */
+    fun MutableList&lt;BankCustomer&gt;.removeByAccountNumber(accountNumber: String?) {
+        val customerToRemove = this.find { it.account == accountNumber }
+
+        if (customerToRemove != null) {
+            this.remove(customerToRemove)
+            println("Customer with account number $accountNumber removed successfully.")
+        } else {
+            println("No customer found with account number $accountNumber. No customer removed.")
+        }
+    }
+
+    /**
+    * Prints details of all [BankCustomer] objects in the [MutableList].
+    */
+    fun MutableList&lt;BankCustomer&gt;.printAll() {
+        this.forEach { customer -&gt; customer.printMe() }
+    }
+
+    /**
+    * Prints details of [customer] object in the [MutableList] of [BankCustomer]s .
+    */
+    fun MutableList&lt;BankCustomer&gt;.printOne(acc:String) {
+        for ((index, customer) in this.withIndex()) {
+            if (customer.account == acc) {
+                customer.printMe()
+            }
+            else {
+                println("Error: ${acc} not found")
+            }
+        }
+    }
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="step-7-mainkt-part-2"><a class="header" href="#step-7-mainkt-part-2">Step 7: <code>Main.kt</code> Part 2</a></h2>
+<ol start="15">
+<li>ReOpen the <code>Main.kt</code> and modify the top of the file so we can import the our code:</li>
+</ol>
+<pre><code class="language-kt">// MyMutableExtensions file
+import MyMutableExtensions.addIfNotDuplicate
+import MyMutableExtensions.printAll
+import MyMutableExtensions.removeByAccountNumber
+import MyMutableExtensions.removeDuplicatesByAccountNumber
+
+// DataUtils file
+import DataUtils.loadCustomersFromCSV
+import DataUtils.writeCustomersToCSV
+
+fun main(args: Array&lt;String&gt;){
+    ...
+}
+</code></pre>
+<ol start="16">
+<li>
+<p>Now lets use some of these functions and methods we have now imported to write and read unique values to/from the a <code>customers.csv</code>.</p>
+<pre><code class="language-kt">...
+fun main(args: Array&lt;String&gt;){
+
+    // Load the content of the customers.csv as a [MutuableList] of [BankCustomers] 
+    var csvExistingCustomers = loadCustomersFromCSV("customers.csv")
+
+    // add the first two customers using the built-in MutuableList.add method. 
+    csvExistingCustomers.add(newCustomer)
+    csvExistingCustomers.add(customer)
+   
+    println("All Customers:")
+    // print all the customers using the print function
+    println(csvExistingCustomers)
+    // and again using our own extension for the MutuableList
+    csvExistingCustomers.printAll()
+
+    // Now write the csvExisitingCusomters to a the customers.csv
+    writeCustomersToCSV(csvExistingCustomers,"customers.csv")
+}
+</code></pre>
+</li>
+<li>
+<p>Run the program, and you should see a very similar output:</p>
+<pre><code>File already exists.
+[BankCustomer@4cb2c100, BankCustomer@6fb554cc]
+All Customers:
+    Customer:
+    Name: Jane Doe
+    Pin: 5678
+    Account: 987654321
+    Sort Code:123456
+Customer:
+    Name: Marshall Mathers
+    Pin: 5678
+    Account: 123456789
+    Sort Code:123456
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p><code>[BankCustomer@4cb2c100, BankCustomer@6fb554cc]</code>:</p>
+<ul>
+<li>the characters after the <code>@</code> will be unique</li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>Check in the <code>customers.csv</code> to see the output of <code>writeCustomersToCSV(csvExistingCustomers,"customers.csv")</code>.</p>
+<div align=center>
+<p><img src="./figures/step7.png" alt="" /></p>
+</div>
+</li>
+<li>
+<p>Modify the first the line <code> csvExistingCustomers.add(newCustomer)</code> in <code>Main.kt</code> to use our add method:</p>
+<pre><code class="language-kt">...
+fun main(args: Array&lt;String&gt;){
+
+    // Load the content of the customers.csv as a [MutuableList] of [BankCustomers] 
+    var csvExistingCustomers = loadCustomersFromCSV("customers.csv")
+
+    // add the first customers using our MutuableList.addIfNotDuplicate() method. 
+    csvExistingCustomers.addIfNotDuplicate(newCustomer)
+    / add the second customer using the built-in MutuableList.add method. 
+    csvExistingCustomers.add(customer)
+
+    ...
+}
+</code></pre>
+</li>
+<li>
+<p>Run again and you should see the following:</p>
+<pre><code>File already exists.
+All Customers:
+[BankCustomer@4cb2c100, BankCustomer@6fb554cc, BankCustomer@614c5515]
+Customer:
+    Name: Jane Doe
+    Pin: 5678
+    Account: 987654321
+    Sort Code:123456
+Customer:
+    Name: Marshall Marthers
+    Pin: 5678
+    Account: 123456789
+    Sort Code:123456
+Customer:
+    Name: Marshall Mathers
+    Pin: 5678
+    Account: 123456789
+    Sort Code:123456
+</code></pre>
+<div align=center>
+<p><img src="./figures/step7-2.png" alt="" /></p>
+</div>
+<ul>
+<li>You will see that the <code>Jane Doe</code>, has not been duplicated because we used our <code>addIfNotDuplicate()</code> that does not duplicate based on account number. However, <code>add()</code> does not have this functionality by default.</li>
+</ul>
+</li>
+<li>
+<p>To remove any duplicates we can use the exentsion we made <code>removeDuplicatesByAccountNumber()</code> and we will also replace the <code>add()</code> for the second customer:</p>
+<pre><code class="language-kt">...
+fun main(args: Array&lt;String&gt;){
+
+    // Load the content of the customers.csv as a [MutuableList] of [BankCustomers] 
+    var csvExistingCustomers = loadCustomersFromCSV("customers.csv")
+    // remove duplicates in the list read from the `customers.csv`
+    csvExistingCustomers = csvExistingCustomers.removeDuplicatesByAccountNumber()
+
+    // add the first customers using our MutuableList.addIfNotDuplicate() method. 
+    csvExistingCustomers.addIfNotDuplicate(newCustomer)
+    / add the second customer using the built-in MutuableList.add method. 
+    csvExistingCustomers.addIfNotDuplicate(customer)
+    ...
+}
+</code></pre>
+</li>
+<li>
+<p>Now run again and you should only have the two customers in your <code>customers.csv</code> now</p>
+<div align=center>
+<p><img src="./figures/step7.png" alt="" /></p>
+</div>
+</li>
+</ol>
+<h2 id="step-8-storage-using-json"><a class="header" href="#step-8-storage-using-json">Step 8: Storage using JSON</a></h2>
+<ol start="23">
+<li>
+<p>ReOpen the <code>build.gradle.kts</code> and add the following, <code> implementation("com.google.code.gson:gson:2.8.9")</code>, to the dependicies section so we can utilise a library for reading and writing a JSON:</p>
+<pre><code class="language-kt">...
+dependencies {
+testImplementation(kotlin("test"))
+
+// Library for CSV
+implementation("com.opencsv:opencsv:3.7")
+
+// Library for JSON
+implementation("com.google.code.gson:gson:2.8.9")
+</code></pre>
+</li>
+<li>
+<p>ReOpen the <code>DataUtils.kt</code> and modify the top of the file to include <code>import com.google.gson.Gson</code></p>
+<pre><code class="language-kt">...
+import java.io.File
+
+import com.google.gson.Gson
+
+...
+object DataUtils { ... }
+</code></pre>
+</li>
+<li>
+<p>Navigate to the end of <code>writeCustomersToCSV(...)</code> and still inside the <code>object DataUtils{</code> reproduce the following code. We using the <code>Gson()</code> Class that we imported to load (read) and write the the <code>BankCustomers</code> list from/to <code>customers.json</code>:</p>
+<pre><code class="language-kt">...
+fun writeCustomersToCSV(customerList: List&lt;BankCustomer&gt;, filePath: String) {
+    ...
+}
+
+/**
+* Loads a list of [BankCustomer] objects from a JSON file.
+*
+* @param filePath The path to the JSON file.
+* @return A [MutableList] of [BankCustomer] objects loaded from the JSON file.
+*/
+fun loadCustomersFromJSON(filePath: String): MutableList&lt;BankCustomer&gt; {
+    val gson = Gson()
+
+    val file = File(filePath)
+    if (file.exists()) {
+        file.reader().use { reader -&gt;
+            try {
+                // Deserialize JSON into a list of BankCustomer objects
+                return gson.fromJson(reader, Array&lt;BankCustomer&gt;::class.java).toMutableList()
+            } catch (e: Exception) {
+                // Handle exceptions during JSON parsing
+                return mutableListOf()
+            }
+        }
+    } else {
+        // If the file does not exist, return an empty list
+        return mutableListOf()
+    }
+}
+
+/**
+* Writes a list of [BankCustomer] objects to a JSON file.
+*
+* @param customerList The list of [BankCustomer] objects to be written to the JSON file.
+* @param filePath The path to the JSON file.
+*/
+fun writeCustomersToJSON(customerList: List&lt;BankCustomer&gt;, filePath: String) {
+    val gson = Gson()
+    val file = File(filePath)
+    if (file.exists()) {
+        // Convert the updated list to a formatted JSON string
+        // Convert the list to a JSON string with each property on a new line
+        val formattedJson = gson.toJson(customerList)
+
+        // Write the formatted JSON to the file (overwrite)
+        file.writer().use { writer -&gt;
+            writer.write(formattedJson)
+        }
+    } else {
+        println("File doesn't exist")
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>Modifty <code>Main.kt</code> so that we can store data in a JSON format. We will also need to import from out <code>DataUtils.kt</code> at the top of the file like last time:</p>
+<pre><code class="language-kt">import MyMutableExtensions.addIfNotDuplicate
+...
+
+import DataUtils.loadCustomersFromJSON
+import DataUtils.writeCustomersToJSON
+
+fun main(args: Array&lt;String&gt;) {
+</code></pre>
+</li>
+<li>
+<p>We are essentially repeating what we did last time for the CSV but using the JSON functionality we have written:</p>
+<pre><code class="language-kt">...
+
+fun main(args: &lt;String&gt;){
+
+...
+
+//CSV
+...
+writeCustomersToCSV(csvExistingCustomers,"customers.csv")
+
+//JSON
+var jsonExistingCustomers = loadCustomersFromJSON("customers.json")
+jsonExistingCustomers = jsonExistingCustomers.removeDuplicatesByAccountNumber()
+
+jsonExistingCustomers.addIfNotDuplicate(newCustomer)
+jsonExistingCustomers.addIfNotDuplicate(customer)
+
+writeCustomersToJSON(jsonExistingCustomers,"customers.json")
+
+}
+</code></pre>
+</li>
+<li>
+<p>Run and check the <code>customers.json</code> and see that you have one long line:</p>
+<pre><code>[{"firstName":"Jane","lastName":"Doe","pin":5678,"account":"987654321","sortCode":"123456"},{"firstName":"Steph","lastName":"Jupe","pin":5678,"account":"123456789","sortCode":"123456"}]
+</code></pre>
+<div align=center>
+<p><img src="./figures/step8.png" alt="" /></p>
+</div>
+</li>
+<li>
+<p>Modify the <code>DataUtils.kt</code> so that we can have a more human readable version of the <code>customers.json</code>:</p>
+<pre><code class="language-kt">...
+fun writeCustomersToJSON(customerList: List&lt;BankCustomer&gt;, filePath: String) {
+        val gson = Gson()
+    ...
+            val formattedJson = gson.toJson(customerList)
+                .replace("[", "[\n\t")
+                .replace(",", ",\n\t\t")
+                .replace("{", "{\n\t\t")
+                .replace("}", "\n\t}")
+                .replace("},\n\t\t{", "},\n\t{")
+                .replace("]", "\n]")
+        ...
+    }
+</code></pre>
+<ul>
+<li><code>.replace("old", "new")</code>, so we for the most part we are getting a new line <code>\n</code> and a tab <code>\t</code> appended to each brace <code>[{}]</code> and comma <code>,</code>.</li>
+</ul>
+</li>
+<li>
+<p>Run again and see the difference in the <code>customers.json</code></p>
+<div align=center>
+<p><img src="./figures/step8-2.png" alt="" /></p>
+</div>
+</li>
+</ol>
+<h2 id="step-9-xml-storage"><a class="header" href="#step-9-xml-storage">Step 9: XML Storage</a></h2>
+<p>This step is a little more involved than the previous two storage options.</p>
+<ol start="31">
+<li>
+<p>ReOpen the <code>build.gradle.kts</code> so that the XML libraries can be installed:</p>
+<pre><code class="language-kt">dependencies {
+    ...
+    // Library for JSON
+    ...
+
+    // Libraries needed for XML
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+    implementation("javax.xml.bind:jaxb-api:2.3.1")
+    implementation("org.glassfish.jaxb:jaxb-runtime:2.3.3")
+}
+</code></pre>
+</li>
+<li>
+<p>Now we are going to map our <code>BankCustomer</code> Class by implementing <code>@XmlRootElement(name = "customer")</code> and importing <code>import javax.xml.bind.annotation.XmlRootElement</code> in the <code>BankCusotmer.kt</code> file. Make sure to reproduce as shown below:</p>
+<pre><code class="language-kt">import javax.xml.bind.annotation.XmlRootElement
+/**
+...
+*/
+@XmlRootElement(name = "customer")
+class BankCustomer {
+...
+
+}
+</code></pre>
+</li>
+<li>
+<p>Then navigate to <code>DataUtils.kt</code> and add the imports for XML functionality at the top of the file like the other imports:</p>
+<pre><code class="language-kt">import com.opencsv.CSVReaderBuilder
+
+...
+
+import javax.xml.bind.JAXBContext
+import javax.xml.bind.Marshaller
+import javax.xml.bind.annotation.XmlElement
+import javax.xml.bind.annotation.XmlRootElement
+import javax.xml.bind.annotation.XmlAccessType
+import javax.xml.bind.annotation.XmlAccessorType
+</code></pre>
+</li>
+<li>
+<p>Now we can add the write and load functions for the XML in the <code>DataUtils.kt</code>, navigate to the end <code>writeCustomersToJSON(...)</code> and between that and the <code>makeFile(...)</code> function add the following <code>loadCustomersFromXml()</code> and <code>writeCustomersToXml()</code> as seen below:</p>
+<pre><code class="language-kt">...
+fun writeCustomersToJSON(customerList: List&lt;BankCustomer&gt;, filePath: String) {
+    ...
+    }
+
+/**
+ * Loads a list of [BankCustomer] objects from an XML file.
+ *
+ * @param filePath The path to the XML file.
+ * @return A [MutableList] of [BankCustomer] objects.
+ */
+fun loadCustomersFromXml(filePath: String): MutableList&lt;BankCustomer&gt; {
+    try {
+        val context = JAXBContext.newInstance(CustomersWrapper::class.java)
+        val unmarshaller = context.createUnmarshaller()
+        val wrapper = unmarshaller.unmarshal(File(filePath)) as CustomersWrapper
+        return wrapper.customerList.toMutableList()
+    } catch (e: Exception) {
+        // Handle exceptions during XML parsing
+        e.printStackTrace()
+    }
+    return mutableListOf()
+}
+
+/**
+ * Writes a list of [BankCustomer] objects to an XML file.
+ *
+ * @param customers The list of [BankCustomer] objects to write.
+ * @param filePath The path to the XML file.
+ * @throws Exception to log
+ */
+fun writeCustomersToXml(customers: List&lt;BankCustomer&gt;, filePath: String) {
+    try {
+        val context = JAXBContext.newInstance(CustomersWrapper::class.java)
+        val marshaller = context.createMarshaller()
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true)
+
+        val wrapper = CustomersWrapper()
+        wrapper.customerList = ArrayList(customers)
+
+        marshaller.marshal(wrapper, File(filePath))
+    } catch (e: Exception) {
+        // Handle exceptions during XML writing
+        e.printStackTrace()
+    }
+}
+
+/**
+...
+ */
+fun makeFile(filePath: String) {
+    ...
+}
+</code></pre>
+</li>
+<li>
+<p>At the end of the <code>object DataUtils{...}</code> or if you like the very end of the <code>DataUtils.kt</code> add the following <code>CustomersWrapper</code> <code>Wrapper</code> class:</p>
+<pre><code class="language-kt">object DataUtils {
+    /**
+    ...
+    */
+    fun makeFile(filePath: String) {
+    ...
+    }
+}
+
+/**
+* Wrapper class for marshalling and unmarshalling a list of [BankCustomer] objects.
+*/
+@XmlRootElement(name = "customersWrapper")
+@XmlAccessorType(XmlAccessType.FIELD)
+class CustomersWrapper {
+    @XmlElement(name = "customer")
+    var customerList: List&lt;BankCustomer&gt; = ArrayList()
+}
+</code></pre>
+</li>
+<li>
+<p>Now we need to modify <code>Main.kt</code> to use the load and write XML functions we have made. Firstly, add reference to the new xml functions we have in the <code>DataUtils.kt</code>:</p>
+<pre><code class="language-kt">...
+import DataUtils.writeCustomersToJSON
+
+import DataUtils.loadCustomersFromXml
+import DataUtils.writeCustomersToXml
+
+
+fun main(args : &lt;String&gt;){
+... 
+}
+</code></pre>
+</li>
+<li>
+<p>Modify the code inside <code>main(args : &lt;String&gt;)</code> so that the functions <code>writeCustomersToXml</code> and <code>loadCustomersToXml</code>. Navigate to the end of  <code>main(...)</code>:</p>
+<pre><code class="language-kt">fun main(arg: &lt;String&gt;){
+
+    ...
+   
+     writeCustomersToJSON(jsonExistingCustomers,"customers.json")
+
+    ...
+
+     // XML
+    var existingCustomers = loadCustomersFromXml("customers.xml")
+    existingCustomers = existingCustomers.removeDuplicatesByAccountNumber()
+
+    // Add the new customer to the existing list
+    existingCustomers.addIfNotDuplicate(newCustomer)
+    existingCustomers.addIfNotDuplicate(customer)
+
+    println("All Customers:")
+    existingCustomers.printAll()
+
+    // Write the updated list back to XML
+    writeCustomersToXml(existingCustomers, "customers.xml")
+}
+</code></pre>
+</li>
+<li>
+<p>Run the code, and your <code>customers.xml</code> file should look like:</p>
+<div align=center>
+<p><img src="./figures/step9.png" alt="" /></p>
+</div>
+</li>
+</ol>
+<h2 id="step-10-more"><a class="header" href="#step-10-more">Step 10: More</a></h2>
+<ol start="39">
+<li>
+<p>The third customer you made at the beginning can be added to all three files. Try and do this now.</p>
+</li>
+<li>
+<p>Try removing a record by first using the mutable extension method we made but have not used yet to remove the <code>customer</code> whose name is <code>Marshal Mathers</code>, for example:</p>
+<pre><code class="language-kt">existingCustomer = existingCustomer.removeByAccountNumber(customer.account)
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>Remember you can hover over a class/method/function etc to see what they do if they have the KDoc written for them. Like we have done for that function.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>Now that the <code>existingCustomer</code> has that customer removed try using the <code>writeCustomersTo&lt;XML/JSON/CSV&gt;(...)</code>... which ever one you used and see the change in the file.</p>
+</li>
+</ol>
+<h2 id="completed-project"><a class="header" href="#completed-project">Completed project</a></h2>
+<p>You can download the completed project from here as a zip, if you have not completed the lab or just want to explore and play with as is:</p>
+<ul>
+<li><a href="PersistentData.zip">PresistentData.zip</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../Kotlin/Lab_8/Lab_8.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../Kotlin/Lab_10/Lab_10.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../Kotlin/Lab_8/Lab_8.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../Kotlin/Lab_10/Lab_10.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
