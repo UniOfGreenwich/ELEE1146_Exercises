@@ -1,0 +1,27 @@
+[book]
+authors = ["Seb Blair"]
+title = "Mobile Applications for Engineers and Technologists"
+language = "en"
+multilingual = false
+src = "content"
+
+[output.html]
+mathjax-support = true
+git-repository-url = "https://github.com/uniofgreenwich/ELEE1149-COMP1836_Exercises"
+edit-url-template = "https://github.com/uniofgreenwich/ELEE1149-COMP1836_Exercises/edit/main/{path}"
+input-404 = "404/404.md"
+
+[output.html.print]
+enable = false
+
+[output.html.fold]
+enable = true
+
+[output.html.search]
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 2
