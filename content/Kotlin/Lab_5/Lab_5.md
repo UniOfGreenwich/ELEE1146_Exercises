@@ -702,7 +702,7 @@ class MainActivity : ComponentActivity() {
 >**Note**:
 >> - You can find royalty-freee images here: [https://www.freeimages.com/](https://www.freeimages.com)
 
-For the exercises below, follow the steps in the Ticket Vault example (from last week lab).
+For the exercises below, us the above lab as a reference.
 
 ## 1. Phone Photo Prints App
 

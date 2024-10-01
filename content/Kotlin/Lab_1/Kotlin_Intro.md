@@ -9,7 +9,7 @@
 
 ## 1. Getting Started 
 
-1. Once opened you will be greeted witht he landning page: 
+1. Once opened you will be greeted with the landing page: 
     ![](./figures/intellij_landing_page.png)
 
 2. Select **New Project**
@@ -28,13 +28,13 @@
 </div>
 
 4. Adding a Kotlin Class file
-   1. Right click the highlighted Kotlin folder in previous image
+   1. Right-click the highlighted Kotlin folder in the previous image
    2. Once the context menu opens click 'New' and then Kotlin Class/file
 5. Create a new **File** file called `Main`
    
 <div style="width: 60%; margin: 0px auto;">
 
-![](./figures/intellij_kotlin_class_file.png)
+![](./figures/intellij_Kotlin_class_file.png)
 </div>
 
 6. Now we can populate our new `Main.kt` file with some code.
@@ -49,11 +49,11 @@
     }   
     ```
     2. `fun` is a **hard keyword** that tells the Kotlin you are declaring a function.
-    3. `main()` is the function name, and any console based program like this, `main()`, is the entry point of the program when it is exectued by the OS.
-    4. `(args: Array<String>)`, is the way of telling the program that it can take in arugments supplied to it, in this instance `args`, the variable, will be an `Array` of `Strings` 
-    5. Everything between the `{}` braces is excuted by the program. 
-    6. Lastly, `println("Hello World!")`, calls the function `println()` which prints whatever is in the brackets to the terminal with a `\n` new line at the end henece the `ln` in `println`.
-    7. Now you can run the program using the either of the green arrows:
+    3. `main()` is the function name, and any console-based program like this, `main()`, is the entry point of the program when it is executed by the OS.
+    4. `(args: Array<String>)`, is the way of telling the program that it can take in arguments supplied to it, in this instance `args`, the variable, will be an `Array` of `Strings` 
+    5. Everything between the `{}` braces is executed by the program. 
+    6. Lastly, `println("Hello World!")`, calls the function `println()` which prints whatever is in the brackets to the terminal with a `\n` new line at the end hence the `ln` in `println`.
+    7. Now you can run the program using either of the green arrows:
    
     <div class="column" style="display: flex;">
 
@@ -68,14 +68,14 @@
     </div>
     </div>
 
-    8. You should see a terminal appear about the bottom of the IDE that shows some output. 
+    8. You should see a terminal appear at the bottom of the IDE that shows some output. 
    <div style="width:100%; margin: 0px auto;">
    
    ![center](./figures/helloworld_output.png)
 
    </div>
 
-7. Now you are going to modify the programme so that `printl()` to take a variable
+7. Now you are going to modify the programme so that `printl()` takes a variable
    1. Create a mutable variable called `name`
       ```kt
       fun main(args: Array<String>) {
@@ -92,7 +92,7 @@
    ![center](./figures/helloworld_output_2.png)
 
    </div>
-9. Notice the green underwave underneath the `println("Hello World! " + name)`
+9. Notice the green under-wave underneath the `println("Hello World! " + name)`
    <div style="width:60%; margin: 0px auto;">
    
    ![center](./figures/literalError.png)
@@ -106,7 +106,7 @@
   >>
   >> You can find more if you go to File>Settings>Editor>Color Scheme > General > Errors and Warnings
 
-1.  This underwave can be corrected two ways, either hover over and follow the quick key short cut '<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>'. Or Manually fix it by reproducing the output below.
+1.  This underwave can be corrected two ways, either hover over and follow the quick key shortcut '<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>'. Or Manually fix it by reproducing the output below.
      
    <div style="width:100%; margin: 0px auto;">
    
@@ -131,7 +131,7 @@
    val s = "Hello World"
    println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
    ```
-12. Run the program again, do you get the same ouput? 
+12. Run the program again, do you get the same output? 
 
 
 13. Modify further with `print()` function
@@ -152,10 +152,10 @@
 
 ## 2 Mutable and immutable
 
-1. `var` is like general variable and it's known as a **mutable** variable in kotlin and can be assigned multiple times.
+1. `var` is a general variable and it's known as a **mutable** variable in Kotlin and can be assigned multiple times.
 
 
-2. `val` is like final variable and it's known as **immutable** in kotlin and can be initialised only a single time.
+2. `val` is a final variable and it's known as **immutable** in Kotlin and can be initialised only a single time.
 
 >>**Note**
 >> - The term mutable comes from mutation, as is to mutate, to change. In computing this means **Read** & **Write** 
@@ -175,14 +175,14 @@ fun main(args: Array<String>) {
 
 }
 ```
- 1. Before running to code, predict what the outcome will be? Now run it, does it match your prediction?
+ 1. Before running to code, predict what the outcome will be. Now run it, does it match your prediction?
       
       <details>
       <summary>Answer</summary>
 
       `0 = 4 + 4`
       
-      - This is because no mathemcatical operation is performed inside a String concatenation
+      - This is because no mathematical operation is performed inside a String concatenation
       </details>
    
  2. Modify the above code so that it looks like this:
@@ -200,26 +200,26 @@ fun main(args: Array<String>) {
    ```
 
 
- 3. Before running to code, predict what the outcome will be? Now run it, does it match your prediction?
+ 3. Before running to code, predict what the outcome will be. Now run it, does it match your prediction?
 
       <details>
       <summary>Answer</summary>
 
       `8 = 4 + 4`
       
-      - This is because the mathemcatical operation is performed outside a String concatenation, and the result of `a + b` is saved to `c`
+      - This is because the mathematical operation is performed outside a String concatenation, and the result of `a + b` is saved to `c`
       </details>
 
-4. Now let's change the how `c` is declared, modify `c` so that `var` is now `val`:
+1. Now let's change how `c` is declared, modify `c` so that `var` is now `val`:
    ```kt
    val c: Int = 0
    ```
-5. Before running to code, predict what the outcome will be? Now run it, does it match your prediction?
+2. Before running to code, predict what the outcome will be? Now run it, does it match your prediction?
 
       <details>
       <summary>Answer</summary>
 
-      - You can't, notice the red underwave, this is an error, because `c` is **immutable** now. 
+      - You can not, notice the red under-wave, this is an error, because `c` is **immutable** now. 
       - it is important to read the **Problems** tab at the bottom of the IDE.
       ![](./figures/problesm_tab.png)
       - Change it back to `var`.
@@ -240,12 +240,12 @@ fun main(args: Array<String>) {
   - Double [ \\(2^{64}\\) ] 
 - **Characters**
   - Chars [ \\(2^{16}\\) ]
-    - because unicode instead of just ASCII
+    - because Unicode instead of just ASCII
     - `\u0000`,`\uFFFF`
 - **Booleans**
   - true
   - false
-  - All though 1 bit (1,0), it is technically a Byte due.
+  - Although 1 bit (1,0), it is technically a Byte.
 - **Arrays**
   - get
   - set
@@ -253,9 +253,9 @@ fun main(args: Array<String>) {
   - length
   - etc...
 - **Strings**
-  - A class, not techincally a data type
+  - A class, not technically a data type
 
-2. Lets check the maximum and miniumum values avaialable to you on your machine or VM
+2. Let's check the maximum and minimum values available to you on your machine or VM
    1. Start your program off as follows and run: 
 
       ```kt
@@ -286,7 +286,7 @@ fun main(args: Array<String>) {
 
       </details> 
 
-   2. Now repeat for each data type, remembering to inculde signed and unsigned variants:
+   2. Now repeat for each data type, remembering to include signed and unsigned variants:
       - `Short`
       - `Char`
       - `Int`
@@ -423,11 +423,11 @@ fun main(args: Array<String>) {
 
    >**Notes:**
    >> 
-   >> -  `val num = arrayOf(1, 2, 3, 4)   //implicit type declaration`
+   >> - `val num = arrayOf(1, 2, 3, 4)   //implicit type declaration`
    >>
    >> - `val num = arrayOf<Int>(1, 2, 3) //explicit type declaration`
    >>
-   >> -  `val sentence = String: "This is a sentence." // Strings are an array of characters`
+   >> - `val sentence = String: "This is a sentence." // Strings are an array of characters`
 
 
    Reproduce the following to experiment with the various iterations of array manipulation:
@@ -441,17 +441,17 @@ fun main(args: Array<String>) {
    6 }
    ```
 
-   The `for` is a keyword that enables the iteration through anything that provides an iterator. Here the iterator is the `i` a variable that iterates through a supplied list, collection, enumerable or objects.
+   The `for` is a keyword that enables the iteration through anything that provides an iterator. Here the iterator is the `i` a variable that iterates through a supplied list, collection, enumerable, or objects.
 
    >**Note**
    >> -  A reminder that a `String` is a sequence or an array of characters.
 
-   After the opening bracket `( i` the next keyword is `in` and is consider an *operator*, here `in` is to used to iterate over the the length of `sentence` excuting the `print(..)` method, until `i` is less than, `<`, the length.
+   After the opening bracket `( i` the next keyword is `in` and is considered an *operator*, here `in` is to used to iterate over the length of `sentence` executing the `print(..)` method, until `i` is less than, `<`, the length.
 
    The output should look something like:
 
    ```kt
-   T h i s  a  s e n t e n e c e
+   T h i s  i s  a  s e n t e n e c e
    ```
 
    Notice the white spacing between each letter and the extra white space between the words.
@@ -467,7 +467,7 @@ fun main(args: Array<String>) {
    6 }
    ```
 
-   A slight difference here is that instead of iterating using an iterator with an integer to the a specified length we iterate over all elements of the object or list. The use of the the word `element` is not reserved, and you could replace this with anything that makes sense, as long as it is not another keyword:
+   A slight difference here is that instead of iterating using an iterator with an integer to a specified length we iterate over all elements of the object or list. The use of the word `element` is not reserved, and you could replace this with anything that makes sense, as long as it is not another keyword:
 
    ```kt
    1 var sentence :String = "This is a sentence"
@@ -479,13 +479,13 @@ fun main(args: Array<String>) {
    ```
 
 
-   Run this code either way and you should still recieve the same output as before: 
+   Run this code either way and you should still receive the same output as before: 
 
    ```kt
-   T h i s  a  s e n t e n e c e
+   T h i s  i s  a  s e n t e n e c e
    ```
 
-   An array can be defined, explicitly or implictly by doing the following:
+   An array can be defined, explicitly or implicitly by doing the following:
 
    ```kt
    // declaring an array using arrayOf<Int> this is explicit
@@ -503,12 +503,12 @@ fun main(args: Array<String>) {
    ```
 
    <details>
-   <summary>Notice anything different to before? </summary>
+   <summary>Notice anything different than before? </summary>
 
    - `0.rangeTo(...)`
-   - This is technically an operator function, where the preceeding number `0`  can be any number less than the range provided in the arguments to the function.
-   - `explicitArray.size`, where `size` is a attribute of the array, much like `length` was to `sentence` earlier. We minus 1 from the size because arrays are 0 indexed. Meaning that while there are 5 indices in the `explicitArray` it starts at at index 0 and goes to 4, which is a total of 5. 
-   - modifiy the code and run it again to see why we need to subtract 1.
+   - This is technically an operator function, where the preceding number `0`  can be any number less than the range provided in the arguments to the function.
+   - `explicitArray.size`, where `size` is an attribute of the array, much like `length` was to `sentence` earlier. We minus 1 from the size because arrays are 0 indexed. Meaning that while there are 5 indices in the `explicitArray` it starts at at index 0 and goes to 4, which is a total of 5. 
+   - modify the code and run it again to see why we need to subtract 1.
    - ```kt
       for (i in 0.rangeTo(explicitArray.size))
       {
@@ -519,7 +519,7 @@ fun main(args: Array<String>) {
 
 4. ## Conditionals
 
- 1. We are going to make a series of if statements to verify login details. 
+ 5. We are going to make a series of if statements to verify login details. 
 
    Reproduce the following: 
 
@@ -580,12 +580,12 @@ fun main(args: Array<String>) {
       Note that both of these are *nullable*, `?`, meaning that if not `String` is supplied it is not going to crash
 
    - **Nested `if`**
-      - While the code will work as intended, readbility is the issue, we have a **three** deep `if`. 
-         -  Username is checked, if match, then password, if match, then account page. 
+      - While the code will work as intended, readability is the issue, we have a **three** deep `if`. 
+         -  `userName` is checked, if a match, then `password`, if a match, then account page. 
 
-   Run the code and try to login using the correct and incorrect credientials. 
+   Run the code and try to login using the correct and incorrect credentials. 
 
-2. Let's refactor the code and reduce the number of nested `if`s:
+5. Let's refactor the code and reduce the number of nested `if`s:
 
 
    ```kt
@@ -622,4 +622,4 @@ fun main(args: Array<String>) {
    }
    ```
 
-   Note how the we only check to see if the credential is `true`, and if they both are we can login, else it does not. We have gone from 32 lines to 27, is there a way to  refactor further?
+   Note how we only check to see if the credentials are `true`, and if they both are we can login, else it does not. We have gone from 32 lines to 27, is there a way to refactor further?
