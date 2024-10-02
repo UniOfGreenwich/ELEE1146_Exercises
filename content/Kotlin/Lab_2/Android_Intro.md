@@ -3,7 +3,7 @@
 **1.**
 
 Start a new Android Studio project, `empty view acitvity` – the Hello World app will appear. Run the app following the steps described in the lecture. 
-![Refer to the video here]()
+[Refer to the video here](https://gre.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b27997df-7667-4444-973f-b1c000b894e5)
 ______
 
 **2.** 

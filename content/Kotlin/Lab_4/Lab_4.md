@@ -895,7 +895,7 @@ fun GreetingPreview() {
 
 > You will need to download the following picture folder -> [Lab_4-2_Picture.zip](Lab_4-2_Pictures.zip)
 
-For the exercises below, follow the steps in the Ticket Vault example (from last week lab).
+For the exercises below, follow the steps in the Ticket Vault example (above).
 
 ## 1. Catalina Island Boat Express App
 

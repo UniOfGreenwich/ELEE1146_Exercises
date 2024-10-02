@@ -1,6 +1,6 @@
 # Assignment 2
 
-**Submission Date: 17th December March 2024 @ 2330**
+**Submission Date: 17th December March 2024 @ 2300**
 
 **Weighting: 70%**
 
@@ -24,7 +24,7 @@ On completion of the assignment, the student will develop:
 
 1. **Expansion of Lab Application:**
 
-   The last UK goverment tried to bring back imperial units over metric (EU rules). However that government suffered a humilating defeat as 100k traders rejected the change. If this change had happened the UK would have to convert to imperial units, with that in mind, you are to expand on the [Mass Converter App](https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises/Kotlin/Lab_5/Lab_5.html) to convert between 12 different imperial units overleaf.
+   The last UK goverment tried to bring back imperial units over metric (EU rules). However that government suffered a humilating defeat as 100k traders rejected the change. If this change had happened the UK would have to convert to imperial units, with that in mind, you are to expand on the [Mass Converter App](https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises/Kotlin/Lab_5/Lab_5.html) to convert between the imperial units overleaf.
      
 2. **Implementation Requirements:**
    - Utilise OOP principles to define and manage data structures and classes.
@@ -44,6 +44,7 @@ On completion of the assignment, the student will develop:
 
 - [Moodle submission Engineers](https://moodlecurrent.gre.ac.uk/mod/turnitintooltwo/view.php?id=2878928)
 - [Moodle submission Technologists](https://moodlecurrent.gre.ac.uk/mod/turnitintooltwo/view.php?id=2878929)
+
 - **Source Code:** Submit the complete source code of the application, including all necessary files to compile and run the project.
 - **Documentation:** Include:
     - KDoc comments within the code. 

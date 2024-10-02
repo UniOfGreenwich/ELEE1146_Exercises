@@ -2,13 +2,12 @@
 
 This mdBook will grow over the duration of this module with new labs/workshops and general content needed to test and increase your knowledge of mobile app developmenet. 
 
-
 <table>
 <tr>
 <td>
 
 The mdBook accessed outside of blackboard and is mobile and tablet friendly. :
-- [https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises/](https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises/Introduction.html)
+- [https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises/](https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises)
 - Or scan the QR code on the right:
 </td>
 <td>
