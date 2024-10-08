@@ -4,7 +4,7 @@
 
 Welcome to this walkthrough guide for building a healthy recipes app using Kotlin and Jetpack Compose in Android Studio.
 
-Download and extract all pictures from the [Pictures_Lab_3.zip](./Pictures_Lab_3.zip).
+Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3.zip).
 
 ---
 

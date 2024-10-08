@@ -6,7 +6,7 @@
 
 - [Introduction to Kotlin](Kotlin/Lab_1/Kotlin_Intro.md)
 - [Introduction to Android Studio](Kotlin/Lab_2/Android_Intro.md)
-- [Healthy Recipe App]()
+- [Healthy Recipe App](Kotlin/Lab_3/Lab_3.md)
 - [Concert Ticket App]()
 - [Mass Converter App]()
 - [Lists, Arrays and Web Browsers]()
