@@ -137,8 +137,8 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
     ```kt 
     data class Person(val name: String, val age: Int)
     val personArray = arrayOf(
-        Person("Alice", 28),
-        Person("Bob", 22),
+        Person("Aiya", 28),
+        Person("Bobi", 22),
         Person("Charlie", 35)
     )
 
@@ -150,7 +150,7 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
     **Output**
     ```
     Array of Persons:
-    Name: Alice, Age: 28
-    Name: Bob, Age: 22
+    Name: Aiya, Age: 28
+    Name: Bobi, Age: 22
     Name: Charlie, Age: 35
     ```
