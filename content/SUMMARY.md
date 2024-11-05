@@ -12,7 +12,7 @@
 - [Lists, Arrays and Web Browsers](./Kotlin/Lab_6/Lab_6.md)
   - [Arrays in Kotlin](./Kotlin/Lab_6/Lab_6-1.md)
   - [City Guide App](./Kotlin/Lab_6/Lab_6-2.md)
-- [Exception Handling]()
+- [Exception Handling](./Kotlin/Lab_7/Lab_7.md)
 - [Kotlin Object Orientated Programming]()
 - [OOP with Data Storage ?]()
 - [Permissions ]()
