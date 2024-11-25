@@ -5,11 +5,14 @@ language = "en"
 multilingual = false
 src = "content"
 
+[preprocessor.pagetoc]
 [output.html]
 mathjax-support = true
 git-repository-url = "https://github.com/uniofgreenwich/ELEE1146-COMP1836_Exercises"
 edit-url-template = "https://github.com/uniofgreenwich/ELEE1146-COMP1836_Exercises/edit/main/{path}"
 input-404 = "404/404.md"
+additional-css = ["theme/pagetoc.css"]
+additional-js  = ["theme/pagetoc.js"]
 
 [output.html.print]
 enable = false
