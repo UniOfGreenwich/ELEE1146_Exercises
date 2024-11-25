@@ -1,9 +1,5 @@
 # Lab 10: Permissions
 
->**Note:**
->> Recommended reading for permissions, useful for assignment as well. 
->> [https://developer.android.com/guide/topics/permissions/overview](https://developer.android.com/guide/topics/permissions/overview)
-
 ## What are Android Runtime Permissions?
 
 With the introduction of Android 6.0 (SDK 23), users are prompted for some specific permissions at runtime when they become necessary to use. 
@@ -43,110 +39,15 @@ Dangerous permissions are grouped into categories that make it easier for the us
 
 Enabling anyone of the location permissions enables all.
 
-## Requesting Android Runtime Permissions
-
-The method `requestPermissions(permissions: Array<String>,  requestCode : IntArray);` is a public method that is used to request dangerous permissions. You can ask for multiple dangerous permissions by passing a string array of permissions. 
-
->**Note:**
->> Android Permissions belonging to two different groups would prompt the user with an individual dialog for each of them. If they belong to the same group, then only one dialog prompt would be displayed. 
->> The results of the requests will be passed into the method `onRequestPermissionResult`. 
-
-**Example :** Let’s say we want to access the camera and location in your app. Both are dangerous permissions. You'll display a prompt requesting access to these permissions when the application is launched. So you'd add the permissions into a string array and call the `requestPermissions` as shown below:
-
-```kt
-val perms = arrayOf("android.permission.FINE_LOCATION", "android.permission.CAMERA")
-val permsRequestCode : Int =  200
-requestPermissions(perms, permsRequestCode)
-
-override fun onRequestPermissionsResult(permsRequestCode:Int, permissions : Array<String>, grantResults: IntArray){
-    super.onRequestPermissionsResult(permsRequestCode, permissions, grantResults)
-    when(permsRequestCode){
-        200 -> {
-            val locationAccepted : Boolean = grantResults [0] == PackageManager.PERMISSION_GRANTED;
-            val cameraAccepted : Boolean = grantResults [1] == PackageManager.PERMISSION_GRANTED;
-
-            Toast.makeText(this@MainActivity, "Location:$locationAccepted\nCamera:$cameraAccepted", Toast.LENGTH_SHORT).show()
-        }
-    }
-}
-```
-
-Now you don’t want the user to keep accepting permissions that they've already accepted. Even if the permission has been previously granted it is necessary to check again to be sure that the user did not later revoke that permission. For this the following method needs to be called on every permission.
-
-```kt
-checkSelfPermission(perm: String);
-```
-
-It returns an integer value of `PERMISSION_GRANTED` or `PERMISSION_DENIED`. 
-
->**Note:**
->> If a user declines a permission that is critical in the app, then `shouldShowRequestPermissionRationale(permission:String);` is used to describe the user the need for the permission. 
-
-----------------------------------------------------------
-
 Now you are going to develop an application which checks if the permission is already present. If not, then it’s requested at runtime.
+
+---------------------------------------------
 
 ## Build
 
 1. Create application with at least API 28 selected.
-2. Name it `mobileapps_permissions`
-3. Open the activity_main.xml and reproduce the following code:
-
-### XML FILES
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/check_permission"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/check"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/request_permission"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/check_permission"
-        android:text="@string/request"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="32dp" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/newToolbar"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005" />
-```
-
-Now open the `strings.xml` file and add entries for `@string/request` as "Request Permission"  and `@string/check` as "Check Permission".
-
-<div align=center>
-
-<img src="figures/step1.png" style="object-fit:scale-down; height: 500px">
-
-</div>
+2. Name it `permissions`
+3. Open the `MainActivity.kt` and reproduce the following code:
 
 -------------------------------------------
 
@@ -155,258 +56,374 @@ Now open the `strings.xml` file and add entries for `@string/request` as "Reques
 
 1. Open `AndroidMainfest.xml`
 
-2. Add the following tags underneat the 3rd line:
+2. Add the following tags underneath the 4th line:
 
 ```xml
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 ```
 
-### `MainActivity.kt`
+--------------------------------------------
+
+## `MainActivity.kt`
 
 1. Open `MainActivity.kt`
 
 2. Implement the necessary imports at the top of the file.
 
     ```kt
-    package com.example.mobileapps_permissions;
+    package com.uog.permissions;
 
-    import android.Manifest.permission
-    import android.app.AlertDialog
-    import android.content.DialogInterface
+    import android.Manifest
     import android.content.pm.PackageManager
-    import android.os.Build
     import android.os.Bundle
-    import android.view.View
-    import android.widget.Button
-
-    import androidx.appcompat.app.AppCompatActivity
-    import androidx.appcompat.widget.Toolbar
-    import androidx.core.app.ActivityCompat
+    import androidx.activity.ComponentActivity
+    import androidx.activity.compose.rememberLauncherForActivityResult
+    import androidx.activity.compose.setContent
+    import androidx.activity.result.contract.ActivityResultContracts
+    import androidx.compose.foundation.layout.*
+    import androidx.compose.material3.*
+    import androidx.compose.runtime.*
+    import androidx.compose.ui.Alignment
+    import androidx.compose.ui.Modifier
+    import androidx.compose.ui.graphics.Color
+    import androidx.compose.ui.platform.LocalContext
+    import androidx.compose.ui.tooling.preview.Preview
+    import androidx.compose.ui.unit.dp
     import androidx.core.content.ContextCompat
-    import com.google.android.material.snackbar.Snackbar
+    import com.uog.permissions.ui.theme.PermissionsTheme
     ```
+
 3. See a few new lines within this code block you may not have seen before..
 
    - `import android.content.pm.PackageManager`
      - Class for retrieving various kinds of information related to the application packages that are currently installed on the device. 
      - recommended to read the documentation here -> [https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/content/pm/PackageManager.html](https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/content/pm/PackageManager.html)
-   - `import android.support.design.widget.Snackbar` 
-     - Instead of using a `Toast` you are going to use `Snackbar` widget.
-   - `import static android.Manifest.permission.*`
+   - `import android.Manifest`
      - So you can use the permissions stored in the `AndroidManifest.xml` file you will populate later.
 
-
-4. Modify the class declaration to *extend* `AppCompatActivity` and *implement* `View.OnClickListener`.
-
-5. Define variables for the UI components and override onCreate.
+4. Define variables for the UI components and override onCreate.
 
     ```kt
     ...
-    class MainActivity : AppCompatActivity(), View.OnClickListener {
-        private var view: View? = null
+    class MainActivity : ComponentActivity() {
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
-            
-            // Initialise the toolbar
-            val toolbar: Toolbar = findViewById(R.id.newToolbar)
-            setSupportActionBar(toolbar)
-
-            // Initialise buttons and set click listeners
-            val check_permission = findViewById<View>(R.id.check_permission) as Button
-            val request_permission = findViewById<View>(R.id.request_permission) as Button
-            check_permission.setOnClickListener(this)
-            request_permission.setOnClickListener(this)
-        }
-    }
-    ```
-
-6. ```class MainActivity : AppCompatActivity(), View.OnClickListener {```
-   
-   This line declares the `MainActivity` class, which is the main activity of the Android application. It extends `AppCompatActivity`, indicating that it is an activity in Android, and implements the `View.OnClickListener` interface, suggesting that it will handle click events.
-
-7. ```private var view: View? = null```
-   This line declares a private variable `view` of type `View?` and initialises it as `null`. This variable will be used to store the current view (button) clicked.
-
-8. The onCreate method is called when the activity is created. Here's what it does:
-   - `super.onCreate(savedInstanceState): This calls the superclass's `onCreate` method.
-   - s`etContentView(R.layout.activity_main)`: This sets the content view to the XML layout defined in `activity_main.xml`.
-   - `val toolbar: Toolbar = findViewById(R.id.newToolbar)`: This finds and assigns the Toolbar widget with the ID newToolbar from the layout.
-   - `setSupportActionBar(toolbar)`: This sets the toolbar as the app's action bar.
-   - `val check_permission = findViewById<View>(R.id.check_permission) as Button`: This finds and assigns the "Check Permission" button.
-   -  `val request_permission = findViewById<View>(R.id.request_permission) as Button`: This finds and assigns the "Request Permission" button.
-   - `check_permission.setOnClickListener(this)` and `request_permission.setOnClickListener(this)`: These lines set click listeners for both buttons, using the current activity (`this`) as the click listener.
-
--------------------------------------------
-
-### Implement Permission Checking and Requesting
-
-1. Define the `checkPermission` and `requestPermission` methods to check and request permissions.
-
-2. In `checkPermission`, use `ContextCompat.checkSelfPermission` to check if both `ACCESS_FINE_LOCATION` and `CAMERA` permissions are granted.
-
-Repoduce outside of the `onCreate` method:
-
-```kt
-private fun checkPermission(): Boolean {
-    // Check if both permissions are granted
-    val result = ContextCompat.checkSelfPermission(applicationContext, permission.ACCESS_FINE_LOCATION)
-    val result1 = ContextCompat.checkSelfPermission(applicationContext, permission.CAMERA)
-    return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED
-}
-
-private fun requestPermission() {
-    // Request permissions for ACCESS_FINE_LOCATION and CAMERA
-    ActivityCompat.requestPermissions(
-        this,
-        arrayOf(permission.ACCESS_FINE_LOCATION, permission.CAMERA),
-        PERMISSION_REQUEST_CODE
-    )
-}
-```
-3. The `checkPermission` function checks if both A`CCESS_FINE_LOCATION` and `CAMERA` permissions are granted using `ContextCompat.checkSelfPermission`. It returns `true` if both permissions are granted and `false` otherwise.
-
-4. The `requestPermission` function is used to request the `ACCESS_FINE_LOCATION` and `CAMERA` permissions using `ActivityCompat.requestPermissions`. The request code is `PERMISSION_REQUEST_CODE`. 
-
-5. `checkPermission(): Boolean` means tha the methods should return a Boolean from the methods scope, in this case whether the permission has been granted... `true` or `false`
-
---------------------------------------
-
-### Handle Permission Request Results
-
-1. *Override* `onRequestPermissionsResult` to handle the results of the permission request.
-
-2. Check if the requested permissions have been granted or denied.
-
-3. Show appropriate messages to the user using `Snackbar`.
-
-4. Optionally, you can show an `AlertDialog` to explain the need for permissions if they were denied.
-
-Reproduce `requestPermissions` method:
-
-```kt
-override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-    // Check if the request code matches the one used for requesting permissions
-    when (requestCode) {
-        PERMISSION_REQUEST_CODE -> if (grantResults.size > 0) {
-            // The request resulted in some responses
-
-            // Check if the location and camera permissions were granted
-            val locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED
-            val cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED
-
-            if (locationAccepted && cameraAccepted) {
-                // Both permissions were granted, show a Snackbar message
-                Snackbar.make(view!!, "Permission Granted, Now you can access location data and camera.", Snackbar.LENGTH_LONG).show()
-            } else {
-                // Permissions were denied, show a Snackbar message
-                Snackbar.make(view!!, "Permission Denied, You cannot access location data and camera.", Snackbar.LENGTH_LONG).show()
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (shouldShowRequestPermissionRationale(permission.ACCESS_FINE_LOCATION)) {
-                        // If the user denied permissions, and the system allows showing rationale, show an AlertDialog
-                        showMessageOKCancel("You need to allow access to both the permissions") { dialog, which ->
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                // If the user agrees in the AlertDialog, re-request the permissions
-                                requestPermissions(
-                                    arrayOf(permission.ACCESS_FINE_LOCATION, permission.CAMERA),
-                                    PERMISSION_REQUEST_CODE
-                                )
-                            }
-                        }
-                        return
-                    }
+            setContent {
+                PermissionsTheme {
+                    PermissionsScreen()
                 }
             }
         }
     }
-}
-```
+    ```
 
-5. The `onRequestPermissionsResult` method is an overridden function that handles the results of permission requests.
+-------------------------------------------
 
-6. It checks if the requestCode matches the `PERMISSION_REQUEST_CODE` to ensure that it's handling the response to the correct permission request.
+## Implement the `PermissionsScreen`
 
-7. If `grantResults.size > 0`, it means that the user responded to the permission request.
+<table style="border-collapse: collapse; border: none;">
+<tr style="border: none;">
+<td style="border: none;">
 
-8. It then checks if both the location and camera permissions were granted by examining the `grantResults` array. If both are granted, it displays a `Snackbar` message indicating that permission is granted and that the app can now access location data and the camera.
+1. We need to now replicate the screen on the right:
+   - Within a Scaffold 
+   - Topbar 
+     - with the following colour 0xFF6A0DAD
+   - Two Buttons placed in a column with a Spacer between them
+     - The buttons have the colour 0xFF6A0DAD
+</td>
+<td style="border: none;">
 
-9. If the permissions are denied, it displays a `Snackbar` message indicating that the user cannot access location data and the camera.
+<div align=center>
 
-10. It also checks if the device's Android version is at least **Marshmallow (API level 23)** using `Build.VERSION.SDK_INT`. If it is, it further checks if the system allows showing a rationale for the permission request using `shouldShowRequestPermissionRationale`. If the rationale can be shown, it displays an `AlertDialog` explaining why both permissions are needed.
+![](./figures/step1.png)
 
-11. If the user accepts the explanation in the `AlertDialog`, it re-requests the permissions using `requestPermissions`. The `requestPermissions` method is called with an array of `permissions` (`ACCESS_FINE_LOCATION` and `CAMERA`) and the `PERMISSION_REQUEST_CODE`.
+</div>
 
-12. The `return` statement is used to exit the method after showing the rationale `AlertDialog` to avoid executing the subsequent code.
+</td>
 
-----------------------------------------------
+</tr>
+<tr style="border: none;">
 
-### `onClick()` method
+<td style="border: none;" colspan=2>
 
-1. After the `onCreate()` and before `checkPermissions())` methods make some empty space so that the onClick method can be created.
+2. Code here if you are struggling:
+    <details>
+    <summary>Code here...[46 lines]</summary>
 
-```kt
-override fun onClick(v: View) {
-    view = v
-    val id = v.id
-    when (id) {
-        R.id.check_permission -> if (checkPermission()) {
-            Snackbar.make(view!!, "Permission already granted.", Snackbar.LENGTH_LONG).show()
-        } else {
-            Snackbar.make(view!!, "Please request permission.", Snackbar.LENGTH_LONG).show()
-        }
-        R.id.request_permission -> if (!checkPermission()) {
-            requestPermission()
-        } else {
-            Snackbar.make(view!!, "Permission already granted.", Snackbar.LENGTH_LONG).show()
-        }
+    ```kt
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun PermissionsScreen() {
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color(0xFF6A0DAD),
+                        titleContentColor = Color.White
+                    ),
+                    title = { Text("Permissions") }
+                )
+            },
+            content = { paddingValues ->
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues)
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Button(
+                        onClick = { /* TODO: Add Action */ },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF6A0DAD),
+                            contentColor = Color.White
+                        )
+                    ) {
+                        Text("Check Permission")
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Button(
+                        onClick = { /* TODO: Add Action */ },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF6A0DAD),
+                            contentColor = Color.White
+                        )
+                    ) {
+                        Text("Request Permission")
+                    }
+                }
+            }
+        )
     }
-}
-```
+    ```
 
-2. The `onClick` method is called when one of the buttons is clicked. Here's what it does:
-    - `view = v:` Stores the clicked **view** in the `view` variable.
-    - `val id = v.id`: Gets the ID of the clicked **view**.
-    - The code uses a when statement to determine which button was clicked based on its ID (`R.id.check_permission` or `R.id.request_permission`).
-    - If the "Check Permission" button is clicked, it calls the `checkPermission` function. If permission is granted, it shows a `Snackbar` saying permission is already granted; otherwise, it requests permission.
-    - If the "Request Permission" button is clicked, it checks if permissions are already granted. If not, it calls the `requestPermission` function; otherwise, it shows a `Snackbar` indicating that permission is already granted.
+    </details>
 
---------------------------------
+</td>
+</tr>
+</table>
 
-### Show an `AlertDialog` for Permissions
+3. Now add two `var`iables at top of the function, that have presistence during composable calls called `showSnackbar` and `snackbarMessage`
 
-After the closing `}` of the `onRequestPermissionsResult(...){` function
+    <details>
+    <summary>Code here... [4 lines]</summary>
 
-Implement the `showMessageOKCancel` method to show an `AlertDialog` with an OK button to explain the need for permissions.
+    ```kt
+    fun PermissionsScreen(){
+        var snackbarMessage by remember { mutableStateOf("") }
+        var showSnackbar by remember { mutableStateOf(false) }
+    ...
+    }
+    ```
 
-```kt
-private fun showMessageOKCancel(message: String, okListener: DialogInterface.OnClickListener) {
-    AlertDialog.Builder(this@MainActivity)
-        .setMessage(message)
-        .setPositiveButton("OK", okListener)
-        .setNegativeButton("Cancel", null)
-        .create()
-        .show()
-}
-```
+    </details>
+
+4. Add an `if` for the `showSnackBar`, assume default value `true`
+   -  where the a `SnackBar` with a `Button` as a composable with the the `Text` "Dimiss"
+   -  The Button onclick should set `showSnackbar` to `false` 
+   -  a `Text` composable for the body of the `SnackBar` that takes the `snackBarMessage` variable as the input.
+
+        <details>
+        <summary>Code here... [11 lines]</summary>
+
+        ```kt
+        ...
+        Button(){...}
+        if (showSnackbar) {
+            Snackbar(
+                action = {
+                    Button(onClick = { showSnackbar = false }) {
+                        Text("Dismiss")
+                    }
+                }
+            ) {
+                Text(snackbarMessage)
+            }
+        }
+        ```
+
+        </details>
+
+5. Next we need to modify the `Buttons` `onclick` for `"Check Permission"` and `"Request Permission"` so that they set the snackBarMessage as `"Check Permission Clicked"` and `"Request Permission Clicked"`. Additionally the buttons should set the `showSnackbar` to `true` too.
+
+
+    <details>
+    <summary>Code here ... [21 lines]</summary>
+
+    ```kt
+    ...
+    Button(
+        onClick = {
+            snackbarMessage = "Check Permission clicked!"
+            showSnackbar = true
+        },
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF6A0DAD),
+            contentColor = Color.White
+        )
+    ) {
+        Text("Check Permission")
+    }
+
+    ...
+
+    Button(
+        onClick = {
+            snackbarMessage = "Request Permission clicked!"
+            showSnackbar = true
+        },
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF6A0DAD),
+            contentColor = Color.White
+        )
+    ) {
+        Text("Request Permission")
+    }
+    ```
+
+    </details>
+
+
+## Adding Permission Handling
+
+Now, we will integrate permission handling using Jetpack Compose's support for the Activity Result API. This enables us to check and request permissions dynamically.
+
+
+1. A reminder from earlier Android Eco system requires users to explicitly grant permissions for certain app features, like accessing the camera or location. We'll use:
+
+- `ACCESS_FINE_LOCATION`: For precise location access.
+  - `ACCESS_COARSE_LOCATION`: is required when using `ACCESS_FINE_LOCATION`
+- `CAMERA`: For taking photos or scanning QR codes.
+
+2. To manage permissions dynamically, we use the `rememberLauncherForActivityResult` API. Add the following to the `PermissionsScreen()`:
+
+
+    - You need to place the following underneath the `showSnackbar by remember ...` line
+  
+    ```kt
+    ...
+    val context = LocalContext.current
+    val requestPermissionsLauncher = rememberLauncherForActivityResult()
+    ...
+    ```
+
+3. Now we need to populate `rememberLauncherForActivityResult` to provide:
+    
+    - A contract to define the action (e.g., requesting permissions).
+    - A result handler to process the result.
+
+    ```kt
+    val requestPermissionsLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestMultiplePermissions(),
+        onResult = { permissions -> 
+        }
+    )
+    ```
+
+4. We now need to check if each permission has been granted, after `permission ->` lambda expression:
+
+    ```kt
+    // Check if each permission is granted or denied
+    val locationPermissionGranted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true
+    val cameraPermissionGranted = permissions[Manifest.permission.CAMERA] == true
+    ```
+
+5.  Lastly, within this function we need select `when` `locationPermissionGranted` && `cameraPermissionGranted`, `locationPermissionGranted` only, `cameraPermissionGranted` only or no permissions have been granted. Whereby the `snackbarMessage` as a meaningful message
+
+    <details>
+    <summary>Code here... [16 lines]</summary>
+
+    ```kt
+    ...
+    // Provide feedback based on permission status
+        when {
+            locationPermissionGranted && cameraPermissionGranted -> {
+                snackbarMessage = "Both permissions granted."
+            }
+            locationPermissionGranted -> {
+                snackbarMessage = "Location permission granted, but Camera permission denied."
+            }
+            cameraPermissionGranted -> {
+                snackbarMessage = "Camera permission granted, but Location permission denied."
+            }
+            else -> {
+                snackbarMessage = "Both permissions denied."
+            }
+        }
+        showSnackbar = true
+    }
+    ...
+    ```
+
+    </details>
 
 ------------------------------
 
-### Companion Object with 
+## `checkPermissions()`
 
-`companion object` is used to define constants, properties, and functions associated with a class. It's a way to create shared members that are accessible without creating an instance of the class. Members of the companion object can be accessed using the class name itself, without the need to create an instance of the class.
+1. You now need to create a function called `checkPermissions` that can be called by the `Button` `"Check Permissions"`
 
-```kotlin
-companion object {
-    private const val PERMISSION_REQUEST_CODE = 200
-}
-```
+    ```kt
+    // Check if permissions are granted
+    fun checkPermissions(context: android.content.Context): Boolean {
+        val locationPermission = ContextCompat.checkSelfPermission(
+            context, Manifest.permission.ACCESS_FINE_LOCATION
+        )
+        val cameraPermission = ContextCompat.checkSelfPermission(
+            context, Manifest.permission.CAMERA
+        )
+        return locationPermission == PackageManager.PERMISSION_GRANTED &&
+                cameraPermission == PackageManager.PERMISSION_GRANTED
+    }
+    ```
 
------------------
+    - `ContextCompat.checkSelfPermission`: A convenience method for checking if a specific permission is granted.
+      - **Parameters**:
+      -   `context`: The app's context, providing access to the permission system.
+      -   `Manifest.permission.ACCESS_FINE_LOCATION`: The permission being checked.
+      - **Return Value**: An integer representing the permission status:
+        - `PackageManager.PERMISSION_GRANTED`: Indicates the permission is granted.
+        - `PackageManager.PERMISSION_DENIED`: Indicates the permission is denied.
+      - The result is stored in `locationPermission`
+
+---------------------------
+
+## Involking `checkPermissions()`
+
+1. Update the the `"Check Permission"` `Button` to invoke the `checkPermissions` function:
+
+    ```kt
+    onClick = {
+        // Check if the permissions are already granted
+        val permissionsGranted = checkPermissions(context)
+        if (permissionsGranted) {
+            snackbarMessage = "Permissions already granted."
+        } else {
+            snackbarMessage = "Please request permission."
+        }
+        showSnackbar = true
+    }
+    ```
+
+2. Update the `"Request Permissions"` `Button` to make use of `requestPermissionsLauncher.launch`:
+
+    ```kt
+    onClick = {
+        // Request permissions using the launcher
+        requestPermissionsLauncher.launch(
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA)
+        )
+    }
+    ```
+
+---------------------------
 
 ## Running the App
 
@@ -416,21 +433,217 @@ companion object {
 
 3. Click the "Request Permission" button to request permissions if they are not granted.
 
-4. Verify that the Snackbar and AlertDialog messages are displayed appropriately based on permission status.
+4. Verify that the Snackbar messages are displayed appropriately based on permission status.
 
+
+<table style="border-collapse: collapse; border: none; table-layout: fixed; width: 100%;" >
+<tr style="border: none;">
+<td style="border: none; width:33%;">
+
+Output shows All permissions granted.
+
+<img src="figures/Granted.gif">
+
+</td>
+<td style="border: none; width:33%;">
+
+Output shows one permission granted.
+
+<img src="figures/SemiGranted.gif">
+
+</td>
+<td style="border: none;width:33%;">
+
+You will need to reset the permission once permanently granted.
+
+<img src="figures/ResetPermissions.gif">
+
+</td>
+</tr>
+</table>
 
 <div align=center>
 
-<img src="figures/Granted.gif">
-<img src="figures/SemiGranted.gif">
+
+
 
 </div>
 
 
+---------------------------
+
+## Full code
+
+<details>
+<summary>Full Code here... [159 lines]</summary>
+
+```kt
+package com.uog.permissions
+
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import com.uog.permissions.ui.theme.PermissionsTheme
+
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            PermissionsTheme {
+                PermissionsScreen()
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PermissionsScreen() {
+    val context = LocalContext.current
+    var snackbarMessage by remember { mutableStateOf("") }
+    var showSnackbar by remember { mutableStateOf(false) }
+
+    // Define the permission launcher using the new Activity Result API
+    val requestPermissionsLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestMultiplePermissions(),
+        onResult = { permissions ->
+            // Check if each permission is granted or denied
+            val locationPermissionGranted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true
+            val cameraPermissionGranted = permissions[Manifest.permission.CAMERA] == true
+
+            // Provide feedback based on permission status
+            when {
+                locationPermissionGranted && cameraPermissionGranted -> {
+                    snackbarMessage = "Both permissions granted."
+                }
+                locationPermissionGranted -> {
+                    snackbarMessage = "Location permission granted, but Camera permission denied."
+                }
+                cameraPermissionGranted -> {
+                    snackbarMessage = "Camera permission granted, but Location permission denied."
+                }
+                else -> {
+                    snackbarMessage = "Both permissions denied."
+                }
+            }
+            showSnackbar = true
+        }
+    )
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color(0xFF6A0DAD),
+                    titleContentColor = Color.White
+                ),
+                title = { Text("Permissions") }
+            )
+        },
+        content = { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Button(
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF6A0DAD),
+                        contentColor = Color.White
+                    ),
+                    onClick = {
+                        // Check if the permissions are already granted
+                        val permissionsGranted = checkPermissions(context)
+                        if (permissionsGranted) {
+                            snackbarMessage = "Permissions already granted."
+                        } else {
+                            snackbarMessage = "Please request permission."
+                        }
+                        showSnackbar = true
+                    }
+                ) {
+                    Text("Check Permission")
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Button(
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF6A0DAD),
+                        contentColor = Color.White
+                    ),
+                    onClick = {
+                        // Request permissions using the launcher
+                        requestPermissionsLauncher.launch(
+                            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA)
+                        )
+                    }
+                ) {
+                    Text("Request Permission")
+                }
+
+                if (showSnackbar) {
+                    Snackbar(
+                        action = {
+                            Button(onClick = { showSnackbar = false }) {
+                                Text("Dismiss")
+                            }
+                        }
+                    ) {
+                        Text(snackbarMessage)
+                    }
+                }
+            }
+        }
+    )
+}
+
+// Check if permissions are granted
+fun checkPermissions(context: android.content.Context): Boolean {
+    val locationPermission = ContextCompat.checkSelfPermission(
+        context, Manifest.permission.ACCESS_FINE_LOCATION
+    )
+    val cameraPermission = ContextCompat.checkSelfPermission(
+        context, Manifest.permission.CAMERA
+    )
+    return locationPermission == PackageManager.PERMISSION_GRANTED &&
+            cameraPermission == PackageManager.PERMISSION_GRANTED
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    PermissionsTheme {
+        PermissionsScreen()
+    }
+}
+```
+
+</details>
 
 ## Afterwards
 
-Experiment with other permissions
+1. Create functionality to revoke permissions whilst in the app.
 
-> - [https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f](https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f) and see what they mean.
-> - [https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml#L833](https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml#L833)
+2. Experiment with other permissions
+
+    > - [https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f](https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f) and see what they mean.
+    > - [https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml#L833](https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml#L833)
