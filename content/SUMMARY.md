@@ -15,7 +15,7 @@
 - [Exception Handling](./Kotlin/Lab_7/Lab_7.md)
 - [Kotlin Object Orientated Programming](./Kotlin/Lab_8/Lab_8.md)
   - [OOP with Data Storage](./Kotlin/Lab_9/Lab_9.md)
-- [Permissions ]()
+- [Permissions ](./Kotlin/Lab_10/Lab_10.md)
 - [Sensors]()
   - [All of the Sensors]()
   - [Using the Sensors]()
