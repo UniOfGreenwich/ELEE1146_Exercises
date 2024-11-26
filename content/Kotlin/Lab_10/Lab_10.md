@@ -643,7 +643,7 @@ fun DefaultPreview() {
 
 1. Create functionality to revoke permissions whilst in the app.
 
-2. Experiment with other permissions
+2. Experiment with other permissions, add more buttons to check each permission
 
     > - [https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f](https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f) and see what they mean.
     > - [https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml#L833](https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml#L833)
