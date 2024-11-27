@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././theme/css/code.css">
+        <link rel="stylesheet" href="../.././theme/css/terminal.css">
+        <link rel="stylesheet" href="../.././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -169,18 +173,21 @@
 <hr />
 <h2 id="step-1"><a class="header" href="#step-1">Step 1</a></h2>
 <ul>
-<li>Open IntelliJ</li>
-<li>Create a new project
+<li>
+<p>Open IntelliJ</p>
+</li>
+<li>
+<p>Create a new project</p>
 <ul>
 <li>Call it <code>BankingSystem</code> like the screen shot below.</li>
 <li>Tick 'Add sample code'</li>
 <li>Note you can use any JDK for this exercise, I am using JDK 17.0.6.</li>
 </ul>
+ <div align=center>
+<p><img src="./figures/step1.png" alt="" /></p>
+ </div>
 </li>
 </ul>
-<div align=center>
-<p><img src="./figures/step1.png" alt="" /></p>
-</div>
 <hr />
 <h2 id="step-2"><a class="header" href="#step-2">Step 2</a></h2>
 <p>Create five Kotlin class files:</p>
@@ -201,6 +208,14 @@
 <li>The function below, will take in a message we supply and use the <code>Exception</code> class to <code>throw</code> the <code>error</code>.</li>
 <li><code>runCatching</code> calls the specified block and returns its encapsulated result if invocation was successful, catching any <code>Throwable</code> exception that was <code>thrown</code> from the block function execution and encapsulating it as a failure.</li>
 </ul>
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
 <pre><code class="language-kt">class ErrorMessage {
 
     /**
@@ -216,15 +231,34 @@
     }
 }
 </code></pre>
-<p><strong>Key points</strong></p>
+</div>
+</div>
+<div id="admonition-key-points" class="admonition admonish-info" role="note" aria-labelledby="admonition-key-points-title">
+<div class="admonition-title">
+<div id="admonition-key-points-title">
+<p>Key points</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-key-points"></a>
+</div>
+<div>
 <ul>
 <li>The class uses an <code>ErrorMessage</code> instance to handle error messages.</li>
 <li>Functions like <code>withdrawal</code>, <code>deposit</code>, and <code>transfer</code> from the class <code>FundsContoller</code>, perform transactional operations with error handling. So we reduce the amount of code repeated and have a function that we can call instead.</li>
 </ul>
+</div>
+</div>
 <hr />
 <h2 id="step-4---hashing-class"><a class="header" href="#step-4---hashing-class">Step 4 - <code>Hashing</code> Class</a></h2>
 <p>Open <code>Hashing.kt</code> and reproduce the following code.</p>
 <p>This class provides a function to hash a PIN using SHA-256.</p>
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
 <pre><code class="language-kt">import java.math.BigInteger
 import java.security.MessageDigest
 
@@ -242,53 +276,59 @@ class Hashing {
     }
 }
 </code></pre>
-<blockquote>
-<p><strong>Notes:</strong></p>
-<blockquote>
+</div>
+</div>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
 <ul>
 <li>
 <p><code>md.digest(pinString.toByteArray())</code>:</p>
-</li>
-<li>
-<p><code>pinString.toByteArray()</code>: Converts the PIN (which is a string representation of an integer) to a byte array.</p>
-</li>
-<li>
-<p><code>md.digest(byteArray)</code>: Computes the SHA-256 hash of the byte array using the <code>MessageDigest</code> instance (<code>md</code>).</p>
+<ul>
+<li><code>pinString.toByteArray()</code>: Converts the PIN (which is a string representation of an integer) to a byte array.</li>
+<li><code>md.digest(byteArray)</code>: Computes the SHA-256 hash of the byte array using the <code>MessageDigest</code> instance (<code>md</code>).</li>
+</ul>
 </li>
 <li>
 <p><code>BigInteger(1, ...)</code>:</p>
-</li>
-<li>
-<p><code>BigInteger</code>: Represents an arbitrary-precision integer in Kotlin.</p>
-</li>
-<li>
-<p><code>BigInteger(1, byteArray)</code>: Creates a <code>BigInteger</code> from the provided byte array, treating it as a positive number. The <code>1</code> as the first argument indicates a positive sign.</p>
+<ul>
+<li><code>BigInteger</code>: Represents an arbitrary-precision integer in Kotlin.</li>
+<li><code>BigInteger(1, byteArray)</code>: Creates a <code>BigInteger</code> from the provided byte array, treating it as a positive number. The <code>1</code> as the first argument indicates a positive gn.</li>
+</ul>
 </li>
 <li>
 <p><code>.toString(16)</code>:</p>
-</li>
-<li>
-<p>Converts the <code>BigInteger</code> to a hexadecimal string representation. The <code>16</code> argument specifies the radix (base) as hexadecimal.</p>
+<ul>
+<li>Converts the <code>BigInteger</code> to a hexadecimal string representation. The <code>16</code> argument specifies the radix (base) as hexadecimal.</li>
+</ul>
 </li>
 <li>
 <p><code>.padStart(32, '0')</code>:</p>
-</li>
-<li>
-<p>Ensures that the resulting hexadecimal string is of length 32 characters by padding with '0' characters at the beginning if necessary.</p>
+<ul>
+<li>Ensures that the resulting hexadecimal string is of length 32 characters by padding with '0' characters at the beginning if necessary.</li>
+</ul>
 </li>
 <li>
 <p>Example: Password123435 -&gt; Hash -&gt; 63k#k4u23l@4k</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
-<p><strong>Key Points:</strong></p>
-<ul>
-<li>The sha256 function converts the PIN to a secure hash.</li>
-</ul>
-<hr />
+</div>
+</div>
 <h2 id="step-5---fundscontroller-class"><a class="header" href="#step-5---fundscontroller-class">Step 5 - <code>FundsController</code> Class</a></h2>
 <p>Open <code>FundsController.kt</code> so that you can programme the <code>withdrawal</code>, <code>deposit</code>, and <code>transfer</code> functions.</p>
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
 <pre><code class="language-kt">class FundsController {
 
     private val e = ErrorMessage()
@@ -368,14 +408,33 @@ class Hashing {
     }
 }
 </code></pre>
-<p><strong>Key Points:</strong></p>
+</div>
+</div>
+<div id="admonition-key-points-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-key-points-1-title">
+<div class="admonition-title">
+<div id="admonition-key-points-1-title">
+<p>Key Points</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-key-points-1"></a>
+</div>
+<div>
 <ul>
 <li>The class uses an <code>ErrorMessage</code> instance to handle error messages.</li>
 <li>Functions like <code>withdrawal</code>, <code>deposit</code>, and <code>transfer</code> perform the respective operations with error handling, to for the <code>BankingCustomer</code> class.</li>
 </ul>
+</div>
+</div>
 <hr />
 <h2 id="step-6---bankcustomer-class"><a class="header" href="#step-6---bankcustomer-class">Step 6 - <code>BankCustomer</code> Class</a></h2>
 <p>Open <code>BankCustomer.kt</code> and program the <code>BankCustomer</code> class. It represents a bank customer with account details, including account number, PIN, name, and balance.</p>
+<div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+<div class="admonition-title">
+<div id="admonition-code-3-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-3"></a>
+</div>
+<div>
 <pre><code class="language-kt">import java.security.SecureRandom
 
 class BankCustomer {
@@ -469,21 +528,50 @@ class BankCustomer {
     }
 }
 </code></pre>
-<p><strong>Key Points:</strong></p>
+</div>
+</div>
+<div id="admonition-key-points-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-key-points-2-title">
+<div class="admonition-title">
+<div id="admonition-key-points-2-title">
+<p>Key Points</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-key-points-2"></a>
+</div>
+<div>
 <ul>
 <li>The class has multiple constructors for flexibility in object creation.</li>
 <li>It includes functions to set customer name, balance, and generate a hash of the PIN.</li>
 <li>The <code>customerToString</code> function formats customer information.</li>
 </ul>
+</div>
+</div>
 <hr />
 <p><strong>Step 7 - <code>Main</code> Class</strong></p>
 <p>Open <code>Main.kt</code> and make the file first look like this:</p>
+<div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+<div class="admonition-title">
+<div id="admonition-code-4-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-4"></a>
+</div>
+<div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
 
 }
 </code></pre>
+</div>
+</div>
 <p>This file creates instances of <code>BankCustomer</code>, <code>FundsController</code>, and <code>ATM</code> to simulate banking operations.</p>
 <p>Let's create objects of the <code>BankCustomer</code> using each of the available <code>constructors</code></p>
+<div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+<div class="admonition-title">
+<div id="admonition-code-5-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-5"></a>
+</div>
+<div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
     //declaration and initialisation
     var cust1 : BankCustomer = BankCustomer(12312124,1234,0.0)
@@ -496,7 +584,17 @@ class BankCustomer {
     printBankCustomer(cust3)
 }
 </code></pre>
+</div>
+</div>
 <p>To fix the <code>printBankCustomer()</code> error, outside of the main() functions make a new function:</p>
+<div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+<div class="admonition-title">
+<div id="admonition-code-6-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-6"></a>
+</div>
+<div>
 <pre><code class="language-kt">/**
  * prints the object on to new lines
  * @param Object BankCustomer
@@ -527,18 +625,27 @@ Customer number:3
 
 Process finished with exit code 0
 </code></pre>
+</div>
+</div>
 <ul>
 <li>So you can see there that there are three seperate objects based on each constructor of the <code>BankCustomer</code> class.</li>
 <li>We can control them independently.</li>
 </ul>
 <p>Modify the code so that you can use the <code>FundsController</code> class's functons; <code>withdrawal</code>, <code>transfer</code>, and <code>desposit</code>.</p>
 <ul>
-<li>Firslty, we are going to us the <code>withdrawal</code> function:
+<li>
+<p>Firslty, we are going to us the <code>withdrawal</code> function:</p>
 <ul>
-<li>using the <code>fundsController</code> object invoke the <code>withdrawal</code> function to withdraw <code>10.00</code> from <code>cust1</code>, which should throw an error message for us.</li>
-</ul>
-</li>
-</ul>
+<li>
+<p>using the <code>fundsController</code> object invoke the <code>withdrawal</code> function to withdraw <code>10.00</code> from <code>cust1</code>, which should throw an error message for us.</p>
+<div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+<div class="admonition-title">
+<div id="admonition-code-7-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-7"></a>
+</div>
+<div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
 
     val fundsController = FundsController()
@@ -554,33 +661,55 @@ Process finished with exit code 0
     ...
 }
 </code></pre>
-<ul>
-<li>Run and you should see the following:</li>
+</div>
+</div>
+</li>
 </ul>
+</li>
+<li>
+<p>Run and you should see the following:</p>
+  <div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+  <div class="admonition-title">
+  <div id="admonition-code-8-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-8"></a>
+  </div>
+  <div>
 <pre><code>Information for :
 
 Customer number:1 
- Acc No:12312124
- Name:  
- Balance: £0.0
+Acc No:12312124
+Name:  
+Balance: £0.0
 
 java.lang.Exception: Insufficient funds. Current Balance is: 0.0
 Customer number:2 
- Acc No:12318888
- Name: First Last
- Balance: £1200.0
+Acc No:12318888
+Name: First Last
+Balance: £1200.0
 
 Customer number:3 
- Acc No:0
- Name:  
- Balance: £0.0
+Acc No:0
+Name:  
+Balance: £0.0
 
 
 Process finished with exit code 0
 </code></pre>
-<ul>
-<li>Let's continue using the <code>fundsContoller</code> object to modify the balance of <code>cust2</code>, with the <code>withdrawal</code> function:</li>
-</ul>
+  </div>
+  </div>
+</li>
+<li>
+<p>Let's continue using the <code>fundsContoller</code> object to modify the balance of <code>cust2</code>, with the <code>withdrawal</code> function:</p>
+  <div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+  <div class="admonition-title">
+  <div id="admonition-code-9-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-9"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
 
     val fundsController = FundsController()
@@ -605,45 +734,71 @@ Process finished with exit code 0
     ...
 }
 </code></pre>
-<ul>
-<li>Run and you should see the following output:</li>
-</ul>
+  </div>
+  </div>
+</li>
+<li>
+<p>Run and you should see the following output:</p>
+  <div id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+  <div class="admonition-title">
+  <div id="admonition-output-title">
+<p>Output</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-output"></a>
+  </div>
+  <div>
 <pre><code>Information for :
 
 Customer number:1 
- Acc No:12312124
- Name:  
- Balance: £0.0
+Acc No:12312124
+Name:  
+Balance: £0.0
 
 java.lang.Exception: Insufficient funds. Current Balance is: 0.0
 Customer number:2 
- Acc No:12318888
- Name: First Last
- Balance: £1200.0
+Acc No:12318888
+Name: First Last
+Balance: £1200.0
 
 Customer number:2 
- Acc No:12318888
- Name: First Last
- Balance: £700.0
+Acc No:12318888
+Name: First Last
+Balance: £700.0
 
 Customer number:2 
- Acc No:12318888
- Name: First Last
- Balance: £200.0
+Acc No:12318888
+Name: First Last
+Balance: £200.0
 
 Customer number:1 
- Acc No:12312124
- Name:  
- Balance: £500.0
+Acc No:12312124
+Name:  
+Balance: £500.0
 
 Process finished with exit code 0
 </code></pre>
-<ul>
-<li>Notice how <strong>ONLY</strong> <code>cust2</code> balance has decreased by <code>500.00</code> to <code>700.00</code></li>
-<li>and second decrease from <code>700.00</code> to <code>200.00</code> because <code>cust2</code> transfered <code>500.00</code> to <code>cust1</code></li>
-<li>Remember each object is independent from each other.</li>
+  </div>
+  </div>
+</li>
+<li>
+<p>Notice how <strong>ONLY</strong> <code>cust2</code> balance has decreased by <code>500.00</code> to <code>700.00</code></p>
+</li>
+<li>
+<p>and second decrease from <code>700.00</code> to <code>200.00</code> because <code>cust2</code> transfered <code>500.00</code> to <code>cust1</code></p>
+</li>
+<li>
+<p>Remember each object is independent from each other.</p>
+</li>
 </ul>
 <p>Now we are going to use the <code>ATM</code> class to access funds again. Remember to initialise the atm object from the class after <code>val fundsController = FundsController()</code></p>
+<div id="admonition-code-10" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-10-title">
+<div class="admonition-title">
+<div id="admonition-code-10-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-10"></a>
+</div>
+<div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
 
     val fundsController = FundsController()
@@ -658,7 +813,17 @@ Process finished with exit code 0
     fundsController.withdrawal(cust1,10.00)
 }
 </code></pre>
+</div>
+</div>
 <p>We should utilise the <code>pinCheck</code> function:</p>
+<div id="admonition-code-11" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-11-title">
+<div class="admonition-title">
+<div id="admonition-code-11-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-11"></a>
+</div>
+<div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
 
     ...
@@ -672,14 +837,34 @@ Process finished with exit code 0
 
 }
 </code></pre>
+</div>
+</div>
 <p>If you run this again you should see at the end of terminal:</p>
+<div id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+<div class="admonition-title">
+<div id="admonition-output-1-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-1"></a>
+</div>
+<div>
 <pre><code>...
 
 Pin match: false
 Pin match: true
 </code></pre>
+</div>
+</div>
 <p>Here we can see that the <code>atm.checkPin(1235,cust1)</code> compares the supplied pin <code>1235</code> against the <code>cust1</code> pin, by using the <code>hashing.sha256()</code> functions.</p>
 <p>Lastly, you are to use <code>atm.printBalance()</code> and <code>atm.getCash()</code> functions, reproduce the below and run:</p>
+<div id="admonition-code-12" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-12-title">
+<div class="admonition-title">
+<div id="admonition-code-12-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-12"></a>
+</div>
+<div>
 <pre><code>fun main(args: Array&lt;String&gt;) {
 
     ...
@@ -693,7 +878,16 @@ Pin match: true
     printBankCustomer(2,cust2)
 }
 </code></pre>
-<p><strong>Output</strong></p>
+</div>
+</div>
+<div id="admonition-output-2" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-2-title">
+<div class="admonition-title">
+<div id="admonition-output-2-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-2"></a>
+</div>
+<div>
 <pre><code>...
 Customer Balanace: 200.0
 Customer Balanace: 150.0
@@ -702,17 +896,27 @@ Customer number:2
  Name: First Last
  Balance: £150.0
 </code></pre>
-<p><strong>Key Points:</strong></p>
+</div>
+</div>
+<div id="admonition-key-points-3" class="admonition admonish-info" role="note" aria-labelledby="admonition-key-points-3-title">
+<div class="admonition-title">
+<div id="admonition-key-points-3-title">
+<p>Key Points</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-key-points-3"></a>
+</div>
+<div>
 <ul>
 <li>Customer instances are created with different <code>constructors</code>.</li>
 <li>Operations like withdrawals, deposits, PIN checks, and balance checks are performed.</li>
 </ul>
+</div>
+</div>
 <hr />
 <p>Step 8 : Explore</p>
 <p>Play with the functions and classes to experiment and explore the uses. Try and modifiy the classes to do more functionality:</p>
 <ul>
-<li>
-<p>BankCustomer</p>
+<li>BankCustomer
 <ul>
 <li>
 <p><code>setBankCustomerName()</code></p>
@@ -727,8 +931,14 @@ Customer number:2
 <li>
 <p>This should create an account number, use <code>Random()</code> to generate 8 random numbers from 0 to 8. Whereby the first number cannont be a 0.</p>
 </li>
-<li><details>
-<summary>Suggested Solution</summary>
+<li> <details id="admonition-code-suggested-solution" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-suggested-solution-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-suggested-solution-title">
+<p>Code: Suggested Solution</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-suggested-solution"></a>
+ </summary>
+ <div>
 <pre><code class="language-kt">/**
 * Creates an account number using repeat and random.
 */
@@ -753,14 +963,21 @@ fun makeAccountNumber()
     this.accNumber = tmpAccNumber?.toInt()
 }
 </code></pre>
+ </div>
+ </details>
 </li>
 </ul>
- </details>
 </li>
 <li>
 <p><code>makeSortCode()</code></p>
-<details>
-<summary>Suggested Output</summary>
+<details id="admonition-code-suggested-solution-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-suggested-solution-1-title">
+<summary class="admonition-title">
+<div id="admonition-code-suggested-solution-1-title">
+<p>Code: Suggested Solution</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-suggested-solution-1"></a>
+</summary>
+<div>
 <pre><code class="language-kt">/**
  * Creates an account number using repeat and random.
  *
@@ -779,7 +996,16 @@ fun makeSortCode()
     this.sortCode = tmpSortCode
 }
 </code></pre>
-<p><strong>Output</strong></p>
+</div>
+</details>
+<details id="admonition-output-3" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-3-title">
+<summary class="admonition-title">
+<div id="admonition-output-3-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-3"></a>
+</summary>
+<div>
 <pre><code>Customer number:2 
 
 Sort Code: 00-01-12
@@ -790,12 +1016,15 @@ Balance: £150.0
 <ul>
 <li>You need to create a <code>sortCode</code> variable and modify the <code>customerToString()</code> functions to print the <code>sortCode</code></li>
 </ul>
-</details>    
+<pre><code>
+&lt;/div&gt;
+&lt;/details&gt;
+
+</code></pre>
 </li>
 </ul>
 </li>
-<li>
-<p>Make a new class for a Card so that each bank customer can have one, with a card number, expiry date, and cvv for each <code>cust</code>.</p>
+<li>Make a new class for a Card so that each bank customer can have one, with a card number, expiry date, and cvv for each <code>cust</code>.
 <ul>
 <li>Card number format
 <ul>
@@ -817,9 +1046,16 @@ Balance: £150.0
 <li>See http://datagenetics.com/blog/july42013/index.html</li>
 </ul>
 </li>
-<li><details>
-<summary>Possible Solution</summary>
-<pre><code class="language-kt">class Card {
+<li>   <details id="admonition-code-suggested-solution-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-suggested-solution-2-title">
+   <summary class="admonition-title">
+   <div id="admonition-code-suggested-solution-2-title">
+<p>Code: Suggested Solution</p>
+   </div>
+   <a class="admonition-anchor-link" href="#admonition-code-suggested-solution-2"></a>
+   </summary>
+   <div>
+<pre><code>```kt
+class Card {
 
     private var card : String? = null
     private var name : String? = null
@@ -918,14 +1154,25 @@ Balance: £150.0
         return "Name: ${this.name}\nCard No: ${this.card}\n Expiry Date: ${this.expiryDate}\nCVV: ${this.cvv}"
     }
 }
+```
 </code></pre>
-<p><strong>Output</strong></p>
+   </div>
+   </details>
+<div id="admonition-output-4" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-4-title">
+<div class="admonition-title">
+<div id="admonition-output-4-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-4"></a>
+</div>
+<div>
 <pre><code>Name: First Last
 Card No: 4354322782868253
 Expiry Date: 08/2029
 CVV: 260
 </code></pre>
-</details>
+</div>
+</div>
 </li>
 </ul>
 </li>
@@ -934,9 +1181,16 @@ CVV: 260
 </ul>
 <hr />
 <hr />
+<h2 id="all-code-for-the-lab"><a class="header" href="#all-code-for-the-lab">All code for the lab</a></h2>
 <p></p>
-<details>
-<summary>Full code: Main.kt</summary>
+<details id="admonition-full-code-mainkt-44-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-mainkt-44-lines-title">
+<summary class="admonition-title">
+<div id="admonition-full-code-mainkt-44-lines-title">
+<p>Full code: Main.kt [44 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-full-code-mainkt-44-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
 
     val fundsController = FundsController()
@@ -983,10 +1237,17 @@ fun printBankCustomer(n:Int , c: BankCustomer) {
     println("Customer number:${n} \n ${c.customerToString()}")
 }
 </code></pre>
+</div>
 </details>
 <p></p>
-<details>
-<summary>Full code: BankCustomer.kt</summary>
+<details id="admonition-full-code-bankcustomerkt-162-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-bankcustomerkt-162-lines-title">
+<summary class="admonition-title">
+<div id="admonition-full-code-bankcustomerkt-162-lines-title">
+<p>Full code: BankCustomer.kt [162 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-full-code-bankcustomerkt-162-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">import java.security.SecureRandom
 import kotlin.random.Random
 
@@ -1151,10 +1412,17 @@ class BankCustomer {
     }
 }
 </code></pre>
+</div>
 </details>
 <p></p>
-<details>
-<summary>Full code: Hashing.kt</summary>
+<details id="admonition-full-code-hashingkt-14-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-hashingkt-14-lines-title">
+<summary class="admonition-title">
+<div id="admonition-full-code-hashingkt-14-lines-title">
+<p>Full code: Hashing.kt [14 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-full-code-hashingkt-14-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">import java.math.BigInteger
 import java.security.MessageDigest
 class Hashing {
@@ -1171,10 +1439,17 @@ class Hashing {
     }
 }
 </code></pre>
+</div>
 </details>
 <p></p>
-<details>
-<summary>Full code: FundsController.kt</summary>
+<details id="admonition-full-code-fundscontrollerkt-77-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-fundscontrollerkt-77-lines-title">
+<summary class="admonition-title">
+<div id="admonition-full-code-fundscontrollerkt-77-lines-title">
+<p>Full code: FundsController.kt [77 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-full-code-fundscontrollerkt-77-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">class FundsController {
 
     private val e = ErrorMessage()
@@ -1254,10 +1529,17 @@ class Hashing {
     }
 }
 </code></pre>
+</div>
 </details>
 <p></p>
-<details>
-<summary>Full code: ErrorMessage.kt</summary>
+<details id="admonition-full-code-errormessagekt-13-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-errormessagekt-13-lines-title">
+<summary class="admonition-title">
+<div id="admonition-full-code-errormessagekt-13-lines-title">
+<p>Full code: ErrorMessage.kt [13 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-full-code-errormessagekt-13-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">class ErrorMessage {
 
     /**
@@ -1273,10 +1555,17 @@ class Hashing {
     }
 }
 </code></pre>
+</div>
 </details>
 <p></p>
-<details>
-<summary>Full code: ATM.kt</summary>
+<details id="admonition-full-code-atmkt-66-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-atmkt-66-lines-title">
+<summary class="admonition-title">
+<div id="admonition-full-code-atmkt-66-lines-title">
+<p>Full code: ATM.kt [66 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-full-code-atmkt-66-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">import javax.swing.text.StyledEditorKit.BoldAction
 
 /**
@@ -1345,10 +1634,17 @@ class ATM {
     }
 }
 </code></pre>
+</div>
 </details>
 <p></p>
-<details>
-<summary>Card.kt</summary>
+<details id="admonition-full-code-cardkt-104-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-full-code-cardkt-104-lines-title">
+<summary class="admonition-title">
+<div id="admonition-full-code-cardkt-104-lines-title">
+<p>Full code: Card.kt [104 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-full-code-cardkt-104-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">import java.text.DateFormat
 import java.util.*
 import javax.print.DocFlavor.STRING
@@ -1454,6 +1750,7 @@ class Card {
     }
 }
 </code></pre>
+</div>
 </details>
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -1462,7 +1759,7 @@ class Card {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../Kotlin/Lab_9/Lab_9.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../Kotlin/Lab_8/Lab_8.1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -1476,7 +1773,7 @@ class Card {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../Kotlin/Lab_9/Lab_9.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../Kotlin/Lab_8/Lab_8.1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

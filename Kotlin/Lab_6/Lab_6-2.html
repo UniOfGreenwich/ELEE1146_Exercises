@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././theme/css/code.css">
+        <link rel="stylesheet" href="../.././theme/css/terminal.css">
+        <link rel="stylesheet" href="../.././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -166,12 +170,24 @@
                     <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
                         <h1 id="lab-6-2-city-guide-app-walkthrough"><a class="header" href="#lab-6-2-city-guide-app-walkthrough">Lab 6-2: City Guide App Walkthrough</a></h1>
 <p>You will be developing travel guide for Medway app that highlights the best attractions the city has to offer.  The City Guide app opening screen is shown below:</p>
-<blockquote>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
 <ul>
-<li>You will need to download the following picture folder -&gt; <a href="Lab_6-2_Pictures.zip">Lab_6-2_Picture.zip</a></li>
-<li>The completed project can be found here at end of session -&gt; <a href="https://github.com/UniofGreenwich/MobileApps-CityGuide">https://github.com/UniofGreenwich/MobileApps-CityGuide</a></li>
+<li>
+<p>You will need to download the following picture folder -&gt; <a href="Lab_6-2_Pictures.zip">Lab_6-2_Picture.zip</a></p>
+</li>
+<li>
+<p>The completed project can be found here at end of session -&gt; <a href="https://github.com/UniofGreenwich/MobileApps-CityGuide">https://github.com/UniofGreenwich/MobileApps-CityGuide</a></p>
+</li>
 </ul>
-</blockquote>
+</div>
+</div>
 <div align=center>
 <table>
 <tr>
@@ -245,6 +261,14 @@
 </li>
 <li>
 <p>Reprodce this:</p>
+  <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+  <div class="admonition-title">
+  <div id="admonition-code-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">package com.uog.cityguide
 
 ...
@@ -309,10 +333,20 @@ fun ListItem(item: String, onClick: () -&gt; Unit){
     }
 }
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/mainactivity_1.png" alt="" /></p>
 </li>
 <li>
 <p>Continue with making a list of ListItem:</p>
+  <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+  <div class="admonition-title">
+  <div id="admonition-code-1-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">... 
 
 @Composable
@@ -329,6 +363,8 @@ fun ItemList(items: List&lt;String&gt;, onItemClick: (Int) -&gt; Unit){
     }
 }
 </code></pre>
+  </div>
+  </div>
 <ul>
 <li>
 <p><code>LazyColumn</code>: <code>LazyColumn</code> is a scrollable list component in Jetpack Compose. It is designed to handle large datasets efficiently by only composing and laying out the visible items. This improves performance and memory usage. LazyColumn supports various features like item spacing, item animations, and more.</p>
@@ -349,6 +385,14 @@ fun ItemList(items: List&lt;String&gt;, onItemClick: (Int) -&gt; Unit){
 <ul>
 <li>
 <p>Go back up to the <code>MainScreen()</code> so we can implement the design and use the <code>ItemList()</code>:</p>
+  <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+  <div class="admonition-title">
+  <div id="admonition-code-2-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">...
 
 @Composable
@@ -382,6 +426,8 @@ fun MainScreen(){
     }
 }
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/mainactivity_2.png" alt="" /></p>
 </li>
 <li>
@@ -390,6 +436,14 @@ fun MainScreen(){
 </li>
 <li>
 <p>Continue buidling the <code>ItemList</code> options:</p>
+  <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+  <div class="admonition-title">
+  <div id="admonition-code-3-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-3"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">ItemList(items = attractions) { position -&gt;
     when(position){
         0 -&gt; {
@@ -410,6 +464,8 @@ fun MainScreen(){
     }
 }
 </code></pre>
+  </div>
+  </div>
 </li>
 <li>
 <p>If you rebuild the app and run, the Great lines item should take you to the correct webpag, however, the other items will cause the app to crash.</p>
@@ -432,6 +488,14 @@ fun MainScreen(){
 <ul>
 <li>
 <p>Adding global scoped variables for the images and the attractions titles</p>
+  <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+  <div class="admonition-title">
+  <div id="admonition-code-4-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">class Attraction : ComponentActivity() {
 
 private val attractionResourceImages = arrayOf(
@@ -446,9 +510,19 @@ private val attractionStringTitles = arrayOf(
 ...
 }
 </code></pre>
+  </div>
+  </div>
 </li>
 <li>
 <p>You should visit the res/strings.xml and place the following items:</p>
+  <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+  <div class="admonition-title">
+  <div id="admonition-code-5-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+  </div>
+  <div>
 <pre><code class="language-xml">&lt;resources&gt;
     &lt;string name="app_name"&gt;CityGuide&lt;/string&gt;
     &lt;string name="dockyard"&gt;HMS Gannet @ Historic Dockyard&lt;/string&gt;
@@ -457,9 +531,19 @@ private val attractionStringTitles = arrayOf(
     &lt;string name="back_button"&gt;Go back…&lt;/string&gt;
 &lt;/resources&gt;  
 </code></pre>
+  </div>
+  </div>
 </li>
 <li>
 <p>Update the class with the fun <code>onCreate()}{...}</code></p>
+  <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+  <div class="admonition-title">
+  <div id="admonition-code-6-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">
 ...
 
@@ -475,13 +559,24 @@ override fun onCreate(savedInstanceState: Bundle?) {
     }
 }
 </code></pre>
+  </div>
+  </div>
 </li>
 </ul>
 </li>
 <li>
 <p><strong>Create the navigateBack function</strong></p>
 <ul>
-<li>Directly underneath the <code>onCreate()</code> closing brace add the following code:
+<li>
+<p>Directly underneath the <code>onCreate()</code> closing brace add the following code:</p>
+  <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+  <div class="admonition-title">
+  <div id="admonition-code-7-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">...
 class Attraction : ... {
     override fun onCreate(...){
@@ -494,6 +589,8 @@ class Attraction : ... {
     }
 }
 </code></pre>
+  </div>
+  </div>
 <ul>
 <li><strong>navigateBack</strong>:  invokes the <code>startActivity</code> function to launch the <code>MainActivity.kt</code>, so we can go back a page, when this function is invoked via an <code>onclick</code> method on a <code>Button</code> object.</li>
 </ul>
@@ -509,6 +606,14 @@ class Attraction : ... {
 <ul>
 <li>
 <p>After the closing brace of the Attraction Class we are going to add the AttractionScreen Composable function with the following parameters:</p>
+  <div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+  <div class="admonition-title">
+  <div id="admonition-code-8-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-8"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">class Attraction : ...{
     ...
 }
@@ -518,11 +623,21 @@ fun AttractionScreen(imageResId: Int, titleResId: Int, onBackClick: () -&gt; Uni
 
 }
 </code></pre>
+  </div>
+  </div>
 </li>
 </ul>
 </li>
 <li>
 <p><strong>Revisit the <code>AttractionScreen()</code> invocation in the <code>onCreate</code> method and provide the following argumnets</strong></p>
+ <div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+ <div class="admonition-title">
+ <div id="admonition-code-9-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-9"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">override fun onCreate(savedInstanceState: Bundle?) {
     ...
     setContent {
@@ -537,12 +652,22 @@ fun AttractionScreen(imageResId: Int, titleResId: Int, onBackClick: () -&gt; Uni
     }
 }
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p><strong>Create a <code>Preview</code> for the <code>AttractionScreen()</code></strong></p>
 <ul>
 <li>
 <p>Go the bottom of the file underneath the closing brace of the <code>AttractionScreen()</code> and add a <code>Composable</code> <code>Preview</code> for it:</p>
+  <div id="admonition-code-10" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-10-title">
+  <div class="admonition-title">
+  <div id="admonition-code-10-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-10"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">@Preview(showBackground = true)
 @Composable
 fun AttractionScreenPreview(){
@@ -555,6 +680,8 @@ fun AttractionScreenPreview(){
     }
 }
 </code></pre>
+  </div>
+  </div>
 <ul>
 <li>Here we are referencin the following items statically, so that we can see the layout of our Composable view. As we start building it should start to render.</li>
 </ul>
@@ -566,6 +693,14 @@ fun AttractionScreenPreview(){
 <ul>
 <li>
 <p>Now we can start to design the UI of the <code>AttractionScreen()</code></p>
+  <div id="admonition-code-11" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-11-title">
+  <div class="admonition-title">
+  <div id="admonition-code-11-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-11"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">@Composable
 fun AttractionScreen(imageResId: Int, titleResId: Int, onBackClick: () -&gt; Unit){
     Column(
@@ -610,6 +745,8 @@ fun AttractionScreen(imageResId: Int, titleResId: Int, onBackClick: () -&gt; Uni
     }
 }
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/activity_screen.png" alt="" /></p>
 </li>
 <li>
@@ -637,8 +774,14 @@ fun AttractionScreen(imageResId: Int, titleResId: Int, onBackClick: () -&gt; Uni
 <h2 id="running-and-updating-the-androidmanifestxml-file"><a class="header" href="#running-and-updating-the-androidmanifestxml-file">Running and Updating the <code>AndroidManifest.xml</code> File</a></h2>
 <h3 id="video--5805---5949"><a class="header" href="#video--5805---5949">Video @ 58.05 - 59.49</a></h3>
 <ol>
-<li>
-<p><strong>Running and getting an error</strong></p>
+<li><div id="admonition-running-and-getting-an-error" class="admonition admonish-danger" role="note" aria-labelledby="admonition-running-and-getting-an-error-title">
+<div class="admonition-title">
+<div id="admonition-running-and-getting-an-error-title">
+<p>Running and getting an error:</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-running-and-getting-an-error"></a>
+</div>
+<div>
 <ul>
 <li>
 <p>When you run this code, you will encounter an error when you select the any link that is not a url to a webpage.</p>
@@ -648,6 +791,8 @@ fun AttractionScreen(imageResId: Int, titleResId: Int, onBackClick: () -&gt; Uni
 </ul>
 </li>
 </ul>
+</div>
+</div>
 </li>
 <li>
 <p><strong>Updating the  AndroidManifest.xml</strong></p>
@@ -657,6 +802,14 @@ fun AttractionScreen(imageResId: Int, titleResId: Int, onBackClick: () -&gt; Uni
 <ul>
 <li>
 <p>include the following <code>activity</code> tag in side the parent <code>application</code> tag,</p>
+  <div id="admonition-code-12" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-12-title">
+  <div class="admonition-title">
+  <div id="admonition-code-12-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-12"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">&lt;activity android:name=".Attraction"&gt;
 
 &lt;/activity&gt;
@@ -687,6 +840,8 @@ fun AttractionScreen(imageResId: Int, titleResId: Int, onBackClick: () -&gt; Uni
 
 &lt;/manifest&gt;    
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/android_manifest.png" alt="" /></p>
 </li>
 </ul>
@@ -702,9 +857,17 @@ fun AttractionScreen(imageResId: Int, titleResId: Int, onBackClick: () -&gt; Uni
 <p>Congratulations! You have successfully built a City Guide App using Kotlin and Jetpack Compose. You can now extend this app by adding more attractions, improving the UI, and using external data sources.</p>
 <hr />
 <h2 id="continue-here"><a class="header" href="#continue-here">Continue Here...</a></h2>
-<blockquote>
+<div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+<div class="admonition-title">
+<div id="admonition-info-1-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-1"></a>
+</div>
+<div>
 <p>You will need to download the following picture folder -&gt; <a href="Lab_6-3_Pictures.zip">Lab_6-3_Picture.zip</a></p>
-</blockquote>
+</div>
+</div>
 <p>For the exercises below, follow the steps from above.</p>
 <h2 id="1-beach-and-mountain-bike-rental-app"><a class="header" href="#1-beach-and-mountain-bike-rental-app">1. Beach and Mountain Bike Rental App</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Beach and Mountain Bike Rental App</th></tr></thead><tbody>

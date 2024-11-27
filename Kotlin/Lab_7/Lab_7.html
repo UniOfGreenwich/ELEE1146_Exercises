@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././theme/css/code.css">
+        <link rel="stylesheet" href="../.././theme/css/terminal.css">
+        <link rel="stylesheet" href="../.././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -187,25 +191,54 @@
 <p><img src="./figures/step1.png" alt="" /></p>
 </div>
 <p>Now you can edit <code>main()</code> with the following code, then compile and run.</p>
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
 <pre><code class="language-kt">{
     System.out.println(3/0);
 }
 </code></pre>
-<blockquote>
-<p><strong>Note</strong></p>
-<blockquote>
+</div>
+</div>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
 <ul>
-<li>We are explicity calling the <code>println()</code> from the function from the <code>System</code> library.</li>
-<li>You can do this implicitly just by writing <code>println(...)</code></li>
-<li>I would recommend the former, until you undestand this.</li>
+<li>
+<p>We are explicity calling the <code>println()</code> from the function from the <code>System</code> library.</p>
+</li>
+<li>
+<p>You can do this implicitly just by writing <code>println(...)</code></p>
+</li>
+<li>
+<p>I would recommend the former, until you undestand this.</p>
+</li>
 </ul>
-</blockquote>
-</blockquote>
+</div>
+</div>
 <p>You should see the following output in the Run terminal...</p>
 <div align=center>
 <p><img src="./figures/step2.png" alt="" /></p>
 </div>
 <p>Modify the <code>Main.kt</code> as shown below. The change is to catch an exception through try-catch block.</p>
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
 <pre><code class="language-kt">    try{
         System.out.println(3/0);
     } 
@@ -213,11 +246,21 @@
         System.out.printf("Caught runtime exception = %s\n", e);
     }
 </code></pre>
+</div>
+</div>
 <p>If you run the program again you should get the following output:</p>
 <div align=center>
 <p><img src="./figures/step3.png" alt="" /></p>
 </div>
 <p>Modify the Main.java as shown below. The change is to use more specific Exception class, <code>ArithmeticException</code> in this case.</p>
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
 <pre><code class="language-kt">    try{
         System.out.println(3/0);
     } 
@@ -225,11 +268,21 @@
         System.out.printf("Caught runtime exception = %s\n", e);
     }
 </code></pre>
+</div>
+</div>
 <p>If you run the program again you should get the following output:</p>
 <div align=center>
 <p><img src="./figures/step4.png" alt="" /></p>
 </div>
 <p>Let's try changing the Exception Class, to <code>NumberFormatExpression</code>.</p>
+<div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+<div class="admonition-title">
+<div id="admonition-code-3-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-3"></a>
+</div>
+<div>
 <pre><code class="language-kt">    try{
             System.out.println(3/0);
         } 
@@ -237,23 +290,50 @@
             System.out.printf("Caught runtime exception = %s\n", e);
         }
 </code></pre>
-<details>
-<summary>What happens when you run it?</summary>
+</div>
+</div>
+<details id="admonition-what-happens-when-you-run-it" class="admonition admonish-question" role="note" aria-labelledby="admonition-what-happens-when-you-run-it-title">
+<summary class="admonition-title">
+<div id="admonition-what-happens-when-you-run-it-title">
+<p>What happens when you run it?</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-what-happens-when-you-run-it"></a>
+</summary>
+<div>
 <div align=center>
 <p><img src="./figures/step5.png" alt="" /></p>
 </div>
 <p>Because the expected Exception Class is wrong.</p>
+</div>
 </details>
 <p>For fun, do the following, what happens and why?</p>
-<pre><code class="language-kt">    try{
-            System.out.println(3/0);
-        } catch( e : ArithmeticException){
-            System.out.printf("Caught runtime exception = %s\n", e);
-            System.out.println(3/0);
-        }
+<div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+<div class="admonition-title">
+<div id="admonition-code-4-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-4"></a>
+</div>
+<div>
+<pre><code class="language-kt">try{
+        System.out.println(3/0);
+    } catch( e : ArithmeticException){
+        System.out.printf("Caught runtime exception = %s\n", e);
+        System.out.println(3/0);
+    }
 </code></pre>
+</div>
+</div>
 <h2 id="step-2-catch-multiple-exceptions"><a class="header" href="#step-2-catch-multiple-exceptions">Step 2: Catch multiple exceptions</a></h2>
 <p>Reproduce the following code:</p>
+<div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+<div class="admonition-title">
+<div id="admonition-code-5-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-5"></a>
+</div>
+<div>
 <pre><code class="language-kt">import javax.swing.JOptionPane
 
 fun main(args: Array&lt;String&gt;) {
@@ -274,6 +354,8 @@ fun main(args: Array&lt;String&gt;) {
     println("After exception.")
 }
 </code></pre>
+</div>
+</div>
 <p>You'll notice that we are now importing a library on line 2 <code>import javax.swing.JOptionPane;</code> we now will be able to have a GUI.</p>
 <ul>
 <li>Build and run the program
@@ -316,6 +398,14 @@ fun main(args: Array&lt;String&gt;) {
 <ol>
 <li>
 <p>Import the following libraries at the top of the script:</p>
+ <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+ <div class="admonition-title">
+ <div id="admonition-code-6-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">import java.awt.Frame
 import java.awt.GridLayout
 import java.awt.event.ActionEvent
@@ -328,18 +418,35 @@ import javax.swing.JFrame
 import javax.swing.JPanel
 import javax.swing.JRadioButton
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Modify the <code>main</code> class line:</p>
+ <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+ <div class="admonition-title">
+ <div id="admonition-code-7-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">// Create a class Main that extends JFrame and implements ActionListener
 class Main : JFrame(), ActionListener {
 </code></pre>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
+ </div>
+ </div>
+ <div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+ <div class="admonition-title">
+ <div id="admonition-info-1-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-1"></a>
+ </div>
+ <div>
 <p>This declares a class named <code>Main</code> that extends <code>JFrame</code> (a <code>Swing</code> component for creating windows) and implements the <code>ActionListener</code> interface (for handling button clicks).</p>
-</blockquote>
-</blockquote>
+ </div>
+ </div>
 </li>
 <li>
 <p>After updating <code>main</code> in step 2, add declare and initialise a private immutable array of Doubles with two elements with values <code>0.0</code>.</p>
@@ -350,7 +457,7 @@ class Main : JFrame(), ActionListener {
  </details>
 </li>
 <li>
-<p>Now create n JButton objects:</p>
+<p>Now create these <code>JButton</code> objects:</p>
 <ul>
 <li>divideByZeroButton</li>
 <li>badCastButton</li>
@@ -361,8 +468,14 @@ class Main : JFrame(), ActionListener {
 <li>throwUnknownButton</li>
 </ul>
  <p></p>
- <details>
- <summary>Solution</summary>
+ <details id="admonition-code-solution-here-6-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-solution-here-6-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-solution-here-6-lines-title">
+<p>Code: Solution here... [6 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-solution-here-6-lines"></a>
+ </summary>
+ <div>
 <pre><code class="language-kt">private val divideByZeroButton: JRadioButton
 private val badCastButton: JRadioButton
 private val arrayBoundsButton: JRadioButton
@@ -371,25 +484,49 @@ private val overflowButton: JRadioButton
 private val noSuchFileButton: JRadioButton
 private val throwUnknownButton: JRadioButton
 </code></pre>
+ </div>
  </details>
 </li>
 <li>
 <p>Now we are going to use <code>init</code> to initialise our graphical setup</p>
+<div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+<div class="admonition-title">
+<div id="admonition-code-8-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-8"></a>
+</div>
+<div>
 <pre><code class="language-kt"> // Constructor
  init {
      // Create a JPanel and GridLayout
      val p = JPanel()
      p.layout = GridLayout(8, 1)
 </code></pre>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
+</div>
+</div>
+<div id="admonition-info-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-2-title">
+<div class="admonition-title">
+<div id="admonition-info-2-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-2"></a>
+</div>
+<div>
 <p>This is the constructor (<code>init</code> block) of the <code>Main</code> class. It creates a <code>JPanel</code> (a container) and sets its layout to a grid with 8 rows and 1 column.</p>
-</blockquote>
-</blockquote>
+</div>
+</div>
 </li>
 <li>
 <p>Now create a block of radio buttons, after the <code>p.layout = GridLayout(8,1)</code> line, for the various exception scenarios by adding them to a button group (<code>ButtonGroup</code> ensures only one button is selected at a time), and adds them to the panel.</p>
+ <div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+ <div class="admonition-title">
+ <div id="admonition-code-9-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-9"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">    // Create radio buttons and add them to the panel
     val g = ButtonGroup()
     divideByZeroButton = addRadioButton("Divide by zero", g, p)
@@ -402,6 +539,8 @@ private val throwUnknownButton: JRadioButton
     contentPane.add(p)
 } // remeber to add this closing brace for init
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>After the closing brace <code>}</code> for <code>init</code> create a new function that is called <code>addRadioButton()</code>, that takes the following arguments:</p>
@@ -411,14 +550,29 @@ private val throwUnknownButton: JRadioButton
 <li><code>JPanel</code> declared as <code>p</code></li>
 </ul>
  <p></p>
- <details>
- <summary>Solution</summary>
+ <details id="admonition-code-solution-here-1-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-solution-here-1-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-solution-here-1-lines-title">
+<p>Code: Solution here... [1 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-solution-here-1-lines"></a>
+ </summary>
+ <div>
 <pre><code class="language-kt">private fun addRadioButton(s: String, g: ButtonGroup, p: JPanel): JRadioButton {
 </code></pre>
+ </div>
  </details>
 </li>
 <li>
 <p>Inside the function reproduce the follwing:</p>
+ <div id="admonition-code-10" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-10-title">
+ <div class="admonition-title">
+ <div id="admonition-code-10-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-10"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">    val button = JRadioButton(s, false)
     button.addActionListener(this)
     g.add(button)
@@ -426,17 +580,30 @@ private val throwUnknownButton: JRadioButton
     return button
 }
 </code></pre>
-</li>
-</ol>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
+ </div>
+ </div>
+ <div id="admonition-info-3" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-3-title">
+ <div class="admonition-title">
+ <div id="admonition-info-3-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-3"></a>
+ </div>
+ <div>
 <p>This function creates and configures a radio button, adds it to the specified <code>ButtonGroup</code> and <code>JPanel</code>, then returns the button.</p>
-</blockquote>
-</blockquote>
-<ol start="9">
-<li>After the closing <code>}</code> of the <code>addRadioButton()</code> we are going to add the core functionality of the program, create the following <code>actionPerformed</code> function:</li>
-</ol>
+ </div>
+ </div>
+</li>
+<li>
+<p>After the closing <code>}</code> of the <code>addRadioButton()</code> we are going to add the core functionality of the program, create the following <code>actionPerformed</code> function:</p>
+ <div id="admonition-code-11" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-11-title">
+ <div class="admonition-title">
+ <div id="admonition-code-11-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-11"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">// Handle button clicks and trigger/catch exceptions
 override fun actionPerformed(evt: ActionEvent) {
     try {
@@ -478,15 +645,30 @@ override fun actionPerformed(evt: ActionEvent) {
     }
 }
 </code></pre>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
+ </div>
+ </div>
+ <div id="admonition-info-4" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-4-title">
+ <div class="admonition-title">
+ <div id="admonition-info-4-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-4"></a>
+ </div>
+ <div>
 <p>This function is called when a <strong>button</strong> is clicked. It tries different actions based on the clicked button, and catches specific exceptions (e.g., <code>ArithmeticException</code>, <code>ClassCastException</code>). It also catches more general exceptions (<code>RuntimeException</code>, <code>Exception</code>).</p>
-</blockquote>
-</blockquote>
-<ol start="10">
+ </div>
+ </div>
+</li>
 <li>
 <p>Now create a <code>Companion</code> object after the closing brace of the previous function, which will act as the main entry point for the program:</p>
+<div id="admonition-code-12" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-12-title">
+<div class="admonition-title">
+<div id="admonition-code-12-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-12"></a>
+</div>
+<div>
 <pre><code class="language-kt">companion object {
     @JvmStatic
     fun main(args: Array&lt;String&gt;) {
@@ -511,12 +693,19 @@ override fun actionPerformed(evt: ActionEvent) {
     }
 }
 </code></pre>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
+</div>
+</div>
+<div id="admonition-info-5" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-5-title">
+<div class="admonition-title">
+<div id="admonition-info-5-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-5"></a>
+</div>
+<div>
 <p>A <strong>companion</strong> object is a type of object declaration that allows an object to act similar to <strong>static</strong> objects in other languages. A companion object is always declared inside of another class, and its properties and functions can be accessed directly with the class name. The Kotlin compiler ensures that there is only one instance of a companion object.</p>
-</blockquote>
-</blockquote>
+</div>
+</div>
 </li>
 <li>
 <p>Build and run the program.</p>
@@ -552,8 +741,14 @@ override fun actionPerformed(evt: ActionEvent) {
 </ol>
 <hr />
 <hr />
-<details>
-<summary>Full code for up to section 10. </summary>
+<details id="admonition-code-section-10-full-code-here-106-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-section-10-full-code-here-106-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-section-10-full-code-here-106-lines-title">
+<p>Code: Section 10 full code here ...[106 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-section-10-full-code-here-106-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">import java.awt.Frame
 import java.awt.GridLayout
 import java.awt.event.ActionEvent
@@ -662,10 +857,17 @@ class Main : JFrame(), ActionListener {
     }
 }
 </code></pre>
+</div>
 </details>
 <p></p>
-<details>
-<summary>actionPerformed: runCatching code for section 12. </summary>
+<details id="admonition-code-actionperformed-runcatching-code-for-section-12-50-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-actionperformed-runcatching-code-for-section-12-50-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-actionperformed-runcatching-code-for-section-12-50-lines-title">
+<p>Code: actionPerformed: runCatching code for section 12. [50 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-actionperformed-runcatching-code-for-section-12-50-lines"></a>
+</summary>
+<div>
 <p>In this version, <code>runCatching</code> is used to encapsulate the code that might throw exceptions. <code>onSuccess</code> is a block that executes when there is no exception, and <code>onFailure</code> is a block that executes when an exception occurs. The specific exception types are checked inside the <code>onFailure</code> block, and other exceptions are rethrown.</p>
 <pre><code class="language-kt">override fun actionPerformed(evt: ActionEvent) {
     runCatching {
@@ -719,7 +921,8 @@ class Main : JFrame(), ActionListener {
     }
 }
 </code></pre>
-
+</div>
+</details>
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>OOP with Data Storage - Mobile Applications for Engineers</title>
+        <title>Permissions  - Mobile Applications for Engineers</title>
 
 
         <!-- Custom HTML head -->
@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././theme/css/code.css">
+        <link rel="stylesheet" href="../.././theme/css/terminal.css">
+        <link rel="stylesheet" href="../.././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -164,848 +168,788 @@
 
                 <div id="content" class="content">
                     <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
-                        <h1 id="lab-9-oop-with-data-storage"><a class="header" href="#lab-9-oop-with-data-storage">Lab 9: OOP with Data Storage</a></h1>
-<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
-<p>In this lab you are going to utilise what you have learnt about Object Oriented Program, methods, error handling, XML, JSON and CSV.</p>
-<p>Remember that when you see <code>...</code> in a code block it means code before or after is not shown for readability.</p>
-<p>In this lab you will write 414 lines of code.</p>
-<h2 id="step-1-initialise-the-project"><a class="header" href="#step-1-initialise-the-project">Step 1: Initialise the Project</a></h2>
-<ol>
-<li>Launch a new IntelliJ project and give it an appropriate name</li>
-<li>Select <code>Kotlin</code> as the <strong>Language</strong></li>
-<li>Select <code>Gradle</code> as the <strong>Build system</strong></li>
-</ol>
-<div align=center>
-<p><img src="./figures/step1.png" alt="" /></p>
+                        <h1 id="lab-9-permissions"><a class="header" href="#lab-9-permissions">Lab 9: Permissions</a></h1>
+<h2 id="what-are-android-runtime-permissions"><a class="header" href="#what-are-android-runtime-permissions">What are Android Runtime Permissions?</a></h2>
+<p>With the introduction of Android 6.0 (SDK 23), users are prompted for some specific permissions at runtime when they become necessary to use.</p>
+<details id="admonition-will-the-older-apps-run-on-android-marshmallow" class="admonition admonish-question" role="note" aria-labelledby="admonition-will-the-older-apps-run-on-android-marshmallow-title">
+<summary class="admonition-title">
+<div id="admonition-will-the-older-apps-run-on-android-marshmallow-title">
+<p>Will the older apps run on Android Marshmallow?</p>
 </div>
-<ol start="4">
-<li>
-<p>Make these files in the directory <code>src/main/kotlin</code>:</p>
+<a class="admonition-anchor-link" href="#admonition-will-the-older-apps-run-on-android-marshmallow"></a>
+</summary>
+<div>
 <ul>
-<li><code>BankCustomer</code> Class (Kotlin Class/File)</li>
-<li><code>DataUtils.kt</code> File (Kotlin Class/File)</li>
-<li><code>MyMutuableExtensions</code> Object (Kotlin Class/File)</li>
-</ul>
+<li>
+<p>If the targetSdkVersion is 22 or less.</p>
 </li>
 <li>
-<p>Make these files in <code>src</code>:</p>
-<ul>
-<li><code>customers.csv</code> File (File)</li>
-<li><code>customers.json</code> File (File)</li>
-<li><code>customers.xml</code> File (File)</li>
+<p>Thus android runtime permissions support backward compatibility.</p>
+</li>
+<li>
+<p>Now this doesn’t mean that you can work with old model of permissions by setting the sdk version to 22.</p>
+</li>
 </ul>
- <div align=center>
-<p><img src="./figures/step2.png" alt="" /></p>
+</div>
+</details>
+<hr />
+<p>A user using Marshmallow can revoke the dangerous permissions (we’ll discuss the dangerous and normal permissions later) from the Settings-&gt;Apps-&gt;Permissions.</p>
+<p>In the case we try to call some function that requires a permission which user has not granted yet, the function will suddenly throw an Exception(<code>java.lang.SecurityException</code>) that will lead to the application crashing.</p>
+<p>Hence you need to implement this new android permissions model in the below application.</p>
+<h2 id="dangerous-and-normal-android-permissions"><a class="header" href="#dangerous-and-normal-android-permissions">Dangerous and Normal android permissions</a></h2>
+<p>Android defines some permissions as dangerous and some as normal.</p>
+<p>The common thing in both the types is that they need to be defined in the Manifest file.</p>
+<p>From Android 6.0 only dangerous permissions are checked at runtime, normal permissions are not. An example of a normal permission is <code>android.permission.INTERNET</code>.</p>
+<p>Dangerous permissions are grouped into categories that make it easier for the user to understand what they are allowing the application to do. If the user accepts one permission in a group/category they accept the entire group. An example of dangerous permission is <code>android.permission.FINE_LOCATION</code> and <code>android.permission.COARSE_LOCATION</code>.</p>
+<p>Enabling anyone of the location permissions enables all.</p>
+<p>Now you are going to develop an application which checks if the permission is already present. If not, then it’s requested at runtime.</p>
+<hr />
+<h2 id="build"><a class="header" href="#build">Build</a></h2>
+<ol>
+<li>Create application with at least API 28 selected.</li>
+<li>Name it <code>permissions</code></li>
+<li>Open the <code>MainActivity.kt</code> and reproduce the following code:</li>
+</ol>
+<hr />
+<h2 id="mainfest-file"><a class="header" href="#mainfest-file">Mainfest File</a></h2>
+<ol>
+<li>
+<p>Open <code>AndroidMainfest.xml</code></p>
+</li>
+<li>
+<p>Add the following tags underneath the 4th line:</p>
+ <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+ <div class="admonition-title">
+ <div id="admonition-code-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code"></a>
+ </div>
+ <div>
+<pre><code class="language-xml">    &lt;uses-permission android:name="android.permission.CAMERA" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt;
+</code></pre>
+ </div>
  </div>
 </li>
 </ol>
-<h2 id="step-2-bankcustomer-class-part-1"><a class="header" href="#step-2-bankcustomer-class-part-1">Step 2: <code>BankCustomer</code> Class Part 1</a></h2>
-<p>We are using the some of the BankCustomer code we had from <strong>Lab 10</strong>.</p>
-<ol start="6">
+<hr />
+<h2 id="mainactivitykt"><a class="header" href="#mainactivitykt"><code>MainActivity.kt</code></a></h2>
+<ol>
 <li>
-<p>Reproduce the following as is:</p>
-<pre><code class="language-kt">/**
-* Represents a bank customer with basic information such as first name, last name, PIN, account number,
-* and sort code.
-*
-* @property firstName The first name of the customer.
-* @property lastName The last name of the customer.
-* @property pin The PIN (Personal Identification Number) of the customer.
-* @property account The account number of the customer.
-* @property sortCode The sort code associated with the customer's account.
-*
-* @constructor Creates a new [BankCustomer] with the specified details.
-* @param fn The first name of the customer.
-* @param ln The last name of the customer.
-* @param p The PIN (Personal Identification Number) of the customer.
-* @param acc The account number of the customer.
-* @param sc The sort code associated with the customer's account.
-*/
-class BankCustomer {
-    var firstName: String? = null
-    var lastName: String? = null
-    var pin: Int? = null
-    var account: String? = null
-    var sortCode: String? = null
+<p>Open <code>MainActivity.kt</code></p>
+</li>
+<li>
+<p>Implement the necessary imports at the top of the file.</p>
+ <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-code-1-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">package com.uog.permissions;
 
-    /**
-    * Default constructor for [BankCustomer].
-    */
-    constructor()
-
-    /**
-    * Creates a new [BankCustomer] with the specified details.
-    *
-    * @param fn The first name of the customer.
-    * @param ln The last name of the customer.
-    * @param p The PIN (Personal Identification Number) of the customer.
-    * @param acc The account number of the customer.
-    * @param sc The sort code associated with the customer's account.
-    */
-    constructor(fn: String, ln: String, p: Int, acc: String, sc: String) {
-        firstName = fn
-        lastName = ln
-        pin = p
-        account = acc
-        sortCode = sc
-    }
-
-    /**
-    * Prints the details of the customer, including name, PIN, account number, and sort code.
-    */
-    fun printMe() {
-        println(
-            "Customer:\n\tName: ${this.firstName} ${this.lastName}\n\tPin: ${this.pin}\n\t" +
-                    "Account: ${this.account}\n\tSort Code:${this.sortCode}"
-        )
-    }
-}
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import com.uog.permissions.ui.theme.PermissionsTheme
 </code></pre>
-</li>
-</ol>
-<h2 id="step-3-main-class-part-1"><a class="header" href="#step-3-main-class-part-1">Step 3: <code>Main</code> class Part 1</a></h2>
-<ol start="7">
-<li>
-<p>Open the <code>Main.kt</code> file and modify the contents to look like this:</p>
+ </div>
+ </div>
 </li>
 <li>
-<p>We are going to initialise <strong>three</strong> bankCustomers, the two you see below and one more of your choice.</p>
-<pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
-
-    // Create a new BankCustomer
-    val newCustomer = BankCustomer(
-        "Jane",
-        "Doe",
-        5678,
-        "987654321",
-        "123456"
-    )
-    val customer = BankCustomer(
-        "Marshall",
-        "Mathers",
-        5678,
-        "123456789",
-        "123456"
-    )
-}
-</code></pre>
-</li>
-</ol>
-<h2 id="step-4-buildgradlekts-part-1"><a class="header" href="#step-4-buildgradlekts-part-1">Step 4: <code>build.gradle.kts</code> Part 1</a></h2>
-<ol start="9">
-<li>
-<p>Open the <code>build.gradle.kts</code> file located in the project view just under the <strong><code>test\</code></strong> folder.</p>
-</li>
-<li>
-<p>Navigate to the <code>dependices</code> sections and add the following code to import the CSV library using <code>implementation("com.opencsv:opencsv:3.7")</code> into the project;</p>
-</li>
-</ol>
-<div align=center>
-<p><img src="./figures/step4.png" alt="" /></p>
-</div>
-<blockquote>
-<p><strong>Note</strong></p>
-<blockquote>
+<p>See a few new lines within this code block you may not have seen before..</p>
 <ul>
-<li>Any version greater than <code>opencsv:3.7</code> has security vulnerabilities.</li>
+<li><code>import android.content.pm.PackageManager</code>
+<ul>
+<li>Class for retrieving various kinds of information related to the application packages that are currently installed on the device.</li>
+<li>recommended to read the documentation here -&gt; <a href="https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/content/pm/PackageManager.html">https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/content/pm/PackageManager.html</a></li>
 </ul>
-</blockquote>
-</blockquote>
-<h2 id="step-5-datautilstk-part-1"><a class="header" href="#step-5-datautilstk-part-1">Step 5: <code>DataUtils.tk</code> Part 1</a></h2>
-<p>We are now going to create functionality to read and write to a CSV, our fist type of data storage file.</p>
-<ol start="11">
-<li>
-<p>Open the <code>DataUtils.kt</code> file</p>
+</li>
+<li><code>import android.Manifest</code>
+<ul>
+<li>So you can use the permissions stored in the <code>AndroidManifest.xml</code> file you will populate later.</li>
+</ul>
+</li>
+</ul>
 </li>
 <li>
-<p>Reproduce the following code:</p>
-<pre><code class="language-kt">import com.opencsv.CSVReaderBuilder // implementation("com.opencsv:opencsv:3.7")
-import com.opencsv.CSVWriter // implementation("com.opencsv:opencsv:3.7")
-import java.io.File // for writing and reading from a file.
+<p>Define variables for the UI components and override onCreate.</p>
+ <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+ <div class="admonition-title">
+ <div id="admonition-code-2-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">...
+class MainActivity : ComponentActivity() {
 
-
-/**
-* Utility object for handling data operations, including loading and writing data in JSON, CSV, and XML formats.
-*/
-object DataUtils {
-
-    /**
-    * Loads a list of [BankCustomer] objects from a CSV file.
-    *
-    * @param filePath The path to the CSV file.
-    * @return A [MutableList] of [BankCustomer] objects loaded from the CSV file.
-    */
-    fun loadCustomersFromCSV(filePath: String): MutableList&lt;BankCustomer&gt; {
-        val file = File(filePath)
-        
-        // create file if needed
-        makeFile(filePath)
-
-        if (file.exists()) {
-            file.reader().use { reader -&gt;
-                try {
-                    val csvReader = CSVReaderBuilder(reader).build()
-                    val lines = csvReader.readAll()
-                    val customerList = mutableListOf&lt;BankCustomer&gt;()
-
-                    for (line in lines) {
-                        // Create BankCustomer objects from CSV lines
-                        // for each column in a a line[#]
-                        val customer = BankCustomer(line[0], line[1], line[2].toInt(), line[3], line[4])
-
-                        // add customer to the list of BankCustomers
-                        customerList.add(customer)
-                    }
-                    // once finished return the list
-                    return customerList
-                } catch (e: Exception) {
-                    // Handle exceptions during CSV parsing
-                    // return and empty list if fails
-                    return mutableListOf()
-                }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            PermissionsTheme {
+                PermissionsScreen()
             }
-        } else {
-            // return and empty list if all fails
-            return mutableListOf()
         }
     }
-
-    /**
-    * Writes a list of [BankCustomer] objects to a CSV file.
-    *
-    * @param customerList The list of [BankCustomer] objects to be written to the CSV file.
-    * @param filePath The path to the CSV file.
-    */
-    fun writeCustomersToCSV(customerList: List&lt;BankCustomer&gt;, filePath: String) {
-        val file = File(filePath)
-        
-        // create file if needed
-        makeFile(filePath)
-        
-        if (file.exists()) {
-            file.writer().use { writer -&gt;
-                val csvWriter = CSVWriter(writer)
-
-                for (customer in customerList) {
-                    // Convert BankCustomer objects to CSV records
-                    val record = arrayOf(
-                        customer.firstName.orEmpty(),
-                        customer.lastName.orEmpty(),
-                        customer.pin?.toString() ?: "",
-                        customer.account.orEmpty(),
-                        customer.sortCode.orEmpty()
+}
+</code></pre>
+ </div>
+ </div>
+</li>
+</ol>
+<hr />
+<h2 id="implement-the-permissionsscreen"><a class="header" href="#implement-the-permissionsscreen">Implement the <code>PermissionsScreen</code></a></h2>
+<table style="border-collapse: collapse; border: none;">
+<tr style="border: none;">
+<td style="border: none;">
+<ol>
+<li>We need to now replicate the screen on the right:
+<ul>
+<li>Within a Scaffold</li>
+<li>Topbar
+<ul>
+<li>with the following colour 0xFF6A0DAD</li>
+</ul>
+</li>
+<li>Two Buttons placed in a column with a Spacer between them
+<ul>
+<li>The buttons have the colour 0xFF6A0DAD</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</td>
+<td style="border: none;">
+<div align=center>
+<p><img src="./figures/step1.png" alt="" /></p>
+</div>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="border: none;" colspan=2>
+<ol start="2">
+<li><details id="admonition-code-here-if-you-are-struggling-46-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-here-if-you-are-struggling-46-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-here-if-you-are-struggling-46-lines-title">
+<p>Code here if you are struggling ...[46 lines]:</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-here-if-you-are-struggling-46-lines"></a>
+</summary>
+<div>
+<pre><code class="language-kt">@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PermissionsScreen() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color(0xFF6A0DAD),
+                    titleContentColor = Color.White
+                ),
+                title = { Text("Permissions") }
+            )
+        },
+        content = { paddingValues -&gt;
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Button(
+                    onClick = { /* TODO: Add Action */ },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF6A0DAD),
+                        contentColor = Color.White
                     )
-                    csvWriter.writeNext(record)
+                ) {
+                    Text("Check Permission")
                 }
 
-                csvWriter.close()
-            }
-        } else {
-            println("File doesn't exist")
-        }
-    }
+                Spacer(modifier = Modifier.height(16.dp))
 
-    /**
-    * Creates a new file at the specified [filePath].
-    *
-    * @param filePath The path to the file to be created.
-    */
-    fun makeFile(filePath: String) {
-        val file = File(filePath)
-
-        try {
-            if (file.createNewFile()) {
-                println("File created successfully.")
-            } else {
-                println("File already exists.")
-            }
-        } catch (e: Exception) {
-            // Handle exceptions during file creation
-            println("An error occurred while creating the file: ${e.message}")
-        }
-    }
-}
-</code></pre>
-</li>
-</ol>
-<p>Remember each <code>KDoc</code> you create provides helper inforamtion when you hover over each function/method.</p>
-<h2 id="step-6-mymutuableextensionskt"><a class="header" href="#step-6-mymutuableextensionskt">Step 6: <code>MyMutuableExtensions.kt</code></a></h2>
-<p>We are going to create some extension methods for the <code>MutuableList</code> class. Sometimes for example we need to extra features where sometimes you don't want to add duplicates by mistake.</p>
-<ol start="13">
-<li>
-<p>Open the <code>MyMutuableExtensions</code></p>
-</li>
-<li>
-<p>Reproduce the follwing code:</p>
-<pre><code class="language-kt">/**
-* Extension functions for [MutableList] of [BankCustomer] to perform various operations.
-*/
-object MyMutableExtensions {
-
-    /**
-    * Removes duplicate [BankCustomer] objects based on their account numbers.
-    *
-    * @return A new [MutableList] containing distinct [BankCustomer] objects based on account numbers.
-    */
-    fun MutableList&lt;BankCustomer&gt;.removeDuplicatesByAccountNumber() : MutableList&lt;BankCustomer&gt;{
-        return this.distinctBy { it.account }.toMutableList()
-    }
-
-    /**
-    * Adds a [BankCustomer] to the [MutableList] only if a customer with the same account number
-    * does not already exist in the list.
-    *
-    * @param customer The [BankCustomer] to be added.
-    */
-    fun MutableList&lt;BankCustomer&gt;.addIfNotDuplicate(customer: BankCustomer) {
-        if (this.all { it.account != customer.account }) {
-            this.add(customer)
-        }
-    }
-
-    /**
-    * Extension function to remove a [BankCustomer] from the [MutableList] based on the account number.
-    *
-    * @param accountNumber The account number of the customer to be removed.
-    */
-    fun MutableList&lt;BankCustomer&gt;.removeByAccountNumber(accountNumber: String?) {
-        val customerToRemove = this.find { it.account == accountNumber }
-
-        if (customerToRemove != null) {
-            this.remove(customerToRemove)
-            println("Customer with account number $accountNumber removed successfully.")
-        } else {
-            println("No customer found with account number $accountNumber. No customer removed.")
-        }
-    }
-
-    /**
-    * Prints details of all [BankCustomer] objects in the [MutableList].
-    */
-    fun MutableList&lt;BankCustomer&gt;.printAll() {
-        this.forEach { customer -&gt; customer.printMe() }
-    }
-
-    /**
-    * Prints details of [customer] object in the [MutableList] of [BankCustomer]s .
-    */
-    fun MutableList&lt;BankCustomer&gt;.printOne(acc:String) {
-        for ((index, customer) in this.withIndex()) {
-            if (customer.account == acc) {
-                customer.printMe()
-            }
-            else {
-                println("Error: ${acc} not found")
+                Button(
+                    onClick = { /* TODO: Add Action */ },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF6A0DAD),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("Request Permission")
+                }
             }
         }
-    }
+    )
 }
 </code></pre>
-</li>
-</ol>
-<h2 id="step-7-mainkt-part-2"><a class="header" href="#step-7-mainkt-part-2">Step 7: <code>Main.kt</code> Part 2</a></h2>
-<ol start="15">
-<li>ReOpen the <code>Main.kt</code> and modify the top of the file so we can import the our code:</li>
-</ol>
-<pre><code class="language-kt">// MyMutableExtensions file
-import MyMutableExtensions.addIfNotDuplicate
-import MyMutableExtensions.printAll
-import MyMutableExtensions.removeByAccountNumber
-import MyMutableExtensions.removeDuplicatesByAccountNumber
-
-// DataUtils file
-import DataUtils.loadCustomersFromCSV
-import DataUtils.writeCustomersToCSV
-
-fun main(args: Array&lt;String&gt;){
-    ...
-}
-</code></pre>
-<ol start="16">
-<li>
-<p>Now lets use some of these functions and methods we have now imported to write and read unique values to/from the a <code>customers.csv</code>.</p>
-<pre><code class="language-kt">...
-fun main(args: Array&lt;String&gt;){
-
-    // Load the content of the customers.csv as a [MutuableList] of [BankCustomers] 
-    var csvExistingCustomers = loadCustomersFromCSV("customers.csv")
-
-    // add the first two customers using the built-in MutuableList.add method. 
-    csvExistingCustomers.add(newCustomer)
-    csvExistingCustomers.add(customer)
-   
-    println("All Customers:")
-    // print all the customers using the print function
-    println(csvExistingCustomers)
-    // and again using our own extension for the MutuableList
-    csvExistingCustomers.printAll()
-
-    // Now write the csvExisitingCusomters to a the customers.csv
-    writeCustomersToCSV(csvExistingCustomers,"customers.csv")
-}
-</code></pre>
-</li>
-<li>
-<p>Run the program, and you should see a very similar output:</p>
-<pre><code>File already exists.
-[BankCustomer@4cb2c100, BankCustomer@6fb554cc]
-All Customers:
-    Customer:
-    Name: Jane Doe
-    Pin: 5678
-    Account: 987654321
-    Sort Code:123456
-Customer:
-    Name: Marshall Mathers
-    Pin: 5678
-    Account: 123456789
-    Sort Code:123456
-</code></pre>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
-<p><code>[BankCustomer@4cb2c100, BankCustomer@6fb554cc]</code>:</p>
-<ul>
-<li>the characters after the <code>@</code> will be unique</li>
-</ul>
-</blockquote>
-</blockquote>
-</li>
-<li>
-<p>Check in the <code>customers.csv</code> to see the output of <code>writeCustomersToCSV(csvExistingCustomers,"customers.csv")</code>.</p>
-<div align=center>
-<p><img src="./figures/step7.png" alt="" /></p>
 </div>
+</details>
 </li>
+</ol>
+</td>
+</tr>
+</table>
+<ol start="3">
 <li>
-<p>Modify the first the line <code> csvExistingCustomers.add(newCustomer)</code> in <code>Main.kt</code> to use our add method:</p>
-<pre><code class="language-kt">...
-fun main(args: Array&lt;String&gt;){
-
-    // Load the content of the customers.csv as a [MutuableList] of [BankCustomers] 
-    var csvExistingCustomers = loadCustomersFromCSV("customers.csv")
-
-    // add the first customers using our MutuableList.addIfNotDuplicate() method. 
-    csvExistingCustomers.addIfNotDuplicate(newCustomer)
-    / add the second customer using the built-in MutuableList.add method. 
-    csvExistingCustomers.add(customer)
-
-    ...
+<p>Now add two <code>var</code>iables at top of the function, that have presistence during composable calls called <code>showSnackbar</code> and <code>snackbarMessage</code></p>
+ <details id="admonition-code-here-if-you-are-struggling-3-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-here-if-you-are-struggling-3-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-here-if-you-are-struggling-3-lines-title">
+<p>Code here if you are struggling ...[3 lines]:</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-here-if-you-are-struggling-3-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-kt">fun PermissionsScreen(){
+    var snackbarMessage by remember { mutableStateOf("") }
+    var showSnackbar by remember { mutableStateOf(false) }
+...
 }
 </code></pre>
+ </div>
+ </details>
 </li>
 <li>
-<p>Run again and you should see the following:</p>
-<pre><code>File already exists.
-All Customers:
-[BankCustomer@4cb2c100, BankCustomer@6fb554cc, BankCustomer@614c5515]
-Customer:
-    Name: Jane Doe
-    Pin: 5678
-    Account: 987654321
-    Sort Code:123456
-Customer:
-    Name: Marshall Marthers
-    Pin: 5678
-    Account: 123456789
-    Sort Code:123456
-Customer:
-    Name: Marshall Mathers
-    Pin: 5678
-    Account: 123456789
-    Sort Code:123456
-</code></pre>
-<div align=center>
-<p><img src="./figures/step7-2.png" alt="" /></p>
-</div>
+<p>Add an <code>if</code> for the <code>showSnackBar</code>, assume default value <code>true</code></p>
 <ul>
-<li>You will see that the <code>Jane Doe</code>, has not been duplicated because we used our <code>addIfNotDuplicate()</code> that does not duplicate based on account number. However, <code>add()</code> does not have this functionality by default.</li>
+<li>
+<p>where the a <code>SnackBar</code> with a <code>Button</code> as a composable with the the <code>Text</code> "Dimiss"</p>
+</li>
+<li>
+<p>The Button onclick should set <code>showSnackbar</code> to <code>false</code></p>
+</li>
+<li>
+<p>a <code>Text</code> composable for the body of the <code>SnackBar</code> that takes the <code>snackBarMessage</code> variable as the input.</p>
+  <details id="admonition-code-here-if-you-are-struggling-11-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-here-if-you-are-struggling-11-lines-title">
+  <summary class="admonition-title">
+  <div id="admonition-code-here-if-you-are-struggling-11-lines-title">
+<p>Code here if you are struggling ...[11 lines]:</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-here-if-you-are-struggling-11-lines"></a>
+  </summary>
+  <div>
+<pre><code class="language-kt">...
+Button(){...}
+if (showSnackbar) {
+    Snackbar(
+        action = {
+            Button(onClick = { showSnackbar = false }) {
+                Text("Dismiss")
+            }
+        }
+    ) {
+        Text(snackbarMessage)
+    }
+}
+</code></pre>
+  </div>
+  </details>
+</li>
 </ul>
 </li>
 <li>
-<p>To remove any duplicates we can use the exentsion we made <code>removeDuplicatesByAccountNumber()</code> and we will also replace the <code>add()</code> for the second customer:</p>
+<p>Next we need to modify the <code>Buttons</code> <code>onclick</code> for <code>"Check Permission"</code> and <code>"Request Permission"</code> so that they set the snackBarMessage as <code>"Check Permission Clicked"</code> and <code>"Request Permission Clicked"</code>. Additionally the buttons should set the <code>showSnackbar</code> to <code>true</code> too.</p>
+ <details id="admonition-code-here-if-you-are-struggling-21-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-here-if-you-are-struggling-21-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-here-if-you-are-struggling-21-lines-title">
+<p>Code here if you are struggling ...[21 lines]:</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-here-if-you-are-struggling-21-lines"></a>
+ </summary>
+ <div>
 <pre><code class="language-kt">...
-fun main(args: Array&lt;String&gt;){
-
-    // Load the content of the customers.csv as a [MutuableList] of [BankCustomers] 
-    var csvExistingCustomers = loadCustomersFromCSV("customers.csv")
-    // remove duplicates in the list read from the `customers.csv`
-    csvExistingCustomers = csvExistingCustomers.removeDuplicatesByAccountNumber()
-
-    // add the first customers using our MutuableList.addIfNotDuplicate() method. 
-    csvExistingCustomers.addIfNotDuplicate(newCustomer)
-    / add the second customer using the built-in MutuableList.add method. 
-    csvExistingCustomers.addIfNotDuplicate(customer)
-    ...
+Button(
+    onClick = {
+        snackbarMessage = "Check Permission clicked!"
+        showSnackbar = true
+    },
+    colors = ButtonDefaults.buttonColors(
+        containerColor = Color(0xFF6A0DAD),
+        contentColor = Color.White
+    )
+) {
+    Text("Check Permission")
 }
-</code></pre>
-</li>
-<li>
-<p>Now run again and you should only have the two customers in your <code>customers.csv</code> now</p>
-<div align=center>
-<p><img src="./figures/step7.png" alt="" /></p>
-</div>
-</li>
-</ol>
-<h2 id="step-8-storage-using-json"><a class="header" href="#step-8-storage-using-json">Step 8: Storage using JSON</a></h2>
-<ol start="23">
-<li>
-<p>ReOpen the <code>build.gradle.kts</code> and add the following, <code> implementation("com.google.code.gson:gson:2.8.9")</code>, to the dependicies section so we can utilise a library for reading and writing a JSON:</p>
-<pre><code class="language-kt">...
-dependencies {
-testImplementation(kotlin("test"))
-
-// Library for CSV
-implementation("com.opencsv:opencsv:3.7")
-
-// Library for JSON
-implementation("com.google.code.gson:gson:2.8.9")
-</code></pre>
-</li>
-<li>
-<p>ReOpen the <code>DataUtils.kt</code> and modify the top of the file to include <code>import com.google.gson.Gson</code></p>
-<pre><code class="language-kt">...
-import java.io.File
-
-import com.google.gson.Gson
 
 ...
-object DataUtils { ... }
+
+Button(
+    onClick = {
+        snackbarMessage = "Request Permission clicked!"
+        showSnackbar = true
+    },
+    colors = ButtonDefaults.buttonColors(
+        containerColor = Color(0xFF6A0DAD),
+        contentColor = Color.White
+    )
+) {
+    Text("Request Permission")
+}
 </code></pre>
+ </div>
+ </details>
+</li>
+</ol>
+<h2 id="adding-permission-handling"><a class="header" href="#adding-permission-handling">Adding Permission Handling</a></h2>
+<p>Now, we will integrate permission handling using Jetpack Compose's support for the Activity Result API. This enables us to check and request permissions dynamically.</p>
+<ol>
+<li>A reminder from earlier Android Eco system requires users to explicitly grant permissions for certain app features, like accessing the camera or location. We'll use:</li>
+</ol>
+<ul>
+<li><code>ACCESS_FINE_LOCATION</code>: For precise location access.
+<ul>
+<li><code>ACCESS_COARSE_LOCATION</code>: is required when using <code>ACCESS_FINE_LOCATION</code></li>
+</ul>
+</li>
+<li><code>CAMERA</code>: For taking photos or scanning QR codes.</li>
+</ul>
+<ol start="2">
+<li>
+<p>To manage permissions dynamically, we use the <code>rememberLauncherForActivityResult</code> API. Add the following to the <code>PermissionsScreen()</code>:</p>
+<ul>
+<li>You need to place the following underneath the <code>showSnackbar by remember ...</code> line</li>
+</ul>
+ <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+ <div class="admonition-title">
+ <div id="admonition-code-3-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-3"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">...
+val context = LocalContext.current
+val requestPermissionsLauncher = rememberLauncherForActivityResult()
+...
+</code></pre>
+ </div>
+ </div>
 </li>
 <li>
-<p>Navigate to the end of <code>writeCustomersToCSV(...)</code> and still inside the <code>object DataUtils{</code> reproduce the following code. We using the <code>Gson()</code> Class that we imported to load (read) and write the the <code>BankCustomers</code> list from/to <code>customers.json</code>:</p>
+<p>Now we need to populate <code>rememberLauncherForActivityResult</code> to provide:</p>
+<ul>
+<li>A contract to define the action (e.g., requesting permissions).</li>
+<li>A result handler to process the result.</li>
+</ul>
+ <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+ <div class="admonition-title">
+ <div id="admonition-code-4-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">val requestPermissionsLauncher = rememberLauncherForActivityResult(
+    contract = ActivityResultContracts.RequestMultiplePermissions(),
+    onResult = { permissions -&gt; 
+    }
+)
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>We now need to check if each permission has been granted, after <code>permission -&gt;</code> lambda expression:</p>
+ <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+ <div class="admonition-title">
+ <div id="admonition-code-5-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">// Check if each permission is granted or denied
+val locationPermissionGranted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true
+val cameraPermissionGranted = permissions[Manifest.permission.CAMERA] == true
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>Lastly, within this function we need select <code>when</code> <code>locationPermissionGranted</code> &amp;&amp; <code>cameraPermissionGranted</code>, <code>locationPermissionGranted</code> only, <code>cameraPermissionGranted</code> only or no permissions have been granted. Whereby the <code>snackbarMessage</code> as a meaningful message</p>
+<details id="admonition-code-here-if-you-are-struggling-16-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-here-if-you-are-struggling-16-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-here-if-you-are-struggling-16-lines-title">
+<p>Code here if you are struggling ...[16 lines]:</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-here-if-you-are-struggling-16-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">...
-fun writeCustomersToCSV(customerList: List&lt;BankCustomer&gt;, filePath: String) {
-    ...
+// Provide feedback based on permission status
+    when {
+        locationPermissionGranted &amp;&amp; cameraPermissionGranted -&gt; {
+            snackbarMessage = "Both permissions granted."
+        }
+        locationPermissionGranted -&gt; {
+            snackbarMessage = "Location permission granted, but Camera permission denied."
+        }
+        cameraPermissionGranted -&gt; {
+            snackbarMessage = "Camera permission granted, but Location permission denied."
+        }
+        else -&gt; {
+            snackbarMessage = "Both permissions denied."
+        }
+    }
+    showSnackbar = true
+}
+...
+</code></pre>
+</div>
+</details>
+</li>
+</ol>
+<hr />
+<h2 id="checkpermissions"><a class="header" href="#checkpermissions"><code>checkPermissions()</code></a></h2>
+<ol>
+<li>
+<p>You now need to create a function called <code>checkPermissions</code> that can be called by the <code>Button</code> <code>"Check Permissions"</code></p>
+ <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+ <div class="admonition-title">
+ <div id="admonition-code-6-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">// Check if permissions are granted
+fun checkPermissions(context: android.content.Context): Boolean {
+    val locationPermission = ContextCompat.checkSelfPermission(
+        context, Manifest.permission.ACCESS_FINE_LOCATION
+    )
+    val cameraPermission = ContextCompat.checkSelfPermission(
+        context, Manifest.permission.CAMERA
+    )
+    return locationPermission == PackageManager.PERMISSION_GRANTED &amp;&amp;
+            cameraPermission == PackageManager.PERMISSION_GRANTED
 }
 
-/**
-* Loads a list of [BankCustomer] objects from a JSON file.
-*
-* @param filePath The path to the JSON file.
-* @return A [MutableList] of [BankCustomer] objects loaded from the JSON file.
-*/
-fun loadCustomersFromJSON(filePath: String): MutableList&lt;BankCustomer&gt; {
-    val gson = Gson()
-
-    val file = File(filePath)
-    if (file.exists()) {
-        file.reader().use { reader -&gt;
-            try {
-                // Deserialize JSON into a list of BankCustomer objects
-                return gson.fromJson(reader, Array&lt;BankCustomer&gt;::class.java).toMutableList()
-            } catch (e: Exception) {
-                // Handle exceptions during JSON parsing
-                return mutableListOf()
-            }
-        }
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-explanation-of-code" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-of-code-title">
+<p>Explanation of code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-of-code"></a>
+ </div>
+ <div>
+<ul>
+<li><code>ContextCompat.checkSelfPermission</code>: A convenience method for checking if a specific permission is granted.
+<ul>
+<li><strong>Parameters</strong>:</li>
+<li><code>context</code>: The app's context, providing access to the permission system.</li>
+<li><code>Manifest.permission.ACCESS_FINE_LOCATION</code>: The permission being checked.</li>
+<li><strong>Return Value</strong>: An integer representing the permission status:</li>
+<li><code>PackageManager.PERMISSION_GRANTED</code>: Indicates the permission is granted.</li>
+<li><code>PackageManager.PERMISSION_DENIED</code>: Indicates the permission is denied.</li>
+<li>The result is stored in <code>locationPermission</code></li>
+</ul>
+</li>
+</ul>
+ </div>
+ </div>
+</li>
+</ol>
+<hr />
+<h2 id="involking-checkpermissions"><a class="header" href="#involking-checkpermissions">Involking <code>checkPermissions()</code></a></h2>
+<ol>
+<li>
+<p>Update the the <code>"Check Permission"</code> <code>Button</code> to invoke the <code>checkPermissions</code> function:</p>
+ <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+ <div class="admonition-title">
+ <div id="admonition-code-7-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">onClick = {
+    // Check if the permissions are already granted
+    val permissionsGranted = checkPermissions(context)
+    if (permissionsGranted) {
+        snackbarMessage = "Permissions already granted."
     } else {
-        // If the file does not exist, return an empty list
-        return mutableListOf()
+        snackbarMessage = "Please request permission."
     }
+    showSnackbar = true
 }
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>Update the <code>"Request Permissions"</code> <code>Button</code> to make use of <code>requestPermissionsLauncher.launch</code>:</p>
+ <div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+ <div class="admonition-title">
+ <div id="admonition-code-8-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-8"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">onClick = {
+    // Request permissions using the launcher
+    requestPermissionsLauncher.launch(
+        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA)
+    )
+}
+</code></pre>
+ </div>
+ </div>
+</li>
+</ol>
+<hr />
+<h2 id="running-the-app"><a class="header" href="#running-the-app">Running the App</a></h2>
+<ol>
+<li>
+<p>Build and run your app on an Android emulator or a physical Android device.</p>
+</li>
+<li>
+<p>Click the "Check Permission" button to see if permissions are already granted.</p>
+</li>
+<li>
+<p>Click the "Request Permission" button to request permissions if they are not granted.</p>
+</li>
+<li>
+<p>Verify that the Snackbar messages are displayed appropriately based on permission status.</p>
+</li>
+</ol>
+<table style="border-collapse: collapse; border: none; table-layout: fixed; width: 100%;" >
+<tr style="border: none;">
+<td style="border: none; width:33%;">
+<p>Output shows All permissions granted.</p>
+<img src="figures/Granted.gif">
+</td>
+<td style="border: none; width:33%;">
+<p>Output shows one permission granted.</p>
+<img src="figures/SemiGranted.gif">
+</td>
+<td style="border: none;width:33%;">
+<p>You will need to reset the permission once permanently granted.</p>
+<img src="figures/ResetPermissions.gif">
+</td>
+</tr>
+</table>
+<div align=center>
+</div>
+<hr />
+<h2 id="full-code"><a class="header" href="#full-code">Full code</a></h2>
+<details id="admonition-code-here159-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-here159-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-here159-lines-title">
+<p>Code here...[159 lines]:</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-here159-lines"></a>
+</summary>
+<div>
+<pre><code class="language-kt">package com.uog.permissions
 
-/**
-* Writes a list of [BankCustomer] objects to a JSON file.
-*
-* @param customerList The list of [BankCustomer] objects to be written to the JSON file.
-* @param filePath The path to the JSON file.
-*/
-fun writeCustomersToJSON(customerList: List&lt;BankCustomer&gt;, filePath: String) {
-    val gson = Gson()
-    val file = File(filePath)
-    if (file.exists()) {
-        // Convert the updated list to a formatted JSON string
-        // Convert the list to a JSON string with each property on a new line
-        val formattedJson = gson.toJson(customerList)
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import com.uog.permissions.ui.theme.PermissionsTheme
 
-        // Write the formatted JSON to the file (overwrite)
-        file.writer().use { writer -&gt;
-            writer.write(formattedJson)
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            PermissionsTheme {
+                PermissionsScreen()
+            }
         }
-    } else {
-        println("File doesn't exist")
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PermissionsScreen() {
+    val context = LocalContext.current
+    var snackbarMessage by remember { mutableStateOf("") }
+    var showSnackbar by remember { mutableStateOf(false) }
+
+    // Define the permission launcher using the new Activity Result API
+    val requestPermissionsLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestMultiplePermissions(),
+        onResult = { permissions -&gt;
+            // Check if each permission is granted or denied
+            val locationPermissionGranted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true
+            val cameraPermissionGranted = permissions[Manifest.permission.CAMERA] == true
+
+            // Provide feedback based on permission status
+            when {
+                locationPermissionGranted &amp;&amp; cameraPermissionGranted -&gt; {
+                    snackbarMessage = "Both permissions granted."
+                }
+                locationPermissionGranted -&gt; {
+                    snackbarMessage = "Location permission granted, but Camera permission denied."
+                }
+                cameraPermissionGranted -&gt; {
+                    snackbarMessage = "Camera permission granted, but Location permission denied."
+                }
+                else -&gt; {
+                    snackbarMessage = "Both permissions denied."
+                }
+            }
+            showSnackbar = true
+        }
+    )
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color(0xFF6A0DAD),
+                    titleContentColor = Color.White
+                ),
+                title = { Text("Permissions") }
+            )
+        },
+        content = { paddingValues -&gt;
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Button(
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF6A0DAD),
+                        contentColor = Color.White
+                    ),
+                    onClick = {
+                        // Check if the permissions are already granted
+                        val permissionsGranted = checkPermissions(context)
+                        if (permissionsGranted) {
+                            snackbarMessage = "Permissions already granted."
+                        } else {
+                            snackbarMessage = "Please request permission."
+                        }
+                        showSnackbar = true
+                    }
+                ) {
+                    Text("Check Permission")
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Button(
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF6A0DAD),
+                        contentColor = Color.White
+                    ),
+                    onClick = {
+                        // Request permissions using the launcher
+                        requestPermissionsLauncher.launch(
+                            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA)
+                        )
+                    }
+                ) {
+                    Text("Request Permission")
+                }
+
+                if (showSnackbar) {
+                    Snackbar(
+                        action = {
+                            Button(onClick = { showSnackbar = false }) {
+                                Text("Dismiss")
+                            }
+                        }
+                    ) {
+                        Text(snackbarMessage)
+                    }
+                }
+            }
+        }
+    )
+}
+
+// Check if permissions are granted
+fun checkPermissions(context: android.content.Context): Boolean {
+    val locationPermission = ContextCompat.checkSelfPermission(
+        context, Manifest.permission.ACCESS_FINE_LOCATION
+    )
+    val cameraPermission = ContextCompat.checkSelfPermission(
+        context, Manifest.permission.CAMERA
+    )
+    return locationPermission == PackageManager.PERMISSION_GRANTED &amp;&amp;
+            cameraPermission == PackageManager.PERMISSION_GRANTED
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    PermissionsTheme {
+        PermissionsScreen()
     }
 }
 </code></pre>
-</li>
-<li>
-<p>Modifty <code>Main.kt</code> so that we can store data in a JSON format. We will also need to import from out <code>DataUtils.kt</code> at the top of the file like last time:</p>
-<pre><code class="language-kt">import MyMutableExtensions.addIfNotDuplicate
-...
-
-import DataUtils.loadCustomersFromJSON
-import DataUtils.writeCustomersToJSON
-
-fun main(args: Array&lt;String&gt;) {
-</code></pre>
-</li>
-<li>
-<p>We are essentially repeating what we did last time for the CSV but using the JSON functionality we have written:</p>
-<pre><code class="language-kt">...
-
-fun main(args: &lt;String&gt;){
-
-...
-
-//CSV
-...
-writeCustomersToCSV(csvExistingCustomers,"customers.csv")
-
-//JSON
-var jsonExistingCustomers = loadCustomersFromJSON("customers.json")
-jsonExistingCustomers = jsonExistingCustomers.removeDuplicatesByAccountNumber()
-
-jsonExistingCustomers.addIfNotDuplicate(newCustomer)
-jsonExistingCustomers.addIfNotDuplicate(customer)
-
-writeCustomersToJSON(jsonExistingCustomers,"customers.json")
-
-}
-</code></pre>
-</li>
-<li>
-<p>Run and check the <code>customers.json</code> and see that you have one long line:</p>
-<pre><code>[{"firstName":"Jane","lastName":"Doe","pin":5678,"account":"987654321","sortCode":"123456"},{"firstName":"Steph","lastName":"Jupe","pin":5678,"account":"123456789","sortCode":"123456"}]
-</code></pre>
-<div align=center>
-<p><img src="./figures/step8.png" alt="" /></p>
 </div>
+</details>
+<h2 id="afterwards"><a class="header" href="#afterwards">Afterwards</a></h2>
+<ol>
+<li>
+<p>Create functionality to revoke permissions whilst in the app.</p>
 </li>
 <li>
-<p>Modify the <code>DataUtils.kt</code> so that we can have a more human readable version of the <code>customers.json</code>:</p>
-<pre><code class="language-kt">...
-fun writeCustomersToJSON(customerList: List&lt;BankCustomer&gt;, filePath: String) {
-        val gson = Gson()
-    ...
-            val formattedJson = gson.toJson(customerList)
-                .replace("[", "[\n\t")
-                .replace(",", ",\n\t\t")
-                .replace("{", "{\n\t\t")
-                .replace("}", "\n\t}")
-                .replace("},\n\t\t{", "},\n\t{")
-                .replace("]", "\n]")
-        ...
-    }
-</code></pre>
+<p>Experiment with other permissions, add more buttons to check each permission</p>
+<blockquote>
 <ul>
-<li><code>.replace("old", "new")</code>, so we for the most part we are getting a new line <code>\n</code> and a tab <code>\t</code> appended to each brace <code>[{}]</code> and comma <code>,</code>.</li>
+<li><a href="https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f">https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f</a> and see what they mean.</li>
+<li><a href="https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml#L833">https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml#L833</a></li>
 </ul>
-</li>
-<li>
-<p>Run again and see the difference in the <code>customers.json</code></p>
-<div align=center>
-<p><img src="./figures/step8-2.png" alt="" /></p>
-</div>
-</li>
-</ol>
-<h2 id="step-9-xml-storage"><a class="header" href="#step-9-xml-storage">Step 9: XML Storage</a></h2>
-<p>This step is a little more involved than the previous two storage options.</p>
-<ol start="31">
-<li>
-<p>ReOpen the <code>build.gradle.kts</code> so that the XML libraries can be installed:</p>
-<pre><code class="language-kt">dependencies {
-    ...
-    // Library for JSON
-    ...
-
-    // Libraries needed for XML
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
-    implementation("javax.xml.bind:jaxb-api:2.3.1")
-    implementation("org.glassfish.jaxb:jaxb-runtime:2.3.3")
-}
-</code></pre>
-</li>
-<li>
-<p>Now we are going to map our <code>BankCustomer</code> Class by implementing <code>@XmlRootElement(name = "customer")</code> and importing <code>import javax.xml.bind.annotation.XmlRootElement</code> in the <code>BankCusotmer.kt</code> file. Make sure to reproduce as shown below:</p>
-<pre><code class="language-kt">import javax.xml.bind.annotation.XmlRootElement
-/**
-...
-*/
-@XmlRootElement(name = "customer")
-class BankCustomer {
-...
-
-}
-</code></pre>
-</li>
-<li>
-<p>Then navigate to <code>DataUtils.kt</code> and add the imports for XML functionality at the top of the file like the other imports:</p>
-<pre><code class="language-kt">import com.opencsv.CSVReaderBuilder
-
-...
-
-import javax.xml.bind.JAXBContext
-import javax.xml.bind.Marshaller
-import javax.xml.bind.annotation.XmlElement
-import javax.xml.bind.annotation.XmlRootElement
-import javax.xml.bind.annotation.XmlAccessType
-import javax.xml.bind.annotation.XmlAccessorType
-</code></pre>
-</li>
-<li>
-<p>Now we can add the write and load functions for the XML in the <code>DataUtils.kt</code>, navigate to the end <code>writeCustomersToJSON(...)</code> and between that and the <code>makeFile(...)</code> function add the following <code>loadCustomersFromXml()</code> and <code>writeCustomersToXml()</code> as seen below:</p>
-<pre><code class="language-kt">...
-fun writeCustomersToJSON(customerList: List&lt;BankCustomer&gt;, filePath: String) {
-    ...
-    }
-
-/**
- * Loads a list of [BankCustomer] objects from an XML file.
- *
- * @param filePath The path to the XML file.
- * @return A [MutableList] of [BankCustomer] objects.
- */
-fun loadCustomersFromXml(filePath: String): MutableList&lt;BankCustomer&gt; {
-    try {
-        val context = JAXBContext.newInstance(CustomersWrapper::class.java)
-        val unmarshaller = context.createUnmarshaller()
-        val wrapper = unmarshaller.unmarshal(File(filePath)) as CustomersWrapper
-        return wrapper.customerList.toMutableList()
-    } catch (e: Exception) {
-        // Handle exceptions during XML parsing
-        e.printStackTrace()
-    }
-    return mutableListOf()
-}
-
-/**
- * Writes a list of [BankCustomer] objects to an XML file.
- *
- * @param customers The list of [BankCustomer] objects to write.
- * @param filePath The path to the XML file.
- * @throws Exception to log
- */
-fun writeCustomersToXml(customers: List&lt;BankCustomer&gt;, filePath: String) {
-    try {
-        val context = JAXBContext.newInstance(CustomersWrapper::class.java)
-        val marshaller = context.createMarshaller()
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true)
-
-        val wrapper = CustomersWrapper()
-        wrapper.customerList = ArrayList(customers)
-
-        marshaller.marshal(wrapper, File(filePath))
-    } catch (e: Exception) {
-        // Handle exceptions during XML writing
-        e.printStackTrace()
-    }
-}
-
-/**
-...
- */
-fun makeFile(filePath: String) {
-    ...
-}
-</code></pre>
-</li>
-<li>
-<p>At the end of the <code>object DataUtils{...}</code> or if you like the very end of the <code>DataUtils.kt</code> add the following <code>CustomersWrapper</code> <code>Wrapper</code> class:</p>
-<pre><code class="language-kt">object DataUtils {
-    /**
-    ...
-    */
-    fun makeFile(filePath: String) {
-    ...
-    }
-}
-
-/**
-* Wrapper class for marshalling and unmarshalling a list of [BankCustomer] objects.
-*/
-@XmlRootElement(name = "customersWrapper")
-@XmlAccessorType(XmlAccessType.FIELD)
-class CustomersWrapper {
-    @XmlElement(name = "customer")
-    var customerList: List&lt;BankCustomer&gt; = ArrayList()
-}
-</code></pre>
-</li>
-<li>
-<p>Now we need to modify <code>Main.kt</code> to use the load and write XML functions we have made. Firstly, add reference to the new xml functions we have in the <code>DataUtils.kt</code>:</p>
-<pre><code class="language-kt">...
-import DataUtils.writeCustomersToJSON
-
-import DataUtils.loadCustomersFromXml
-import DataUtils.writeCustomersToXml
-
-
-fun main(args : &lt;String&gt;){
-... 
-}
-</code></pre>
-</li>
-<li>
-<p>Modify the code inside <code>main(args : &lt;String&gt;)</code> so that the functions <code>writeCustomersToXml</code> and <code>loadCustomersToXml</code>. Navigate to the end of  <code>main(...)</code>:</p>
-<pre><code class="language-kt">fun main(arg: &lt;String&gt;){
-
-    ...
-   
-     writeCustomersToJSON(jsonExistingCustomers,"customers.json")
-
-    ...
-
-     // XML
-    var existingCustomers = loadCustomersFromXml("customers.xml")
-    existingCustomers = existingCustomers.removeDuplicatesByAccountNumber()
-
-    // Add the new customer to the existing list
-    existingCustomers.addIfNotDuplicate(newCustomer)
-    existingCustomers.addIfNotDuplicate(customer)
-
-    println("All Customers:")
-    existingCustomers.printAll()
-
-    // Write the updated list back to XML
-    writeCustomersToXml(existingCustomers, "customers.xml")
-}
-</code></pre>
-</li>
-<li>
-<p>Run the code, and your <code>customers.xml</code> file should look like:</p>
-<div align=center>
-<p><img src="./figures/step9.png" alt="" /></p>
-</div>
-</li>
-</ol>
-<h2 id="step-10-more"><a class="header" href="#step-10-more">Step 10: More</a></h2>
-<ol start="39">
-<li>
-<p>The third customer you made at the beginning can be added to all three files. Try and do this now.</p>
-</li>
-<li>
-<p>Try removing a record by first using the mutable extension method we made but have not used yet to remove the <code>customer</code> whose name is <code>Marshal Mathers</code>, for example:</p>
-<pre><code class="language-kt">existingCustomer = existingCustomer.removeByAccountNumber(customer.account)
-</code></pre>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
-<p>Remember you can hover over a class/method/function etc to see what they do if they have the KDoc written for them. Like we have done for that function.</p>
-</blockquote>
 </blockquote>
 </li>
-<li>
-<p>Now that the <code>existingCustomer</code> has that customer removed try using the <code>writeCustomersTo&lt;XML/JSON/CSV&gt;(...)</code>... which ever one you used and see the change in the file.</p>
-</li>
 </ol>
-<h2 id="completed-project"><a class="header" href="#completed-project">Completed project</a></h2>
-<p>You can download the completed project from here as a zip, if you have not completed the lab or just want to explore and play with as is:</p>
-<ul>
-<li><a href="PersistentData.zip">PresistentData.zip</a></li>
-</ul>
 
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../Kotlin/Lab_8/Lab_8.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../Kotlin/Lab_8/Lab_8.1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../Kotlin/Lab_10/Lab_10.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -1013,13 +957,10 @@ fun main(args : &lt;String&gt;){
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../Kotlin/Lab_8/Lab_8.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../Kotlin/Lab_8/Lab_8.1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../Kotlin/Lab_10/Lab_10.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

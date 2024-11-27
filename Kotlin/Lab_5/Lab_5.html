@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././theme/css/code.css">
+        <link rel="stylesheet" href="../.././theme/css/terminal.css">
+        <link rel="stylesheet" href="../.././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -171,12 +175,20 @@
 <tr>
 <td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
 <p>You will be developing concert ticket app that lets you select predifined bands and check the cost of each ticket.  The Mass Converter App is demoed right:</p>
-<blockquote>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
 <p>You will need to download the following picture folder -&gt; <a href="Lab_5_Pictures.zip">Lab_5_Picture.zip</a></p>
 <ul>
 <li>The completed project can be found here at end of session -&gt; <a href="https://github.com/UniOfGreenwich/MobileApps-MassConvertor">https://github.com/UniOfGreenwich/MobileApps-MassConvertor</a></li>
 </ul>
-</blockquote>
+</div>
+</div>
 </td>
 <td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
 <img src="./figures/demo.gif" alt="Demo of App" >
@@ -229,6 +241,14 @@
 <ul>
 <li>
 <p>Update the <code>MainActivity.kt</code> file so that we have our own layout and set of Composables etc...</p>
+  <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+  <div class="admonition-title">
+  <div id="admonition-code-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -271,12 +291,19 @@
     }
 }
 </code></pre>
-<blockquote>
-<blockquote>
-<p><strong>Notes:</strong></p>
+  </div>
+  </div>
+  <div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+  <div class="admonition-title">
+  <div id="admonition-info-1-title">
+<p>Info</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-info-1"></a>
+  </div>
+  <div>
 <ul>
 <li>
-<p><strong>@Composable</strong>: This annotation is used to mark a function as composable. Functions marked with <code>@Composable</code> can be used to describe part of a UI in Jetpack Compose. This allows you to build UI elements declaratively.</p>
+<p><strong>@Composable</strong>: This annotation is used to mark a function as composable. Functions marked with <code>@Composable</code> can be used to describe part of a UI in Jetpack mpose. This allows you to build UI elements declaratively.</p>
 </li>
 <li>
 <p><strong>by</strong>: This is used for delegation in Kotlin. Here, it is used with <code>remember</code> and <code>mutableStateOf</code> to create a state variable.</p>
@@ -285,7 +312,7 @@
 <p><strong>remember</strong>: This composable function is used to <strong>remember</strong> a single object in a composable function. It retains state across recompositions.</p>
 </li>
 <li>
-<p><strong>mutableStateOf("")</strong>: This creates a mutable state initialized with an empty <code>string</code>. <code>mutableStateOf</code> is used to create state that Jetpack Compose can observe and react to changes</p>
+<p><strong>mutableStateOf("")</strong>: This creates a mutable state initialized with an empty <code>string</code>. <code>mutableStateOf</code> is used to create state that Jetpack Compose can observe d react to changes</p>
 </li>
 <li>
 <p><strong>Column</strong>: This is a composable function that places its children in a vertical sequence.</p>
@@ -306,12 +333,20 @@
 <p><strong>lamdba</strong>: In Kotlin, a lambda is an anonymous function (a function without a name) that can be treated as a value. Lambdas are often used to pass functions as arguments to higher-order functions, which are functions that take other functions as parameters or return functions.</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 <p><img src="./figures/mainActivity_1.png" alt="" /></p>
 </li>
 <li>
 <p>Finish modifying the <code>TextField</code> so that only a number style keyboard is displayed on focus and give the field a hint/ghost text "Enter Mass"</p>
+  <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+  <div class="admonition-title">
+  <div id="admonition-code-1-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">@Composable
 fun WeightConverterApp() {
     var massEntered by remember { mutableStateOf("") }
@@ -338,18 +373,25 @@ fun WeightConverterApp() {
     }
 }
 </code></pre>
-<blockquote>
-<p><strong>Notes:</strong></p>
-<blockquote>
+  </div>
+  </div>
+  <div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+  <div class="admonition-title">
+  <div id="admonition-note-title">
+<p>Note</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-note"></a>
+  </div>
+  <div>
 <ul>
 <li>
 <p><strong>label</strong> - this is a parameter for the TextField composable in Jetpack Compose. It specifies a label for the text field.</p>
 </li>
 <li>
-<p><strong>{ Text("Enter mass") }</strong>: This is a lambda expression that defines the content of the <code>label</code>. In this case, the <code>label</code> is a <code>Text</code> composable displaying the string <code>"Enter mass"</code>.</p>
+<p><strong>{ Text("Enter mass") }</strong>: This is a lambda expression that defines the content of the <code>label</code>. In this case, the <code>label</code> is a <code>Text</code> composable displaying the ring <code>"Enter mass"</code>.</p>
 </li>
 <li>
-<p><strong>keyboardOptions</strong>: This is another parameter for the <code>TextField</code> composable. It specifies the behavior of the on-screen keyboard that appears when the text field gains focus.</p>
+<p><strong>keyboardOptions</strong>: This is another parameter for the <code>TextField</code> composable. It specifies the behavior of the on-screen keyboard that appears when the text field ins focus.</p>
 </li>
 <li>
 <p><strong>KeyboardOptions.Default</strong>: This provides the default keyboard options.</p>
@@ -358,8 +400,8 @@ fun WeightConverterApp() {
 <p><strong>.copy(keyboardType = KeyboardType.Number)</strong>: This creates a copy of the default keyboard options, modifying the <code>keyboardType</code> to <code>KeyboardType.Number</code>.</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 <p><img src="./figures/mainActivity_2.png" alt="" /></p>
 </li>
 </ul>
@@ -372,6 +414,14 @@ fun WeightConverterApp() {
 <ul>
 <li>
 <p>We now are going to use some <code>RadioButtons</code> that can be selected by the user to indicate their choices, after the <code>TextField</code> and <code>Spacer</code> add a <code>Text</code> Composable and a <code>Row</code> Composable with 3 RadioButtons, 3 <code>Text</code> and 2 <code>Spacers</code>:</p>
+ <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+ <div class="admonition-title">
+ <div id="admonition-code-2-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">... 
 
 TextField(){...}
@@ -408,27 +458,44 @@ Spacer(modifier = Modifier.height(16.dp))
 ...
 
 </code></pre>
+ </div>
+ </div>
 </li>
 <li>
 <p>Also, note that the <code>inputMassUnit</code> needs to bound to the so that it stores data during recomposition process, add the line below where you create the <code>massEntered</code> variable, you could also add the <code>outputMassUnit</code> too:</p>
+  <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+  <div class="admonition-title">
+  <div id="admonition-code-3-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-3"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">var inputMassUnit by remember { mutableStateOf("kg") }
 var outputMassUnit by remember { mutableStateOf("lbs") }
 </code></pre>
-<blockquote>
-<blockquote>
-<p><strong>Notes:</strong></p>
+  </div>
+  </div>
+  <div id="admonition-info-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-2-title">
+  <div class="admonition-title">
+  <div id="admonition-info-2-title">
+<p>Info</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-info-2"></a>
+  </div>
+  <div>
 <ul>
 <li>
 <p><strong>Row</strong> - This is a composable that arranges its children in a horizontal sequence.</p>
 </li>
 <li>
-<p><strong>RadioButton</strong>: This composable represents a radio button, which is a circular button that can be either selected or unselected. It is typically used in groups to allow users to select one option from a set.</p>
+<p><strong>RadioButton</strong>: This composable represents a radio button, which is a circular button that can be either selected or unselected. It is typically used in groups to low users to select one option from a set.</p>
 </li>
 <li>
 <p><strong>selected</strong>: This parameter determines whether the radio button is <code>selected</code> or not.</p>
 </li>
 <li>
-<p><strong>inputMassUnit == "kg"</strong>: This expression checks if the current value of <code>inputMassUnit</code> is equal to <code>"kg"</code>. If it is, the radio button will be shown as <code>selected</code>.</p>
+<p><strong>inputMassUnit == "kg"</strong>: This expression checks if the current value of <code>inputMassUnit</code> is equal to <code>"kg"</code>. If it is, the radio button will be shown as elected`.</p>
 </li>
 <li>
 <p><strong>onClick</strong>: This is a lambda function that gets executed when the radio button is clicked.</p>
@@ -437,12 +504,20 @@ var outputMassUnit by remember { mutableStateOf("lbs") }
 <p><strong>{ inputMassUnit = "kg" }</strong>: This lambda sets the value of <code>inputMassUnit</code> to <code>"kg"</code> when the radio button is clicked. This means that clicking the radio button will update the state to indicate that "kg" is the selected unit.</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 <p><img src="./figures/mainActivity_3.png" alt="" /></p>
 </li>
 <li>
 <p>Create a new <code>Row</code> that replicates the previous <code>Row</code> for <code>outputMassUnit</code></p>
+  <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+  <div class="admonition-title">
+  <div id="admonition-code-4-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">Row{...}
 
 Spacer(modifier = Modifier.height(16.dp))
@@ -471,6 +546,8 @@ Row {
     Text("Stone")
 }
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/mainActivity_4.png" alt="" /></p>
 </li>
 </ul>
@@ -479,6 +556,14 @@ Row {
 <ul>
 <li>
 <p>Now we are going to use a <code>Button</code> Composable that invokes and <code>onClick</code> method to calcualte the user input and their selected <code>RadioButton</code> options. Underneath the last <code>Row{...}</code> create a new <code>Spacer</code> Composable and a <code>Button</code> Composable:</p>
+  <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+  <div class="admonition-title">
+  <div id="admonition-code-5-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">Row{...}
 Spacer(modifier = Modifier.height(16.dp))
 
@@ -487,6 +572,8 @@ Button(onClick = { /*TODO*/}) {
 }
 ...
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/mainActivity_5.png" alt="" /></p>
 </li>
 <li>
@@ -494,6 +581,14 @@ Button(onClick = { /*TODO*/}) {
 </li>
 <li>
 <p>Continue building the functionality of the <code>Button</code> and update the arguments field of the <code>converter</code> function where it is declared:</p>
+  <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+  <div class="admonition-title">
+  <div id="admonition-code-6-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">Row{
     ...
     Button(
@@ -515,15 +610,22 @@ private fun convertor(numberFormat: NumberFormat, mass: Double, inputUnit: Strin
     return conversionsToBeReturned
 }
 </code></pre>
-<blockquote>
-<p><strong>Notes:</strong></p>
-<blockquote>
+  </div>
+  </div>
+  <div id="admonition-info-3" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-3-title">
+  <div class="admonition-title">
+  <div id="admonition-info-3-title">
+<p>Info</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-info-3"></a>
+  </div>
+  <div>
 <ul>
 <li>
 <p><strong>onClick</strong> - This is a lambda function that gets executed when the button is clicked.</p>
 </li>
 <li>
-<p><strong>massEntered.toDoubleOrNull()</strong>: This function attempts to convert the string <code>massEntered</code> into a <code>Double</code>. If the conversion is not possible (e.g., if <code>massEntered</code> is not a valid number), it returns <code>null</code>.</p>
+<p><strong>massEntered.toDoubleOrNull()</strong>: This function attempts to convert the string <code>massEntered</code> into a <code>Double</code>. If the conversion is not possible (e.g., if assEntered<code>is not a valid number), it returns</code>null`.</p>
 </li>
 <li>
 <p><strong>mass != null</strong>: This checks if the conversion was successful.</p>
@@ -532,12 +634,20 @@ private fun convertor(numberFormat: NumberFormat, mass: Double, inputUnit: Strin
 <p><strong>mass &gt; 0</strong>: This checks if the mass entered is greater than zero.</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 <p><img src="./figures/mainActivity_6.png" alt="" /></p>
 </li>
 <li>
 <p>Continuing with the conditions inside the <code>Button</code>, we will add an <code>else</code> to catch the inverse of the <code>if</code> and display at <code>Toast</code> Notification. We also going to add a <code>Spacer</code> after the Button and 3 <code>Text</code> Composables that will display the result of the <code>converter</code> function by referencing the respectively array index of the <code>convertedValues</code> variable:</p>
+  <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+  <div class="admonition-title">
+  <div id="admonition-code-7-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">Button(onClick = {
     val mass = massEntered.toDoubleOrNull()
 
@@ -559,9 +669,19 @@ Text("Weight in Newtons: ${convertedValues[1]}")
 Text("Weight in Kilonewtons: ${convertedValues[2]}")
 }
 </code></pre>
+  </div>
+  </div>
 </li>
 <li>
 <p>declare the <code>context</code> variable at the underneath the remembered variables.</p>
+  <div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+  <div class="admonition-title">
+  <div id="admonition-code-8-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-8"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">...
 
 var massEntered by remember { mutableStateOf("") }
@@ -573,18 +693,25 @@ var context =  LocalContext.current
 ...
 
 </code></pre>
-<blockquote>
-<p><strong>Notes:</strong></p>
-<blockquote>
+  </div>
+  </div>
+  <div id="admonition-info-4" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-4-title">
+  <div class="admonition-title">
+  <div id="admonition-info-4-title">
+<p>Info</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-info-4"></a>
+  </div>
+  <div>
 <ul>
 <li>
-<p><strong>else</strong>: This keyword is used to define a block of code that runs if the preceding <code>if</code> condition(s) is <code>false</code>. In this case, it runs when the mass is not greater than 0.</p>
+<p><strong>else</strong>: This keyword is used to define a block of code that runs if the preceding <code>if</code> condition(s) is <code>false</code>. In this case, it runs when the mass is not eater than 0.</p>
 </li>
 <li>
 <p><strong>Toast.makeText</strong>: This function creates a Toast message, which is a small popup message that briefly appears on the screen.</p>
 </li>
 <li>
-<p><strong>context</strong>: This is the <code>context</code> in which the <code>Toast</code> should run. It is obtained from the <code>LocalContext.current</code> in a Compose function defined after remembered variables we declared.</p>
+<p><strong>context</strong>: This is the <code>context</code> in which the <code>Toast</code> should run. It is obtained from the <code>LocalContext.current</code> in a Compose function defined after remembered riables we declared.</p>
 </li>
 <li>
 <p><strong>Toast.LENGTH_LONG</strong>: This is the duration for which the <code>Toast</code> will be shown. <code>Toast.LENGTH_LONG</code> means it will be displayed for a long duration.</p>
@@ -596,8 +723,8 @@ var context =  LocalContext.current
 <p><strong>Text("Converted Mass: ${convertedValues[0]}")</strong> -  Displays the first converted value, we use the <code>${}</code> to reference variable that are are defined as collection, list and arrays etc</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 <p><img src="./figures/mainActivity_7.png" alt="" /></p>
 </li>
 </ul>
@@ -606,6 +733,14 @@ var context =  LocalContext.current
 <ul>
 <li>
 <p>Navigate to the top of the <code>MainActivty()</code> add the following variables that stored constant conversion values and the <code>NumberFormat</code> to the <code>WeightConverterApp()</code>:</p>
+  <div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+  <div class="admonition-title">
+  <div id="admonition-code-9-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-9"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">class MainActivity : ComponentActivity() {
 
     private val conversionToPounds: Double = 2.20462262 // lbs to kg
@@ -630,12 +765,23 @@ var context =  LocalContext.current
     
     ```
 
+&lt;/div&gt;
+&lt;/div&gt;
+
 ![](./figures/mainActivity_8.png)
 
 </code></pre>
 </li>
 <li>
 <p>Next go back <code>Converter()</code> and let's create the calculations to convert between different units</p>
+  <div id="admonition-code-10" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-10-title">
+  <div class="admonition-title">
+  <div id="admonition-code-10-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-10"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">private fun converter(numberFormat: NumberFormat, mass : Double,
                         inputUnit: String, outputUnit: String) : Array&lt;String&gt;{
 
@@ -663,9 +809,16 @@ var context =  LocalContext.current
 }
 
 </code></pre>
-<blockquote>
-<p><strong>Notes:</strong></p>
-<blockquote>
+  </div>
+  </div>
+  <div id="admonition-info-5" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-5-title">
+  <div class="admonition-title">
+  <div id="admonition-info-5-title">
+<p>Info</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-info-5"></a>
+  </div>
+  <div>
 <ul>
 <li>
 <p><strong>val massInKg</strong> - Declares a read-only variable that stores the <code>mass</code> converted to kilograms.</p>
@@ -692,17 +845,17 @@ var context =  LocalContext.current
 <p><strong>"kg"</strong> - If the <code>outputUnit</code> is kilograms, it creates a string that includes the mass in kilograms (<code>massInKg</code>).</p>
 </li>
 <li>
-<p><strong>"lbs"</strong> - If the <code>outputUnit</code> is pounds, it converts the mass from kilograms to pounds by multiplying it by <code>conversionToPounds</code> and formats the result using <code>numberFormat</code>. The formatted string includes the mass in pounds.</p>
+<p><strong>"lbs"</strong> - If the <code>outputUnit</code> is pounds, it converts the mass from kilograms to pounds by multiplying it by <code>conversionToPounds</code> and formats the result using mberFormat`. The formatted string includes the mass in pounds.</p>
 </li>
 <li>
-<p><strong>"st"</strong> - If the <code>outputUnit</code> is stones, it converts the mass from kilograms to stones by multiplying it by <code>conversionToStones</code> and formats the result using <code>numberFormat</code>. The formatted string includes the mass in stones.</p>
+<p><strong>"st"</strong> - If the <code>outputUnit</code> is stones, it converts the mass from kilograms to stones by multiplying it by <code>conversionToStones</code> and formats the result using mberFormat`. The formatted string includes the mass in stones.</p>
 </li>
 <li>
 <p><strong>else</strong> - For any other unit (or if <code>outputUnit</code> doesn't match any of the specified cases), it assigns an empty string to converted.</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 <ul>
 <li>
 <p>Without the <strong>Formater</strong>:</p>
@@ -727,8 +880,14 @@ var context =  LocalContext.current
 </tr>
 </table>
 <hr />
-<details>
-<summary>The whole program should look like this: </summary>
+<details id="admonition-code-whole-program-172-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-whole-program-172-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-whole-program-172-lines-title">
+<p>Code: whole program [172 lines]...</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-whole-program-172-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">package com.uog.massconverter
 
 import android.os.Bundle
@@ -903,18 +1062,24 @@ class MainActivity : ComponentActivity() {
 
 }
 </code></pre>
+</div>
 </details>
 <hr />
 <hr />
 <h2 id="continue-here"><a class="header" href="#continue-here">Continue Here....</a></h2>
-<blockquote>
-<p><strong>Note</strong>:</p>
-<blockquote>
+<div id="admonition-info-6" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-6-title">
+<div class="admonition-title">
+<div id="admonition-info-6-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-6"></a>
+</div>
+<div>
 <ul>
 <li>You can find royalty-freee images here: <a href="https://www.freeimages.com">https://www.freeimages.com/</a></li>
 </ul>
-</blockquote>
-</blockquote>
+</div>
+</div>
 <p>For the exercises below, us the above lab as a reference.</p>
 <h2 id="1-phone-photo-prints-app"><a class="header" href="#1-phone-photo-prints-app">1. Phone Photo Prints App</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Phone Photo Prints App</th></tr></thead><tbody>

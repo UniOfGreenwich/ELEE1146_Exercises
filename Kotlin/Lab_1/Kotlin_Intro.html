@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././theme/css/code.css">
+        <link rel="stylesheet" href="../.././theme/css/terminal.css">
+        <link rel="stylesheet" href="../.././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -165,16 +169,27 @@
                 <div id="content" class="content">
                     <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
                         <h1 id="lab-1-introduction-to-kotlin"><a class="header" href="#lab-1-introduction-to-kotlin">Lab 1: Introduction to Kotlin</a></h1>
-<blockquote>
-<p><strong>Important</strong></p>
-<blockquote>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
 <ul>
-<li>You will be using IntelliJ IDE</li>
-<li>From your Start Menu type 'IntelliJ' and select run!</li>
-<li>If you want to run this on your own machine you can download the community Edition from here -&gt; <a href="https://www.jetbrains.com/idea/download/?section=windows">https://www.jetbrains.com/idea/download/?section=windows</a></li>
+<li>
+<p>You will be using IntelliJ IDE</p>
+</li>
+<li>
+<p>From your Start Menu type 'IntelliJ' and select run!</p>
+</li>
+<li>
+<p>If you want to run this on your own machine you can download the community Edition from here -&gt; <a href="https://www.jetbrains.com/idea/download/?section=windows">https://www.jetbrains.com/idea/download/?section=windows</a></p>
+</li>
 </ul>
-</blockquote>
-</blockquote>
+</div>
+</div>
 <hr />
 <h2 id="1-getting-started"><a class="header" href="#1-getting-started">1. Getting Started</a></h2>
 <ol>
@@ -222,45 +237,82 @@
 <ol start="6">
 <li>
 <p>Now we can populate our new <code>Main.kt</code> file with some code.</p>
-<blockquote>
-<p><strong>NOTE</strong> <code>.kt</code> is the extension for Kotlin files</p>
-</blockquote>
-<ol>
-<li>Write the following:</li>
-</ol>
+<div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+<div class="admonition-title">
+<div id="admonition-info-1-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-1"></a>
+</div>
+<div>
+<p><code>.kt</code> is the extension for Kotlin files</p>
+</div>
+</div>
+1. Write the following: 
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
     
     println("Hello World!")
 
 }   
 </code></pre>
-<ol start="2">
-<li><code>fun</code> is a <strong>hard keyword</strong> that tells the Kotlin you are declaring a function.</li>
-<li><code>main()</code> is the function name, and any console-based program like this, <code>main()</code>, is the entry point of the program when it is executed by the OS.</li>
-<li><code>(args: Array&lt;String&gt;)</code>, is the way of telling the program that it can take in arguments supplied to it, in this instance <code>args</code>, the variable, will be an <code>Array</code> of <code>Strings</code></li>
-<li>Everything between the <code>{}</code> braces is executed by the program.</li>
-<li>Lastly, <code>println("Hello World!")</code>, calls the function <code>println()</code> which prints whatever is in the brackets to the terminal with a <code>\n</code> new line at the end hence the <code>ln</code> in <code>println</code>.</li>
-<li>Now you can run the program using either of the green arrows:</li>
-</ol>
- <div class="column" style="display: flex;">
- <div style="flex: 50%;">
-<p><img src="./figures/main.png" alt="" /></p>
- </div>
- <div style="flex: 50%;">
-<p><img src="./figures/run.png" alt="" /></p>
- </div>
- </div>
-<ol start="8">
-<li>You should see a terminal appear at the bottom of the IDE that shows some output.</li>
-</ol>
-<div style="width:100%; margin: 0px auto;">
-<p><img src="./figures/helloworld_output.png" alt="center" /></p>
 </div>
+</div>
+<ol start="2">
+<li>
+<p><code>fun</code> is a <strong>hard keyword</strong> that tells the Kotlin you are declaring a function.</p>
+</li>
+<li>
+<p><code>main()</code> is the function name, and any console-based program like this, <code>main()</code>, is the entry point of the program when it is executed by the OS.</p>
+</li>
+<li>
+<p><code>(args: Array&lt;String&gt;)</code>, is the way of telling the program that it can take in arguments supplied to it, in this instance <code>args</code>, the variable, will be an <code>Array</code> of <code>Strings</code></p>
+</li>
+<li>
+<p>Everything between the <code>{}</code> braces is executed by the program.</p>
+</li>
+<li>
+<p>Lastly, <code>println("Hello World!")</code>, calls the function <code>println()</code> which prints whatever is in the brackets to the terminal with a <code>\n</code> new line at the end hence the <code>ln</code> in <code>println</code>.</p>
+</li>
+<li>
+<p>Now you can run the program using either of the green arrows:</p>
+  <div class="column" style="display: flex;">
+  <div style="flex: 50%;">
+<p><img src="./figures/main.png" alt="" /></p>
+  </div>
+  <div style="flex: 50%;">
+<p><img src="./figures/run.png" alt="" /></p>
+  </div>
+  </div>
+</li>
+<li>
+<p>You should see a terminal appear at the bottom of the IDE that shows some output.</p>
+  <div style="width:100%; margin: 0px auto;">
+<p><img src="./figures/helloworld_output.png" alt="center" /></p>
+  </div>
+</li>
+</ol>
 </li>
 <li>
 <p>Now you are going to modify the programme so that <code>printl()</code> takes a variable</p>
 <ol>
-<li>Create a mutable variable called <code>name</code>
+<li>
+<p>Create a mutable variable called <code>name</code></p>
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
   
   var name : String = "Your Name"
@@ -269,6 +321,8 @@
 
 }  
 </code></pre>
+</div>
+</div>
 </li>
 </ol>
 </li>
@@ -285,41 +339,69 @@
 </div>
 </li>
 </ol>
-<blockquote>
-<p><strong>Note: Code Inspections</strong></p>
-<blockquote>
+  <div id="admonition-info-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-2-title">
+  <div class="admonition-title">
+  <div id="admonition-info-2-title">
+<p>Info</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-info-2"></a>
+  </div>
+  <div>
+<p>You can find more if you go to File&gt;Settings&gt;Editor&gt;Color Scheme &gt; General &gt; Errors and Warnings</p>
 <ul>
 <li>Green = typo, literals, weak warnings</li>
 <li>Red = Error (will not compile)</li>
 </ul>
-<p>You can find more if you go to File&gt;Settings&gt;Editor&gt;Color Scheme &gt; General &gt; Errors and Warnings</p>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 <ol>
-<li>This underwave can be corrected two ways, either hover over and follow the quick key shortcut '<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>'. Or Manually fix it by reproducing the output below.</li>
-</ol>
-   <div style="width:100%; margin: 0px auto;">
+<li>
+<p>This underwave can be corrected two ways, either hover over and follow the quick key shortcut '<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>'. Or Manually fix it by reproducing the output below.</p>
+  <div style="width:100%; margin: 0px auto;">
 <p><img src="./figures/suggestions.png" alt="center" /></p>
-   </div>
-<ol start="2">
-<li>You will see the that <code>println("Hello World! " + name)</code> has been refactored to:</li>
-</ol>
-   <div style="width:45%; margin: 0px auto;">
+  </div>
+</li>
+<li>
+<p>You will see the that <code>println("Hello World! " + name)</code> has been refactored to:</p>
+  <div style="width:45%; margin: 0px auto;">
 <p><img src="./figures/stringTemplate.png" alt="center" /></p>
+  </div>
+</li>
+</ol>
+   <div id="admonition-info-3" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-3-title">
+   <div class="admonition-title">
+   <div id="admonition-info-3-title">
+<p>Info</p>
    </div>
-<blockquote>
-<p><strong>Notes</strong></p>
-<blockquote>
+   <a class="admonition-anchor-link" href="#admonition-info-3"></a>
+   </div>
+   <div>
 <ul>
-<li>String literals may contain <strong>template expressions</strong> – pieces of code that are evaluated and whose results are concatenated into the string.</li>
-<li>A template expression starts with a dollar sign <code>$</code> and consists of either a name</li>
-<li>or an expression in curly braces:</li>
+<li>
+<p>String literals may contain <strong>template expressions</strong> – pieces of code that are evaluated and whose results are concatenated into the string.</p>
+</li>
+<li>
+<p>A template expression starts with a dollar sign <code>$</code> and consists of either a name</p>
+</li>
+<li>
+<p>or an expression in curly braces:</p>
+</li>
 </ul>
-</blockquote>
-</blockquote>
+   </div>
+   </div>
+   <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+   <div class="admonition-title">
+   <div id="admonition-code-2-title">
+<p>Code</p>
+   </div>
+   <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+   </div>
+   <div>
 <pre><code class="language-kt">val s = "Hello World"
 println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
 </code></pre>
+   </div>
+   </div>
 <ol start="12">
 <li>
 <p>Run the program again, do you get the same output?</p>
@@ -328,18 +410,27 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
 <p>Modify further with <code>print()</code> function</p>
 </li>
 </ol>
-<div style="width:45%; margin: 0px auto;">
+   <div style="width:45%; margin: 0px auto;">
 <p><img src="./figures/print_and_println.png" alt="center" /></p>
-</div>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
+   </div>
+   <div id="admonition-info-4" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-4-title">
+   <div class="admonition-title">
+   <div id="admonition-info-4-title">
+<p>Info</p>
+   </div>
+   <a class="admonition-anchor-link" href="#admonition-info-4"></a>
+   </div>
+   <div>
 <ul>
-<li><code>print()</code> by default does not terminate with a  new line (<code>\n</code>) line character, unlike <code>println()</code></li>
-<li>however, you can tell it to, by adding a <code>\n</code> to the end of the message inbetweent the two brackets.</li>
+<li>
+<p><code>print()</code> by default does not terminate with a  new line (<code>\n</code>) line character, unlike <code>println()</code></p>
+</li>
+<li>
+<p>however, you can tell it to, by adding a <code>\n</code> to the end of the message inbetweent the two brackets.</p>
+</li>
 </ul>
-</blockquote>
-</blockquote>
+   </div>
+   </div>
 <ol start="13">
 <li>Run it and see for yourself, then remove the <code>\n</code> from the end of <code>print("Hello me\n)</code>, is it the same?</li>
 </ol>
@@ -351,47 +442,81 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
 </li>
 <li>
 <p><code>val</code> is a final variable and it's known as <strong>immutable</strong> in Kotlin and can be initialised only a single time.</p>
-</li>
-</ol>
-<blockquote>
-<blockquote>
-<p><strong>Note</strong></p>
+<div id="admonition-info-5" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-5-title">
+<div class="admonition-title">
+<div id="admonition-info-5-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-5"></a>
+</div>
+<div>
 <ul>
-<li>The term mutable comes from mutation, as is to mutate, to change. In computing this means <strong>Read</strong> &amp; <strong>Write</strong></li>
-<li>Therefore immutable is something that can not mutate nor change. In comupting this means <strong>Read only</strong></li>
+<li>
+<p>The term mutable comes from mutation, as is to mutate, to change. In computing this means <strong>Read</strong> &amp; <strong>Write</strong></p>
+</li>
+<li>
+<p>Therefore immutable is something that can not mutate nor change. In comupting this means <strong>Read only</strong></p>
+</li>
 </ul>
-</blockquote>
-</blockquote>
-<ol start="3">
-<li>Since you started we have been using <code>var</code> to define the variable <code>name</code>, this is technically incorrect, because we never change the value after declaration.</li>
-<li>Let's change this to <code>val</code> to make our code more <strong>clean</strong>.</li>
-<li>Reproduce the following:</li>
-</ol>
+</div>
+</div>
+</li>
+<li>
+<p>Since you started we have been using <code>var</code> to define the variable <code>name</code>, this is technically incorrect, because we never change the value after declaration.</p>
+</li>
+<li>
+<p>Let's change this to <code>val</code> to make our code more <strong>clean</strong>.</p>
+</li>
+<li>
+<p>Reproduce the following:</p>
+<div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+<div class="admonition-title">
+<div id="admonition-code-3-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-3"></a>
+</div>
+<div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
 
-    val a: Int = 4
-    val b: Int = 4
-    var c: Int = 0
+   val a: Int = 4
+   val b: Int = 4
+   var c: Int = 0
 
-    print("$c = $a + $b")
+   print("$c = $a + $b")
 
 }
 </code></pre>
-<ol>
+</div>
+</div>
+</li>
 <li>
 <p>Before running to code, predict what the outcome will be. Now run it, does it match your prediction?</p>
-  <details>
-  <summary>Answer</summary>
+  <details id="admonition-answer" class="admonition admonish-success" role="note" aria-labelledby="admonition-answer-title">
+  <summary class="admonition-title">
+  <div id="admonition-answer-title">
+<p>Answer</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-answer"></a>
+  </summary>
+  <div>
 <p><code>0 = 4 + 4</code></p>
 <ul>
 <li>This is because no mathematical operation is performed inside a String concatenation</li>
 </ul>
+  </div>
   </details>
 </li>
 <li>
 <p>Modify the above code so that it looks like this:</p>
-</li>
-</ol>
+  <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+  <div class="admonition-title">
+  <div id="admonition-code-4-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
 
    val a: Int = 4
@@ -403,26 +528,51 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
    print("$c = $a + $b")i
 }
 </code></pre>
-<ol start="3">
+  </div>
+  </div>
+</li>
 <li>
 <p>Before running to code, predict what the outcome will be. Now run it, does it match your prediction?</p>
-  <details>
-  <summary>Answer</summary>
+  <details id="admonition-answer-1" class="admonition admonish-success" role="note" aria-labelledby="admonition-answer-1-title">
+  <summary class="admonition-title">
+  <div id="admonition-answer-1-title">
+<p>Answer</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-answer-1"></a>
+  </summary>
+  <div>
 <p><code>8 = 4 + 4</code></p>
 <ul>
 <li>This is because the mathematical operation is performed outside a String concatenation, and the result of <code>a + b</code> is saved to <code>c</code></li>
 </ul>
+  </div>
   </details>
 </li>
 <li>
 <p>Now let's change how <code>c</code> is declared, modify <code>c</code> so that <code>var</code> is now <code>val</code>:</p>
+<div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+<div class="admonition-title">
+<div id="admonition-code-5-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-5"></a>
+</div>
+<div>
 <pre><code class="language-kt">val c: Int = 0
 </code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Before running to code, predict what the outcome will be? Now run it, does it match your prediction?</p>
-   <details>
-   <summary>Answer</summary>
+  <details id="admonition-answer-2" class="admonition admonish-success" role="note" aria-labelledby="admonition-answer-2-title">
+  <summary class="admonition-title">
+  <div id="admonition-answer-2-title">
+<p>Answer</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-answer-2"></a>
+  </summary>
+  <div>
 <ul>
 <li>You can not, notice the red under-wave, this is an error, because <code>c</code> is <strong>immutable</strong> now.</li>
 <li>it is important to read the <strong>Problems</strong> tab at the bottom of the IDE.
@@ -430,7 +580,8 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
 <li>Change it back to <code>var</code>.</li>
 <li>We are not going to worry about the warnings for now, will come back to that later.</li>
 </ul>
-   </details>
+  </div>
+  </details>
 </li>
 </ol>
 <h2 id="3-data-types"><a class="header" href="#3-data-types">3. Data types</a></h2>
@@ -491,6 +642,14 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
 <ol>
 <li>
 <p>Start your program off as follows and run:</p>
+<div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+<div class="admonition-title">
+<div id="admonition-code-6-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-6"></a>
+</div>
+<div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
 
    val b1: Byte = Byte.MIN_VALUE
@@ -507,37 +666,74 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
 }
 
 </code></pre>
-<details>
-<summary>Output</summary>
+</div>
+</div>
+<details id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+<summary class="admonition-title">
+<div id="admonition-output-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output"></a>
+</summary>
+<div>
 <div style="width:60%; margin: 0px auto;">
 <img src="./figures/byte_size.png" width="500" height="180">
 </div>
-</details> 
+</div>
+</details>
 </li>
 <li>
 <p>Now repeat for each data type, remembering to include signed and unsigned variants:</p>
 <ul>
-<li><code>Short</code></li>
-<li><code>Char</code></li>
-<li><code>Int</code></li>
-<li><code>Long</code></li>
-<li><code>Float</code></li>
-<li><code>Double</code></li>
-</ul>
-<blockquote>
-<p><strong>Notes</strong></p>
-<blockquote>
+<li>
+<p><code>Short</code></p>
+</li>
+<li>
+<p><code>Char</code></p>
+</li>
+<li>
+<p><code>Int</code></p>
+</li>
+<li>
+<p><code>Long</code></p>
+</li>
+<li>
+<p><code>Float</code></p>
+</li>
+<li>
+<p><code>Double</code></p>
+ <div id="admonition-info-6" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-6-title">
+ <div class="admonition-title">
+ <div id="admonition-info-6-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-6"></a>
+ </div>
+ <div>
 <ul>
-<li><code>Char</code> will need to be cast as an <code>Int</code></li>
-<li><code>Float</code> and <code>Double</code> can only be signed</li>
-<li>eg.
-<code>val someVal: dataTypeYouWant = originalDataType</code></li>
+<li>
+<p><code>Char</code> will need to be cast as an <code>Int</code></p>
+</li>
+<li>
+<p><code>Float</code> and <code>Double</code> can only be signed</p>
+</li>
+<li>
+<p>eg.</p>
+</li>
 </ul>
-</blockquote>
-</blockquote>
-   <details>
-   <summary>Whole code, do it yourself first</summary>
-<pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
+<p><code>val someVal: dataTypeYouWant = originalDataType</code></p>
+ </div>
+ </div>
+ <details id="admonition-whole-code-do-it-yourself-first-66-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-whole-code-do-it-yourself-first-66-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-whole-code-do-it-yourself-first-66-lines-title">
+<p>Whole code, do it yourself first... [66 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-whole-code-do-it-yourself-first-66-lines"></a>
+ </summary>
+ <div>
+<pre><code>```kt
+fun main(args: Array&lt;String&gt;) {
 
    val b1: Byte = Byte.MIN_VALUE
    val b2: Byte = Byte.MAX_VALUE
@@ -603,14 +799,21 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
    val D2: Double = Double.MAX_VALUE
    println("Smallest Double value: " + D1)
    println("Largest Double value: " + D2)
-   }
+}
+```
+
+~~~
 </code></pre>
-</details>
-<ol start="3">
-<li>
-<p>When done, you should get the same output as below:</p>
-<details>
-<summary>Output</summary>
+ </div>
+ </details>      3. When done, you should get the same output as below:
+ <details id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-1-title">
+<p>Output</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output-1"></a>
+ </summary>
+ <div>
 <pre><code>Smallest signed byte value: -128
 Largest signed byte value: 127
 Smallest unsigned byte value: 0
@@ -642,24 +845,38 @@ Largest Double value: 1.7976931348623157E308
 Process finished with exit code 0
 
 </code></pre>
-</details>
+ </div>
+ </details>
 </li>
-</ol>
+</ul>
 </li>
 </ol>
 </li>
 <li>
 <p><strong>Arrays</strong></p>
 <ul>
-<li>You can have an array of any data type</li>
-<li>They are stored in contiguous memory locations.</li>
-<li>They can be accessed programmatically through their indexes (array[1], array[0], etc.)</li>
-<li>They are mutable (<code>val</code>).</li>
-<li>Their size is fixed.</li>
-</ul>
-<blockquote>
-<p><strong>Notes:</strong></p>
-<blockquote>
+<li>
+<p>You can have an array of any data type</p>
+</li>
+<li>
+<p>They are stored in contiguous memory locations.</p>
+</li>
+<li>
+<p>They can be accessed programmatically through their indexes (array[1], array[0], etc.)</p>
+</li>
+<li>
+<p>They are mutable (<code>val</code>).</p>
+</li>
+<li>
+<p>Their size is fixed.</p>
+ <div id="admonition-info-7" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-7-title">
+ <div class="admonition-title">
+ <div id="admonition-info-7-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-7"></a>
+ </div>
+ <div>
 <ul>
 <li>
 <p><code>val num = arrayOf(1, 2, 3, 4)   //implicit type declaration</code></p>
@@ -671,9 +888,19 @@ Process finished with exit code 0
 <p><code>val sentence = String: "This is a sentence." // Strings are an array of characters</code></p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+ </div>
+ </div>
+</li>
+</ul>
 <p>Reproduce the following to experiment with the various iterations of array manipulation:</p>
+<div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+<div class="admonition-title">
+<div id="admonition-code-7-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-7"></a>
+</div>
+<div>
 <pre><code class="language-kt">1 var sentence :String = "This is a sentence"
 2 
 3 for (i in 0 ..&lt; sentence.length)
@@ -681,21 +908,52 @@ Process finished with exit code 0
 5   print(" "+sentence[i])
 6 }
 </code></pre>
-<p>The <code>for</code> is a keyword that enables the iteration through anything that provides an iterator. Here the iterator is the <code>i</code> a variable that iterates through a supplied list, collection, enumerable, or objects.</p>
-<blockquote>
-<p><strong>Note</strong></p>
-<blockquote>
+</div>
+</div>
+<div id="admonition-info-8" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-8-title">
+<div class="admonition-title">
+<div id="admonition-info-8-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-8"></a>
+</div>
+<div>
 <ul>
-<li>A reminder that a <code>String</code> is a sequence or an array of characters.</li>
-</ul>
-</blockquote>
-</blockquote>
+<li>
+<p>A reminder that a <code>String</code> is a sequence or an array of characters.</p>
+</li>
+<li>
+<p>The <code>for</code> is a keyword that enables the iteration through anything that provides an iterator. Here the iterator is the <code>i</code> a variable that iterates through a supplied list, collection, enumerable, or objects.</p>
+</li>
+<li>
 <p>After the opening bracket <code>( i</code> the next keyword is <code>in</code> and is considered an <em>operator</em>, here <code>in</code> is to used to iterate over the length of <code>sentence</code> executing the <code>print(..)</code> method, until <code>i</code> is less than, <code>&lt;</code>, the length.</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="admonition-output-2" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-2-title">
+<div class="admonition-title">
+<div id="admonition-output-2-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-2"></a>
+</div>
+<div>
 <p>The output should look something like:</p>
 <pre><code class="language-kt">T h i s  i s  a  s e n t e n e c e
 </code></pre>
 <p>Notice the white spacing between each letter and the extra white space between the words.</p>
+</div>
+</div>
 <p>Another way to write the for loop:</p>
+<div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+<div class="admonition-title">
+<div id="admonition-code-8-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-8"></a>
+</div>
+<div>
 <pre><code class="language-kt">1 var sentence :String = "This is a sentence"
 2 
 3 for (element in sentence)
@@ -703,7 +961,17 @@ Process finished with exit code 0
 5   print(" "+ element)
 6 }
 </code></pre>
+</div>
+</div>
 <p>A slight difference here is that instead of iterating using an iterator with an integer to a specified length we iterate over all elements of the object or list. The use of the word <code>element</code> is not reserved, and you could replace this with anything that makes sense, as long as it is not another keyword:</p>
+<div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+<div class="admonition-title">
+<div id="admonition-code-9-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-9"></a>
+</div>
+<div>
 <pre><code class="language-kt">1 var sentence :String = "This is a sentence"
 2 
 3 for (characters in sentence)
@@ -711,20 +979,52 @@ Process finished with exit code 0
 5   print(" "+ characters)
 6 }
 </code></pre>
+</div>
+</div>
 <p>Run this code either way and you should still receive the same output as before:</p>
+<div id="admonition-output-3" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-3-title">
+<div class="admonition-title">
+<div id="admonition-output-3-title">
+<p>Output</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-output-3"></a>
+</div>
+<div>
 <pre><code class="language-kt">T h i s  i s  a  s e n t e n e c e
 </code></pre>
+</div>
+</div>
 <p>An array can be defined, explicitly or implicitly by doing the following:</p>
+<div id="admonition-code-10" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-10-title">
+<div class="admonition-title">
+<div id="admonition-code-10-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-10"></a>
+</div>
+<div>
 <pre><code class="language-kt">// declaring an array using arrayOf&lt;Int&gt; this is explicit
 val explicitArray = arrayOf&lt;Int&gt;(10, 20, 30, 40, 50)
 val implicitArray = arrayOf(10, 20, 30, 40, 50)
 </code></pre>
+</div>
+</div>
 <p>Another way to iterate over the array is to do the following:</p>
+<div id="admonition-code-11" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-11-title">
+<div class="admonition-title">
+<div id="admonition-code-11-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-11"></a>
+</div>
+<div>
 <pre><code class="language-kt">for (i in 0.rangeTo(explicitArray.size-1))
 {
    print(" "+explicitArray[i])
 }
 </code></pre>
+</div>
+</div>
 <details>
 <summary>Notice anything different than before? </summary>
 <ul>
@@ -742,14 +1042,18 @@ val implicitArray = arrayOf(10, 20, 30, 40, 50)
 </ul>
 </details>
 </li>
-<li>
-<h2 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h2>
-</li>
-<li>
-<p>We are going to make a series of if statements to verify login details.</p>
-</li>
 </ol>
+<h2 id="4-conditionals"><a class="header" href="#4-conditionals">4. Conditionals</a></h2>
+<p>We are going to make a series of if statements to verify login details.</p>
 <p>Reproduce the following:</p>
+   <div id="admonition-code-12" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-12-title">
+   <div class="admonition-title">
+   <div id="admonition-code-12-title">
+<p>Code</p>
+   </div>
+   <a class="admonition-anchor-link" href="#admonition-code-12"></a>
+   </div>
+   <div>
 <pre><code class="language-kt">fun main() {
    
    var showAccountPage : Boolean = false
@@ -787,6 +1091,8 @@ val implicitArray = arrayOf(10, 20, 30, 40, 50)
    }
 }
 </code></pre>
+   </div>
+   </div>
 <p>Breaking the code down:</p>
 <ul>
 <li>
@@ -824,9 +1130,15 @@ Note that both of these are <em>nullable</em>, <code>?</code>, meaning that if n
 </li>
 </ul>
 <p>Run the code and try to login using the correct and incorrect credentials.</p>
-<ol start="5">
-<li>
 <p>Let's refactor the code and reduce the number of nested <code>if</code>s:</p>
+   <div id="admonition-code-13" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-13-title">
+   <div class="admonition-title">
+   <div id="admonition-code-13-title">
+<p>Code</p>
+   </div>
+   <a class="admonition-anchor-link" href="#admonition-code-13"></a>
+   </div>
+   <div>
 <pre><code class="language-kt">fun main() {
 
    var showAccountPage = false
@@ -859,10 +1171,19 @@ Note that both of these are <em>nullable</em>, <code>?</code>, meaning that if n
    }
 }
 </code></pre>
+   </div>
+   </div>
+   <div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+   <div class="admonition-title">
+   <div id="admonition-note-title">
+<p>Note</p>
+   </div>
+   <a class="admonition-anchor-link" href="#admonition-note"></a>
+   </div>
+   <div>
 <p>Note how we only check to see if the credentials are <code>true</code>, and if they both are we can login, else it does not. We have gone from 32 lines to 27, is there a way to refactor further?</p>
-</li>
-</ol>
-
+   </div>
+   </div>
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->

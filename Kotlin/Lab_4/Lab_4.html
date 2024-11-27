@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././theme/css/code.css">
+        <link rel="stylesheet" href="../.././theme/css/terminal.css">
+        <link rel="stylesheet" href="../.././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -170,12 +174,24 @@
 <tr>
 <td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
 You will be developing concert ticket app that lets you select predifined bands and check the cost of each ticket.  The Concert Ticket App is demoed right:
-<blockquote>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
 <ul>
-<li>You will need to download the following picture folder -&gt; <a href="Lab_4_Pictures.zip">Lab_4_Picture.zip</a></li>
-<li>The completed project can be found here at end of session -&gt; <a href="https://github.com/UniOfGreenwich/MobileApps-ConcertTickets">https://github.com/UniOfGreenwich/MobileApps-ConcertTickets</a></li>
+<li>
+<p>You will need to download the following picture folder -&gt; <a href="Lab_4_Pictures.zip">Lab_4_Picture.zip</a></p>
+</li>
+<li>
+<p>The completed project can be found here at end of session -&gt; <a href="https://github.com/UniOfGreenwich/MobileApps-ConcertTickets">https://github.com/UniOfGreenwich/MobileApps-ConcertTickets</a></p>
+</li>
 </ul>
-</blockquote>
+</div>
+</div>
 </td>
 <td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
 <img src="./figures/demo.gif" alt="Demo of App" >
@@ -242,6 +258,14 @@ You will be developing concert ticket app that lets you select predifined bands 
 </li>
 <li>
 <p>Reprodce this:</p>
+  <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+  <div class="admonition-title">
+  <div id="admonition-code-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">package com.uog.concerttickets
 
 ... 
@@ -286,14 +310,20 @@ fun GreetingPreview() {
     }
 }
 </code></pre>
-</li>
-</ul>
-<blockquote>
-<p><strong>Notes on Composables Used:</strong></p>
-<blockquote>
+  </div>
+  </div>
+  <div id="admonition-notes-on-composables-used" class="admonition admonish-info" role="note" aria-labelledby="admonition-notes-on-composables-used-title">
+  <div class="admonition-title">
+  <div id="admonition-notes-on-composables-used-title">
+<p>Notes on Composables Used:</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-notes-on-composables-used"></a>
+  </div>
+  <div>
 <ul>
 <li>
-<p><strong>Scaffold</strong>: Provides a basic structure for the app’s layout, including slots for common UI components such as <code>TopAppBar</code>, <code>BottomAppBar</code>, <code>FloatingActionButton</code>, and <code>Drawer</code>.</p>
+<p><strong>Scaffold</strong>: Provides a basic structure for the app’s layout, including slots for common UI components such as <code>TopAppBar</code>, <code>BottomAppBar</code>,
+oatingActionButton<code>, and </code>Drawer`.</p>
 </li>
 <li>
 <p><strong>TopAppBar</strong>: A composable that represents the top app bar, which usually contains the app title, navigation icons, and actions</p>
@@ -311,12 +341,20 @@ fun GreetingPreview() {
 <p><strong>enableEdgeToEdge()</strong>: This function is typically used to set up the app to render edge-to-edge, utilizing the full screen area</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
-<ul>
+  </div>
+  </div>
+</li>
 <li>
 <p>You can modify the  title element to hold an image and text:</p>
-<pre><code>title = {
+  <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+  <div class="admonition-title">
+  <div id="admonition-code-1-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+  </div>
+  <div>
+<pre><code class="language-kt">title = {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth()
@@ -336,6 +374,8 @@ fun GreetingPreview() {
     }
 }
 </code></pre>
+  </div>
+  </div>
 </li>
 </ul>
  <div align="center">
@@ -350,6 +390,14 @@ fun GreetingPreview() {
 </li>
 <li>
 <p>We need to create several composables that will show the DropDownMenu, TextField, Text, Button and Image, reproduce the following, inside the <code>Surface</code> Composable add the following <code>Column</code>:</p>
+  <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+  <div class="admonition-title">
+  <div id="admonition-code-2-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">...
 ) { innerPadding -&gt;
     Surface(modifier = Modifier.padding(innerPadding)) {
@@ -360,9 +408,16 @@ fun GreetingPreview() {
 ...
 
 </code></pre>
-<blockquote>
-<blockquote>
-<p><strong>Notes on Composables Used:</strong></p>
+  </div>
+  </div>
+  <div id="admonition-notes-on-composables-used-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-notes-on-composables-used-1-title">
+  <div class="admonition-title">
+  <div id="admonition-notes-on-composables-used-1-title">
+<p>Notes on Composables Used:</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-notes-on-composables-used-1"></a>
+  </div>
+  <div>
 <ul>
 <li>
 <p><strong>Row</strong>: Layout composable that arranges its children in a horizontal sequence.</p>
@@ -380,8 +435,8 @@ fun GreetingPreview() {
 <p><strong>Column</strong>: A layout composable that arranges its children in a vertical sequence</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 </li>
 </ul>
 <h2 id="bandselection-band-and-band-data"><a class="header" href="#bandselection-band-and-band-data">BandSelection, Band and Band Data</a></h2>
@@ -393,11 +448,29 @@ fun GreetingPreview() {
 </li>
 <li>
 <p>Now we need to create the <code>Band</code> <code>data class</code>, navigate to the top of the file and  between the <code>import</code>'s and the <code>MainActivity</code> definition and create a <code>data Class Band()</code> with the following fields:</p>
+  <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+  <div class="admonition-title">
+  <div id="admonition-code-3-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-3"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">data class Band(val name: String, val imageRes: Int, val price: Float)
 </code></pre>
+  </div>
+  </div>
 </li>
 <li>
 <p>Next we need to add the <code>object BandDataSource</code> underneath the <code>data class</code> we just defined, that will hold the static band data:</p>
+  <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+  <div class="admonition-title">
+  <div id="admonition-code-4-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">object BandDataSource {
 
     val bands = listOf(
@@ -409,13 +482,20 @@ fun GreetingPreview() {
     )
 }
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/bandClass.png" alt="" /></p>
-<blockquote>
-<blockquote>
-<p><strong>Notes on Kotlin Syntax:</strong></p>
+  <div id="admonition-notes-on-kotlin-syntax" class="admonition admonish-note" role="note" aria-labelledby="admonition-notes-on-kotlin-syntax-title">
+  <div class="admonition-title">
+  <div id="admonition-notes-on-kotlin-syntax-title">
+<p>Notes on Kotlin Syntax:</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-notes-on-kotlin-syntax"></a>
+  </div>
+  <div>
 <ul>
 <li>
-<p><strong>data class</strong>: A <code>data class</code> in Kotlin is used to hold data. It automatically provides several useful methods, such as <code>equals()</code>, <code>hashCode()</code>, <code>toString()</code>, and <code>copy()</code>, based on the properties defined in the class.</p>
+<p><strong>data class</strong>: A <code>data class</code> in Kotlin is used to hold data. It automatically provides several useful methods, such as <code>equals()</code>, <code>hashCode()</code>, <code>toString()</code>, d <code>copy()</code>, based on the properties defined in the class.</p>
 </li>
 <li>
 <p><strong>object</strong>: In Kotlin, the <code>object</code> keyword is used to declare a <strong>singleton</strong>, which means there will be only one instance of <code>BandDataSource</code> in the app.</p>
@@ -424,11 +504,19 @@ fun GreetingPreview() {
 </ul>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 </li>
 <li>
 <p>Go back to <code>BandSelection</code> Composable and we no modify the arguments and the body:</p>
+  <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+  <div class="admonition-title">
+  <div id="admonition-code-5-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">@Composable
 fun BandSelection(selectedBand : Band, onBandSelected: (Band) -&gt; Unit){
     var expanded by remember { mutableStateOf(false)}
@@ -455,9 +543,16 @@ fun BandSelection(selectedBand : Band, onBandSelected: (Band) -&gt; Unit){
     }
 }
 </code></pre>
-<blockquote>
-<blockquote>
-<p><strong>Notes on Composables etc:</strong></p>
+  </div>
+  </div>
+  <div id="admonition-notes-on-composables-used-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-notes-on-composables-used-2-title">
+  <div class="admonition-title">
+  <div id="admonition-notes-on-composables-used-2-title">
+<p>Notes on Composables Used:</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-notes-on-composables-used-2"></a>
+  </div>
+  <div>
 <ul>
 <li>
 <p><strong>remember</strong>: <code>remember</code> is a composable function that allows a state to be remembered across recompositions</p>
@@ -475,18 +570,26 @@ fun BandSelection(selectedBand : Band, onBandSelected: (Band) -&gt; Unit){
 <p><strong>TextButton</strong>: A button composable that displays text. It is used for simple text-based buttons without background or elevation</p>
 </li>
 <li>
-<p><strong>onBandSelection</strong>: A lambda function that takes a <code>Band</code> as a parameter and returns <code>Unit</code>. This function is called when a new band is selected, allowing the parent composable to update the selected band.</p>
+<p><strong>onBandSelection</strong>: A lambda function that takes a <code>Band</code> as a parameter and returns <code>Unit</code>. This function is called when a new band is selected, allowing the rent composable to update the selected band.</p>
 </li>
 <li>
 <p><strong>Unit</strong>: is a type that corresponds to <code>void</code> in other programming languages. It is used to indicate that a function does not return any meaningful value. When a function returns <code>Unit</code>, it means that the function's purpose is to perform some action rather than produce a result.</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 <p><img src="./figures/BandSelectionDefinition2.png" alt="" /></p>
 </li>
 <li>
 <p>Go back to the top of the <code>ConcertTicketApp</code> and add a new remember initialisation so that when a band is selected and the recompostion is invoked the band selected is stored presistently across recompositions.</p>
+ <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+ <div class="admonition-title">
+ <div id="admonition-code-6-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -495,17 +598,30 @@ fun ConcertTicketApp(){
     ...
 }
 </code></pre>
-<blockquote>
-<blockquote>
-<p><strong>Notes:</strong></p>
-<ul>
-<li><strong>mutableStateOf(BandDataSource.bands[0])</strong>: Initially, when the app loads the <code>selectedBand</code> stores the the first element in the <code>BandDataSource</code>, everytime a new selection is made the <code>selectedBand</code> will store the current selected index</li>
-</ul>
-</blockquote>
-</blockquote>
+ </div>
+ </div>
+ <div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+ <div class="admonition-title">
+ <div id="admonition-info-1-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-1"></a>
+ </div>
+ <div>
+<p><strong>mutableStateOf(BandDataSource.bands[0])</strong>: Initially, when the app loads the <code>selectedBand</code> stores the the first element in the <code>BandDataSource</code>, everytime a new selection is made the <code>selectedBand</code> will store the current selected index</p>
+ </div>
+ </div>
 </li>
 <li>
 <p>Update the Surface too, so that we can preview the <code>BandSelection</code></p>
+  <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+  <div class="admonition-title">
+  <div id="admonition-code-7-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">...
 Surface(modifier = Modifier.padding(innerPadding)) {
 Column(modifier = Modifier.fillMaxSize()) {
@@ -513,18 +629,31 @@ Column(modifier = Modifier.fillMaxSize()) {
 ...
 
 </code></pre>
-<blockquote>
-<blockquote>
-<p><strong>Notes:</strong></p>
-<ul>
-<li>Lambda Function <code>{selectedBand = it}</code>: The lambda function takes a band (<code>it</code>) as a parameter and assigns it to the <code>selectedBand</code> variable. This updates the state with the newly selected band.</li>
-</ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
+  <div id="admonition-info-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-2-title">
+  <div class="admonition-title">
+  <div id="admonition-info-2-title">
+<p>Info</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-info-2"></a>
+  </div>
+  <div>
+<p>Lambda Function <code>{selectedBand = it}</code>: The lambda function takes a band (<code>it</code>) as a parameter and assigns it to the <code>selectedBand</code> variable. This updates the state with the newly selected band.</p>
+  </div>
+  </div>
 <p><img src="./figures/BandSelectionDefinition3.png" alt="" /></p>
 </li>
 <li>
 <p>Continue modifying the <code>BandSelection</code> composable <code>Row</code> so:</p>
+ <div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+ <div class="admonition-title">
+ <div id="admonition-code-8-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-8"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">...
 Row(modifier = Modifier.fillMaxWidth())
 {
@@ -539,11 +668,19 @@ Row(modifier = Modifier.fillMaxWidth())
 }
 ...
 </code></pre>
+ </div>
+ </div>
 <ul>
 <li>
 <p>You need to create the <code>ic_baseline_arrow_drop_down</code> assest, copy the code in the collaspable field below and create a new image resource :</p>
-  <details>
-  <summary> ic_baseline_arrow_drop_down xml code</summary>
+  <details id="admonition-code-ic_baseline_arrow_drop_down-xml-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-ic_baseline_arrow_drop_down-xml-code-title">
+  <summary class="admonition-title">
+  <div id="admonition-code-ic_baseline_arrow_drop_down-xml-code-title">
+<p>Code: ic_baseline_arrow_drop_down xml code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-ic_baseline_arrow_drop_down-xml-code"></a>
+  </summary>
+  <div>
 <pre><code class="language-xml">&lt;vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:viewportHeight="24" android:viewportWidth="24" android:width="24dp"&gt;
 
 &lt;path android:fillColor="#000000" android:fillType="evenOdd" android:pathData="M12.707,14.707C12.317,15.098 11.683,15.098 11.293,14.707L6.293,9.707C5.902,9.317 5.902,8.683 6.293,8.293C6.683,7.902 7.317,7.902 7.707,8.293L12,12.586L16.293,8.293C16.683,7.902 17.317,7.902 17.707,8.293C18.098,8.683 18.098,9.317 17.707,9.707L12.707,14.707Z"/&gt;
@@ -551,13 +688,22 @@ Row(modifier = Modifier.fillMaxWidth())
 &lt;/vector&gt;
 </code></pre>
 <p><img src="./figures/dropDownArrow.gif" alt="" /></p>
+  </div>
   </details>
+<p><img src="./figures/BandSelectionDefinition4.png" alt="" /></p>
 </li>
 </ul>
-<p><img src="./figures/BandSelectionDefinition4.png" alt="" /></p>
 </li>
 <li>
 <p>Following on we need to add the <code>DropDownMenuItem</code>'s so that the <code>DropDownMenu</code> can display each <code>Band</code> name from the dropdown list:</p>
+ <div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+ <div class="admonition-title">
+ <div id="admonition-code-9-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-9"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">...
 DropdownMenu(
             expanded = expanded,
@@ -578,9 +724,16 @@ DropdownMenu(
         }
 ...
 </code></pre>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
+ </div>
+ </div>
+ <div id="admonition-info-3" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-3-title">
+ <div class="admonition-title">
+ <div id="admonition-info-3-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-3"></a>
+ </div>
+ <div>
 <ul>
 <li>
 <p>This block dynamically creates a list of dropdown menu items for each band.#</p>
@@ -590,14 +743,14 @@ DropdownMenu(
 </ul>
 </li>
 <li>
-<p><strong>BandDataSource.bands.forEach { band -&gt;</strong>: this line iterates through a list of bands provided by <code>BandDataSource.bands</code>, for each band in the list, the code inside the <code>forEach</code> block is executed.</p>
-</li>
-<li>
-<p><strong>DropdownMenuItem</strong>: Menus display a list of choices on a temporary surface. They appear when users interact with a button, action, or other control.</p>
+<p><strong>BandDataSource.bands.forEach { band -&gt;</strong>: this line iterates through a list of bands provided by <code>BandDataSource.bands</code>, for each band in the list, the code ide the <code>forEach</code> block is executed.</p>
+<ul>
+<li><strong>DropdownMenuItem</strong>: Menus display a list of choices on a temporary surface. They appear when users interact with a button, action, or other control.</li>
+</ul>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+ </div>
+ </div>
 <p><img src="./figures/selectBandDropdown_1.gif" alt="" /></p>
 </li>
 </ul>
@@ -606,6 +759,14 @@ DropdownMenu(
 <ul>
 <li>
 <p>Go  back up to the <code>Surface</code> where we invoke our <code>BandSelection(...){...}</code>, and reproduce the new lines below, several comments and a new function call <code>BandImage(selectedBand)</code> below:</p>
+  <div id="admonition-code-10" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-10-title">
+  <div class="admonition-title">
+  <div id="admonition-code-10-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-10"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">...
 
 innerPadding -&gt;
@@ -621,9 +782,19 @@ Surface(modifier = Modifier.padding(innerPadding)) {
 }
 ...
 </code></pre>
+  </div>
+  </div>
 </li>
 <li>
 <p>Navigate to the end of the file and create a new composable function called <code>BandImage()</code>, like below:</p>
+  <div id="admonition-code-11" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-11-title">
+  <div class="admonition-title">
+  <div id="admonition-code-11-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-11"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">@Composable
 fun BandImage(selectedBand: Band) {
     Image(
@@ -636,6 +807,8 @@ fun BandImage(selectedBand: Band) {
             .height(300.dp))
 }
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/selectBandDropdown_2.png" alt="" /></p>
 </li>
 </ul>
@@ -644,6 +817,14 @@ fun BandImage(selectedBand: Band) {
 <ul>
 <li>
 <p>Go  back up to the <code>Surface</code> where we invoke our <code>BandSelection(...){...}</code>, and reproduce the new lines below, several comments and a new function call <code>TicketInput(ticketCost)</code> below:</p>
+  <div id="admonition-code-12" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-12-title">
+  <div class="admonition-title">
+  <div id="admonition-code-12-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-12"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">innerPadding -&gt;
         Surface(modifier = Modifier.padding(innerPadding)) {
             Column(modifier = Modifier.fillMaxSize()) {
@@ -657,9 +838,19 @@ fun BandImage(selectedBand: Band) {
             }
         }
 </code></pre>
+  </div>
+  </div>
 </li>
 <li>
 <p>Go back to the top of the <code>ConcertTicketApp</code> and add a new remember initialisation so that when you use the input field and it recomposes each time the userinput is presistent,called <code>ticketCount</code>.</p>
+ <div id="admonition-code-13" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-13-title">
+ <div class="admonition-title">
+ <div id="admonition-code-13-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-13"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -669,17 +860,32 @@ fun ConcertTicketApp(){
     ...
 }
 </code></pre>
-<blockquote>
-<blockquote>
-<p><strong>Notes:</strong></p>
+ </div>
+ </div>
+ <div id="admonition-info-4" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-4-title">
+ <div class="admonition-title">
+ <div id="admonition-info-4-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-4"></a>
+ </div>
+ <div>
 <ul>
-<li>** mutableStateOf("")**: Initially, when the app loads the <code>TextInput</code> composable, the field is empty. Then when a user enters a character the value is stored across recompositions.</li>
+<li><strong>mutableStateOf("")</strong>: Initially, when the app loads the <code>TextInput</code> composable, the field is empty. Then when a user enters a character the value is stored across recompositions.</li>
 </ul>
-</blockquote>
-</blockquote>
+ </div>
+ </div>
 </li>
 <li>
 <p>Navigate to the <code>BandImage(...)</code> function and above the declaration add the new function <code>TextInput()</code>:</p>
+  <div id="admonition-code-14" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-14-title">
+  <div class="admonition-title">
+  <div id="admonition-code-14-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-14"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">@Composable
 fun TicketInput(ticketCount: String, onTicketCountChange: (String) -&gt; Unit){
     TextField(value = ticketCount, onValueChange = onTicketCountChange,
@@ -689,6 +895,8 @@ fun TicketInput(ticketCount: String, onTicketCountChange: (String) -&gt; Unit){
     )
 }
 </code></pre>
+  </div>
+  </div>
 </li>
 </ul>
 <h2 id="bandselection-calculatecostbutton"><a class="header" href="#bandselection-calculatecostbutton">BandSelection, CalculateCostButton</a></h2>
@@ -696,6 +904,14 @@ fun TicketInput(ticketCount: String, onTicketCountChange: (String) -&gt; Unit){
 <ul>
 <li>
 <p>Navigate back to <code>Surface</code> and update the code to create some spacing between <code>Composable</code>'s, a new function call <code>CalcualteCostButton</code> and create a new <code>remember</code> type called <code>totalCost</code>:</p>
+  <div id="admonition-code-15" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-15-title">
+  <div class="admonition-title">
+  <div id="admonition-code-15-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-15"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">innerPadding -&gt;
     Surface(modifier = Modifier.padding(innerPadding)) {
         Column(modifier = Modifier.fillMaxSize()) {
@@ -713,9 +929,19 @@ fun TicketInput(ticketCount: String, onTicketCountChange: (String) -&gt; Unit){
         }
     }
 </code></pre>
+  </div>
+  </div>
 <ul>
 <li>
 <p><code>totalCost</code> <code>remember</code> type:</p>
+  <div id="admonition-code-16" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-16-title">
+  <div class="admonition-title">
+  <div id="admonition-code-16-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-16"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -725,12 +951,22 @@ fun ConcertTicketApp(){
     var totalCost by remember { mutableStateOf("") }
     ...
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/mainLayout_1.png" alt="" /></p>
 </li>
 </ul>
 </li>
 <li>
 <p>Navigate to the <code>TextInput()</code> <code>Composable</code>, and declare the newly referenced function <code>CalculateCostButton</code>:</p>
+  <div id="admonition-code-17" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-17-title">
+  <div class="admonition-title">
+  <div id="admonition-code-17-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-17"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">@Composable
 fun CalculateCostButton(selectedBand: Band,ticketCount: String,onCalculate: (String) -&gt; Unit){
     val costPerTicket = selectedBand.price
@@ -742,17 +978,30 @@ fun CalculateCostButton(selectedBand: Band,ticketCount: String,onCalculate: (Str
 
 }
 </code></pre>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
-<ul>
-<li><strong>NumberFormat</strong>: used to format numbers as currency, specifically in this instance GBP (British Pounds). It sets up a <code>NumberFormat</code> instance that ensures all currency values have exactly two decimal places.</li>
-</ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
+  <div id="admonition-info-5" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-5-title">
+  <div class="admonition-title">
+  <div id="admonition-info-5-title">
+<p>Info</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-info-5"></a>
+  </div>
+  <div>
+<p><strong>NumberFormat</strong>: used to format numbers as currency, specifically in this instance GBP (British Pounds). It sets up a <code>NumberFormat</code> instance that ensures all currency values have exactly two decimal places.</p>
+  </div>
+  </div>
 </li>
 <li>
 <p>Next in side the body of the function use the <code>Button</code> <code>Composable</code>:</p>
+  <div id="admonition-code-18" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-18-title">
+  <div class="admonition-title">
+  <div id="admonition-code-18-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-18"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">Button(onClick = {
     val count = ticketCount.toIntOrNull() ?: 0
     if (selectedBand.name == "Select a Band"){
@@ -776,9 +1025,16 @@ fun CalculateCostButton(selectedBand: Band,ticketCount: String,onCalculate: (Str
 
 }
 </code></pre>
-<blockquote>
-<p><strong>Notes:</strong></p>
-<blockquote>
+  </div>
+  </div>
+  <div id="admonition-info-6" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-6-title">
+  <div class="admonition-title">
+  <div id="admonition-info-6-title">
+<p>Info</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-info-6"></a>
+  </div>
+  <div>
 <ul>
 <li>
 <p><strong>val count = ticketCount.toIntOrNull() ?: 0</strong>: <code>ticketCount.toIntOrNull()</code> attempts to convert the <code>ticketCount</code> string to an integer.</p>
@@ -790,7 +1046,7 @@ fun CalculateCostButton(selectedBand: Band,ticketCount: String,onCalculate: (Str
 <li>
 <p><strong>onCalculate("Cost for ${selectedBand.name} is ${format.format(total)}")</strong>:</p>
 <ul>
-<li>"<code>Cost for ${selectedBand.name} is ${format.format(total)}</code>": This is a string with interpolated expressions inside it. In Kotlin, string interpolation allows you to include variables or expressions within a string by enclosing them in <code>${}</code></li>
+<li>"<code>Cost for ${selectedBand.name} is ${format.format(total)}</code>": This is a string with interpolated expressions inside it. In Kotlin, string interpolation allows u to include variables or expressions within a string by enclosing them in <code>${}</code></li>
 </ul>
 </li>
 <li>
@@ -800,8 +1056,8 @@ fun CalculateCostButton(selectedBand: Band,ticketCount: String,onCalculate: (Str
 <p><strong>${format.format(total)}</strong>: This expression formats the total value as a currency string using the format object, which is an instance of <code>NumberFormat</code> configured for currency formatting.</p>
 </li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 <p><img src="./figures/mainLayout_2.png" alt="" /></p>
 </li>
 </ul>
@@ -809,9 +1065,15 @@ fun CalculateCostButton(selectedBand: Band,ticketCount: String,onCalculate: (Str
 <h3 id="video--10317---10538"><a class="header" href="#video--10317---10538">Video @ 1:03:17 - 1:05:38</a></h3>
 <ul>
 <li>
-<ul>
-<li>
 <p>Navigate back to <code>Surface</code> and update the code to create some spacing between <code>Composable</code>'s, a new function call <code>CostDisplay</code>:</p>
+  <div id="admonition-code-19" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-19-title">
+  <div class="admonition-title">
+  <div id="admonition-code-19-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-19"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">innerPadding -&gt;
         Surface(modifier = Modifier.padding(innerPadding)) {
             Column(modifier = Modifier.fillMaxSize()) {
@@ -831,11 +1093,19 @@ fun CalculateCostButton(selectedBand: Band,ticketCount: String,onCalculate: (Str
             }
         }
 </code></pre>
-</li>
-</ul>
+  </div>
+  </div>
 </li>
 <li>
 <p>Navigate to the <code>BandImage()</code> <code>Composable</code>, and declare the newly referenced function <code>CostDisplay</code>:</p>
+  <div id="admonition-code-20" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-20-title">
+  <div class="admonition-title">
+  <div id="admonition-code-20-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-20"></a>
+  </div>
+  <div>
 <pre><code class="language-kt">@Composable
 fun CostDisplay(totalCost : String){
 Text(
@@ -847,6 +1117,8 @@ Text(
 
 }
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/mainLayout_3.png" alt="" /></p>
 </li>
 </ul>
@@ -862,8 +1134,14 @@ Text(
 </tr>
 </table>
 <hr />
-<details>
-<summary>The whole program should look like this: </summary>
+<details id="admonition-code-whole-program-255-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-whole-program-255-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-whole-program-255-lines-title">
+<p>Code: whole program [255 lines]...</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-whole-program-255-lines"></a>
+</summary>
+<div>
 <pre><code class="language-kt">package com.uog.concerttickets
 
 import android.icu.text.NumberFormat
@@ -1124,12 +1402,21 @@ fun GreetingPreview() {
     }
 }
 </code></pre>
+</div>
 </details>
 <hr />
 <h2 id="continue-here"><a class="header" href="#continue-here">Continue Here...</a></h2>
-<blockquote>
+<div id="admonition-info-7" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-7-title">
+<div class="admonition-title">
+<div id="admonition-info-7-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-7"></a>
+</div>
+<div>
 <p>You will need to download the following picture folder -&gt; <a href="Lab_4-2_Pictures.zip">Lab_4-2_Picture.zip</a></p>
-</blockquote>
+</div>
+</div>
 <p>For the exercises below, follow the steps in the Ticket Vault example (above).</p>
 <h2 id="1-catalina-island-boat-express-app"><a class="header" href="#1-catalina-island-boat-express-app">1. Catalina Island Boat Express App</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Application Title</th><th>Catalina Island Boat Express App</th></tr></thead><tbody>

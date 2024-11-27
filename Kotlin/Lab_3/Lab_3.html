@@ -28,7 +28,11 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="../../theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././theme/css/code.css">
+        <link rel="stylesheet" href="../.././theme/css/terminal.css">
+        <link rel="stylesheet" href="../.././theme/css/output.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -167,7 +171,17 @@
                         <h1 id="healthy-recipe-app-walkthrough"><a class="header" href="#healthy-recipe-app-walkthrough">Healthy Recipe App Walkthrough</a></h1>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
 <p>Welcome to this walkthrough guide for building a healthy recipes app using Kotlin and Jetpack Compose in Android Studio.</p>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
 <p>Download and extract all pictures from the <a href="./pictures_lab_3.zip">Pictures_Lab_3.zip</a>.</p>
+</div>
+</div>
 <hr />
 <h2 id="setting-up-the-project"><a class="header" href="#setting-up-the-project">Setting Up the Project</a></h2>
 <h3 id="video--002---145"><a class="header" href="#video--002---145">Video @ 0:02 - 1:45</a></h3>
@@ -210,9 +224,19 @@
 <li>
 <p><strong>Define the Recipe Data Class:</strong></p>
 <ul>
-<li>Right-click on the <code>data</code> package, select "New" &gt; "Kotlin Class/File", and name it <code>Recipe</code>.</li>
-<li>Modify the class as follows:</li>
-</ul>
+<li>
+<p>Right-click on the <code>data</code> package, select "New" &gt; "Kotlin Class/File", and name it <code>Recipe</code>.</p>
+</li>
+<li>
+<p>Modify the class as follows:</p>
+  <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+  <div class="admonition-title">
+  <div id="admonition-code-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">data class Recipe(
     val id: Int,
     val title: String,
@@ -221,16 +245,30 @@
     val imageResId: Int
 )
 </code></pre>
-<ul>
-<li><strong>Data Classes</strong>: In Kotlin, data classes are used to hold data. They automatically provide getter and setter methods, <code>equals()</code>, <code>hashCode()</code>, and <code>toString()</code> methods.</li>
+  </div>
+  </div>
+</li>
+<li>
+<p><strong>Data Classes</strong>: In Kotlin, data classes are used to hold data. They automatically provide getter and setter methods, <code>equals()</code>, <code>hashCode()</code>, and <code>toString()</code> methods.</p>
+</li>
 </ul>
 </li>
 <li>
 <p><strong>Create the Recipe Data Object:</strong></p>
 <ul>
-<li>In the <code>data</code> package, create a new Kotlin file named <code>RecipeData</code>.</li>
-<li>Define the object as follows:</li>
-</ul>
+<li>
+<p>In the <code>data</code> package, create a new Kotlin file named <code>RecipeData</code>.</p>
+</li>
+<li>
+<p>Define the object as follows:</p>
+  <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+  <div class="admonition-title">
+  <div id="admonition-code-1-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">import com.uog.healthyrecipes.R
 import com.uog.healthyrecipes.data.Recipe
 
@@ -247,18 +285,29 @@ object RecipeData {
     )
 }
 </code></pre>
-<ul>
-<li><strong>Objects</strong>: In Kotlin, objects are used to create singleton instances. They can hold state and behavior, and there is only one instance of the object created in the entire application.</li>
+  </div>
+  </div>
+</li>
+<li>
+<p><strong>Objects</strong>: In Kotlin, objects are used to create singleton instances. They can hold state and behavior, and there is only one instance of the object created in the entire application.</p>
+</li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
+ <div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+ <div class="admonition-title">
+ <div id="admonition-note-title">
+<p>Note</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-note"></a>
+ </div>
+ <div>
 <ul>
-<li>Remember to import those images from the Downloaded Picture file <p></p>
-<img src="./figures/importImages.gif" alt="" /></li>
+<li>
+<p>Remember to import those images from the Downloaded Picture file <p></p></p>
+<p><img src="./figures/importImages.gif" alt="" /></p>
+</li>
 </ul>
-</blockquote>
-</blockquote>
+ </div>
+ </div>
 </li>
 </ol>
 <hr />
@@ -272,6 +321,14 @@ object RecipeData {
 </li>
 <li>
 <p>Replace the content of the <code>setContent</code> block with a <code>Scaffold</code> layout and a <code>topBar</code>.</p>
+  <div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+  <div class="admonition-title">
+  <div id="admonition-code-2-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-2"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">package com.uog.healthyrecipes
 
 ...
@@ -301,6 +358,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 </code></pre>
+  </div>
+  </div>
 </li>
 <li>
 <p><strong>Scaffold</strong>: In Jetpack Compose, <code>Scaffold</code> is a component that provides a structure for implementing the basic material design layout. It contains slots for the top bar, bottom bar, floating action button, and a content area.</p>
@@ -313,18 +372,31 @@ class MainActivity : ComponentActivity() {
 </li>
 <li>
 <p><strong>enableEdgeToEdge</strong>: This function enables edge-to-edge display on Android devices, allowing your app to use the entire screen space.</p>
-<blockquote>
-<p><strong>Note:</strong></p>
-<blockquote>
+  <div id="admonition-note-1" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-1-title">
+  <div class="admonition-title">
+  <div id="admonition-note-1-title">
+<p>Note</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-note-1"></a>
+  </div>
+  <div>
 <ul>
 <li>Import all libraries as needed, <kbd>Alt</kbd>+<kbd>Enter</kbd> <p></p>
 <img src="./figures/importLibraries.gif" alt="" /></li>
 </ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
 </li>
 <li>
 <p>Add a preview function:</p>
+  <div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+  <div class="admonition-title">
+  <div id="admonition-code-3-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-3"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">@Preview(showBackground = true)
 @Composable
 fun RecipeNavHostPreview() {
@@ -334,14 +406,19 @@ fun RecipeNavHostPreview() {
     }
 }
 </code></pre>
-<blockquote>
-<p><strong>Note</strong></p>
-<blockquote>
-<ul>
-<li>The renderer will still have some errors due to the missing</li>
-</ul>
-</blockquote>
-</blockquote>
+  </div>
+  </div>
+  <div id="admonition-warning" class="admonition admonish-warning" role="note" aria-labelledby="admonition-warning-title">
+  <div class="admonition-title">
+  <div id="admonition-warning-title">
+<p>Warning</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-warning"></a>
+  </div>
+  <div>
+<p>The renderer will still have some errors due to the missing</p>
+  </div>
+  </div>
 </li>
 </ul>
 </li>
@@ -357,6 +434,14 @@ fun RecipeNavHostPreview() {
 </li>
 <li>
 <p>Define the composable function as follows:</p>
+  <div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+  <div class="admonition-title">
+  <div id="admonition-code-4-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-4"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">@Composable
 fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
 {
@@ -369,6 +454,8 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
     }
 }
 </code></pre>
+  </div>
+  </div>
 </li>
 <li>
 <p><strong>NavHost()</strong>: <code>NavHost</code> is a container composable that hosts the navigation graph. It connects the NavController with the navigation graph, allowing navigation between <code>composable</code> destinations.</p>
@@ -386,12 +473,21 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
 <h2 id="building-the-recipe-list-screen"><a class="header" href="#building-the-recipe-list-screen">Building the Recipe List Screen</a></h2>
 <h3 id="video--2602---2642"><a class="header" href="#video--2602---2642">Video @ 26:02 - 26:42</a></h3>
 <ol>
-<li>
-<p><strong>Create the Recipe List Screen:</strong></p>
+<li><strong>Create the Recipe List Screen:</strong>
 <ul>
-<li>Create a new Kotlin file named <code>RecipeListScreen.kt</code>.</li>
-<li>Define the composable function as follows:</li>
-</ul>
+<li>
+<p>Create a new Kotlin file named <code>RecipeListScreen.kt</code>.</p>
+</li>
+<li>
+<p>Define the composable function as follows:</p>
+  <div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+  <div class="admonition-title">
+  <div id="admonition-code-5-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-5"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">package com.uog.healthyrecipes
 
 ...
@@ -418,7 +514,9 @@ fun RecipeListScreen(navController: NavHostController) {
     }
 }
 </code></pre>
-<ul>
+  </div>
+  </div>
+</li>
 <li>
 <p><strong>Column</strong>: <code>Column</code> is a layout composable that places its children in a vertical sequence. It's similar to a vertical LinearLayout in traditional Android development.</p>
 </li>
@@ -436,6 +534,14 @@ fun RecipeListScreen(navController: NavHostController) {
 </li>
 <li>
 <p>Add a preview function:</p>
+  <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+  <div class="admonition-title">
+  <div id="admonition-code-6-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">@Preview(showBackground = true)
 @Composable
 fun PreviewRecipeListScreen(){
@@ -445,6 +551,8 @@ fun PreviewRecipeListScreen(){
     }
 }
 </code></pre>
+  </div>
+  </div>
 <p><img src="./figures/recipeListScreen_start.png" alt="" /></p>
 </li>
 </ul>
@@ -454,11 +562,18 @@ fun PreviewRecipeListScreen(){
 <h2 id="building-the-recipe-item-component"><a class="header" href="#building-the-recipe-item-component">Building the Recipe Item Component</a></h2>
 <h3 id="video--2642---3540"><a class="header" href="#video--2642---3540">Video @ 26:42 - 35:40</a></h3>
 <ol>
-<li>
-<p><strong>Create the Recipe Item Component:</strong></p>
+<li><strong>Create the Recipe Item Component:</strong>
 <ul>
-<li>Conitinuing in the <code>RecipeListScreen.kt</code> file, add the following composable function:</li>
-</ul>
+<li>
+<p>Conitinuing in the <code>RecipeListScreen.kt</code> file, add the following composable function:</p>
+  <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+  <div class="admonition-title">
+  <div id="admonition-code-7-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">@Composable
 fun RecipeItem(recipe: Recipe, onClick: () -&gt; Unit) {
     Card(
@@ -484,7 +599,9 @@ fun RecipeItem(recipe: Recipe, onClick: () -&gt; Unit) {
     }
 }
 </code></pre>
-<ul>
+  </div>
+  </div>
+</li>
 <li>
 <p><strong>Card</strong>: <code>Card</code> is a composable that displays its children with a customizable background, elevation, and rounded corners. It is used to create a consistent look for elements like cards.</p>
 </li>
@@ -510,8 +627,14 @@ fun RecipeItem(recipe: Recipe, onClick: () -&gt; Unit) {
 </li>
 <li>
 <p>We are going to add this line in the body of the <code>NavHost(){...}</code>: <code>composable("recipe_list){ RecipeListScreen(navController = navController)}</code></p>
-</li>
-</ol>
+ <div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+ <div class="admonition-title">
+ <div id="admonition-code-8-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-8"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">@Composable
 fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
 {
@@ -524,7 +647,9 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
     }
 }
 </code></pre>
-<ol start="3">
+ </div>
+ </div>
+</li>
 <li>
 <p>The build preview should update and you'll see the same preview as in <code>RecipeListScreen.kt</code></p>
 <p><img src="./figures/mainActivity_mid.png" alt="" /></p>
@@ -537,9 +662,19 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
 <li>
 <p><strong>Create the Recipe Screen:</strong></p>
 <ul>
-<li>Create a new Kotlin file named <code>RecipeScreen.kt</code>.</li>
-<li>Define the composable function as follows:</li>
-</ul>
+<li>
+<p>Create a new Kotlin file named <code>RecipeScreen.kt</code>.</p>
+</li>
+<li>
+<p>Define the composable function as follows:</p>
+  <div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+  <div class="admonition-title">
+  <div id="admonition-code-9-title">
+<p>Code</p>
+  </div>
+  <a class="admonition-anchor-link" href="#admonition-code-9"></a>
+  </div>
+  <div>
 <pre><code class="language-kotlin">package com.uog.healthyrecipes
 
 ...
@@ -573,7 +708,9 @@ fun RecipeScreen(recipe: Recipe) {
     }
 }
 </code></pre>
-<ul>
+  </div>
+  </div>
+</li>
 <li>
 <p><strong>Image</strong>: The Image composable is used to display images. It can be loaded from resources or URLs and can be styled with modifiers.</p>
 </li>
@@ -593,6 +730,14 @@ fun RecipeScreen(recipe: Recipe) {
 </li>
 <li>
 <p>Remember we should add a preview to see what we are doing:</p>
+ <div id="admonition-code-10" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-10-title">
+ <div class="admonition-title">
+ <div id="admonition-code-10-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-10"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">@Preview(showBackground = true)
 @Composable
 fun PreviewRecipeScreen(){
@@ -601,6 +746,8 @@ fun PreviewRecipeScreen(){
     }
 }
 </code></pre>
+ </div>
+ </div>
 <p><img src="./figures/recipeScreen.png" alt="" /></p>
 </li>
 </ol>
@@ -613,8 +760,14 @@ fun PreviewRecipeScreen(){
 </li>
 <li>
 <p>We are going to add this line in the body of the <code>NavHost(){...}</code>: <code>composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}</code></p>
-</li>
-</ol>
+ <div id="admonition-code-11" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-11-title">
+ <div class="admonition-title">
+ <div id="admonition-code-11-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-11"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">@Composable
 fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
 {
@@ -627,15 +780,35 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
     }
 }
 </code></pre>
-<ol start="3">
+ </div>
+ </div>
+</li>
 <li>
 <p>If you run the app in the emulator, you will see the following:</p>
+ <div id="admonition-error" class="admonition admonish-danger" role="note" aria-labelledby="admonition-error-title">
+ <div class="admonition-title">
+ <div id="admonition-error-title">
+<p>Error</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-error"></a>
+ </div>
+ <div>
 <pre><code>... Navigation destination that mathces request NavDeepLinkRequest{ uri=android-app://androidx.navigation/recipe1} cannot be found...
 </code></pre>
 <p><img src="./figures/route_error.gif" alt="" /></p>
+ </div>
+ </div>
 </li>
 <li>
 <p>This is because we did not reference the correct format of a route, go back to RecipeListScreen.kt, and you will see the block of code:</p>
+ <div id="admonition-code-12" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-12-title">
+ <div class="admonition-title">
+ <div id="admonition-code-12-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-12"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">RecipeData.recipes.forEach { recipe -&gt;
 RecipeItem(recipe = recipe, onClick = {
     navController.navigate(
@@ -643,9 +816,19 @@ RecipeItem(recipe = recipe, onClick = {
     )
 })
 </code></pre>
+ </div>
+ </div>
 <ul>
 <li>the line <code>"recipe${recipe.id}"</code> is a different format that one we have provide <code>composable("Recipe_1",...)</code>, update the line:</li>
 </ul>
+ <div id="admonition-code-13" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-13-title">
+ <div class="admonition-title">
+ <div id="admonition-code-13-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-13"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">RecipeData.recipes.forEach { recipe -&gt;
 RecipeItem(recipe = recipe, onClick = {
     navController.navigate(
@@ -653,6 +836,8 @@ RecipeItem(recipe = recipe, onClick = {
     )
 })
 </code></pre>
+ </div>
+ </div>
 <p><img src="./figures//route_error_fixed.gif" alt="" /></p>
 </li>
 </ol>
@@ -661,6 +846,14 @@ RecipeItem(recipe = recipe, onClick = {
 <ol>
 <li>
 <p>Navigate back to the RecipeData.kt file and lets add some more recipes and fill out the carbonara too.</p>
+ <div id="admonition-code-14" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-14-title">
+ <div class="admonition-title">
+ <div id="admonition-code-14-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-14"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">Recipe(
     1,
     "Spaghetti Carbonara",
@@ -715,6 +908,8 @@ Recipe(
     R.mipmap.avocado_toast
 )
 </code></pre>
+ </div>
+ </div>
  <div style="display:flex">
  <div style="margin: 5px;">
 <p><img src="./figures/recipeDataFull.png" alt="" /></p>
@@ -729,8 +924,14 @@ Recipe(
 </li>
 <li>
 <p>We are going to add this line in the body of the <code>NavHost(){...}</code>: <code>composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}</code></p>
-</li>
-</ol>
+ <div id="admonition-code-15" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-15-title">
+ <div class="admonition-title">
+ <div id="admonition-code-15-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-15"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">@Composable
 fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
 {
@@ -745,7 +946,9 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
     }
 }
 </code></pre>
-<ol start="4">
+ </div>
+ </div>
+</li>
 <li>
 <p>Build and run to see the "finished" application...</p>
 <p><img src="./figures/finished_application.gif" alt="" /></p>
