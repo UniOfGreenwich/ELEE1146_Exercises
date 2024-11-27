@@ -199,7 +199,7 @@
 </li>
 <li>
 <p>Select <strong>New Project</strong></p>
-<ol>
+<ul>
 <li>
 <p>Modify the <em>Name</em> to <strong>HelloWorld</strong></p>
 </li>
@@ -213,7 +213,7 @@
 <p>Click <strong>Create</strong></p>
 <p><img src="./figures/intellij_new_project.png" alt="" /></p>
 </li>
-</ol>
+</ul>
 </li>
 <li>
 <p>Once loaded (can take a few minutes) you will see the following project structure:</p>
@@ -223,13 +223,16 @@
 <p><img src="./figures/intellij_project_directory.png" alt="" /></p>
 </div>
 <ol start="4">
-<li>Adding a Kotlin Class file
-<ol>
+<li>
+<p>Adding a Kotlin Class file</p>
+<ul>
 <li>Right-click the highlighted Kotlin folder in the previous image</li>
 <li>Once the context menu opens click 'New' and then Kotlin Class/file</li>
-</ol>
+</ul>
 </li>
-<li>Create a new <strong>File</strong> file called <code>Main</code></li>
+<li>
+<p>Create a new <strong>File</strong> file called <code>Main</code></p>
+</li>
 </ol>
 <div style="width: 60%; margin: 0px auto;">
 <p><img src="./figures/intellij_Kotlin_class_file.png" alt="" /></p>
@@ -248,7 +251,9 @@
 <p><code>.kt</code> is the extension for Kotlin files</p>
 </div>
 </div>
-1. Write the following: 
+</li>
+<li>
+<p>Write the following:</p>
 <div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
 <div class="admonition-title">
 <div id="admonition-code-title">
@@ -265,54 +270,56 @@
 </code></pre>
 </div>
 </div>
-<ol start="2">
-<li>
-<p><code>fun</code> is a <strong>hard keyword</strong> that tells the Kotlin you are declaring a function.</p>
-</li>
-<li>
-<p><code>main()</code> is the function name, and any console-based program like this, <code>main()</code>, is the entry point of the program when it is executed by the OS.</p>
-</li>
-<li>
-<p><code>(args: Array&lt;String&gt;)</code>, is the way of telling the program that it can take in arguments supplied to it, in this instance <code>args</code>, the variable, will be an <code>Array</code> of <code>Strings</code></p>
-</li>
-<li>
-<p>Everything between the <code>{}</code> braces is executed by the program.</p>
-</li>
-<li>
-<p>Lastly, <code>println("Hello World!")</code>, calls the function <code>println()</code> which prints whatever is in the brackets to the terminal with a <code>\n</code> new line at the end hence the <code>ln</code> in <code>println</code>.</p>
+ <div id="admonition-explanation-of-code" class="admonition admonish-example" role="note" aria-labelledby="admonition-explanation-of-code-title">
+ <div class="admonition-title">
+ <div id="admonition-explanation-of-code-title">
+<p>Explanation of code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-explanation-of-code"></a>
+ </div>
+ <div>
+<ul>
+<li><code>fun</code> is a <strong>hard keyword</strong> that tells the Kotlin you are declaring a function.</li>
+<li><code>main()</code> is the function name, and any console-based program like this, <code>main()</code>, is the entry point of the program when it is executed by the OS.</li>
+<li><code>(args: Array&lt;String&gt;)</code>, is the way of telling the program that it can take in arguments supplied to it, in this instance <code>args</code>, the variable, will be an <code>Array</code> of strings`</li>
+<li>Everything between the <code>{}</code> braces is executed by the program.</li>
+<li>Lastly, <code>println("Hello World!")</code>, calls the function <code>println()</code> which prints whatever is in the brackets to the terminal with a <code>\n</code> new line at the end hence in the <code>ln</code> in <code>println</code>.</li>
+</ul>
+ </div>
+ </div>
 </li>
 <li>
 <p>Now you can run the program using either of the green arrows:</p>
-  <div class="column" style="display: flex;">
-  <div style="flex: 50%;">
+   <div class="column" style="display: flex;">
+   <div style="flex: 50%;">
 <p><img src="./figures/main.png" alt="" /></p>
-  </div>
-  <div style="flex: 50%;">
+   </div>
+   <div style="flex: 50%;">
 <p><img src="./figures/run.png" alt="" /></p>
-  </div>
-  </div>
+   </div>
+   </div>
 </li>
 <li>
 <p>You should see a terminal appear at the bottom of the IDE that shows some output.</p>
-  <div style="width:100%; margin: 0px auto;">
+   <div style="width:100%; margin: 0px auto;">
 <p><img src="./figures/helloworld_output.png" alt="center" /></p>
-  </div>
-</li>
-</ol>
+   </div>
 </li>
 <li>
 <p>Now you are going to modify the programme so that <code>printl()</code> takes a variable</p>
-<ol>
+</li>
+</ol>
+<ul>
 <li>
 <p>Create a mutable variable called <code>name</code></p>
-<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
-<div class="admonition-title">
-<div id="admonition-code-1-title">
+ <div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+ <div class="admonition-title">
+ <div id="admonition-code-1-title">
 <p>Code</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-code-1"></a>
-</div>
-<div>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-1"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
   
   var name : String = "Your Name"
@@ -321,24 +328,22 @@
 
 }  
 </code></pre>
-</div>
-</div>
+ </div>
+ </div>
 </li>
+</ul>
+<ol start="11">
+<li>Run and you should see the following output</li>
 </ol>
-</li>
-<li>
-<p>Run and you should see the following output</p>
-<div style="width:60%; margin: 0px auto;">
+   <div style="width:60%; margin: 0px auto;">
 <p><img src="./figures/helloworld_output_2.png" alt="center" /></p>
-</div>
-</li>
-<li>
-<p>Notice the green under-wave underneath the <code>println("Hello World! " + name)</code></p>
-<div style="width:60%; margin: 0px auto;">
-<p><img src="./figures/literalError.png" alt="center" /></p>
-</div>
-</li>
+   </div>
+<ol start="12">
+<li>Notice the green under-wave underneath the <code>println("Hello World! " + name)</code></li>
 </ol>
+   <div style="width:60%; margin: 0px auto;">
+<p><img src="./figures/literalError.png" alt="center" /></p>
+   </div>
   <div id="admonition-info-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-2-title">
   <div class="admonition-title">
   <div id="admonition-info-2-title">
@@ -354,18 +359,18 @@
 </ul>
   </div>
   </div>
-<ol>
+<ol start="13">
 <li>
 <p>This underwave can be corrected two ways, either hover over and follow the quick key shortcut '<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>'. Or Manually fix it by reproducing the output below.</p>
-  <div style="width:100%; margin: 0px auto;">
+ <div style="width:100%; margin: 0px auto;">
 <p><img src="./figures/suggestions.png" alt="center" /></p>
-  </div>
+ </div>
 </li>
 <li>
 <p>You will see the that <code>println("Hello World! " + name)</code> has been refactored to:</p>
-  <div style="width:45%; margin: 0px auto;">
+ <div style="width:45%; margin: 0px auto;">
 <p><img src="./figures/stringTemplate.png" alt="center" /></p>
-  </div>
+ </div>
 </li>
 </ol>
    <div id="admonition-info-3" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-3-title">
@@ -402,7 +407,7 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
 </code></pre>
    </div>
    </div>
-<ol start="12">
+<ol start="15">
 <li>
 <p>Run the program again, do you get the same output?</p>
 </li>
@@ -431,7 +436,7 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
 </ul>
    </div>
    </div>
-<ol start="13">
+<ol start="17">
 <li>Run it and see for yourself, then remove the <code>\n</code> from the end of <code>print("Hello me\n)</code>, is it the same?</li>
 </ol>
 <hr />
@@ -639,17 +644,17 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
 <ol start="2">
 <li>
 <p>Let's check the maximum and minimum values available to you on your machine or VM</p>
-<ol>
+<ul>
 <li>
 <p>Start your program off as follows and run:</p>
-<div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
-<div class="admonition-title">
-<div id="admonition-code-6-title">
+ <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+ <div class="admonition-title">
+ <div id="admonition-code-6-title">
 <p>Code</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-code-6"></a>
-</div>
-<div>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+ </div>
+ <div>
 <pre><code class="language-kt">fun main(args: Array&lt;String&gt;) {
 
    val b1: Byte = Byte.MIN_VALUE
@@ -666,21 +671,21 @@ println("$s.length is ${s.length}") // Prints "Hello World.length is 11"
 }
 
 </code></pre>
-</div>
-</div>
-<details id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
-<summary class="admonition-title">
-<div id="admonition-output-title">
+ </div>
+ </div>
+ <details id="admonition-output" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-title">
+ <summary class="admonition-title">
+ <div id="admonition-output-title">
 <p>Output</p>
-</div>
-<a class="admonition-anchor-link" href="#admonition-output"></a>
-</summary>
-<div>
-<div style="width:60%; margin: 0px auto;">
-<img src="./figures/byte_size.png" width="500" height="180">
-</div>
-</div>
-</details>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-output"></a>
+ </summary>
+ <div>
+ <div style="width:60%; margin: 0px auto;">
+ <img src="./figures/byte_size.png" width="500" height="180">
+ </div>
+ </div>
+ </details>
 </li>
 <li>
 <p>Now repeat for each data type, remembering to include signed and unsigned variants:</p>
@@ -805,7 +810,7 @@ fun main(args: Array&lt;String&gt;) {
 ~~~
 </code></pre>
  </div>
- </details>      3. When done, you should get the same output as below:
+ </details>      - When done, you should get the same output as below:
  <details id="admonition-output-1" class="admonition admonish-output" role="note" aria-labelledby="admonition-output-1-title">
  <summary class="admonition-title">
  <div id="admonition-output-1-title">
@@ -850,7 +855,7 @@ Process finished with exit code 0
 </li>
 </ul>
 </li>
-</ol>
+</ul>
 </li>
 <li>
 <p><strong>Arrays</strong></p>
