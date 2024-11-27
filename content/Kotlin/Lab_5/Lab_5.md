@@ -11,8 +11,12 @@
 
 You will be developing concert ticket app that lets you select predifined bands and check the cost of each ticket.  The Mass Converter App is demoed right:
 
-> You will need to download the following picture folder -> [Lab_5_Picture.zip](Lab_5_Pictures.zip)
-> - The completed project can be found here at end of session -> [https://github.com/UniOfGreenwich/MobileApps-MassConvertor](https://github.com/UniOfGreenwich/MobileApps-MassConvertor)
+~~~admonish info
+
+You will need to download the following picture folder -> [Lab_5_Picture.zip](Lab_5_Pictures.zip)
+- The completed project can be found here at end of session -> [https://github.com/UniOfGreenwich/MobileApps-MassConvertor](https://github.com/UniOfGreenwich/MobileApps-MassConvertor)
+
+~~~
 
 </td>
 <td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
@@ -74,6 +78,8 @@ You will be developing concert ticket app that lets you select predifined bands 
 
 - Update the `MainActivity.kt` file so that we have our own layout and set of Composables etc... 
 
+    ~~~admonish code
+
     ```kt
     class MainActivity : ComponentActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -118,31 +124,37 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
     ```
 
-    >> **Notes:**
-    >> - **@Composable**: This annotation is used to mark a function as composable. Functions marked with `@Composable` can be used to describe part of a UI in Jetpack Compose. This allows you to build UI elements declaratively.
-    >>
-    >> - **by**: This is used for delegation in Kotlin. Here, it is used with `remember` and `mutableStateOf` to create a state variable.
-    >>
-    >> - **remember**: This composable function is used to **remember** a single object in a composable function. It retains state across recompositions.
-    >>
-    >> - **mutableStateOf("")**: This creates a mutable state initialized with an empty `string`. `mutableStateOf` is used to create state that Jetpack Compose can observe and react to changes
-    >> 
-    >> - **Column**: This is a composable function that places its children in a vertical sequence.
-    >> 
-    >> - **modifier**: This parameter allows you to modify the layout or behavior of a Composable.
-    >>
-    >> - **Spacer**: This composable function is used to create empty space in layouts.
-    >> 
-    >> - **TextField**: This composable function creates an editable text input field.
-    >>
-    >> - **onValueChange = { massEntered = it }**: A **lambda** function that updates the `massEntered` state variable whenever the text in the text field changes.
-    >>
-    >> - **lamdba**: In Kotlin, a lambda is an anonymous function (a function without a name) that can be treated as a value. Lambdas are often used to pass functions as arguments to higher-order functions, which are functions that take other functions as parameters or return functions.
+    ~~~
 
+    ~~~admonish info
+
+     - **@Composable**: This annotation is used to mark a function as composable. Functions marked with `@Composable` can be used to describe part of a UI in Jetpack mpose. This allows you to build UI elements declaratively.
+    
+     - **by**: This is used for delegation in Kotlin. Here, it is used with `remember` and `mutableStateOf` to create a state variable.
+    
+     - **remember**: This composable function is used to **remember** a single object in a composable function. It retains state across recompositions.
+    
+     - **mutableStateOf("")**: This creates a mutable state initialized with an empty `string`. `mutableStateOf` is used to create state that Jetpack Compose can observe d react to changes
+     
+     - **Column**: This is a composable function that places its children in a vertical sequence.
+     
+     - **modifier**: This parameter allows you to modify the layout or behavior of a Composable.
+    
+     - **Spacer**: This composable function is used to create empty space in layouts.
+     
+     - **TextField**: This composable function creates an editable text input field.
+    
+     - **onValueChange = { massEntered = it }**: A **lambda** function that updates the `massEntered` state variable whenever the text in the text field changes.
+    
+     - **lamdba**: In Kotlin, a lambda is an anonymous function (a function without a name) that can be treated as a value. Lambdas are often used to pass functions as arguments to higher-order functions, which are functions that take other functions as parameters or return functions.
+
+    ~~~
 
     ![](./figures/mainActivity_1.png)
 
 - Finish modifying the `TextField` so that only a number style keyboard is displayed on focus and give the field a hint/ghost text "Enter Mass"
+
+    ~~~admonish code
 
     ```kt
     @Composable
@@ -172,17 +184,21 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
     ```
 
-    >**Notes:**
-    >> - **label** - this is a parameter for the TextField composable in Jetpack Compose. It specifies a label for the text field.
-    >>
-    >> - **{ Text("Enter mass") }**: This is a lambda expression that defines the content of the `label`. In this case, the `label` is a `Text` composable displaying the string `"Enter mass"`.
-    >>
-    >> - **keyboardOptions**: This is another parameter for the `TextField` composable. It specifies the behavior of the on-screen keyboard that appears when the text field gains focus.
-    >> 
-    >> - **KeyboardOptions.Default**: This provides the default keyboard options. 
-    >>
-    >> - **.copy(keyboardType = KeyboardType.Number)**: This creates a copy of the default keyboard options, modifying the `keyboardType` to `KeyboardType.Number`.
+    ~~~
 
+    ~~~admonish note
+
+     - **label** - this is a parameter for the TextField composable in Jetpack Compose. It specifies a label for the text field.
+    
+     - **{ Text("Enter mass") }**: This is a lambda expression that defines the content of the `label`. In this case, the `label` is a `Text` composable displaying the ring `"Enter mass"`.
+    
+     - **keyboardOptions**: This is another parameter for the `TextField` composable. It specifies the behavior of the on-screen keyboard that appears when the text field ins focus.
+     
+     - **KeyboardOptions.Default**: This provides the default keyboard options. 
+    
+     - **.copy(keyboardType = KeyboardType.Number)**: This creates a copy of the default keyboard options, modifying the `keyboardType` to `KeyboardType.Number`.
+
+    ~~~
     
     ![](./figures/mainActivity_2.png)
 
@@ -195,6 +211,8 @@ You will be developing concert ticket app that lets you select predifined bands 
 1. **Creating InputMass RadioButtons:**
 
  - We now are going to use some `RadioButtons` that can be selected by the user to indicate their choices, after the `TextField` and `Spacer` add a `Text` Composable and a `Row` Composable with 3 RadioButtons, 3 `Text` and 2 `Spacers`:
+
+    ~~~admonish code
 
     ```kt
     ... 
@@ -234,30 +252,40 @@ You will be developing concert ticket app that lets you select predifined bands 
 
     ```
 
+    ~~~
+
 - Also, note that the `inputMassUnit` needs to bound to the so that it stores data during recomposition process, add the line below where you create the `massEntered` variable, you could also add the `outputMassUnit` too:
+
+    ~~~admonish code
 
     ```kt
     var inputMassUnit by remember { mutableStateOf("kg") }
     var outputMassUnit by remember { mutableStateOf("lbs") }
     ```
 
+    ~~~
 
-    >>**Notes:**
-    >> - **Row** - This is a composable that arranges its children in a horizontal sequence.
-    >>
-    >> - **RadioButton**: This composable represents a radio button, which is a circular button that can be either selected or unselected. It is typically used in groups to allow users to select one option from a set.
-    >> 
-    >> - **selected**: This parameter determines whether the radio button is `selected` or not.
-    >>
-    >> - **inputMassUnit == "kg"**: This expression checks if the current value of `inputMassUnit` is equal to `"kg"`. If it is, the radio button will be shown as `selected`.
-    >>
-    >> - **onClick**: This is a lambda function that gets executed when the radio button is clicked.
-    >>
-    >> - **{ inputMassUnit = "kg" }**: This lambda sets the value of `inputMassUnit` to `"kg"` when the radio button is clicked. This means that clicking the radio button will update the state to indicate that "kg" is the selected unit.
+    ~~~admonish info
+    
+     - **Row** - This is a composable that arranges its children in a horizontal sequence.
+    
+     - **RadioButton**: This composable represents a radio button, which is a circular button that can be either selected or unselected. It is typically used in groups to low users to select one option from a set.
+     
+     - **selected**: This parameter determines whether the radio button is `selected` or not.
+    
+     - **inputMassUnit == "kg"**: This expression checks if the current value of `inputMassUnit` is equal to `"kg"`. If it is, the radio button will be shown as elected`.
+    
+     - **onClick**: This is a lambda function that gets executed when the radio button is clicked.
+    
+     - **{ inputMassUnit = "kg" }**: This lambda sets the value of `inputMassUnit` to `"kg"` when the radio button is clicked. This means that clicking the radio button will update the state to indicate that "kg" is the selected unit.
+
+    ~~~
 
     ![](./figures/mainActivity_3.png)
 
 - Create a new `Row` that replicates the previous `Row` for `outputMassUnit`
+
+    ~~~admonish code
 
     ```kt
     Row{...}
@@ -289,6 +317,8 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
     ```
 
+    ~~~
+
     ![](./figures/mainActivity_4.png)
 
 
@@ -297,6 +327,8 @@ You will be developing concert ticket app that lets you select predifined bands 
 ### Video @ 17.11 - 27.39
 
 - Now we are going to use a `Button` Composable that invokes and `onClick` method to calcualte the user input and their selected `RadioButton` options. Underneath the last `Row{...}` create a new `Spacer` Composable and a `Button` Composable:
+
+    ~~~admonish code
 
     ```kt
     Row{...}
@@ -308,12 +340,16 @@ You will be developing concert ticket app that lets you select predifined bands 
     ...
     ```
 
+    ~~~
+
     ![](./figures/mainActivity_5.png)
 
 - Navigate back up to where you defined the variables that are remembered across recompositon and define the following; ` var massEntered by remember { mutableStateOf("") }` and `var convertedValues by remember { mutableStateOf(arrayOf("","","")) }`
 
 
 - Continue building the functionality of the `Button` and update the arguments field of the `converter` function where it is declared:
+
+    ~~~admonish code
 
     ```kt
     Row{
@@ -338,17 +374,24 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
     ```
 
-    >**Notes:**
-    >> - **onClick** - This is a lambda function that gets executed when the button is clicked.
-    >>
-    >> - **massEntered.toDoubleOrNull()**: This function attempts to convert the string `massEntered` into a `Double`. If the conversion is not possible (e.g., if `massEntered` is not a valid number), it returns `null`.
-    >> - **mass != null**: This checks if the conversion was successful.
-    >>
-    >> - **mass > 0**: This checks if the mass entered is greater than zero.
+    ~~~
 
-    ![](./figures/mainActivity_6.png)
+    ~~~admonish info
+
+     - **onClick** - This is a lambda function that gets executed when the button is clicked.
+    
+     - **massEntered.toDoubleOrNull()**: This function attempts to convert the string `massEntered` into a `Double`. If the conversion is not possible (e.g., if assEntered` is not a valid number), it returns `null`.
+     - **mass != null**: This checks if the conversion was successful.
+    
+     - **mass > 0**: This checks if the mass entered is greater than zero.
+
+     ~~~
+
+   ![](./figures/mainActivity_6.png)
 
 - Continuing with the conditions inside the `Button`, we will add an `else` to catch the inverse of the `if` and display at `Toast` Notification. We also going to add a `Spacer` after the Button and 3 `Text` Composables that will display the result of the `converter` function by referencing the respectively array index of the `convertedValues` variable:
+
+    ~~~admonish code
 
     ```kt
     Button(onClick = {
@@ -372,8 +415,12 @@ You will be developing concert ticket app that lets you select predifined bands 
     Text("Weight in Kilonewtons: ${convertedValues[2]}")
     }
     ```
+    
+    ~~~
 
 - declare the `context` variable at the underneath the remembered variables.
+
+    ~~~admonish code
 
     ```kt
     ...
@@ -388,28 +435,33 @@ You will be developing concert ticket app that lets you select predifined bands 
 
     ```
 
-    > **Notes:**
-    >> - **else**: This keyword is used to define a block of code that runs if the preceding `if` condition(s) is `false`. In this case, it runs when the mass is not greater than 0.
-    >>
-    >> - **Toast.makeText**: This function creates a Toast message, which is a small popup message that briefly appears on the screen.
-    >>
-    >> - **context**: This is the `context` in which the `Toast` should run. It is obtained from the `LocalContext.current` in a Compose function defined after remembered variables we declared.
-    >>
-    >> - **Toast.LENGTH_LONG**: This is the duration for which the `Toast` will be shown. `Toast.LENGTH_LONG` means it will be displayed for a long duration.
-    >>
-    >> - **show()**: This function call displays the `Toast`.
-    >> 
-    >> - **Text("Converted Mass: $\{convertedValues[0]}")** -  Displays the first converted value, we use the `${}` to reference variable that are are defined as collection, list and arrays etc
+    ~~~
+    
+    ~~~admonish info
+
+     - **else**: This keyword is used to define a block of code that runs if the preceding `if` condition(s) is `false`. In this case, it runs when the mass is not eater than 0.
+    
+     - **Toast.makeText**: This function creates a Toast message, which is a small popup message that briefly appears on the screen.
+    
+     - **context**: This is the `context` in which the `Toast` should run. It is obtained from the `LocalContext.current` in a Compose function defined after remembered riables we declared.
+    
+     - **Toast.LENGTH_LONG**: This is the duration for which the `Toast` will be shown. `Toast.LENGTH_LONG` means it will be displayed for a long duration.
+    
+     - **show()**: This function call displays the `Toast`.
+     
+     - **Text("Converted Mass: $\{convertedValues[0]}")** -  Displays the first converted value, we use the `${}` to reference variable that are are defined as collection, list and arrays etc
+
+    ~~~
 
     ![](./figures/mainActivity_7.png)
-
-
 
 ## MainActivity: Converter Functionality
 
 ### Video @ 27.39 - 43.24
 
 - Navigate to the top of the `MainActivty()` add the following variables that stored constant conversion values and the `NumberFormat` to the `WeightConverterApp()`: 
+
+    ~~~admonish code
 
     ```kt
     class MainActivity : ComponentActivity() {
@@ -435,10 +487,13 @@ You will be developing concert ticket app that lets you select predifined bands 
             }
         
         ```
+    ~~~
 
     ![](./figures/mainActivity_8.png)
 
 - Next go back `Converter()` and let's create the calculations to convert between different units
+
+    ~~~admonish code
 
     ```kt
     private fun converter(numberFormat: NumberFormat, mass : Double,
@@ -468,20 +523,27 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
 
     ```
-    > **Notes:**
-    >> - **val massInKg** - Declares a read-only variable that stores the `mass` converted to kilograms.
-    >> 
-    >> - **when (inputUnit)** - Checks the value of the `inputUnit` variable and performs different actions based on its value.
-    >>  - **"kg"** - If the `inputUnit` is kilograms, it directly assigns the input mass to `massInKg`.
-    >>  - **"lbs"** - If the `inputUnit` is pounds, it converts the mass from pounds to kilograms by dividing it by `conversionToPounds`.
-    >>  - **"st"** - If the `inputUnit` is stones, it converts the mass from stones to kilograms by dividing it by `conversionToStones`.
-    >>  - **else** - For any other unit (or if `inputUnit` doesn't match any of the specified cases), it assigns `0.0` to `massInKg`.
-    >> 
-    >> - **when (outputUnit)**: Checks the value of the `outputUnit` variable and performs different actions based on its value.
-    >>  - **"kg"** - If the `outputUnit` is kilograms, it creates a string that includes the mass in kilograms (`massInKg`).
-    >>  - **"lbs"** - If the `outputUnit` is pounds, it converts the mass from kilograms to pounds by multiplying it by `conversionToPounds` and formats the result using `numberFormat`. The formatted string includes the mass in pounds.
-    >>  - **"st"** - If the `outputUnit` is stones, it converts the mass from kilograms to stones by multiplying it by `conversionToStones` and formats the result using `numberFormat`. The formatted string includes the mass in stones.
-    >>  - **else** - For any other unit (or if `outputUnit` doesn't match any of the specified cases), it assigns an empty string to converted.
+
+    ~~~
+
+
+    ~~~admonish info
+
+    - **val massInKg** - Declares a read-only variable that stores the `mass` converted to kilograms.
+    
+    - **when (inputUnit)** - Checks the value of the `inputUnit` variable and performs different actions based on its value.
+     - **"kg"** - If the `inputUnit` is kilograms, it directly assigns the input mass to `massInKg`.
+     - **"lbs"** - If the `inputUnit` is pounds, it converts the mass from pounds to kilograms by dividing it by `conversionToPounds`.
+     - **"st"** - If the `inputUnit` is stones, it converts the mass from stones to kilograms by dividing it by `conversionToStones`.
+     - **else** - For any other unit (or if `inputUnit` doesn't match any of the specified cases), it assigns `0.0` to `massInKg`.
+    
+    - **when (outputUnit)**: Checks the value of the `outputUnit` variable and performs different actions based on its value.
+     - **"kg"** - If the `outputUnit` is kilograms, it creates a string that includes the mass in kilograms (`massInKg`).
+     - **"lbs"** - If the `outputUnit` is pounds, it converts the mass from kilograms to pounds by multiplying it by `conversionToPounds` and formats the result using mberFormat`. The formatted string includes the mass in pounds.
+     - **"st"** - If the `outputUnit` is stones, it converts the mass from kilograms to stones by multiplying it by `conversionToStones` and formats the result using mberFormat`. The formatted string includes the mass in stones.
+     - **else** - For any other unit (or if `outputUnit` doesn't match any of the specified cases), it assigns an empty string to converted.
+
+    ~~~
 
     - Without the **Formater**:
 
@@ -512,9 +574,7 @@ If you run the app you should now be able to reproduce the following:
 -----------
 
 
-<details>
-
-<summary>The whole program should look like this: </summary>
+~~~admonish code collapsible=true title='Code: whole program [172 lines]...'
 
 ```kt
 package com.uog.massconverter
@@ -692,15 +752,18 @@ class MainActivity : ComponentActivity() {
 }
 ```
 
-</details>
+~~~
 
 -------------------------------------------------------
 -------------------------------------------------------
 
 ## Continue Here....
 
->**Note**:
->> - You can find royalty-freee images here: [https://www.freeimages.com/](https://www.freeimages.com)
+~~~admonish info
+
+- You can find royalty-freee images here: [https://www.freeimages.com/](https://www.freeimages.com)
+
+~~~
 
 For the exercises below, us the above lab as a reference.
 

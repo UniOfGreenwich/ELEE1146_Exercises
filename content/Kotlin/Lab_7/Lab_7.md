@@ -26,16 +26,26 @@ Reproduce the following to set up the project
 
 
 Now you can edit `main()` with the following code, then compile and run.
+
+~~~admonish code
+
 ```kt
 {
     System.out.println(3/0);
 }
 ```
 
->**Note**
->> - We are explicity calling the `println()` from the function from the `System` library.
->> - You can do this implicitly just by writing `println(...)`
->> - I would recommend the former, until you undestand this.
+~~~
+
+~~~admonish info
+
+- We are explicity calling the `println()` from the function from the `System` library.
+
+- You can do this implicitly just by writing `println(...)`
+
+- I would recommend the former, until you undestand this.
+
+~~~
 
 You should see the following output in the Run terminal... 
 
@@ -47,6 +57,8 @@ You should see the following output in the Run terminal...
 
 Modify the `Main.kt` as shown below. The change is to catch an exception through try-catch block.
 
+~~~admonish code
+
 ```kt
     try{
         System.out.println(3/0);
@@ -55,6 +67,8 @@ Modify the `Main.kt` as shown below. The change is to catch an exception through
         System.out.printf("Caught runtime exception = %s\n", e);
     }
 ```
+
+~~~
 
 If you run the program again you should get the following output:
 
@@ -67,6 +81,7 @@ If you run the program again you should get the following output:
 
 Modify the Main.java as shown below. The change is to use more specific Exception class, `ArithmeticException` in this case.
 
+~~~admonish code
 
 ```kt
     try{
@@ -76,6 +91,8 @@ Modify the Main.java as shown below. The change is to use more specific Exceptio
         System.out.printf("Caught runtime exception = %s\n", e);
     }
 ```
+
+~~~
 
 If you run the program again you should get the following output:
 
@@ -87,6 +104,8 @@ If you run the program again you should get the following output:
 
 Let's try changing the Exception Class, to `NumberFormatExpression`.
 
+~~~admonish code
+
 ```kt
     try{
             System.out.println(3/0);
@@ -96,8 +115,10 @@ Let's try changing the Exception Class, to `NumberFormatExpression`.
         }
 ```
 
-<details>
-<summary>What happens when you run it?</summary>
+~~~
+
+
+~~~admonish question collapsible=true title='What happens when you run it?'
 
 <div align=center>
 
@@ -107,21 +128,28 @@ Let's try changing the Exception Class, to `NumberFormatExpression`.
 
 Because the expected Exception Class is wrong.
 
-</details>
+~~~
 
 For fun, do the following, what happens and why?
 
+~~~admonish code
+
 ```kt
-    try{
-            System.out.println(3/0);
-        } catch( e : ArithmeticException){
-            System.out.printf("Caught runtime exception = %s\n", e);
-            System.out.println(3/0);
-        }
+try{
+        System.out.println(3/0);
+    } catch( e : ArithmeticException){
+        System.out.printf("Caught runtime exception = %s\n", e);
+        System.out.println(3/0);
+    }
 ```
+
+~~~
+
 ## Step 2: Catch multiple exceptions
 
 Reproduce the following code:
+
+~~~admonish code
 
 ```kt
 import javax.swing.JOptionPane
@@ -144,6 +172,9 @@ fun main(args: Array<String>) {
     println("After exception.")
 }
 ```
+
+~~~
+
 
 You'll notice that we are now importing a library on line 2 `import javax.swing.JOptionPane;` we now will be able to have a GUI.
 
@@ -197,6 +228,8 @@ What happens when you enter a character or nothing instead?
 You are now going to implement a larger program that illustrates many different types of `Exception`'s
 
 1. Import the following libraries at the top of the script:
+    ~~~admonish code
+
     ```kt
     import java.awt.Frame
     import java.awt.GridLayout
@@ -209,16 +242,26 @@ You are now going to implement a larger program that illustrates many different 
     import javax.swing.JFrame
     import javax.swing.JPanel
     import javax.swing.JRadioButton
-    ````
+    ```
+
+    ~~~
 
 2. Modify the `main` class line: 
+
+    ~~~admonish code
+
     ```kt
     // Create a class Main that extends JFrame and implements ActionListener
     class Main : JFrame(), ActionListener {
     ```
 
-    > **Note:**
-    >> This declares a class named `Main` that extends `JFrame` (a `Swing` component for creating windows) and implements the `ActionListener` interface (for handling button clicks).
+    ~~~
+
+    ~~~admonish info
+    
+    This declares a class named `Main` that extends `JFrame` (a `Swing` component for creating windows) and implements the `ActionListener` interface (for handling button clicks).
+
+    ~~~
 
 
 3. After updating `main` in step 2, add declare and initialise a private immutable array of Doubles with two elements with values `0.0`. 
@@ -232,7 +275,7 @@ You are now going to implement a larger program that illustrates many different 
 
     </details>
 
-4. Now create n JButton objects:
+4. Now create these `JButton` objects:
     - divideByZeroButton
     - badCastButton
     - arrayBoundsButton
@@ -243,8 +286,7 @@ You are now going to implement a larger program that illustrates many different 
    
     <p></p>
 
-    <details>
-    <summary>Solution</summary>
+    ~~~admonish code collapsible=true title='Code: Solution here... [6 lines]'
 
     ```kt
     private val divideByZeroButton: JRadioButton
@@ -256,9 +298,12 @@ You are now going to implement a larger program that illustrates many different 
     private val throwUnknownButton: JRadioButton
     ```
 
-    </details>
+    ~~~
 
 5. Now we are going to use `init` to initialise our graphical setup
+
+   ~~~admonish code
+
    ```kt
     // Constructor
     init {
@@ -266,10 +311,18 @@ You are now going to implement a larger program that illustrates many different 
         val p = JPanel()
         p.layout = GridLayout(8, 1)
    ```
-    > **Note:**
-    >> This is the constructor (`init` block) of the `Main` class. It creates a `JPanel` (a container) and sets its layout to a grid with 8 rows and 1 column.
+
+   ~~~
+
+   ~~~admonish info
+
+   This is the constructor (`init` block) of the `Main` class. It creates a `JPanel` (a container) and sets its layout to a grid with 8 rows and 1 column.
+
+   ~~~
    
 6. Now create a block of radio buttons, after the `p.layout = GridLayout(8,1)` line, for the various exception scenarios by adding them to a button group (`ButtonGroup` ensures only one button is selected at a time), and adds them to the panel. 
+
+    ~~~admonish code
 
     ```kt
         // Create radio buttons and add them to the panel
@@ -285,6 +338,8 @@ You are now going to implement a larger program that illustrates many different 
     } // remeber to add this closing brace for init
     ```
 
+    ~~~
+
 7. After the closing brace `}` for `init` create a new function that is called `addRadioButton()`, that takes the following arguments: 
    - `String` declared as `s`
    - `ButtonGroup` declared as `g`
@@ -292,16 +347,17 @@ You are now going to implement a larger program that illustrates many different 
 
     <p></p>
 
-    <details>
-    <summary>Solution</summary>
+    ~~~admonish code collapsible=true title='Code: Solution here... [1 lines]'
 
     ```kt
     private fun addRadioButton(s: String, g: ButtonGroup, p: JPanel): JRadioButton {
     ```
 
-    </details>
+    ~~~
 
 8. Inside the function reproduce the follwing:
+
+    ~~~admonish code
 
     ```kt
         val button = JRadioButton(s, false)
@@ -312,59 +368,73 @@ You are now going to implement a larger program that illustrates many different 
     }
     ```
 
-> **Note:**
->> This function creates and configures a radio button, adds it to the specified `ButtonGroup` and `JPanel`, then returns the button.
+    ~~~
+
+    ~~~admonish info
+
+    This function creates and configures a radio button, adds it to the specified `ButtonGroup` and `JPanel`, then returns the button.
+
+    ~~~
 
 
 9. After the closing `}` of the `addRadioButton()` we are going to add the core functionality of the program, create the following `actionPerformed` function: 
 
-```kt
-// Handle button clicks and trigger/catch exceptions
-override fun actionPerformed(evt: ActionEvent) {
-    try {
-        val source = evt.source
-        if (source === divideByZeroButton) {
-            // Attempt to divide by zero, which will throw an ArithmeticException
-            print(0/0)
-        } else if (source === badCastButton) {
-            // Attempt to perform a bad cast, which will throw a ClassCastException
-            val f = evt.source as Frame
-        } else if (source === arrayBoundsButton) {
-            // Attempt to access an out-of-bounds array index, which will throw an ArrayIndexOutOfBoundsException
-            a[1] = a[10]
-        } else if (source === nullPointerButton) {
-            // Attempt to access a null object, which will throw a NullPointerException
-            val f: Frame? = null
-            f!!.setSize(200, 200);
-        } else if (source === overflowButton) {
-            // Perform integer overflow, which Kotlin does not natively detect
-            a[1] = (1000 * 1000 * 1000 * 1000).toDouble()
-            val n = a[1].toInt()
-            print("Value of a[1]: ${a[1]}... Value of n: $n\n")
+    ~~~admonish code
 
-            // Manually check for integer overflow and throw an exception
-            check((n) > Int.MAX_VALUE) { "Integer overflow detected" }
-        } else if (source === noSuchFileButton) {
-            // Attempt to open a non-existent file, which will throw a FileNotFoundException
-            val `is` = FileInputStream("Java Source and Support")
-        } else if (source === throwUnknownButton) {
-            // Explicitly throw an UnknownError
-            throw UnknownError()
+    ```kt
+    // Handle button clicks and trigger/catch exceptions
+    override fun actionPerformed(evt: ActionEvent) {
+        try {
+            val source = evt.source
+            if (source === divideByZeroButton) {
+                // Attempt to divide by zero, which will throw an ArithmeticException
+                print(0/0)
+            } else if (source === badCastButton) {
+                // Attempt to perform a bad cast, which will throw a ClassCastException
+                val f = evt.source as Frame
+            } else if (source === arrayBoundsButton) {
+                // Attempt to access an out-of-bounds array index, which will throw an ArrayIndexOutOfBoundsException
+                a[1] = a[10]
+            } else if (source === nullPointerButton) {
+                // Attempt to access a null object, which will throw a NullPointerException
+                val f: Frame? = null
+                f!!.setSize(200, 200);
+            } else if (source === overflowButton) {
+                // Perform integer overflow, which Kotlin does not natively detect
+                a[1] = (1000 * 1000 * 1000 * 1000).toDouble()
+                val n = a[1].toInt()
+                print("Value of a[1]: ${a[1]}... Value of n: $n\n")
+
+                // Manually check for integer overflow and throw an exception
+                check((n) > Int.MAX_VALUE) { "Integer overflow detected" }
+            } else if (source === noSuchFileButton) {
+                // Attempt to open a non-existent file, which will throw a FileNotFoundException
+                val `is` = FileInputStream("Java Source and Support")
+            } else if (source === throwUnknownButton) {
+                // Explicitly throw an UnknownError
+                throw UnknownError()
+            }
+        } catch (e: RuntimeException) {
+            // Catch and print a RuntimeException
+            println("Caught RuntimeException: $e")
+        } catch (e: Exception) {
+            // Catch and print a more general Exception
+            println("Caught Exception: $e")
         }
-    } catch (e: RuntimeException) {
-        // Catch and print a RuntimeException
-        println("Caught RuntimeException: $e")
-    } catch (e: Exception) {
-        // Catch and print a more general Exception
-        println("Caught Exception: $e")
     }
-}
-```
+    ```
 
->**Note:**
->> This function is called when a **button** is clicked. It tries different actions based on the clicked button, and catches specific exceptions (e.g., `ArithmeticException`, `ClassCastException`). It also catches more general exceptions (`RuntimeException`, `Exception`).
+    ~~~
+
+    ~~~admonish info
+
+    This function is called when a **button** is clicked. It tries different actions based on the clicked button, and catches specific exceptions (e.g., `ArithmeticException`, `ClassCastException`). It also catches more general exceptions (`RuntimeException`, `Exception`).
+
+    ~~~
 
 10. Now create a `Companion` object after the closing brace of the previous function, which will act as the main entry point for the program:
+
+    ~~~admonish code
 
     ```kt
     companion object {
@@ -391,8 +461,13 @@ override fun actionPerformed(evt: ActionEvent) {
         }
     }
     ```
-    >**Note:**
-    >>A **companion** object is a type of object declaration that allows an object to act similar to **static** objects in other languages. A companion object is always declared inside of another class, and its properties and functions can be accessed directly with the class name. The Kotlin compiler ensures that there is only one instance of a companion object.
+    ~~~
+
+    ~~~admonish info
+    
+    A **companion** object is a type of object declaration that allows an object to act similar to **static** objects in other languages. A companion object is always declared inside of another class, and its properties and functions can be accessed directly with the class name. The Kotlin compiler ensures that there is only one instance of a companion object.
+
+    ~~~
 
 11. Build and run the program.
   - Observe dialog box appears.
@@ -404,6 +479,7 @@ override fun actionPerformed(evt: ActionEvent) {
 ![](./figures/step10.png) 
 ![](./figures/step11.png)
 ![](./figures/step12.png)
+
 </div>
 
 12. Please do the following tasks
@@ -416,9 +492,7 @@ override fun actionPerformed(evt: ActionEvent) {
 -----------------
 -----------------
 
-
-<details>
-<summary>Full code for up to section 10. </summary>
+~~~admonish code collapsible=true title='Code: Section 10 full code here ...[106 lines]'
 
 ```kt
 import java.awt.Frame
@@ -530,12 +604,12 @@ class Main : JFrame(), ActionListener {
 }
 ```
 
-</details>
+~~~
 
 <p></p>
 
-<details>
-<summary>actionPerformed: runCatching code for section 12. </summary>
+~~~admonish code collapsible=true title='Code: actionPerformed: runCatching code for section 12. [50 lines]'
+
 
 In this version, `runCatching` is used to encapsulate the code that might throw exceptions. `onSuccess` is a block that executes when there is no exception, and `onFailure` is a block that executes when an exception occurs. The specific exception types are checked inside the `onFailure` block, and other exceptions are rethrown.
 
@@ -592,3 +666,5 @@ override fun actionPerformed(evt: ActionEvent) {
     }
 }
 ```
+
+~~~

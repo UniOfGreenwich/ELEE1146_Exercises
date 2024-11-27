@@ -12,11 +12,11 @@ Welcome to the Kotlin Banking System workshop/lab! In this session, you will lea
    - Tick 'Add sample code'
    - Note you can use any JDK for this exercise, I am using JDK 17.0.6.
 
-<div align=center>
+    <div align=center>
 
-![](./figures/step1.png)
+    ![](./figures/step1.png)
 
-</div>
+    </div>
 
 -------------------------------------------
 
@@ -45,6 +45,7 @@ Open the `ErrorMessage.kt` file and let's make our own error message function th
 - The function below, will take in a message we supply and use the `Exception` class to `throw` the `error`.
 - `runCatching` calls the specified block and returns its encapsulated result if invocation was successful, catching any `Throwable` exception that was `thrown` from the block function execution and encapsulating it as a failure.    
 
+~~~admonish code
 
 ```kt
 class ErrorMessage {
@@ -63,11 +64,16 @@ class ErrorMessage {
 }
 ```
 
-**Key points**
+~~~
+
+~~~admonish info title='Key points'
+
+
 
 - The class uses an `ErrorMessage` instance to handle error messages.
 - Functions like `withdrawal`, `deposit`, and `transfer` from the class `FundsContoller`, perform transactional operations with error handling. So we reduce the amount of code repeated and have a function that we can call instead.
 
+~~~
 
 ---------------------------
 
@@ -77,6 +83,7 @@ Open `Hashing.kt` and reproduce the following code.
 
 This class provides a function to hash a PIN using SHA-256.
 
+~~~admonish code
 
 ```kt
 import java.math.BigInteger
@@ -97,32 +104,33 @@ class Hashing {
 }
 ```
 
->**Notes:**
->>- `md.digest(pinString.toByteArray())`:
->>  - `pinString.toByteArray()`: Converts the PIN (which is a string representation of an integer) to a byte array.
->>  - `md.digest(byteArray)`: Computes the SHA-256 hash of the byte array using the `MessageDigest` instance (`md`).
->>
->>- `BigInteger(1, ...)`:
->>  - `BigInteger`: Represents an arbitrary-precision integer in Kotlin.
->>  - `BigInteger(1, byteArray)`: Creates a `BigInteger` from the provided byte array, treating it as a positive number. The `1` as the first argument indicates a positive sign.
->>
->>- `.toString(16)`:
->>  - Converts the `BigInteger` to a hexadecimal string representation. The `16` argument specifies the radix (base) as hexadecimal.
->>
->>- `.padStart(32, '0')`:
->>  - Ensures that the resulting hexadecimal string is of length 32 characters by padding with '0' characters at the beginning if necessary.
->> 
->> - Example: Password123435 -> Hash -> 63k#k4u23l@4k
+~~~
 
-**Key Points:**
+~~~admonish info
 
-- The sha256 function converts the PIN to a secure hash.
+- `md.digest(pinString.toByteArray())`:
+  - `pinString.toByteArray()`: Converts the PIN (which is a string representation of an integer) to a byte array.
+  - `md.digest(byteArray)`: Computes the SHA-256 hash of the byte array using the `MessageDigest` instance (`md`).
 
-------
+- `BigInteger(1, ...)`:
+  - `BigInteger`: Represents an arbitrary-precision integer in Kotlin.
+  - `BigInteger(1, byteArray)`: Creates a `BigInteger` from the provided byte array, treating it as a positive number. The `1` as the first argument indicates a positive gn.
+
+- `.toString(16)`:
+  - Converts the `BigInteger` to a hexadecimal string representation. The `16` argument specifies the radix (base) as hexadecimal.
+
+- `.padStart(32, '0')`:
+  - Ensures that the resulting hexadecimal string is of length 32 characters by padding with '0' characters at the beginning if necessary.
+ 
+ - Example: Password123435 -> Hash -> 63k#k4u23l@4k
+
+~~~
 
 ## Step 5 - `FundsController` Class
 
 Open `FundsController.kt` so that you can programme the `withdrawal`, `deposit`, and `transfer` functions.
+
+~~~admonish code
 
 ```kt
 class FundsController {
@@ -205,10 +213,14 @@ class FundsController {
 }
 ```
 
-**Key Points:**
+~~~
+
+~~~admonish info title='Key Points'
 
 - The class uses an `ErrorMessage` instance to handle error messages.
 - Functions like `withdrawal`, `deposit`, and `transfer` perform the respective operations with error handling, to for the `BankingCustomer` class.
+
+~~~
 
 ------
 
@@ -216,6 +228,7 @@ class FundsController {
 
 Open `BankCustomer.kt` and program the `BankCustomer` class. It represents a bank customer with account details, including account number, PIN, name, and balance.
 
+~~~admonish code
 
 ```kt
 import java.security.SecureRandom
@@ -312,11 +325,15 @@ class BankCustomer {
 }
 ```
 
-**Key Points:**
+~~~
+
+~~~admonish info title='Key Points'
 
 - The class has multiple constructors for flexibility in object creation.
 - It includes functions to set customer name, balance, and generate a hash of the PIN.
 - The `customerToString` function formats customer information.
+
+~~~
 
 -----
 
@@ -324,15 +341,21 @@ class BankCustomer {
 
 Open `Main.kt` and make the file first look like this: 
 
+~~~admonish code
+
 ```kt
 fun main(args: Array<String>) {
 
 }
 ```
 
+~~~
+
 This file creates instances of `BankCustomer`, `FundsController`, and `ATM` to simulate banking operations.
 
 Let's create objects of the `BankCustomer` using each of the available `constructors`
+
+~~~admonish code
 
 ```kt
 fun main(args: Array<String>) {
@@ -348,7 +371,11 @@ fun main(args: Array<String>) {
 }
 ```
 
+~~~
+
 To fix the `printBankCustomer()` error, outside of the main() functions make a new function:
+
+~~~admonish code
 
 ```kt
 /**
@@ -385,6 +412,8 @@ Customer number:3
 Process finished with exit code 0
 ```
 
+~~~
+
 - So you can see there that there are three seperate objects based on each constructor of the `BankCustomer` class. 
 - We can control them independently. 
 
@@ -394,116 +423,132 @@ Modify the code so that you can use the `FundsController` class's functons; `wit
 - Firslty, we are going to us the `withdrawal` function:
   - using the `fundsController` object invoke the `withdrawal` function to withdraw `10.00` from `cust1`, which should throw an error message for us. 
 
-```kt
-fun main(args: Array<String>) {
+    ~~~admonish code
 
-    val fundsController = FundsController()
+    ```kt
+    fun main(args: Array<String>) {
 
-    //declaration and initialisation
-    ...
+        val fundsController = FundsController()
 
-    println("Information for :\n\n");
-    printBankCustomer(cust1)
+        //declaration and initialisation
+        ...
 
-    fundsController.withdrawal(cust1,10.00)
+        println("Information for :\n\n");
+        printBankCustomer(cust1)
 
-    ...
-}
-```
+        fundsController.withdrawal(cust1,10.00)
+
+        ...
+    }
+    ```
+
+    ~~~
 
 - Run and you should see the following: 
 
-```
-Information for :
+    ~~~admonish code
 
-Customer number:1 
- Acc No:12312124
- Name:  
- Balance: £0.0
+    ```
+    Information for :
 
-java.lang.Exception: Insufficient funds. Current Balance is: 0.0
-Customer number:2 
- Acc No:12318888
- Name: First Last
- Balance: £1200.0
+    Customer number:1 
+    Acc No:12312124
+    Name:  
+    Balance: £0.0
 
-Customer number:3 
- Acc No:0
- Name:  
- Balance: £0.0
+    java.lang.Exception: Insufficient funds. Current Balance is: 0.0
+    Customer number:2 
+    Acc No:12318888
+    Name: First Last
+    Balance: £1200.0
+
+    Customer number:3 
+    Acc No:0
+    Name:  
+    Balance: £0.0
 
 
-Process finished with exit code 0
-```
+    Process finished with exit code 0
+    ```
+    ~~~
 
 - Let's continue using the `fundsContoller` object to modify the balance of `cust2`, with the `withdrawal` function:
 
+    ~~~admonish code
 
-```kt
-fun main(args: Array<String>) {
+    ```kt
+    fun main(args: Array<String>) {
 
-    val fundsController = FundsController()
+        val fundsController = FundsController()
 
-    //declaration and initialisation
-    ...
+        //declaration and initialisation
+        ...
 
-    println("Information for :\n\n");
-    
-    ...
+        println("Information for :\n\n");
+        
+        ...
 
-    printBankCustomer(2,cust2)
-    fundsController.withdrawal(cust2,500.00)
-    // see cust2 after withdrawal
-    printBankCustomer(2,cust2)
-    // transfer money from cust2 to cust1
-    fundsController.transfer(cust2,cust1,500.00)
-    // see cust2 and cust1 again..
-    printBankCustomer(2,cust2)
-    printBankCustomer(1,cust1)
+        printBankCustomer(2,cust2)
+        fundsController.withdrawal(cust2,500.00)
+        // see cust2 after withdrawal
+        printBankCustomer(2,cust2)
+        // transfer money from cust2 to cust1
+        fundsController.transfer(cust2,cust1,500.00)
+        // see cust2 and cust1 again..
+        printBankCustomer(2,cust2)
+        printBankCustomer(1,cust1)
 
-    ...
-}
-```
+        ...
+    }
+    ```
+
+    ~~~
 
 - Run and you should see the following output:
 
-```
-Information for :
+    ~~~admonish output
 
-Customer number:1 
- Acc No:12312124
- Name:  
- Balance: £0.0
+    ```
+    Information for :
 
-java.lang.Exception: Insufficient funds. Current Balance is: 0.0
-Customer number:2 
- Acc No:12318888
- Name: First Last
- Balance: £1200.0
+    Customer number:1 
+    Acc No:12312124
+    Name:  
+    Balance: £0.0
 
-Customer number:2 
- Acc No:12318888
- Name: First Last
- Balance: £700.0
+    java.lang.Exception: Insufficient funds. Current Balance is: 0.0
+    Customer number:2 
+    Acc No:12318888
+    Name: First Last
+    Balance: £1200.0
 
-Customer number:2 
- Acc No:12318888
- Name: First Last
- Balance: £200.0
+    Customer number:2 
+    Acc No:12318888
+    Name: First Last
+    Balance: £700.0
 
-Customer number:1 
- Acc No:12312124
- Name:  
- Balance: £500.0
+    Customer number:2 
+    Acc No:12318888
+    Name: First Last
+    Balance: £200.0
 
-Process finished with exit code 0
-```
+    Customer number:1 
+    Acc No:12312124
+    Name:  
+    Balance: £500.0
+
+    Process finished with exit code 0
+    ```
+
+    ~~~
 
 - Notice how **ONLY** `cust2` balance has decreased by `500.00` to `700.00`
 - and second decrease from `700.00` to `200.00` because `cust2` transfered `500.00` to `cust1`
 - Remember each object is independent from each other. 
 
 Now we are going to use the `ATM` class to access funds again. Remember to initialise the atm object from the class after `val fundsController = FundsController()`
+
+~~~admonish code
 
 ```kt
 fun main(args: Array<String>) {
@@ -521,7 +566,11 @@ fun main(args: Array<String>) {
 }
 ```
 
+~~~
+
 We should utilise the `pinCheck` function:
+
+~~~admonish code
 
 ```kt
 fun main(args: Array<String>) {
@@ -538,7 +587,11 @@ fun main(args: Array<String>) {
 }
 ```
 
+~~~
+
 If you run this again you should see at the end of terminal: 
+
+~~~admonish output
 
 ```
 ...
@@ -547,10 +600,14 @@ Pin match: false
 Pin match: true
 ```
 
+~~~
+
 Here we can see that the `atm.checkPin(1235,cust1)` compares the supplied pin `1235` against the `cust1` pin, by using the `hashing.sha256()` functions.
 
 
 Lastly, you are to use `atm.printBalance()` and `atm.getCash()` functions, reproduce the below and run:
+
+~~~admonish code
 
 ```
 fun main(args: Array<String>) {
@@ -567,7 +624,9 @@ fun main(args: Array<String>) {
 }
 ```
 
-**Output** 
+~~~
+
+~~~admonish output
 
 ```
 ...
@@ -579,11 +638,14 @@ Customer number:2
  Balance: £150.0
 ```
 
-**Key Points:**
+~~~
+
+~~~admonish info title='Key Points'
 
 - Customer instances are created with different `constructors`.
 - Operations like withdrawals, deposits, PIN checks, and balance checks are performed.
 
+~~~
 
 ---------------------
 
@@ -597,9 +659,8 @@ Play with the functions and classes to experiment and explore the uses. Try and 
     - needs to arguments, fN and ln both of which are strings. 
   - `makeAccountNumber()`
     - This should create an account number, use `Random()` to generate 8 random numbers from 0 to 8. Whereby the first number cannont be a 0. 
-    - <details>
-      <summary>Suggested Solution</summary>
-
+    -  ~~~admonish code collapsible=true title='Code: Suggested Solution'
+    
         ```kt
         /**
         * Creates an account number using repeat and random.
@@ -625,13 +686,12 @@ Play with the functions and classes to experiment and explore the uses. Try and 
             this.accNumber = tmpAccNumber?.toInt()
         }
         ```
+        ~~~
 
-     </details>
 
   - `makeSortCode()`
     
-    <details>
-    <summary>Suggested Output</summary>
+    ~~~admonish code collapsible=true title='Code: Suggested Solution'
 
     ```kt
     /**
@@ -653,7 +713,9 @@ Play with the functions and classes to experiment and explore the uses. Try and 
     }
     ```
 
-    **Output**
+    ~~~
+
+    ~~~admonish output collapsible=true
 
     ```
     Customer number:2 
@@ -666,7 +728,7 @@ Play with the functions and classes to experiment and explore the uses. Try and 
 
     - You need to create a `sortCode` variable and modify the `customerToString()` functions to print the `sortCode`
 
-    </details>    
+    ~~~  
  
  - Make a new class for a Card so that each bank customer can have one, with a card number, expiry date, and cvv for each `cust`.
    - Card number format
@@ -676,8 +738,7 @@ Play with the functions and classes to experiment and explore the uses. Try and 
      -  Digits 7 – 12 or 7 – 15: Represent the account number
      -  Digits 13 or 16: Is a check digit
         -  See http://datagenetics.com/blog/july42013/index.html
-      -  <details>
-         <summary>Possible Solution</summary>
+      -    ~~~admonish code collapsible=true title='Code: Suggested Solution'
 
             ```kt
             class Card {
@@ -780,25 +841,28 @@ Play with the functions and classes to experiment and explore the uses. Try and 
                 }
             }
             ```
+            ~~~
 
-         **Output**
+        ~~~admonish output
 
-            ```
-            Name: First Last
-            Card No: 4354322782868253
-            Expiry Date: 08/2029
-            CVV: 260
-            ```
+        ```
+        Name: First Last
+        Card No: 4354322782868253
+        Expiry Date: 08/2029
+        CVV: 260
+        ```
 
-         </details>
+        ~~~
+       
 
 ---------------------------------------
 ---------------------------------------
+
+## All code for the lab
 
 <p></p>
 
-<details>
-<summary>Full code: Main.kt</summary>
+~~~admonish code collapsible=true title='Full code: Main.kt [44 lines]'
 
 ```kt
 fun main(args: Array<String>) {
@@ -848,13 +912,12 @@ fun printBankCustomer(n:Int , c: BankCustomer) {
 }
 ```
 
-</details>
+~~~
 
 
 <p></p>
 
-<details>
-<summary>Full code: BankCustomer.kt</summary>
+~~~admonish code collapsible=true title='Full code: BankCustomer.kt [162 lines]'
 
 ```kt
 import java.security.SecureRandom
@@ -1022,13 +1085,12 @@ class BankCustomer {
 }
 ```
 
-</details>
+~~~
 
 
 <p></p>
 
-<details>
-<summary>Full code: Hashing.kt</summary>
+~~~admonish code collapsible=true title='Full code: Hashing.kt [14 lines]'
 
 ```kt
 import java.math.BigInteger
@@ -1048,13 +1110,13 @@ class Hashing {
 }
 ```
 
-</details>
+~~~
 
 
 <p></p>
 
-<details>
-<summary>Full code: FundsController.kt</summary>
+~~~admonish code collapsible=true title='Full code: FundsController.kt [77 lines]'
+
 
 ```kt
 class FundsController {
@@ -1137,13 +1199,11 @@ class FundsController {
 }
 ```
 
-</details>
-
+~~~
 
 <p></p>
 
-<details>
-<summary>Full code: ErrorMessage.kt</summary>
+~~~admonish code collapsible=true title='Full code: ErrorMessage.kt [13 lines]'
 
 ```kt
 class ErrorMessage {
@@ -1162,13 +1222,11 @@ class ErrorMessage {
 }
 ```
 
-</details>
-
+~~~
 
 <p></p>
 
-<details>
-<summary>Full code: ATM.kt</summary>
+~~~admonish code collapsible=true title='Full code: ATM.kt [66 lines]'
 
 ```kt
 import javax.swing.text.StyledEditorKit.BoldAction
@@ -1240,12 +1298,11 @@ class ATM {
 }
 ```
 
-</details>
+~~~
 
 <p></p>
 
-<details>
-<summary>Card.kt</summary>
+~~~admonish code collapsible=true title='Full code: Card.kt [104 lines]'
 
 ```kt
 import java.text.DateFormat
@@ -1354,4 +1411,4 @@ class Card {
 }
 ```
 
-</details>
+~~~

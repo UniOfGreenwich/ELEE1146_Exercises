@@ -4,7 +4,11 @@
 
 Welcome to this walkthrough guide for building a healthy recipes app using Kotlin and Jetpack Compose in Android Studio.
 
+~~~admonish info
+
 Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3.zip).
+
+~~~
 
 ---
 
@@ -20,7 +24,7 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
     - Click "Finish" to create the project.
 
 
-    ![](./figures/choosingLayoutKt.png)
+        ![](./figures/choosingLayoutKt.png)
 
 2. **Project Structure:**
     - Expand the project structure and locate the `values` and `mipmap` directories under `res`.
@@ -43,15 +47,18 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
     - Right-click on the `data` package, select "New" > "Kotlin Class/File", and name it `Recipe`.
     - Modify the class as follows:
 
-    ```kotlin
-    data class Recipe(
-        val id: Int,
-        val title: String,
-        val description: String,
-        val ingredients: List<String>,
-        val imageResId: Int
-    )
-    ```
+        ~~~admonish code
+
+        ```kotlin
+        data class Recipe(
+            val id: Int,
+            val title: String,
+            val description: String,
+            val ingredients: List<String>,
+            val imageResId: Int
+        )
+        ```
+        ~~~
 
     - **Data Classes**: In Kotlin, data classes are used to hold data. They automatically provide getter and setter methods, `equals()`, `hashCode()`, and `toString()` methods. 
 
@@ -59,30 +66,38 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
     - In the `data` package, create a new Kotlin file named `RecipeData`.
     - Define the object as follows:
 
-    ```kotlin
-    import com.uog.healthyrecipes.R
-    import com.uog.healthyrecipes.data.Recipe
+        ~~~admonish code
+        
+        ```kotlin
+        import com.uog.healthyrecipes.R
+        import com.uog.healthyrecipes.data.Recipe
 
-    object RecipeData {
-        val recipes = listOf(
-            Recipe(
-                id = 1,
-                title = "Spaghetti Carbonara",
-                description = "A classic Italian pasta dish made with eggs, cheese, pancetta...",
-                ingredients = listOf("item 1", "item 2", "item 3..."),
-                imageResId = R.drawable.spaghetti_carbonara
+        object RecipeData {
+            val recipes = listOf(
+                Recipe(
+                    id = 1,
+                    title = "Spaghetti Carbonara",
+                    description = "A classic Italian pasta dish made with eggs, cheese, pancetta...",
+                    ingredients = listOf("item 1", "item 2", "item 3..."),
+                    imageResId = R.drawable.spaghetti_carbonara
+                )
+                // Add more recipes here
             )
-            // Add more recipes here
-        )
-    }
-    ```
+        }
+        ```
+
+        ~~~
 
     - **Objects**: In Kotlin, objects are used to create singleton instances. They can hold state and behavior, and there is only one instance of the object created in the entire application.
     
-    >**Note:**
-    >> - Remember to import those images from the Downloaded Picture file <p></p>
-    >> ![](./figures/importImages.gif)
-     
+        ~~~admonish note
+        
+        - Remember to import those images from the Downloaded Picture file <p></p>
+        
+            ![](./figures/importImages.gif)
+        
+        ~~~
+
 ---
 
 ## Setting Up the Main Activity
@@ -92,6 +107,8 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
 1. **Modify the Main Activity Layout:**
     - Open `MainActivity.kt`.
     - Replace the content of the `setContent` block with a `Scaffold` layout and a `topBar`.
+
+        ~~~admonish code
 
         ```kotlin
         package com.uog.healthyrecipes
@@ -124,6 +141,8 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
         }
         ```
 
+        ~~~
+
     - **Scaffold**: In Jetpack Compose, `Scaffold` is a component that provides a structure for implementing the basic material design layout. It contains slots for the top bar, bottom bar, floating action button, and a content area.
 
     - **NavController**: The `NavController` is the central API for navigating between composables in Jetpack Compose. It handles the navigation stack and the navigation destinations.
@@ -132,11 +151,16 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
 
     - **enableEdgeToEdge**: This function enables edge-to-edge display on Android devices, allowing your app to use the entire screen space.
 
-        >**Note:**
-        >> -  Import all libraries as needed, <kbd>Alt</kbd>+<kbd>Enter</kbd> <p></p>
-        >>   ![](./figures/importLibraries.gif)
+        ~~~admonish note
+        
+        - Import all libraries as needed, <kbd>Alt</kbd>+<kbd>Enter</kbd> <p></p>
+            ![](./figures/importLibraries.gif)
+
+        ~~~
 
     - Add a preview function:
+
+        ~~~admonish code
 
         ```kotlin
         @Preview(showBackground = true)
@@ -148,9 +172,13 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
             }
         }
         ```
+        ~~~
 
-        >**Note**
-        >> - The renderer will still have some errors due to the missing 
+        ~~~admonish warning
+        
+        The renderer will still have some errors due to the missing 
+
+        ~~~
 
 ---
 
@@ -161,6 +189,8 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
 1. **Define the Navigation Host:**
     - Create a new Kotlin file named `RecipeNavHost.kt`.
     - Define the composable function as follows:
+
+        ~~~admonish code
 
         ```kotlin
         @Composable
@@ -175,6 +205,8 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
             }
         }
         ```
+
+        ~~~
 
     - **NavHost()**: `NavHost` is a container composable that hosts the navigation graph. It connects the NavController with the navigation graph, allowing navigation between `composable` destinations.
 
@@ -193,33 +225,37 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
     - Create a new Kotlin file named `RecipeListScreen.kt`.
     - Define the composable function as follows:
 
-    ```kotlin
-    package com.uog.healthyrecipes
-    
-    ...
+        ~~~admonish code
 
-    @Composable
-    fun RecipeListScreen(navController: NavHostController) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = "Choose a Recipe",
-                style = MaterialTheme.typography.headlineSmall
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-            RecipeData.recipes.forEach { recipe ->
-                RecipeItem(recipe = recipe, onClick = {
-                    navController.navigate("recipe/${recipe.id}")
-                })
-                Spacer(modifier = Modifier.height(10.dp))
+        ```kotlin
+        package com.uog.healthyrecipes
+        
+        ...
+
+        @Composable
+        fun RecipeListScreen(navController: NavHostController) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Choose a Recipe",
+                    style = MaterialTheme.typography.headlineSmall
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                RecipeData.recipes.forEach { recipe ->
+                    RecipeItem(recipe = recipe, onClick = {
+                        navController.navigate("recipe/${recipe.id}")
+                    })
+                    Spacer(modifier = Modifier.height(10.dp))
+                }
             }
         }
-    }
-    ```
+        ```
+
+        ~~~
 
     - **Column**: `Column` is a layout composable that places its children in a vertical sequence. It's similar to a vertical LinearLayout in traditional Android development.
 
@@ -233,6 +269,8 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
 
     - Add a preview function:
 
+        ~~~admonish code
+
         ```kotlin
         @Preview(showBackground = true)
         @Composable
@@ -243,11 +281,12 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
             }
         }
         ```
+        
+        ~~~
 
         ![](./figures/recipeListScreen_start.png)
 
 ---
-
 
 
 ## Building the Recipe Item Component
@@ -257,32 +296,36 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
 1. **Create the Recipe Item Component:**
     - Conitinuing in the `RecipeListScreen.kt` file, add the following composable function:
 
-    ```kotlin
-    @Composable
-    fun RecipeItem(recipe: Recipe, onClick: () -> Unit) {
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-                .clickable(onClick = onClick),
-            shape = RoundedCornerShape(8.dp)
-        ) {
-            Row(modifier = Modifier.padding(8.dp)) {
-                Image(
-                    painter = painterResource(id = recipe.imageResId),
-                    contentDescription = recipe.title,
-                    modifier = Modifier.size(70.dp).clip(RoundedCornerShape(8.dp)),
-                    contentScale = ContentScale.Crop
-                )
-                Spacer(modifier = Modifier.width(16.dp))
-                Column {
-                    Text(text = recipe.title, style = MaterialTheme.typography.headlineSmall)
-                    Text(text = recipe.description, style = MaterialTheme.typography.bodySmall)
+        ~~~admonish code
+
+        ```kotlin
+        @Composable
+        fun RecipeItem(recipe: Recipe, onClick: () -> Unit) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+                    .clickable(onClick = onClick),
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Row(modifier = Modifier.padding(8.dp)) {
+                    Image(
+                        painter = painterResource(id = recipe.imageResId),
+                        contentDescription = recipe.title,
+                        modifier = Modifier.size(70.dp).clip(RoundedCornerShape(8.dp)),
+                        contentScale = ContentScale.Crop
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column {
+                        Text(text = recipe.title, style = MaterialTheme.typography.headlineSmall)
+                        Text(text = recipe.description, style = MaterialTheme.typography.bodySmall)
+                    }
                 }
             }
         }
-    }
-    ```
+        ```
+
+        ~~~
 
     - **Card**: `Card` is a composable that displays its children with a customizable background, elevation, and rounded corners. It is used to create a consistent look for elements like cards.
 
@@ -304,19 +347,23 @@ Download and extract all pictures from the [Pictures_Lab_3.zip](./pictures_lab_3
 
 2. We are going to add this line in the body of the `NavHost(){...}`: `composable("recipe_list){ RecipeListScreen(navController = navController)}`
 
-```kt
-@Composable
-fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
-{
-    NavHost(
-        navController = navController,
-        startDestination = stringResource(id = R.string.recipe_list),
-        Modifier.padding(paddingValues)) {
-        composable("recipe_list"){ RecipeListScreen(navController = navController)}
-        // TO DO show each recipe onclick.
+    ~~~admonish code
+
+    ```kt
+    @Composable
+    fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
+    {
+        NavHost(
+            navController = navController,
+            startDestination = stringResource(id = R.string.recipe_list),
+            Modifier.padding(paddingValues)) {
+            composable("recipe_list"){ RecipeListScreen(navController = navController)}
+            // TO DO show each recipe onclick.
+        }
     }
-}
-```
+    ```
+
+    ~~~
 
 3. The build preview should update and you'll see the same preview as in `RecipeListScreen.kt`
 
@@ -333,40 +380,44 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
     - Create a new Kotlin file named `RecipeScreen.kt`.
     - Define the composable function as follows:
 
-    ```kotlin
-    package com.uog.healthyrecipes
+        ~~~admonish code
 
-    ...
+        ```kotlin
+        package com.uog.healthyrecipes
 
-    @Composable
-    fun RecipeScreen(recipe: Recipe) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-        ) {
-            Image(
-                painter = painterResource(id = recipe.imageResId),
-                contentDescription = recipe.title,
+        ...
+
+        @Composable
+        fun RecipeScreen(recipe: Recipe) {
+            Column(
                 modifier = Modifier
-                    .height(200.dp)
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = recipe.title, style = MaterialTheme.typography.headlineSmall)
-            Spacer(modifier = Modifier.height(10.dp))
-            Text(text = recipe.description, style = MaterialTheme.typography.bodySmall)
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Ingredients", style = MaterialTheme.typography.headlineSmall)
-            Spacer(modifier = Modifier.height(8.dp))
-            recipe.ingredients.forEach { ingredient ->
-                Text(text = "• $ingredient", style = MaterialTheme.typography.bodySmall)
+                    .fillMaxSize()
+                    .padding(16.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = recipe.imageResId),
+                    contentDescription = recipe.title,
+                    modifier = Modifier
+                        .height(200.dp)
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(8.dp)),
+                    contentScale = ContentScale.Crop
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = recipe.title, style = MaterialTheme.typography.headlineSmall)
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(text = recipe.description, style = MaterialTheme.typography.bodySmall)
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = "Ingredients", style = MaterialTheme.typography.headlineSmall)
+                Spacer(modifier = Modifier.height(8.dp))
+                recipe.ingredients.forEach { ingredient ->
+                    Text(text = "• $ingredient", style = MaterialTheme.typography.bodySmall)
+                }
             }
         }
-    }
-    ```
+        ```
+
+        ~~~
 
     - **Image**: The Image composable is used to display images. It can be loaded from resources or URLs and can be styled with modifiers.
 
@@ -380,6 +431,8 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
 
 2. Remember we should add a preview to see what we are doing:
 
+    ~~~admonish code
+
     ```kt
     @Preview(showBackground = true)
     @Composable
@@ -389,7 +442,11 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
         }
     }
     ```
+
+    ~~~
+    
     ![](./figures/recipeScreen.png)
+
 ---
 
 ## Updating the Recipe Nav Host 2
@@ -400,29 +457,39 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
 
 2. We are going to add this line in the body of the `NavHost(){...}`: `composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}`
 
-```kt
-@Composable
-fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
-{
-    NavHost(
-        navController = navController,
-        startDestination = stringResource(id = R.string.recipe_list),
-        Modifier.padding(paddingValues)) {
-        composable("recipe_list"){ RecipeListScreen(navController = navController)}
-        composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}
+    ~~~admonish code
+
+    ```kt
+    @Composable
+    fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
+    {
+        NavHost(
+            navController = navController,
+            startDestination = stringResource(id = R.string.recipe_list),
+            Modifier.padding(paddingValues)) {
+            composable("recipe_list"){ RecipeListScreen(navController = navController)}
+            composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}
+        }
     }
-}
-```
+    ```
+
+    ~~~
 
 3. If you run the app in the emulator, you will see the following: 
+
+    ~~~admonish error
 
     ```
     ... Navigation destination that mathces request NavDeepLinkRequest{ uri=android-app://androidx.navigation/recipe1} cannot be found...
     ```
      ![](./figures/route_error.gif)
 
+    ~~~
+
 4. This is because we did not reference the correct format of a route, go back to RecipeListScreen.kt, and you will see the block of code:
     
+    ~~~admonish code
+
     ```kt
     RecipeData.recipes.forEach { recipe ->
     RecipeItem(recipe = recipe, onClick = {
@@ -432,7 +499,11 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
     })
     ```
 
+    ~~~
+
     - the line `"recipe${recipe.id}"` is a different format that one we have provide `composable("Recipe_1",...)`, update the line:
+
+    ~~~admonish code
 
     ```kt
     RecipeData.recipes.forEach { recipe ->
@@ -443,6 +514,8 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
     })
     ```
 
+    ~~~
+
     ![](./figures//route_error_fixed.gif)
 
 
@@ -452,6 +525,8 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
 
 
 1. Navigate back to the RecipeData.kt file and lets add some more recipes and fill out the carbonara too.
+
+    ~~~admonish code
 
     ```kt
     Recipe(
@@ -509,6 +584,8 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
     )
     ```
 
+    ~~~
+    
     <div style="display:flex">
     <div style="margin: 5px;">
     
@@ -526,21 +603,25 @@ fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValue
 
 3. We are going to add this line in the body of the `NavHost(){...}`: `composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}`
 
-```kt
-@Composable
-fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
-{
-    NavHost(
-        navController = navController,
-        startDestination = stringResource(id = R.string.recipe_list),
-        Modifier.padding(paddingValues)) {
-        composable("recipe_list"){ RecipeListScreen(navController = navController)}
-        composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}
-        composable("recipe_2"){ RecipeScreen(RecipeData.recipes[1])}
-        composable("recipe_3"){ RecipeScreen(RecipeData.recipes[2])}
+    ~~~admonish code
+
+    ```kt
+    @Composable
+    fun RecipeNavHost(navController : NavHostController, paddingValues: PaddingValues)
+    {
+        NavHost(
+            navController = navController,
+            startDestination = stringResource(id = R.string.recipe_list),
+            Modifier.padding(paddingValues)) {
+            composable("recipe_list"){ RecipeListScreen(navController = navController)}
+            composable("recipe_1"){ RecipeScreen(RecipeData.recipes[0])}
+            composable("recipe_2"){ RecipeScreen(RecipeData.recipes[1])}
+            composable("recipe_3"){ RecipeScreen(RecipeData.recipes[2])}
+        }
     }
-}
-```
+    ```
+
+    ~~~
 
 4. Build and run to see the "finished" application...
 
@@ -557,8 +638,11 @@ Congratulations! You have successfully built a Healthy Recipe App using Kotlin a
 
 You can use the lab above as a guide on building the following apps:
 
->**Note**:
->> - You can find royalty-freee images here: [https://www.freeimages.com/](https://www.freeimages.com)
+~~~admonish info
+
+You can find royalty-freee images here: [https://www.freeimages.com/](https://www.freeimages.com)
+
+~~~
 
 ### 1. Youth Hostel App
 

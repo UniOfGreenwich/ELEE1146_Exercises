@@ -2,8 +2,13 @@
 
 You will be developing travel guide for Medway app that highlights the best attractions the city has to offer.  The City Guide app opening screen is shown below:
 
-> - You will need to download the following picture folder -> [Lab_6-2_Picture.zip](Lab_6-2_Pictures.zip)
-> - The completed project can be found here at end of session -> [https://github.com/UniofGreenwich/MobileApps-CityGuide](https://github.com/UniofGreenwich/MobileApps-CityGuide)
+~~~admonish info
+
+- You will need to download the following picture folder -> [Lab_6-2_Picture.zip](Lab_6-2_Pictures.zip)
+
+- The completed project can be found here at end of session -> [https://github.com/UniofGreenwich/MobileApps-CityGuide](https://github.com/UniofGreenwich/MobileApps-CityGuide)
+
+~~~
 
 <div align=center>
 
@@ -61,6 +66,8 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
 1. **Modify the Main Activity Layout:**
     - Open `MainActivity.kt`.
     - Reprodce this:
+
+        ~~~admonish code
 
         ```kotlin
         package com.uog.cityguide
@@ -128,9 +135,14 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
         }
         ``` 
 
+        ~~~
+
+
         ![](./figures/mainactivity_1.png)
 
     - Continue with making a list of ListItem:
+
+        ~~~admonish code
 
         ```kt
         ... 
@@ -149,6 +161,9 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
             }
         }
         ```
+
+        ~~~
+
         - `LazyColumn`: `LazyColumn` is a scrollable list component in Jetpack Compose. It is designed to handle large datasets efficiently by only composing and laying out the visible items. This improves performance and memory usage. LazyColumn supports various features like item spacing, item animations, and more.
 
         - `ListItem`: composable is a custom component designed to display each item in a list. It uses various Jetpack Compose elements to create a styled, clickable item. 
@@ -161,6 +176,8 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
 1. **Updating `MainScreen()`**
 
     - Go back up to the `MainScreen()` so we can implement the design and use the `ItemList()`:
+
+        ~~~admonish code
 
         ```kt
         ...
@@ -197,6 +214,8 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
         }
         ```
 
+        ~~~
+
         ![](./figures/mainactivity_2.png)
 
     - Build and run in the emulator and you should be able to click the **Greenwich - Medway** `ListItem` item and it will load the corresponding webpage:
@@ -204,6 +223,8 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
         ![](./figures/uog_emulation.gif)
 
     - Continue buidling the `ItemList` options:
+
+        ~~~admonish code
 
         ```kt
         ItemList(items = attractions) { position ->
@@ -226,6 +247,8 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
             }
         }
         ```
+        
+        ~~~
 
     - If you rebuild the app and run, the Great lines item should take you to the correct webpag, however, the other items will cause the app to crash.
 
@@ -240,6 +263,8 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
 
 2. **Global variables**
     - Adding global scoped variables for the images and the attractions titles
+
+        ~~~admonish code
 
         ```kt
         class Attraction : ComponentActivity() {
@@ -256,7 +281,12 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
         ...
         }
         ```
+
+        ~~~
+
     - You should visit the res/strings.xml and place the following items: 
+
+        ~~~admonish code
 
         ```xml
         <resources>
@@ -268,7 +298,12 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
         </resources>  
         ```
 
+        ~~~
+
     - Update the class with the fun `onCreate()}{...}`
+
+
+        ~~~admonish code
 
         ```kt
         
@@ -287,8 +322,14 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
         }
         ```
 
+        ~~~
+
+
 3. **Create the navigateBack function**
     - Directly underneath the `onCreate()` closing brace add the following code:
+        
+        ~~~admonish code
+        
         ```kt
         ...
         class Attraction : ... {
@@ -302,8 +343,10 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
             }
         }
         ```
-        - **navigateBack**:  invokes the `startActivity` function to launch the `MainActivity.kt`, so we can go back a page, when this function is invoked via an `onclick` method on a `Button` object.
 
+        ~~~
+
+        - **navigateBack**:  invokes the `startActivity` function to launch the `MainActivity.kt`, so we can go back a page, when this function is invoked via an `onclick` method on a `Button` object.
 
 
  ## Create the Attraction Screen
@@ -313,6 +356,8 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
 1.  **Building the AttractionScreen Composable**
 
     - After the closing brace of the Attraction Class we are going to add the AttractionScreen Composable function with the following parameters:
+
+        ~~~admonish code
 
         ```kt
         class Attraction : ...{
@@ -325,7 +370,11 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
         }
         ```
 
+        ~~~
+
 2. **Revisit the `AttractionScreen()` invocation in the `onCreate` method and provide the following argumnets**
+
+    ~~~admonish code
 
     ```kt
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -343,8 +392,12 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
     }
     ```
 
+    ~~~
+
 3. **Create a `Preview` for the `AttractionScreen()`**
     - Go the bottom of the file underneath the closing brace of the `AttractionScreen()` and add a `Composable` `Preview` for it:
+
+        ~~~admonish code
 
         ```kt
         @Preview(showBackground = true)
@@ -359,11 +412,16 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
             }
         }
         ```
+
+        ~~~
+
         -  Here we are referencin the following items statically, so that we can see the layout of our Composable view. As we start building it should start to render. 
 
 4. **Composing the `AttractionScreen()`**
 
     - Now we can start to design the UI of the `AttractionScreen()`
+
+        ~~~admonish code
 
         ```kt
         @Composable
@@ -411,6 +469,8 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
         }
         ```
 
+        ~~~
+
         ![](./figures/activity_screen.png)
 
     - **Column**: Column is a layout composable that places its children in a vertical sequence. It's similar to a vertical LinearLayout in traditional Android development.
@@ -432,17 +492,21 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
 
 ### Video @ 58.05 - 59.49
 
-1. **Running and getting an error**
+1. ~~~admonish error title='Running and getting an error:'
+
     - When you run this code, you will encounter an error when you select the any link that is not a url to a webpage.
 
         ![](./figures/activity_error.gif)
         - Error: `Unable to find explicit activity class {com.uog.cityguide/com.uog.cityguide/Attraction} have you declared this in your AndroidManifest.xml`
+    ~~~
 
 2. **Updating the  AndroidManifest.xml**
 
     - You can open the `AndroidManifest.xml` in the parent directory of the project:
 
         - include the following `activity` tag in side the parent `application` tag, 
+
+            ~~~admonish code
 
             ```kt
             <activity android:name=".Attraction">
@@ -477,6 +541,9 @@ If the user selects HMS Gannet, Rochester Cathedral, or Fort Amherst, an image a
 
             </manifest>    
             ```
+
+            ~~~
+
             ![](./figures/android_manifest.png)
 
     - Rerun the app:
@@ -492,8 +559,11 @@ Congratulations! You have successfully built a City Guide App using Kotlin and J
 
 ## Continue Here...
 
+~~~admonish info
 
-> You will need to download the following picture folder -> [Lab_6-3_Picture.zip](Lab_6-3_Pictures.zip)
+You will need to download the following picture folder -> [Lab_6-3_Picture.zip](Lab_6-3_Pictures.zip)
+
+~~~
 
 For the exercises below, follow the steps from above.
 

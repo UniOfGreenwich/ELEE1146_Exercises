@@ -11,13 +11,20 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
 </div>
 
 2. Modify the `Main.kt` content so it looks like: 
+
+    ~~~admonish code
+
     ```kt
     fun main(args: Array<String>) {
 
     } 
     ```
 
+    ~~~
+
 3. Inside the `main(..){`...`}` we are going to declare and initialise three arrays, `intArray`, `stringArray`, and `doubleArray`:
+
+    ~~~admonish code
 
     ```kt
     fun main(args: Array<String>) {
@@ -27,38 +34,59 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
     }
     ```
 
+    ~~~
+
 4. To output these arrays we are going to use `joinToString()`
+
+    ~~~admonish code
+
     ```kt 
     println("intArray: ${intArray.joinToString()}")
     println("stringArray: ${stringArray.joinToString()}")
     println("doubleArray: ${doubleArray.joinToString()}")
     ```
+
+    ~~~
+
     - The `joinToString()` function is used to convert arrays into strings for display.
 
-    **Output**
+    ~~~admonish output
+
     ```kt
     intArray: 1, 2, 3, 4, 5
     stringArray: apple, banana, cherry, date, elderberry
     doubleArray: 0.0, 0.0, 0.0, 0.0, 0.0
     ```
 
+    ~~~
+
 5. Now let's access the first and second index of `intArray` and `stringArray` respectively. Add the following underneath the last block of code:
+
+    ~~~admonish code
 
     ```kt
     println("First element of intArray: ${intArray[0]}")
     println("Second element of stringArray: ${stringArray[1]}")
     ```
+
+    ~~~
+
     - Remember the array[index] points to the position of a value whose index starts from 0 to size of the array - 1.
 
-    **Output**
+    ~~~admonish output
+
     ```kt
     First element of intArray: 1
     Second element of stringArray: banana
     ```
 
+    ~~~
+
     - Try and get the last element from both arrays.
 
 6. We can iterate of an array using a for loop. Continuing underneath the last code added:
+
+    ~~~admonish code
 
     ```kt
     println("Iterating through intArray, using object:")
@@ -67,7 +95,9 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
     }
     ```
 
-    **Output**
+    ~~~
+
+    ~~~admonish output
 
     ```kt
     Iterating through intArray, using object:
@@ -77,9 +107,14 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
     4
     5
     ```
+
+    ~~~
+
     - the `element` is like an object in a toy box.
 
 7. Continuing with looping we can setup the for loop differently, repeat: 
+
+    ~~~admonish code
 
     ```kt
     println("Iterating through stringArray, using indexing:")
@@ -96,24 +131,38 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
     elderberry
     ```
 
+    ~~~
+
 8. We can modify and array when the array is mutable as in it is a `var` **not** a `val`. Modify the third element of `intArray` by setting it to 10 and then print the modified `intArray`:
+
+   ~~~admonish code
+
    ```kt
     intArray[2] = 10
     println("Modified intArray: ${intArray.joinToString()}")
    ```
-   **Output**
+   ~~~
+
+   ~~~admonish output
+   
    ```kt
    Modified intArray: 1, 2, 10, 4, 5
    ```
+   ~~~
 
 9. We create a two-dimensional array (`twoDArray`) and populate it with values. We then iterate through the two-dimensional array and print its contents.
 
-    > **Note:**
-    >> - a 2D array is like a matrix/table
-    >> - |a|b|
-    >>   |---|---|
-    >>   |1|2|
-    >>   |3|4| 
+    ~~~admonish info
+
+     - a 2D array is like a matrix/table
+       |a|b|
+       |---|---|
+       |1|2|
+       |3|4| 
+
+    ~~~
+
+    ~~~admonish code
 
     ```kt
     val twoDArray = Array(3) { IntArray(4) } // 3x4 matrix
@@ -124,7 +173,10 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
     }
     ```
 
-    **Output**
+    ~~~
+
+    ~~~admonish output
+
     ```
     Two-dimensional array:
     0, 1, 2, 3
@@ -132,7 +184,11 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
     2, 3, 4, 5
     ```
 
+    ~~~
+
 10. Now define a custom data class `Person` and create an array of `Person` objects (`personArray`). We iterate through `personArray` and print the name and age of each person:
+
+    ~~~admonish code
 
     ```kt 
     data class Person(val name: String, val age: Int)
@@ -147,6 +203,11 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
         println("Name: ${person.name}, Age: ${person.age}")
     }
     ```
+
+    ~~~
+
+    ~~~admonish output
+
     **Output**
     ```
     Array of Persons:
@@ -154,3 +215,5 @@ In this lab you are going to experiment with Arrays. You will need to use **Inte
     Name: Bobi, Age: 22
     Name: Charlie, Age: 35
     ```
+
+    ~~~

@@ -16,7 +16,11 @@ _____
 Change various attributes using the properties in the Attribute Pane for the text – textColor, textSize and textStyle for example. Experiment with other text attributes as well as see what effect it will have on the text displayed when you run the app in the emulator.
 __________
 
->> **Note:** For the exercises below, follow the steps in the first example (from the lecture). For each project make sure you start a new project using File/New/New Project… from the menu. 
+~~~admonish note
+
+For the exercises below, follow the steps in the first example (from the lecture). For each project make sure you start a new project using File/New/New Project… from the menu. 
+
+~~~
 
 **4. Famous Technology Quotes App**
 
@@ -43,6 +47,14 @@ ___________________
 |Algorithm:| The opening window displays the present top five world companies separated by comma. Please research this topic and order them based on revenue. Change the text colour to your favourite colour, make it bold and italics and change the size to 24sp using the properties textColor, textStyle, and textSize of the TextView in the Palette|
 ___________________
 
->> **Note:** We will be using the latest Android Studio version, released in May 2020 – Android Studio v.4.2.2. You can download it and install it on your computer from https://developer.android.com/studio/archive. Make sure you have enough space on the disk, it takes 2.6GB and you would also need extra space to run it.
+~~~admonish note
 
->> **Warning:** If you decide to download a different version on your personal PC/laptop it might not be compatible with the version running at the University, therefore make sure you do download v4.2.2 and not any other!
+We will be using the latest Android Studio version, released in May 2020 – Android Studio v.4.2.2. You can download it and install it on your computer from https://developer.android.com/studio/archive. Make sure you have enough space on the disk, it takes 2.6GB and you would also need extra space to run it.
+
+~~~
+
+~~~admonish warning
+
+If you decide to download a different version on your personal PC/laptop it might not be compatible with the version running at the University, therefore make sure you do download v4.2.2 and not any other!
+
+~~~

@@ -7,8 +7,13 @@
 <td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
 You will be developing concert ticket app that lets you select predifined bands and check the cost of each ticket.  The Concert Ticket App is demoed right:
 
-> - You will need to download the following picture folder -> [Lab_4_Picture.zip](Lab_4_Pictures.zip)
-> - The completed project can be found here at end of session -> [https://github.com/UniOfGreenwich/MobileApps-ConcertTickets](https://github.com/UniOfGreenwich/MobileApps-ConcertTickets)
+~~~admonish info
+
+- You will need to download the following picture folder -> [Lab_4_Picture.zip](Lab_4_Pictures.zip)
+
+- The completed project can be found here at end of session -> [https://github.com/UniOfGreenwich/MobileApps-ConcertTickets](https://github.com/UniOfGreenwich/MobileApps-ConcertTickets)
+
+~~~
 
 </td>
 <td style="width: 50%; padding: 10px; border: 0px solid #ddd;">
@@ -62,6 +67,8 @@ You will be developing concert ticket app that lets you select predifined bands 
     - Open `MainActivity.kt`.
     - Reprodce this:
 
+        ~~~admonish code
+
         ```kotlin
         package com.uog.concerttickets
 
@@ -106,25 +113,32 @@ You will be developing concert ticket app that lets you select predifined bands 
                 ConcertTicketApp()
             }
         }
-        ``` 
+        ```
 
-    >**Notes on Composables Used:**
-    >> - **Scaffold**: Provides a basic structure for the app’s layout, including slots for common UI components such as `TopAppBar`, `BottomAppBar`, `FloatingActionButton`, and `Drawer`.
-    >>
-    >> - **TopAppBar**: A composable that represents the top app bar, which usually contains the app title, navigation icons, and actions
-    >>
-    >> - **Modifier**: A flexible way to describe how a composable should be laid out, styled, or behave.
-    >> 
-    >> - **Surface**:  A composable that provides a background and other properties like elevation and shape, often used as a container for other composables
-    >>
-    >> - **@OptIn**: An annotation that indicates the usage of an experimental API
-    >> 
-    >> - **enableEdgeToEdge()**: This function is typically used to set up the app to render edge-to-edge, utilizing the full screen area
-    >>
-    
+        ~~~
+
+        ~~~admonish info title='Notes on Composables Used:'
+
+        - **Scaffold**: Provides a basic structure for the app’s layout, including slots for common UI components such as `TopAppBar`, `BottomAppBar`, 
+        oatingActionButton`, and `Drawer`.
+        
+        - **TopAppBar**: A composable that represents the top app bar, which usually contains the app title, navigation icons, and actions
+        
+        - **Modifier**: A flexible way to describe how a composable should be laid out, styled, or behave.
+        
+        - **Surface**:  A composable that provides a background and other properties like elevation and shape, often used as a container for other composables
+        
+        - **@OptIn**: An annotation that indicates the usage of an experimental API
+        
+        - **enableEdgeToEdge()**: This function is typically used to set up the app to render edge-to-edge, utilizing the full screen area
+
+        ~~~
+
     - You can modify the  title element to hold an image and text: 
 
-        ```
+        ~~~admonish code
+        
+        ```kt
         title = {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -146,6 +160,8 @@ You will be developing concert ticket app that lets you select predifined bands 
         }
         ```
 
+        ~~~
+
     <div align="center">
 
     <img src="./figures/topBar.png" alt="Image of TopBar" style="width:230px;height:480px;">
@@ -157,6 +173,8 @@ You will be developing concert ticket app that lets you select predifined bands 
     ![](./figures/stringResource_1.png)
 
 - We need to create several composables that will show the DropDownMenu, TextField, Text, Button and Image, reproduce the following, inside the `Surface` Composable add the following `Column`:
+
+    ~~~admonish code
 
     ```kt
     ...
@@ -170,16 +188,21 @@ You will be developing concert ticket app that lets you select predifined bands 
 
     ```
 
-    >> **Notes on Composables Used:**
-    >> - **Row**: Layout composable that arranges its children in a horizontal sequence.
-    >>
-    >> - **Image**: A composable for displaying images.
-    >>
-    >> - **Spacer**: A composable that creates an empty space in the layout
-    >>
-    >> - **Text**: A composable for displaying text.
-    >>
-    >> - **Column**: A layout composable that arranges its children in a vertical sequence
+    ~~~
+
+    ~~~admonish info title='Notes on Composables Used:'
+
+     - **Row**: Layout composable that arranges its children in a horizontal sequence.
+    
+     - **Image**: A composable for displaying images.
+    
+     - **Spacer**: A composable that creates an empty space in the layout
+    
+     - **Text**: A composable for displaying text.
+    
+     - **Column**: A layout composable that arranges its children in a vertical sequence
+
+    ~~~
 
 ## BandSelection, Band and Band Data
 
@@ -191,11 +214,17 @@ You will be developing concert ticket app that lets you select predifined bands 
 
 - Now we need to create the `Band` `data class`, navigate to the top of the file and  between the `import`'s and the `MainActivity` definition and create a `data Class Band()` with the following fields:
 
+    ~~~admonish code
+
     ```kt
     data class Band(val name: String, val imageRes: Int, val price: Float)
     ```
 
+    ~~~
+
 - Next we need to add the `object BandDataSource` underneath the `data class` we just defined, that will hold the static band data:
+
+    ~~~admonish code
 
     ```kt
     object BandDataSource {
@@ -210,16 +239,22 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
     ```
 
+    ~~~
 
     ![](./figures/bandClass.png)
 
-    >>**Notes on Kotlin Syntax:**
-    >> - **data class**: A `data class` in Kotlin is used to hold data. It automatically provides several useful methods, such as `equals()`, `hashCode()`, `toString()`, and `copy()`, based on the properties defined in the class.
-    >>
-    >> - **object**: In Kotlin, the `object` keyword is used to declare a **singleton**, which means there will be only one instance of `BandDataSource` in the app.
-    >>    - **Predefined Band List**: A list containing instances of the `Band` `data class`. Each instance has a name, an image resource ID, and a price.
+    ~~~admonish note title='Notes on Kotlin Syntax:'
+
+     - **data class**: A `data class` in Kotlin is used to hold data. It automatically provides several useful methods, such as `equals()`, `hashCode()`, `toString()`, d `copy()`, based on the properties defined in the class.
+    
+     - **object**: In Kotlin, the `object` keyword is used to declare a **singleton**, which means there will be only one instance of `BandDataSource` in the app.
+        - **Predefined Band List**: A list containing instances of the `Band` `data class`. Each instance has a name, an image resource ID, and a price.
+
+    ~~~
 
 - Go back to `BandSelection` Composable and we no modify the arguments and the body:
+
+    ~~~admonish code
 
     ```kt
     @Composable
@@ -249,24 +284,31 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
     ```
 
-    >> **Notes on Composables etc:**
-    >> - **remember**: `remember` is a composable function that allows a state to be remembered across recompositions
-    >>
-    >> - **mutableStateOf**: `mutableStateOf` is used to create a state variable that can be observed for changes.
-    >> 
-    >> - Putting both together, they are used to hold and manage state in Jetpack Compose.
-    >> 
-    >> - **Box**: A layout composable that places its children on top of each other (like a stack) with the first child on the bottom
-    >>
-    >> - **TextButton**: A button composable that displays text. It is used for simple text-based buttons without background or elevation
-    >>
-    >> - **onBandSelection**: A lambda function that takes a `Band` as a parameter and returns `Unit`. This function is called when a new band is selected, allowing the parent composable to update the selected band.
-    >>
-    >> - **Unit**: is a type that corresponds to `void` in other programming languages. It is used to indicate that a function does not return any meaningful value. When a function returns `Unit`, it means that the function's purpose is to perform some action rather than produce a result.
+    ~~~
+
+    ~~~admonish info title='Notes on Composables Used:'
+
+     - **remember**: `remember` is a composable function that allows a state to be remembered across recompositions
+    
+     - **mutableStateOf**: `mutableStateOf` is used to create a state variable that can be observed for changes.
+     
+     - Putting both together, they are used to hold and manage state in Jetpack Compose.
+     
+     - **Box**: A layout composable that places its children on top of each other (like a stack) with the first child on the bottom
+    
+     - **TextButton**: A button composable that displays text. It is used for simple text-based buttons without background or elevation
+    
+     - **onBandSelection**: A lambda function that takes a `Band` as a parameter and returns `Unit`. This function is called when a new band is selected, allowing the rent composable to update the selected band.
+    
+     - **Unit**: is a type that corresponds to `void` in other programming languages. It is used to indicate that a function does not return any meaningful value. When a function returns `Unit`, it means that the function's purpose is to perform some action rather than produce a result.
+
+    ~~~
 
     ![](./figures/BandSelectionDefinition2.png)
 
 -  Go back to the top of the `ConcertTicketApp` and add a new remember initialisation so that when a band is selected and the recompostion is invoked the band selected is stored presistently across recompositions.
+
+    ~~~admonish code
 
     ```kt
 
@@ -277,10 +319,18 @@ You will be developing concert ticket app that lets you select predifined bands 
         ...
     }
     ```
-    >> **Notes:**
-    >> - **mutableStateOf(BandDataSource.bands[0])**: Initially, when the app loads the `selectedBand` stores the the first element in the `BandDataSource`, everytime a new selection is made the `selectedBand` will store the current selected index
+
+    ~~~
+
+    ~~~admonish info
+
+    **mutableStateOf(BandDataSource.bands[0])**: Initially, when the app loads the `selectedBand` stores the the first element in the `BandDataSource`, everytime a new selection is made the `selectedBand` will store the current selected index
+
+    ~~~
 
 - Update the Surface too, so that we can preview the `BandSelection`
+
+    ~~~admonish code
 
     ```kt
     ...
@@ -291,13 +341,20 @@ You will be developing concert ticket app that lets you select predifined bands 
 
     ```
 
-    >> **Notes:**
-    >> - Lambda Function `{selectedBand = it}`: The lambda function takes a band (`it`) as a parameter and assigns it to the `selectedBand` variable. This updates the state with the newly selected band.
+    ~~~
+
+    ~~~admonish info
+    
+    Lambda Function `{selectedBand = it}`: The lambda function takes a band (`it`) as a parameter and assigns it to the `selectedBand` variable. This updates the state with the newly selected band.
+
+    ~~~
 
     ![](./figures/BandSelectionDefinition3.png)
 
 
 -  Continue modifying the `BandSelection` composable `Row` so:
+
+    ~~~admonish code
 
     ```kt
     ...
@@ -315,10 +372,12 @@ You will be developing concert ticket app that lets you select predifined bands 
     ...
     ```
 
+    ~~~
+
     - You need to create the `ic_baseline_arrow_drop_down` assest, copy the code in the collaspable field below and create a new image resource :
 
-        <details>
-        <summary> ic_baseline_arrow_drop_down xml code</summary>
+        ~~~admonish code collapsible=true title='Code: ic_baseline_arrow_drop_down xml code '
+  
 
         ```xml
         <vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:viewportHeight="24" android:viewportWidth="24" android:width="24dp">
@@ -330,11 +389,13 @@ You will be developing concert ticket app that lets you select predifined bands 
 
         ![](./figures/dropDownArrow.gif)
 
-        </details>
+        ~~~
 
-    ![](./figures/BandSelectionDefinition4.png)
+        ![](./figures/BandSelectionDefinition4.png)
 
 -  Following on we need to add the `DropDownMenuItem`'s so that the `DropDownMenu` can display each `Band` name from the dropdown list:
+
+    ~~~admonish code
 
     ```kt
     ...
@@ -358,14 +419,19 @@ You will be developing concert ticket app that lets you select predifined bands 
     ...
     ```
 
-    >**Note:**
-    >> - This block dynamically creates a list of dropdown menu items for each band.#
-    >>    - Each item's text is the band's name, styled with a specific color and font size.
-    >>    - Clicking an item triggers a selection function and closes the dropdown menu.
-    >> 
-    >> - **BandDataSource.bands.forEach { band ->**: this line iterates through a list of bands provided by `BandDataSource.bands`, for each band in the list, the code inside the `forEach` block is executed.
-    >>
-    >> - **DropdownMenuItem**: Menus display a list of choices on a temporary surface. They appear when users interact with a button, action, or other control.
+    ~~~
+
+
+    ~~~admonish info
+
+    - This block dynamically creates a list of dropdown menu items for each band.#
+       - Each item's text is the band's name, styled with a specific color and font size.
+       - Clicking an item triggers a selection function and closes the dropdown menu.
+    
+    - **BandDataSource.bands.forEach { band ->**: this line iterates through a list of bands provided by `BandDataSource.bands`, for each band in the list, the code ide the `forEach` block is executed.
+        - **DropdownMenuItem**: Menus display a list of choices on a temporary surface. They appear when users interact with a button, action, or other control.
+
+    ~~~
 
     ![](./figures/selectBandDropdown_1.gif)
 
@@ -375,6 +441,8 @@ You will be developing concert ticket app that lets you select predifined bands 
 ### Video @ 44.10 - 46.35
 
 - Go  back up to the `Surface` where we invoke our `BandSelection(...){...}`, and reproduce the new lines below, several comments and a new function call `BandImage(selectedBand)` below:
+
+    ~~~admonish code
 
     ```kt
     ...
@@ -393,7 +461,12 @@ You will be developing concert ticket app that lets you select predifined bands 
     ...
     ```
 
+    ~~~
+
+
 - Navigate to the end of the file and create a new composable function called `BandImage()`, like below:
+
+    ~~~admonish code
 
     ```kt
     @Composable
@@ -408,6 +481,9 @@ You will be developing concert ticket app that lets you select predifined bands 
                 .height(300.dp))
     }
     ```
+
+    ~~~
+
     ![](./figures/selectBandDropdown_2.png)
 
 ## BandSelection, TicketCost
@@ -415,6 +491,8 @@ You will be developing concert ticket app that lets you select predifined bands 
 ### Video @ 46.35 - 51.25
 
 - Go  back up to the `Surface` where we invoke our `BandSelection(...){...}`, and reproduce the new lines below, several comments and a new function call `TicketInput(ticketCost)` below:
+
+    ~~~admonish code
 
     ```kt
     innerPadding ->
@@ -431,7 +509,11 @@ You will be developing concert ticket app that lets you select predifined bands 
             }
     ```
 
+    ~~~
+
 -  Go back to the top of the `ConcertTicketApp` and add a new remember initialisation so that when you use the input field and it recomposes each time the userinput is presistent,called `ticketCount`.
+
+    ~~~admonish code
 
     ```kt
 
@@ -443,10 +525,18 @@ You will be developing concert ticket app that lets you select predifined bands 
         ...
     }
     ```
-    >> **Notes:**
-    >> - ** mutableStateOf("")**: Initially, when the app loads the `TextInput` composable, the field is empty. Then when a user enters a character the value is stored across recompositions.
+
+    ~~~
+    
+    ~~~admonish info
+    
+    - **mutableStateOf("")**: Initially, when the app loads the `TextInput` composable, the field is empty. Then when a user enters a character the value is stored across recompositions.
+
+    ~~~
 
 - Navigate to the `BandImage(...)` function and above the declaration add the new function `TextInput()`:
+
+    ~~~admonish code
 
     ```kt
     @Composable
@@ -459,11 +549,15 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
     ```
 
+    ~~~
+
 ## BandSelection, CalculateCostButton
 
 ### Video @ 51.25 - 1:03:17
 
 - Navigate back to `Surface` and update the code to create some spacing between `Composable`'s, a new function call `CalcualteCostButton` and create a new `remember` type called `totalCost`:
+
+    ~~~admonish code
 
     ```kt
     innerPadding ->
@@ -483,8 +577,13 @@ You will be developing concert ticket app that lets you select predifined bands 
             }
         }
     ```
-    - `totalCost` `remember` type:
     
+    ~~~
+    
+    - `totalCost` `remember` type:
+
+        ~~~admonish code
+
         ```kt
         
         @OptIn(ExperimentalMaterial3Api::class)
@@ -496,9 +595,13 @@ You will be developing concert ticket app that lets you select predifined bands 
             ...
         ```
 
+        ~~~
+
         ![](./figures/mainLayout_1.png)
 
 - Navigate to the `TextInput()` `Composable`, and declare the newly referenced function `CalculateCostButton`:
+
+    ~~~admonish code
 
     ```kt
     @Composable
@@ -513,10 +616,17 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
     ```
 
-  >**Note:**
-  >> - **NumberFormat**: used to format numbers as currency, specifically in this instance GBP (British Pounds). It sets up a `NumberFormat` instance that ensures all currency values have exactly two decimal places.
+    ~~~
+
+    ~~~admonish info
+  
+    **NumberFormat**: used to format numbers as currency, specifically in this instance GBP (British Pounds). It sets up a `NumberFormat` instance that ensures all currency values have exactly two decimal places.
+
+    ~~~
 
 - Next in side the body of the function use the `Button` `Composable`: 
+
+    ~~~admonish code
 
     ```kt
     Button(onClick = {
@@ -543,16 +653,22 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
     ```
 
-    >**Notes:**
-    >> - **val count = ticketCount.toIntOrNull() ?: 0**: `ticketCount.toIntOrNull()` attempts to convert the `ticketCount` string to an integer.
-    >>    - If the conversion fails (i.e., `ticketCount` is not a valid integer), `toIntOrNull()` returns `null`, and the **Elvis** operator (`?:`) assigns `0` to `count`.
-    >>    - This ensures that count is always an integer, defaulting to `0` if the conversion fails
-    >>
-    >> - **onCalculate("Cost for ${selectedBand.name} is ${format.format(total)}")**:
-    >>    - "`Cost for ${selectedBand.name} is ${format.format(total)}`": This is a string with interpolated expressions inside it. In Kotlin, string interpolation allows you to include variables or expressions within a string by enclosing them in `${}`
-    >>
-    >> - **${selectedBand.name}**: This expression accesses the name property of the `selectedBand` object and inserts its value into the string.
-    >> - **${format.format(total)}**: This expression formats the total value as a currency string using the format object, which is an instance of `NumberFormat` configured for currency formatting.
+    ~~~
+
+    ~~~admonish info
+
+    
+     - **val count = ticketCount.toIntOrNull() ?: 0**: `ticketCount.toIntOrNull()` attempts to convert the `ticketCount` string to an integer.
+        - If the conversion fails (i.e., `ticketCount` is not a valid integer), `toIntOrNull()` returns `null`, and the **Elvis** operator (`?:`) assigns `0` to `count`.
+        - This ensures that count is always an integer, defaulting to `0` if the conversion fails
+    
+     - **onCalculate("Cost for ${selectedBand.name} is ${format.format(total)}")**:
+        - "`Cost for ${selectedBand.name} is ${format.format(total)}`": This is a string with interpolated expressions inside it. In Kotlin, string interpolation allows u to include variables or expressions within a string by enclosing them in `${}`
+    
+     - **${selectedBand.name}**: This expression accesses the name property of the `selectedBand` object and inserts its value into the string.
+     - **${format.format(total)}**: This expression formats the total value as a currency string using the format object, which is an instance of `NumberFormat` configured for currency formatting.
+
+    ~~~
 
     ![](./figures/mainLayout_2.png)
 
@@ -561,7 +677,9 @@ You will be developing concert ticket app that lets you select predifined bands 
 
 ### Video @ 1:03:17 - 1:05:38
 
-- - Navigate back to `Surface` and update the code to create some spacing between `Composable`'s, a new function call `CostDisplay`:
+- Navigate back to `Surface` and update the code to create some spacing between `Composable`'s, a new function call `CostDisplay`:
+
+    ~~~admonish code
 
     ```kt
     innerPadding ->
@@ -584,7 +702,11 @@ You will be developing concert ticket app that lets you select predifined bands 
             }
     ```
 
+    ~~~
+
 - Navigate to the `BandImage()` `Composable`, and declare the newly referenced function `CostDisplay`:
+
+    ~~~admonish code
 
     ```kt
     @Composable
@@ -599,8 +721,9 @@ You will be developing concert ticket app that lets you select predifined bands 
     }
     ```
 
-    ![](./figures/mainLayout_3.png)
+    ~~~
 
+    ![](./figures/mainLayout_3.png)
 
 -----
 
@@ -621,9 +744,7 @@ If you run the app you should now be able to reproduce the following:
 
 -----------
 
-<details>
-
-<summary>The whole program should look like this: </summary>
+~~~admonish code collapsible=true title='Code: whole program [255 lines]...'
 
 ```kt
 package com.uog.concerttickets
@@ -886,14 +1007,18 @@ fun GreetingPreview() {
     }
 }
 ```
-</details>
+
+~~~
 
 -------------
 
 ## Continue Here...
 
+~~~admonish info
 
-> You will need to download the following picture folder -> [Lab_4-2_Picture.zip](Lab_4-2_Pictures.zip)
+You will need to download the following picture folder -> [Lab_4-2_Picture.zip](Lab_4-2_Pictures.zip)
+
+~~~
 
 For the exercises below, follow the steps in the Ticket Vault example (above).
 
