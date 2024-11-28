@@ -17,8 +17,6 @@
   - [OOP with Data Storage](./Kotlin/Lab_8/Lab_8.1.md)
 - [Permissions ](./Kotlin/Lab_9/Lab_9.md)
 - [Sensors]()
-  - [All of the Sensors]()
-  - [Using the Sensors]()
 - [Splash Screens ]()
   
 -----------
