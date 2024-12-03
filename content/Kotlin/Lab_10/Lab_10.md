@@ -1,4 +1,4 @@
-# Lab 10.1 All of the Sensors
+# Lab 10 All of the Sensors
 
 ## Overview
 
