@@ -16,14 +16,5 @@
 - [Kotlin Object Orientated Programming](./Kotlin/Lab_8/Lab_8.md)
   - [OOP with Data Storage](./Kotlin/Lab_8/Lab_8.1.md)
 - [Permissions ](./Kotlin/Lab_9/Lab_9.md)
-- [Sensors]()
+- [Sensors](./Kotlin/Lab_11/Lab_11.md)
 - [Splash Screens ]()
-  
------------
------------
-
-# Assignments
-
-- [Assignment 1]()
-
-- [Assignment 2]()
