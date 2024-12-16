@@ -1,0 +1,976 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Exception Handling - Mobile Applications for Engineers</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././theme/pagetoc.css">
+        <link rel="stylesheet" href="../.././theme/css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././theme/css/code.css">
+        <link rel="stylesheet" href="../.././theme/css/terminal.css">
+        <link rel="stylesheet" href="../.././theme/css/output.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="burgundy">Burgundy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="dracula">Dracula</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ecoFriend">EcoFriend</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="pinkrose">Pinkrose</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="space">Space</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="sustain">Sustain</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="tokyonight">Tokyonight</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mobile Applications for Engineers</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/uniofgreenwich/ELEE1146-COMP1836_Exercises" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/uniofgreenwich/ELEE1146-COMP1836_Exercises/edit/main/content/Kotlin/Lab_7/Lab_7.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <h1 id="lab-7-exception-handling"><a class="header" href="#lab-7-exception-handling">Lab 7: Exception Handling</a></h1>
+<p>Using IntelliJ you are going to do some error handling exploration.</p>
+<ul>
+<li>
+<p>Open IntelliJ</p>
+</li>
+<li>
+<p>Create a new project</p>
+<ul>
+<li>Call it <code>ErrorHandling</code> like the screen shot below.</li>
+<li>Note you can use any JDK for this exercise, I am using JDK 17.0.6</li>
+</ul>
+ <div align=center>
+<p><img src="./figures/step0.png" alt="" /></p>
+ </div>
+</li>
+</ul>
+<h2 id="step-1"><a class="header" href="#step-1">Step 1</a></h2>
+<p>Reproduce the following to set up the project</p>
+<div align=center>
+<p><img src="./figures/step1.png" alt="" /></p>
+</div>
+<p>Now you can edit <code>main()</code> with the following code, then compile and run.</p>
+<div id="admonition-code" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-title">
+<div class="admonition-title">
+<div id="admonition-code-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code"></a>
+</div>
+<div>
+<pre><code class="language-kt">{
+    System.out.println(3/0);
+}
+</code></pre>
+</div>
+</div>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info"></a>
+</div>
+<div>
+<ul>
+<li>
+<p>We are explicity calling the <code>println()</code> from the function from the <code>System</code> library.</p>
+</li>
+<li>
+<p>You can do this implicitly just by writing <code>println(...)</code></p>
+</li>
+<li>
+<p>I would recommend the former, until you undestand this.</p>
+</li>
+</ul>
+</div>
+</div>
+<p>You should see the following output in the Run terminal...</p>
+<div align=center>
+<p><img src="./figures/step2.png" alt="" /></p>
+</div>
+<p>Modify the <code>Main.kt</code> as shown below. The change is to catch an exception through try-catch block.</p>
+<div id="admonition-code-1" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-1-title">
+<div class="admonition-title">
+<div id="admonition-code-1-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-1"></a>
+</div>
+<div>
+<pre><code class="language-kt">    try{
+        System.out.println(3/0);
+    } 
+    catch(e : Exception){
+        System.out.printf("Caught runtime exception = %s\n", e);
+    }
+</code></pre>
+</div>
+</div>
+<p>If you run the program again you should get the following output:</p>
+<div align=center>
+<p><img src="./figures/step3.png" alt="" /></p>
+</div>
+<p>Modify the Main.java as shown below. The change is to use more specific Exception class, <code>ArithmeticException</code> in this case.</p>
+<div id="admonition-code-2" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-2-title">
+<div class="admonition-title">
+<div id="admonition-code-2-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-2"></a>
+</div>
+<div>
+<pre><code class="language-kt">    try{
+        System.out.println(3/0);
+    } 
+    catch( e : ArithmeticException ){
+        System.out.printf("Caught runtime exception = %s\n", e);
+    }
+</code></pre>
+</div>
+</div>
+<p>If you run the program again you should get the following output:</p>
+<div align=center>
+<p><img src="./figures/step4.png" alt="" /></p>
+</div>
+<p>Let's try changing the Exception Class, to <code>NumberFormatExpression</code>.</p>
+<div id="admonition-code-3" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-3-title">
+<div class="admonition-title">
+<div id="admonition-code-3-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-3"></a>
+</div>
+<div>
+<pre><code class="language-kt">    try{
+            System.out.println(3/0);
+        } 
+        catch( e : NumberFormatException){
+            System.out.printf("Caught runtime exception = %s\n", e);
+        }
+</code></pre>
+</div>
+</div>
+<details id="admonition-what-happens-when-you-run-it" class="admonition admonish-question" role="note" aria-labelledby="admonition-what-happens-when-you-run-it-title">
+<summary class="admonition-title">
+<div id="admonition-what-happens-when-you-run-it-title">
+<p>What happens when you run it?</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-what-happens-when-you-run-it"></a>
+</summary>
+<div>
+<div align=center>
+<p><img src="./figures/step5.png" alt="" /></p>
+</div>
+<p>Because the expected Exception Class is wrong.</p>
+</div>
+</details>
+<p>For fun, do the following, what happens and why?</p>
+<div id="admonition-code-4" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-4-title">
+<div class="admonition-title">
+<div id="admonition-code-4-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-4"></a>
+</div>
+<div>
+<pre><code class="language-kt">try{
+        System.out.println(3/0);
+    } catch( e : ArithmeticException){
+        System.out.printf("Caught runtime exception = %s\n", e);
+        System.out.println(3/0);
+    }
+</code></pre>
+</div>
+</div>
+<h2 id="step-2-catch-multiple-exceptions"><a class="header" href="#step-2-catch-multiple-exceptions">Step 2: Catch multiple exceptions</a></h2>
+<p>Reproduce the following code:</p>
+<div id="admonition-code-5" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-5-title">
+<div class="admonition-title">
+<div id="admonition-code-5-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-5"></a>
+</div>
+<div>
+<pre><code class="language-kt">import javax.swing.JOptionPane
+
+fun main(args: Array&lt;String&gt;) {
+
+    // Enter the following values and see what exception is caught.
+    //    0, 4, character, &lt;no value&gt;
+    try {
+        val value = JOptionPane.showInputDialog(null, "Enter value:")
+        // Non-numeric value will result an NumberFormatException
+        val divisor = value.toInt()
+        // If the divisor is 0, it will result in ArithmetricException
+        println(3 / divisor)
+    } catch (e: NumberFormatException) {
+        println("Exception caught by this program: Enter numeric value.")
+    } catch (e: ArithmeticException) {
+        println("Exception caught by this program: Divisor was 0.")
+    }
+    println("After exception.")
+}
+</code></pre>
+</div>
+</div>
+<p>You'll notice that we are now importing a library on line 2 <code>import javax.swing.JOptionPane;</code> we now will be able to have a GUI.</p>
+<ul>
+<li>Build and run the program
+<ul>
+<li>Observe Input dialog box appears.</li>
+<li>Enter 0 in the field.</li>
+<li>Click OK.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step6.png" alt="" /></p>
+</div>
+<p>Notice that the exception was caught.</p>
+<div align=center>
+<p><img src="./figures/step7.png" alt="" /></p>
+</div>
+<ul>
+<li>Build and run the program
+<ul>
+<li>Observe Input dialog box appears.</li>
+<li>Enter 4 in the field.</li>
+<li>Click OK.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step8.png" alt="" /></p>
+</div>
+<p>Notice that the No exception was caught as it was not needed</p>
+<div align=center>
+<p><img src="./figures/step9.png" alt="" /></p>
+</div>
+<p>What happens when you enter a character or nothing instead?</p>
+<h1 id="step-3"><a class="header" href="#step-3">Step 3</a></h1>
+<ul>
+<li>Either start a new project or remove what you have done before</li>
+</ul>
+<p>You are now going to implement a larger program that illustrates many different types of <code>Exception</code>'s</p>
+<ol>
+<li>
+<p>Import the following libraries at the top of the script:</p>
+ <div id="admonition-code-6" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-6-title">
+ <div class="admonition-title">
+ <div id="admonition-code-6-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-6"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">import java.awt.Frame
+import java.awt.GridLayout
+import java.awt.event.ActionEvent
+import java.awt.event.ActionListener
+import java.awt.event.WindowAdapter
+import java.awt.event.WindowEvent
+import java.io.FileInputStream
+import javax.swing.ButtonGroup
+import javax.swing.JFrame
+import javax.swing.JPanel
+import javax.swing.JRadioButton
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>Modify the <code>main</code> class line:</p>
+ <div id="admonition-code-7" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-7-title">
+ <div class="admonition-title">
+ <div id="admonition-code-7-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-7"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">// Create a class Main that extends JFrame and implements ActionListener
+class Main : JFrame(), ActionListener {
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-info-1" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-1-title">
+ <div class="admonition-title">
+ <div id="admonition-info-1-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-1"></a>
+ </div>
+ <div>
+<p>This declares a class named <code>Main</code> that extends <code>JFrame</code> (a <code>Swing</code> component for creating windows) and implements the <code>ActionListener</code> interface (for handling button clicks).</p>
+ </div>
+ </div>
+</li>
+<li>
+<p>After updating <code>main</code> in step 2, add declare and initialise a private immutable array of Doubles with two elements with values <code>0.0</code>.</p>
+ <details>
+ <summary>Solution</summary>
+<pre><code class="language-kt">private val a = arrayOf&lt;Double&gt;(0.0,0.0)  // Create an array of Doubles
+</code></pre>
+ </details>
+</li>
+<li>
+<p>Now create these <code>JButton</code> objects:</p>
+<ul>
+<li>divideByZeroButton</li>
+<li>badCastButton</li>
+<li>arrayBoundsButton</li>
+<li>nullPointerButton</li>
+<li>overflowButton</li>
+<li>noSuchFileButton</li>
+<li>throwUnknownButton</li>
+</ul>
+ <p></p>
+ <details id="admonition-code-solution-here-6-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-solution-here-6-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-solution-here-6-lines-title">
+<p>Code: Solution here... [6 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-solution-here-6-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-kt">private val divideByZeroButton: JRadioButton
+private val badCastButton: JRadioButton
+private val arrayBoundsButton: JRadioButton
+private val nullPointerButton: JRadioButton
+private val overflowButton: JRadioButton
+private val noSuchFileButton: JRadioButton
+private val throwUnknownButton: JRadioButton
+</code></pre>
+ </div>
+ </details>
+</li>
+<li>
+<p>Now we are going to use <code>init</code> to initialise our graphical setup</p>
+<div id="admonition-code-8" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-8-title">
+<div class="admonition-title">
+<div id="admonition-code-8-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-8"></a>
+</div>
+<div>
+<pre><code class="language-kt"> // Constructor
+ init {
+     // Create a JPanel and GridLayout
+     val p = JPanel()
+     p.layout = GridLayout(8, 1)
+</code></pre>
+</div>
+</div>
+<div id="admonition-info-2" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-2-title">
+<div class="admonition-title">
+<div id="admonition-info-2-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-2"></a>
+</div>
+<div>
+<p>This is the constructor (<code>init</code> block) of the <code>Main</code> class. It creates a <code>JPanel</code> (a container) and sets its layout to a grid with 8 rows and 1 column.</p>
+</div>
+</div>
+</li>
+<li>
+<p>Now create a block of radio buttons, after the <code>p.layout = GridLayout(8,1)</code> line, for the various exception scenarios by adding them to a button group (<code>ButtonGroup</code> ensures only one button is selected at a time), and adds them to the panel.</p>
+ <div id="admonition-code-9" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-9-title">
+ <div class="admonition-title">
+ <div id="admonition-code-9-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-9"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">    // Create radio buttons and add them to the panel
+    val g = ButtonGroup()
+    divideByZeroButton = addRadioButton("Divide by zero", g, p)
+    badCastButton = addRadioButton("Bad cast", g, p)
+    arrayBoundsButton = addRadioButton("Array bounds", g, p)
+    nullPointerButton = addRadioButton("Null pointer", g, p)
+    overflowButton = addRadioButton("Overflow", g, p)
+    noSuchFileButton = addRadioButton("No such file", g, p)
+    throwUnknownButton = addRadioButton("Throw unknown", g, p)
+    contentPane.add(p)
+} // remeber to add this closing brace for init
+</code></pre>
+ </div>
+ </div>
+</li>
+<li>
+<p>After the closing brace <code>}</code> for <code>init</code> create a new function that is called <code>addRadioButton()</code>, that takes the following arguments:</p>
+<ul>
+<li><code>String</code> declared as <code>s</code></li>
+<li><code>ButtonGroup</code> declared as <code>g</code></li>
+<li><code>JPanel</code> declared as <code>p</code></li>
+</ul>
+ <p></p>
+ <details id="admonition-code-solution-here-1-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-solution-here-1-lines-title">
+ <summary class="admonition-title">
+ <div id="admonition-code-solution-here-1-lines-title">
+<p>Code: Solution here... [1 lines]</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-solution-here-1-lines"></a>
+ </summary>
+ <div>
+<pre><code class="language-kt">private fun addRadioButton(s: String, g: ButtonGroup, p: JPanel): JRadioButton {
+</code></pre>
+ </div>
+ </details>
+</li>
+<li>
+<p>Inside the function reproduce the follwing:</p>
+ <div id="admonition-code-10" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-10-title">
+ <div class="admonition-title">
+ <div id="admonition-code-10-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-10"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">    val button = JRadioButton(s, false)
+    button.addActionListener(this)
+    g.add(button)
+    p.add(button)
+    return button
+}
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-info-3" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-3-title">
+ <div class="admonition-title">
+ <div id="admonition-info-3-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-3"></a>
+ </div>
+ <div>
+<p>This function creates and configures a radio button, adds it to the specified <code>ButtonGroup</code> and <code>JPanel</code>, then returns the button.</p>
+ </div>
+ </div>
+</li>
+<li>
+<p>After the closing <code>}</code> of the <code>addRadioButton()</code> we are going to add the core functionality of the program, create the following <code>actionPerformed</code> function:</p>
+ <div id="admonition-code-11" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-11-title">
+ <div class="admonition-title">
+ <div id="admonition-code-11-title">
+<p>Code</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-code-11"></a>
+ </div>
+ <div>
+<pre><code class="language-kt">// Handle button clicks and trigger/catch exceptions
+override fun actionPerformed(evt: ActionEvent) {
+    try {
+        val source = evt.source
+        if (source === divideByZeroButton) {
+            // Attempt to divide by zero, which will throw an ArithmeticException
+            print(0/0)
+        } else if (source === badCastButton) {
+            // Attempt to perform a bad cast, which will throw a ClassCastException
+            val f = evt.source as Frame
+        } else if (source === arrayBoundsButton) {
+            // Attempt to access an out-of-bounds array index, which will throw an ArrayIndexOutOfBoundsException
+            a[1] = a[10]
+        } else if (source === nullPointerButton) {
+            // Attempt to access a null object, which will throw a NullPointerException
+            val f: Frame? = null
+            f!!.setSize(200, 200);
+        } else if (source === overflowButton) {
+            // Perform integer overflow, which Kotlin does not natively detect
+            a[1] = (1000 * 1000 * 1000 * 1000).toDouble()
+            val n = a[1].toInt()
+            print("Value of a[1]: ${a[1]}... Value of n: $n\n")
+
+            // Manually check for integer overflow and throw an exception
+            check((n) &gt; Int.MAX_VALUE) { "Integer overflow detected" }
+        } else if (source === noSuchFileButton) {
+            // Attempt to open a non-existent file, which will throw a FileNotFoundException
+            val `is` = FileInputStream("Java Source and Support")
+        } else if (source === throwUnknownButton) {
+            // Explicitly throw an UnknownError
+            throw UnknownError()
+        }
+    } catch (e: RuntimeException) {
+        // Catch and print a RuntimeException
+        println("Caught RuntimeException: $e")
+    } catch (e: Exception) {
+        // Catch and print a more general Exception
+        println("Caught Exception: $e")
+    }
+}
+</code></pre>
+ </div>
+ </div>
+ <div id="admonition-info-4" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-4-title">
+ <div class="admonition-title">
+ <div id="admonition-info-4-title">
+<p>Info</p>
+ </div>
+ <a class="admonition-anchor-link" href="#admonition-info-4"></a>
+ </div>
+ <div>
+<p>This function is called when a <strong>button</strong> is clicked. It tries different actions based on the clicked button, and catches specific exceptions (e.g., <code>ArithmeticException</code>, <code>ClassCastException</code>). It also catches more general exceptions (<code>RuntimeException</code>, <code>Exception</code>).</p>
+ </div>
+ </div>
+</li>
+<li>
+<p>Now create a <code>Companion</code> object after the closing brace of the previous function, which will act as the main entry point for the program:</p>
+<div id="admonition-code-12" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-12-title">
+<div class="admonition-title">
+<div id="admonition-code-12-title">
+<p>Code</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-12"></a>
+</div>
+<div>
+<pre><code class="language-kt">companion object {
+    @JvmStatic
+    fun main(args: Array&lt;String&gt;) {
+        // Create a frame and set up the UI
+
+        try{
+            println(3/0);
+        }
+        catch(e : Exception){
+            println("Caught runtime exception = ${e}\n" );
+        }
+        val frame: JFrame = Main()
+        frame.type = Type.POPUP
+        frame.setLocation(800,300)
+        frame.setSize(200, 250)
+        frame.addWindowListener(object : WindowAdapter() {
+            override fun windowClosing(e: WindowEvent) {
+                exitProcess(0)
+            }
+        })
+        frame.isVisible = true
+    }
+}
+</code></pre>
+</div>
+</div>
+<div id="admonition-info-5" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-5-title">
+<div class="admonition-title">
+<div id="admonition-info-5-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-info-5"></a>
+</div>
+<div>
+<p>A <strong>companion</strong> object is a type of object declaration that allows an object to act similar to <strong>static</strong> objects in other languages. A companion object is always declared inside of another class, and its properties and functions can be accessed directly with the class name. The Kotlin compiler ensures that there is only one instance of a companion object.</p>
+</div>
+</div>
+</li>
+<li>
+<p>Build and run the program.</p>
+</li>
+</ol>
+<ul>
+<li>Observe dialog box appears.
+<ul>
+<li>Click any of the radio buttons.</li>
+<li>Clicking a button will execute code fragement that generates an exception.</li>
+</ul>
+</li>
+</ul>
+<div align=center>
+<p><img src="./figures/step10.png" alt="" />
+<img src="./figures/step11.png" alt="" />
+<img src="./figures/step12.png" alt="" /></p>
+</div>
+<ol start="12">
+<li>
+<p>Please do the following tasks</p>
+<ul>
+<li>Try other buttons and observe the exceptions that are caught</li>
+<li>Try to catch exceptions using more specific exception classes (over <code>RuntimeException</code> and <code>Exception</code> classes).</li>
+</ul>
+</li>
+<li>
+<p>If you have got to here, great job. 3</p>
+<ul>
+<li>Convert the <code>try</code> and <code>catch</code> to t <code>runCatching</code> with <code>onSuccess</code> and <code>onFailure</code> extension methods (see lecture if unsure) inside the <code>actionPerformed</code> function.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<hr />
+<details id="admonition-code-section-10-full-code-here-106-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-section-10-full-code-here-106-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-section-10-full-code-here-106-lines-title">
+<p>Code: Section 10 full code here ...[106 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-section-10-full-code-here-106-lines"></a>
+</summary>
+<div>
+<pre><code class="language-kt">import java.awt.Frame
+import java.awt.GridLayout
+import java.awt.event.ActionEvent
+import java.awt.event.ActionListener
+import java.awt.event.WindowAdapter
+import java.awt.event.WindowEvent
+import java.io.FileInputStream
+import javax.swing.ButtonGroup
+import javax.swing.JFrame
+import javax.swing.JPanel
+import javax.swing.JRadioButton
+
+// Create a class Main that extends JFrame and implements ActionListener
+class Main : JFrame(), ActionListener {
+    private val a = arrayOf&lt;Double&gt;(0.0,0.0)  // Create an array of Doubles
+    private val divideByZeroButton: JRadioButton
+    private val badCastButton: JRadioButton
+    private val arrayBoundsButton: JRadioButton
+    private val nullPointerButton: JRadioButton
+    private val overflowButton: JRadioButton
+    private val noSuchFileButton: JRadioButton
+    private val throwUnknownButton: JRadioButton
+
+    // Constructor
+    init {
+        // Create a JPanel and GridLayout
+        val p = JPanel()
+        p.layout = GridLayout(8, 1)
+
+        // Create radio buttons and add them to the panel
+        val g = ButtonGroup()
+        divideByZeroButton = addRadioButton("Divide by zero", g, p)
+        badCastButton = addRadioButton("Bad cast", g, p)
+        arrayBoundsButton = addRadioButton("Array bounds", g, p)
+        nullPointerButton = addRadioButton("Null pointer", g, p)
+        overflowButton = addRadioButton("Overflow", g, p)
+        noSuchFileButton = addRadioButton("No such file", g, p)
+        throwUnknownButton = addRadioButton("Throw unknown", g, p)
+        contentPane.add(p)
+    }
+
+    private fun addRadioButton(s: String, g: ButtonGroup, p: JPanel): JRadioButton {
+        val button = JRadioButton(s, false)
+        button.addActionListener(this)
+        g.add(button)
+        p.add(button)
+        return button
+    }
+
+    // Handle button clicks and trigger/catch exceptions
+    override fun actionPerformed(evt: ActionEvent) {
+        try {
+            val source = evt.source
+            if (source === divideByZeroButton) {
+                // Attempt to divide by zero, which will throw an ArithmeticException
+                 print(0/0)
+            } else if (source === badCastButton) {
+                // Attempt to perform a bad cast, which will throw a ClassCastException
+                val f = evt.source as Frame
+            } else if (source === arrayBoundsButton) {
+                // Attempt to access an out-of-bounds array index, which will throw an ArrayIndexOutOfBoundsException
+                a[1] = a[10]
+            } else if (source === nullPointerButton) {
+                // Attempt to access a null object, which will throw a NullPointerException
+                val f: Frame? = null
+                f!!.setSize(200, 200);
+            } else if (source === overflowButton) {
+                // Perform integer overflow, which Kotlin does not natively detect
+                a[1] = (1000 * 1000 * 1000 * 1000).toDouble()
+                val n = a[1].toInt()
+                print("Value of a[1]: ${a[1]}... Value of n: $n\n")
+
+                // Manually check for integer overflow and throw an exception
+                check((n) &gt; Int.MAX_VALUE) { "Integer overflow detected" }
+            } else if (source === noSuchFileButton) {
+                // Attempt to open a non-existent file, which will throw a FileNotFoundException
+                val `is` = FileInputStream("Java Source and Support")
+            } else if (source === throwUnknownButton) {
+                // Explicitly throw an UnknownError
+                throw UnknownError()
+            }
+        } catch (e: RuntimeException) {
+            // Catch and print a RuntimeException
+            println("Caught RuntimeException: $e")
+        } catch (e: Exception) {
+            // Catch and print a more general Exception
+            println("Caught Exception: $e")
+        }
+    }
+
+    // Main entry point
+    companion object {
+        @JvmStatic
+        fun main(args: Array&lt;String&gt;) {
+            // Create a frame and set up the UI
+            val frame: JFrame = Main()
+            frame.type = Type.POPUP
+            frame.setSize(200, 300)
+            frame.addWindowListener(object : WindowAdapter() {
+                override fun windowClosing(e: WindowEvent) {
+                    exitProcess(0)
+                }
+            })
+            frame.isVisible = true
+        }
+    }
+}
+</code></pre>
+</div>
+</details>
+<p></p>
+<details id="admonition-code-actionperformed-runcatching-code-for-section-12-50-lines" class="admonition admonish-code" role="note" aria-labelledby="admonition-code-actionperformed-runcatching-code-for-section-12-50-lines-title">
+<summary class="admonition-title">
+<div id="admonition-code-actionperformed-runcatching-code-for-section-12-50-lines-title">
+<p>Code: actionPerformed: runCatching code for section 12. [50 lines]</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-code-actionperformed-runcatching-code-for-section-12-50-lines"></a>
+</summary>
+<div>
+<p>In this version, <code>runCatching</code> is used to encapsulate the code that might throw exceptions. <code>onSuccess</code> is a block that executes when there is no exception, and <code>onFailure</code> is a block that executes when an exception occurs. The specific exception types are checked inside the <code>onFailure</code> block, and other exceptions are rethrown.</p>
+<pre><code class="language-kt">override fun actionPerformed(evt: ActionEvent) {
+    runCatching {
+        val source = evt.source
+        when {
+            source === divideByZeroButton -&gt; {
+                // Attempt to divide by zero, which will throw an ArithmeticException
+                print(0 / 0)
+            }
+            source === badCastButton -&gt; {
+                // Attempt to perform a bad cast, which will throw a ClassCastException
+                val f = evt.source as Frame
+            }
+            source === arrayBoundsButton -&gt; {
+                // Attempt to access an out-of-bounds array index, which will throw an ArrayIndexOutOfBoundsException
+                a[1] = a[10]
+            }
+            source === nullPointerButton -&gt; {
+                // Attempt to access a null object, which will throw a NullPointerException
+                val f: Frame? = null
+                f!!.setSize(200, 200)
+            }
+            source === overflowButton -&gt; {
+                // Perform integer overflow, which Kotlin does not natively detect
+                a[1] = (1000 * 1000 * 1000 * 1000).toDouble()
+                val n = a[1].toInt()
+                print("Value of a[1]: ${a[1]}... Value of n: $n\n")
+
+                // Manually check for integer overflow and throw an exception
+                check((n) &gt; Int.MAX_VALUE) { "Integer overflow detected" }
+            }
+            source === noSuchFileButton -&gt; {
+                // Attempt to open a non-existent file, which will throw a FileNotFoundException
+                val `is` = FileInputStream("Java Source and Support")
+            }
+            source === throwUnknownButton -&gt; {
+                // Explicitly throw an UnknownError
+                throw UnknownError()
+            }
+        }
+    }.onSuccess {
+        // This block executes if there is no exception
+        println("No exception occurred")
+    }.onFailure { e -&gt;
+        // This block executes if an exception occurs
+        when (e) {
+            is RuntimeException -&gt; println("Caught RuntimeException: $e")
+            is Exception -&gt; println("Caught Exception: $e")
+            else -&gt; throw e // rethrow other exceptions
+        }
+    }
+}
+</code></pre>
+</div>
+</details>
+                    </main>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../Kotlin/Lab_6/Lab_6-2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../Kotlin/Lab_8/Lab_8.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../Kotlin/Lab_6/Lab_6-2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../Kotlin/Lab_8/Lab_8.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
