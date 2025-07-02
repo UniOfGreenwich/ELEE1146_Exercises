@@ -7,7 +7,7 @@ This mdBook will grow over the duration of this module with new labs/workshops a
 <td>
 
 The mdBook accessed outside of blackboard and is mobile and tablet friendly. :
-- [https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises/](https://uniofgreenwich.github.io/ELEE1146-COMP1836_Exercises)
+- [https://uniofgreenwich.github.io/ELEE1146_Exercises/](https://uniofgreenwich.github.io/ELEE1146_Exercises)
 - Or scan the QR code on the right:
 </td>
 <td>
